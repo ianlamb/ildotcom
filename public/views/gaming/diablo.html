@@ -1,0 +1,33 @@
+<div id="diablo">
+    <h3>Career</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <table>
+                <tbody>
+                    <tr ng-repeat="hero in diabloProfile.heroes">
+                        <td>{{ hero.name }}</td>
+                        <td>{{ hero.level }}</td>
+                        <td>{{ hero.class }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <dl>
+                <dt>Lifetime Kills</dt>
+                <dd>{{ diabloProfile.kills.monsters }}</dd>
+                <dt>Elite Kills</dt>
+                <dd>{{ diabloProfile.kills.elites }}</dd>
+                <dt>Paragon Level</dt>
+                <dd>{{ diabloProfile.paragonLevel }}</dd>
+            </dl>
+
+            <h4>Time Played by Class</h4>
+            <div ng-repeat="(class, time) in diabloProfile.timePlayed">
+                {{ class }}
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(time) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(time) }}%;">{{ percent(time) }}</div>
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div id="gaming">
+    <div class="header-image"></div>
+    <div class="container">
+        <div class="row">
+            <div id="sideNav" class="col-lg-2 col-md-3">
+                <a class="title">Games</a>
+                <ul>
+                    <li><a href="/gaming/wow" class="{{ tab == 'wow' ? 'selected' : '' }}">World of Warcraft</a></li>
+                    <li><a href="/gaming/diablo" class="{{ tab == 'diablo' ? 'selected' : '' }}">Diablo 3</a></li>
+                    <li><a href="/gaming/starcraft" class="{{ tab == 'starcraft' ? 'selected' : '' }}">Starcraft 2</a></li>
+                    <li><a href="/gaming/steam" class="{{ tab == 'steam' ? 'selected' : '' }}">Steam Games</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-10 col-md-9">
+                <ng-switch on="tab">
+                  <div ng-switch-when="wow">
+                      <wow-section></wow-section>
+                  </div>
+                  <div ng-switch-when="diablo">
+                      <diablo-section></diablo-section>
+                  </div>
+                  <div ng-switch-when="starcraft">
+                      <starcraft-section></starcraft-section>
+                  </div>
+                  <div ng-switch-when="steam">
+                      <steam-section></steam-section>
+                  </div>
+                </ng-switch>
+            </div>
+        </div>
+    </div>
+</div>
