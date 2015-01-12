@@ -1,6 +1,8 @@
 module.exports = function(app, router) {
 
     var Person       = require('./models/person');
+    var Place       = require('./models/place');
+    var Photo       = require('./models/photo');
     var ClimbSession = require('./models/climb-session');
     var WowProfile   = require('./models/wow-profile');
     var DiabloProfile   = require('./models/diablo-profile');

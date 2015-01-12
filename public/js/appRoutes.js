@@ -37,15 +37,15 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         // adventure section
         .when('/adventure', {
             templateUrl: 'views/adventure.html',
-            controller: 'TravelController'
+            controller: 'AdventureController'
         })
         .when('/adventure/:tab', {
             templateUrl: 'views/adventure.html',
-            controller: 'TravelController'
+            controller: 'AdventureController'
         })
         .when('/adventure/:tab/:action', {
             templateUrl: 'views/adventure.html',
-            controller: 'TravelController'
+            controller: 'AdventureController'
         })
 
         // gaming section

@@ -254,7 +254,7 @@ angular.module('appDirectives', [])
                         $scope.stats = stats;
                     })
                     .error(function(err) {
-                        console.log('Error: ' + err);
+                        console.error(err);
                     });
             }
         };
