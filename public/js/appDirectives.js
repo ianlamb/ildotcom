@@ -375,27 +375,32 @@ angular.module('appDirectives', [])
                 $scope.percent = function(value) {
                     return parseInt(value * 100) + '%';
                 }
-
             }
         }
     })
 
-    .directive('starcraftSection', function() {
+    .directive('starcraftSection', function(StarcraftProfile) {
         return {
             restrict: 'E',
             templateUrl: 'views/gaming/starcraft.html',
             controller: function($scope) {
-
+                StarcraftProfile.get()
+                    .success(function(data) {
+                        $scope.starcraftProfile = data;
+                    });
             }
         }
     })
 
-    .directive('steamSection', function() {
+    .directive('steamSection', function(SteamProfile) {
         return {
             restrict: 'E',
             templateUrl: 'views/gaming/steam.html',
             controller: function($scope) {
-
+                SteamProfile.get()
+                    .success(function(data) {
+                        $scope.steamProfile = data;
+                    });
             }
         }
     });

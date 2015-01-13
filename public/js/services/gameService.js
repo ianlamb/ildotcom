@@ -206,11 +206,9 @@ angular.module('gameService', [])
             // Data object we expose externally
             return obj;
         }
-
     }])
 
     .factory('DiabloProfile', ['$http', function($http) {
-
         return {
             get: function() {
                 return $http.get('/api/d3')
@@ -222,5 +220,32 @@ angular.module('gameService', [])
                 });
             }
         }
+    }])
 
+    .factory('StarcraftProfile', ['$http', function($http) {
+        return {
+            get: function() {
+                return $http.get('/api/sc2')
+                .success(function(data) {
+                    return data;
+                })
+                .error(function(err) {
+                    console.error(err);
+                });
+            }
+        }
+    }])
+
+    .factory('SteamProfile', ['$http', function($http) {
+        return {
+            get: function() {
+                return $http.get('/api/steam')
+                .success(function(data) {
+                    return data;
+                })
+                .error(function(err) {
+                    console.error(err);
+                });
+            }
+        }
     }]);

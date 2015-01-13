@@ -22,11 +22,11 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    color: #efefef;
+    color: #333;
     font-family: 'Ubuntu', verdana, sans-serif;
 }
 html {
-    background: #454545;
+    background: url('../images/grey.png');
 }
 body {
     letter-spacing: 0.1em;
@@ -58,7 +58,6 @@ dl {
     margin-bottom: 0;
 }
 dt {
-    color: rgba(255,255,255,0.7);
     font-weight: normal;
 }
 dd {
@@ -729,7 +728,6 @@ a.hex:hover {
     vertical-align: top;
     width: 200px;
     margin-right: 30px;
-    color: rgba(255,255,255,0.8);
     font-size: 1.0em;
 }
 #climbing .session .type h5 {
@@ -738,7 +736,6 @@ a.hex:hover {
 #climbing .session .footer {
     clear: both;
     width: 100%;
-    color: rgba(255,255,255,0.4);
     font-size: 1.0em;
 }
 #climbing .session .count {
@@ -746,7 +743,6 @@ a.hex:hover {
     margin-right: 20px;
 }
 #climbing .session .count span {
-    color: rgba(255,255,255,0.8);
 }
 #climbing .session .total-points {
     display: inline-block;
@@ -755,7 +751,6 @@ a.hex:hover {
     border-left: 1px solid rgba(255,255,255,0.4);
 }
 #climbing .session .total-points span {
-    color: rgba(255,255,255,0.8);
 }
 #climbing .session .notes {
     display: inline-block;
@@ -773,7 +768,6 @@ a.hex:hover {
 #climbing .session .type .grade .header {
     display: inline-block;
     margin: 0 0.6em 0 0;
-    color: rgba(255,255,255,0.6);
     font-size: 1.2em;
     font-family: monospace;
     text-align: left;
@@ -879,6 +873,21 @@ a.hex:hover {
 #gaming .feed {
     list-style: none;
     padding: 0;
+}
+
+#starcraft {
+    margin-top: 60px;
+}
+#starcraft .portrait {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    width: 90px;
+    height: 90px;
+}
+#starcraft .name {
+    display: inline-block;
+    margin: 0 0 5px 0;
 }
 
 

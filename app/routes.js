@@ -6,6 +6,8 @@ module.exports = function(app, router) {
     var ClimbSession = require('./models/climb-session');
     var WowProfile   = require('./models/wow-profile');
     var DiabloProfile   = require('./models/diablo-profile');
+    var StarcraftProfile   = require('./models/starcraft-profile');
+    var SteamProfile   = require('./models/steam-profile');
 
     // server routes ===========================================================
     // middleware to use for all requests
@@ -79,6 +81,26 @@ module.exports = function(app, router) {
 
     router.route('/d3').get(function(req, res) {
         DiabloProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
+            .exec(function(err, data) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(data);
+            });
+    });
+
+    router.route('/sc2').get(function(req, res) {
+        StarcraftProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
+            .exec(function(err, data) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(data);
+            });
+    });
+
+    router.route('/steam').get(function(req, res) {
+        SteamProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
             .exec(function(err, data) {
                 if (err) {
                     res.send(err);
