@@ -1,3 +1,7 @@
+
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500,700);
+
+
 /********************
 *** CUSTOM STYLES ***
 ********************/
@@ -9,6 +13,7 @@
  * BLUE   = #00AFDB
  */
 
+
 ::selection { background: #e6e6e6; color: orangered; }
 ::-moz-selection { background: #e6e6e6; color: orangered; }
 
@@ -18,13 +23,14 @@ html, body {
     padding: 0;
     height: 100%;
     color: #efefef;
-    font-family: verdana, "Open Sans", sans-serif;
+    font-family: 'Ubuntu', verdana, sans-serif;
 }
 html {
     background: #454545;
 }
 body {
-    font-family: 'Roboto', sans-serif; letter-spacing: 0.1em; background: transparent;
+    letter-spacing: 0.1em;
+    background: transparent;
 }
 h1 { margin: 0 0 15px 0; color: #009CF3; }
 h2 {  }
@@ -472,6 +478,7 @@ label {
     left: 0;
     right: 0;
     bottom: 0;
+    opacity: 0.6;
 }
 
 a.hex {
@@ -941,14 +948,14 @@ a.hex:hover {
 }
 
 .profile-photo {
+    display: block;
     width: 150px;
     height: 150px;
-    border-radius: 75px;
-    border: none;
-    position: absolute;
-    left: 520px;
-    top: 0;
-    margin-top: -120px;
+    border-radius: 50%;
+    border: 1px solid #454545;
+    position: relative;
+    top: -100px;
+    margin: 0 auto;
 }
 .profile-photo-overlay {
     opacity: 0;

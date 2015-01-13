@@ -1,4 +1,41 @@
 angular.module('appDirectives', [])
+    .directive('quotation', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/templates/quotation.html',
+            controller: function($scope) {
+                var quotes = [
+                    {
+                        text: 'I\'ve got a great ambition to die of exhaustion rather than boredom',
+                        person: 'Thomas Carlyle', link: 'http://en.wikipedia.org/wiki/Thomas_Carlyle'
+                    },
+                    {
+                        text: 'The mind is furnished with ideas by experience alone',
+                        person: 'John Locke', link: 'http://en.wikipedia.org/wiki/John_Locke'
+                    },
+                    {
+                        text: 'The unexamined life is not worth living',
+                        person: 'Socrates', link: 'http://en.wikipedia.org/wiki/Socrates'
+                    },
+                    {
+                        text: 'One cannot step twice in the same river',
+                        person: 'Heraclitus', link: 'http://en.wikipedia.org/wiki/Heraclitus'
+                    },
+                ];
+
+                function randomQuote() {
+                    if(quotes.length === 0) {
+                        return '';
+                    }
+                    var index = parseInt(Math.random() * quotes.length);
+                    return quotes[index];
+                }
+
+                $scope.quote = randomQuote();
+            }
+        }
+    })
+
     .directive('projectsSection', function() {
         return {
             restrict: 'E',
