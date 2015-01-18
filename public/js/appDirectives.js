@@ -1,4 +1,127 @@
 angular.module('appDirectives', [])
+    .directive('navigation', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/templates/navigation.html',
+            controller: function($scope, $location) {
+                $scope.navLinks = [
+                    { slug: 'home', text: 'Home', sortRank: 0 },
+                    { slug: 'developer', text: 'Developer', sortRank: 1 },
+                    { slug: 'adventure', text: 'Adventure', sortRank: 2 },
+                    { slug: 'gaming', text: 'Gaming', sortRank: 3 }
+                ];
+
+                $scope.isActive = function(slug) {
+                    var baseNav;
+                    var urlParts = $location.path().split('/');
+                    if (urlParts.length > 1) {
+                        baseNav = urlParts[1];
+                    } else {
+                        baseNav = 'home';
+                    }
+                    if(baseNav === slug) {
+                        return 'active';
+                    }
+                    return '';
+                }
+            }
+        };
+    })
+
+    .directive('footer', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/templates/footer.html',
+            controller: function($scope) {
+                $scope.year = moment().year();
+            }
+        };
+    })
+
+    .directive('projects', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/templates/projects.html',
+            controller: function($scope) {
+                $scope.projects = [
+                    {
+                        name: 'Tempus Notes',
+                        url: 'http://notes.ianlamb.com/',
+                        image: 'IMG_20141103_212626.jpg',
+                        desc: 'A simple note-taker, great for remembering what you did for daily scrum'
+                    },
+                    {
+                        name: 'Dark Souls Challenge Runs',
+                        url: 'http://darksouls.ianlamb.com/challenges',
+                        image: '',
+                        desc: 'A fun little randomizer for Dark Souls play-throughs'
+                    },
+                    {
+                        name: 'Z-Code',
+                        url: 'http://zcode.ianlamb.com/',
+                        image: '',
+                        desc: 'HTML5 Game that my buddy and I made in college'
+                    },
+                    {
+                        name: 'Creekside Landscaping',
+                        url: 'http://www.creeksidelandscaping.ca/',
+                        image: '',
+                        desc: 'WordPress redesign'
+                    }
+                ];
+            }
+        };
+    })
+
+    .directive('contact', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/templates/contact.html',
+            controller: function($scope) {
+                $scope.email = 'ianlamb32@gmail.com';
+                $scope.phone = '+1 (519) 902 6533';
+                $scope.location = 'London, Canada'
+
+                var placesData = [
+                    { latLng: [42.9837, -81.2497], name: 'London, ON' }
+                ];
+
+                $('#contactMap').vectorMap({
+                    map: 'world_mill_en',
+                    backgroundColor: 'transparent',
+                    zoomOnScroll: false,
+                    regionStyle: {
+                        initial: {
+                            fill: '#000',
+                            'fill-opacity': 0.3
+                        },
+                        hover: {
+                            fill: '#000',
+                            'fill-opacity': 0.3
+                        }
+                    },
+                    markerStyle: {
+                        initial: {
+                            fill: '#DA45F7',
+                            'fill-opacity': 1,
+                            'stroke-fill': '#DA45F7',
+                            'stroke-width': 20,
+                            'stroke-opacity': 0.5,
+                            r: 5
+                        },
+                        hover: {
+                            'stroke-fill': '#DA45F7',
+                            'stroke-width': 20,
+                            'stroke-opacity': 0.5,
+                        }
+                    },
+                    markers: placesData,
+                    onRegionTipShow: null
+                });
+            }
+        };
+    })
+
     .directive('quotation', function() {
         return {
             restrict: 'E',

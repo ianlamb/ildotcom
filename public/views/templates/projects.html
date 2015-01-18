@@ -1,0 +1,22 @@
+<section id="projects">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Work</h1>
+                <div class="row">
+                    <div ng-repeat="project in projects" class="col-sm-3">
+                        <a href="{{ project.url }}" class="project" style="background-image: url(images/{{ project.image }})">
+                            <div class="title">{{ project.name }}</div>
+                            <div class="desc">{{ project.desc }}</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <button type="button">Download my Resume</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

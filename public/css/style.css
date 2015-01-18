@@ -26,13 +26,13 @@ html, body {
     font-family: 'Ubuntu', verdana, sans-serif;
 }
 html {
-    background: url('../images/grey.png');
+    background: #efefef url(http://subtlepatterns.com/patterns/fancy_deboss.png);
 }
 body {
     letter-spacing: 0.1em;
     background: transparent;
 }
-h1 { margin: 0 0 15px 0; color: #009CF3; }
+h1 { margin: 0 0 15px 0; }
 h2 {  }
 h3 {  }
 h4 {  }
@@ -209,6 +209,15 @@ label {
 }
 
 
+.jvectormap-zoomin,
+.jvectormap-zoomout {
+    display: none;
+}
+.jvectormap-tip {
+    z-index: 90;
+}
+
+
 #error {
     margin-top: 100px;
 }
@@ -217,17 +226,13 @@ label {
     text-align: center;
 }
 
-#header-wrap {
-    position: absolute;
+.navbar {
     z-index: 50;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    overflow: hidden;
-    background: #555;
-    -webkit-animation: expand-header 0.4s linear;
-    animation: expand-header 0.4s linear;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    margin: 0;
+/*    -webkit-animation: expand-header 0.4s linear;
+    animation: expand-header 0.4s linear;*/
 }
 @-webkit-keyframes expand-header {
     0% {
@@ -245,31 +250,28 @@ label {
         height: 60px;
     }
 }
-#header {
-    margin: 0 auto;
-    margin-top: -20px;
-    width: 100%;
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: rgb(0, 156, 243);;
+    background-color: transparent;
 }
-#header a {
-    color: #777;
+.navbar a {
     -webkit-transition: all .4s;
     transition: all .4s;
 }
-#header a:hover {
-    color: #1DC766;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+.navbar a:hover {
+    color: #14A3E2 !important;
     -webkit-transition: all .2s;
     transition: all .2s;
 }
-#header a.logo {
-    display: inline-block;
-    font-size: 1.4em;
-    margin: 1.8em 1em 1em 0em;
-    padding: 0;
+.navbar-default .navbar-brand {
+    line-height: 1.2em;
     text-transform: uppercase;
     text-decoration: none;
 }
-#header a.logo span {
+.navbar button {
+    width: auto;
+}
+.navbar-default .navbar-brand span {
     -webkit-animation-name: shine;
     animation-name: shine;
     -webkit-animation-duration: 5s;
@@ -279,54 +281,75 @@ label {
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
 }
-#header a.logo span.letter-1 {
+.navbar-default .navbar-brand span.letter-1 {
     -webkit-animation-delay: 0ms;
     animation-delay: 0ms;
 }
-#header a.logo span.letter-2 {
+.navbar-default .navbar-brand span.letter-2 {
     -webkit-animation-delay: 100ms;
     animation-delay: 100ms;
 }
-#header a.logo span.letter-3 {
+.navbar-default .navbar-brand span.letter-3 {
     -webkit-animation-delay: 200ms;
     animation-delay: 200ms;
 }
-#header a.logo span.letter-4 {
+.navbar-default .navbar-brand span.letter-4 {
     -webkit-animation-delay: 300ms;
     animation-delay: 300ms;
 }
-#header a.logo span.letter-5 {
+.navbar-default .navbar-brand span.letter-5 {
     -webkit-animation-delay: 400ms;
     animation-delay: 400ms;
 }
-#header a.logo span.letter-6 {
+.navbar-default .navbar-brand span.letter-6 {
     -webkit-animation-delay: 500ms;
     animation-delay: 500ms;
 }
-#header a.logo span.letter-7 {
+.navbar-default .navbar-brand span.letter-7 {
     -webkit-animation-delay: 600ms;
     animation-delay: 600ms;
 }
-#header .social-icons {
-    display: block;
-    position: relative;
-    padding: 0;
-    top: 32px;
+.social-icons {
+    list-style: none;
     text-align: right;
 }
-#header .social-icons a {
+.social-icons li {
+    display: inline-block;
     margin-left: 5px;
+}
+.social-icons a {
+    color: #3B484A;
     font-size: 2em;
+}
+.social-icons a:hover {
+    color: rgb(12, 151, 229);
+    text-shadow: 0 1px 0 rgba(0,0,0,.3);
 }
 
 .page {
     position: absolute;
-    top: 60px;
+    top: 50px;
     left: 0;
     right: 0;
     width: 100%;
     margin: 0 auto;
     padding: 0;
+}
+#footer {
+    background: #5D6B6E;
+    color: #3B484A;
+    text-shadow: 0 1px 0 rgba(255,255,255,.1);
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+.background {
+    width: 100%;
+    height: 100%;
+    background: #999 no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #sideNav {
@@ -417,21 +440,120 @@ label {
 
 
 /* HOME PAGE */
-#home {
-    margin-top: 140px;
+.overlay {
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
 }
-#home h1 {
-    color: #fff;
+
+#quotation {
+    margin-top: 400px;
+    font-size: 1.2em;
 }
-#home p {
+#home section {
+    width: 100%;
+    margin: 0;
+    color: #666;
+    padding-top: 100px;
+}
+#home section#header {
+    height: 980px;
+    padding: 0;
     color: #efefef;
-}
-#intro p {
-    font-size: 1.4em;
+    background: url(../images/1291799092408.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 #about {
-    display: block;
-    margin-top: 40px;
+}
+#about .process {
+    text-align: center;
+}
+#about .process .fa {
+    font-size: 6em;
+    padding: 0.6em;
+}
+#projects {
+}
+#projects .project {
+    display: inline-block;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: #999 no-repeat center center;
+    background-size: 200%;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+#projects .project:hover {
+    background-size: 180%;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+#projects .project .title {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    color: #efefef;
+    background: rgb(24, 133, 194);
+    -webkit-transform: translateY(-60px);
+    transform: translateY(-60px);
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+#projects .project:hover .title {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+#projects .project .desc {
+    width: 100%;
+    height: 80px;
+    margin-top: 160px;
+    padding: 10px;
+    color: #efefef;
+    background: rgb(24, 133, 194);
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+#projects .project:hover .desc {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+#contact {
+    font-size: 1.6em;
+    padding: 50px 0;
+}
+#contact h3 {
+    font-size: 2em;
+}
+#contact .contact-info {
+    list-style: none;
+    padding: 0;
+}
+#contact .contact-info li {
+    margin-bottom: 0.3em;
+}
+#contactMap {
+    width: 100%;
+    height: 380px;
+}
+#contactMap .jvectormap-tip {
+    display: none;
+}
+
+
+
+
+/* UNUSED */
+#navPortal {
 }
 #navPortal a h1 {
     margin: 0;
@@ -441,20 +563,32 @@ label {
 }
 #navPortal a {
     display: inline-block;
-    width: 100%;
-    margin-bottom: 60px;
-    padding-left: 10px;
-    border-left: 4px solid transparent;
+    height: 300px;
+    width: 90%;
+    background: transparent no-repeat center center;
+    background-size: 180%;
+    border: 1px solid #454545;
+    -webkit-transform: scaleX(1) scaleY(1) scaleZ(1) skewX(-20deg);
+    transform: scaleX(1) scaleY(1) scaleZ(1) skewX(-20deg);
+    -webkit-transform-origin: 50% 50% 0;
+    transform-origin: 50% 50% 0;
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
 #navPortal a:hover {
+    background-size: 220%;
     border-color: #009CF3;
 }
-#quotation {
-    margin-top: 50px;
-    font-size: 1.2em;
+#navPortal a.developer {
+    background-image: url(../images/mrFIa4e.jpg);
 }
+#navPortal a.adventure {
+    background-image: url(../images/rock-climbing-new-hd-cool-wallpapers-in-widescreen-high-resolution-free.jpg);
+}
+#navPortal a.gaming {
+    background-image: url(../images/1259211008825.jpg);
+}
+
 .backdrop {
     position: fixed;
     top: 0;
@@ -597,9 +731,6 @@ a.hex:hover {
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
-/* ABOOT */
-#about {
-}
 
 
 /* ADVENTURE */
@@ -622,13 +753,6 @@ a.hex:hover {
     margin-left: 12%;
     width: 85%;
     height: 630px;
-}
-#travel #map .jvectormap-zoomin,
-#travel #map .jvectormap-zoomout {
-    display: none;
-}
-.jvectormap-tip {
-    z-index: 90;
 }
 #travel .trips {
 }
@@ -957,14 +1081,13 @@ a.hex:hover {
 }
 
 .profile-photo {
+    z-index: 80;
     display: block;
     width: 150px;
     height: 150px;
     border-radius: 50%;
     border: 1px solid #454545;
-    position: relative;
-    top: -100px;
-    margin: 0 auto;
+    margin: 100px auto;
 }
 .profile-photo-overlay {
     opacity: 0;
@@ -984,18 +1107,43 @@ a.hex:hover {
 
 
 /* LAYOUT */
-.container {
+#adventure .container,
+#gaming .container {
     width: 100%;
 }
 @media screen and (min-width: 1900px) {
-    .container {
+    #adventure .container,
+    #gaming .container {
         max-width: 1900px;
         width: 100%;
     }
 }
 
 /* MOBILE */
+@media only screen and (min-width: 767px) {
+}
+@media only screen and (max-width: 960px) {
+    .container {
+        width: 100%;
+    }
+    #about .process .fa {
+        font-size: 5em;
+        padding: 0.5em;
+    }
+}
 @media only screen and (max-width: 767px) {
+    #about .process .fa {
+        font-size: 4em;
+        padding: 0.3em;
+    }
+}
+
+
+#about .process .fa:first-child {
+    padding-left: 0;
+}
+#about .process .fa:last-child {
+    padding-right: 0;
 }
 
 /* ANIMATIONS */
