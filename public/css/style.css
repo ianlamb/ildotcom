@@ -231,6 +231,7 @@ label {
     -webkit-border-radius: 0;
     border-radius: 0;
     margin: 0;
+    border-bottom: 4px solid rgb(0, 156, 243);
 /*    -webkit-animation: expand-header 0.4s linear;
     animation: expand-header 0.4s linear;*/
 }
@@ -336,8 +337,8 @@ label {
     padding: 0;
 }
 #footer {
-    background: #5D6B6E;
-    color: #3B484A;
+    background: #627176;
+    color: #1E2728;
     text-shadow: 0 1px 0 rgba(255,255,255,.1);
     padding-top: 20px;
     padding-bottom: 50px;
@@ -453,7 +454,7 @@ label {
 #home section {
     width: 100%;
     margin: 0;
-    color: #666;
+    color: #627176;
     padding-top: 100px;
 }
 #home section#header {
@@ -482,13 +483,13 @@ label {
     width: 100%;
     height: 280px;
     overflow: hidden;
-    background: #999 no-repeat center center;
-    background-size: 200%;
+    background: #999 no-repeat top center;
+    background-size: 140%;
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
 #projects .project:hover {
-    background-size: 180%;
+    background-size: 120%;
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
@@ -1086,7 +1087,7 @@ a.hex:hover {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 1px solid #454545;
+    border: 2px solid #efefef;
     margin: 100px auto;
 }
 .profile-photo-overlay {

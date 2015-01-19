@@ -6,7 +6,6 @@ angular.module('appDirectives', [])
             controller: function($scope, $location) {
                 $scope.navLinks = [
                     { slug: 'home', text: 'Home', sortRank: 0 },
-                    { slug: 'developer', text: 'Developer', sortRank: 1 },
                     { slug: 'adventure', text: 'Adventure', sortRank: 2 },
                     { slug: 'gaming', text: 'Gaming', sortRank: 3 }
                 ];
@@ -41,32 +40,31 @@ angular.module('appDirectives', [])
     .directive('projects', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/templates/projects.html',
             controller: function($scope) {
                 $scope.projects = [
                     {
                         name: 'Tempus Notes',
                         url: 'http://notes.ianlamb.com/',
-                        image: 'IMG_20141103_212626.jpg',
-                        desc: 'A simple note-taker, great for remembering what you did for daily scrum'
+                        image: 'tempus-notes-opt.png',
+                        desc: 'A very simple note-taker, great for remembering what you did for daily scrum'
                     },
                     {
                         name: 'Dark Souls Challenge Runs',
                         url: 'http://darksouls.ianlamb.com/challenges',
-                        image: '',
-                        desc: 'A fun little randomizer for Dark Souls play-throughs'
+                        image: 'dscrgen-opt.png',
+                        desc: 'A fun little randomizer for Dark Souls challenge runs'
                     },
                     {
                         name: 'Z-Code',
                         url: 'http://zcode.ianlamb.com/',
-                        image: '',
-                        desc: 'HTML5 Game that my buddy and I made in college'
+                        image: 'zcode-opt.png',
+                        desc: 'HTML5 game that my buddy and I made in college'
                     },
                     {
                         name: 'Creekside Landscaping',
                         url: 'http://www.creeksidelandscaping.ca/',
-                        image: '',
-                        desc: 'WordPress redesign'
+                        image: 'creekside-landscaping-opt.png',
+                        desc: 'WordPress redesign for my neighbour\'s landscaping business'
                     }
                 ];
             }
@@ -76,7 +74,6 @@ angular.module('appDirectives', [])
     .directive('contact', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/templates/contact.html',
             controller: function($scope) {
                 $scope.email = 'ianlamb32@gmail.com';
                 $scope.phone = '+1 (519) 902 6533';
@@ -92,31 +89,30 @@ angular.module('appDirectives', [])
                     zoomOnScroll: false,
                     regionStyle: {
                         initial: {
-                            fill: '#000',
-                            'fill-opacity': 0.3
+                            fill: '#627176',
+                            'fill-opacity': 1
                         },
                         hover: {
-                            fill: '#000',
-                            'fill-opacity': 0.3
+                            fill: '#627176',
+                            'fill-opacity': 1
                         }
                     },
                     markerStyle: {
                         initial: {
-                            fill: '#DA45F7',
+                            fill: 'orangered',
                             'fill-opacity': 1,
-                            'stroke-fill': '#DA45F7',
-                            'stroke-width': 20,
+                            'stroke-fill': 'orangered',
+                            'stroke-width': 10,
                             'stroke-opacity': 0.5,
-                            r: 5
+                            r: 10
                         },
                         hover: {
-                            'stroke-fill': '#DA45F7',
-                            'stroke-width': 20,
+                            'stroke-fill': '#00C80A',
+                            'stroke-width': 10,
                             'stroke-opacity': 0.5,
                         }
                     },
-                    markers: placesData,
-                    onRegionTipShow: null
+                    markers: placesData
                 });
             }
         };

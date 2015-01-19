@@ -17,9 +17,9 @@
     </section>
     <section id="about">
         <div class="container">
+            <h1>About</h1>
             <div class="row">
                 <div class="col-sm-12">
-                    <h1>About</h1>
                     <h3>I am a Web UI Developer at EK3 Technologies. I turn coffee into simple, intuitive web applications. </h3>
                     <div class="process">
                         <i class="fa fa-coffee"></i>
@@ -28,12 +28,65 @@
                         <i class="fa fa-long-arrow-right"></i>
                         <i class="fa fa-desktop"></i>
                     </div>
-                    <h3>What kind of person am I? My outdoor passions are traveling, rock climbing and motorcycles. I want to explore the world on two wheels and reach the highest summits. At home I cool off with some video games.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <button type="button">Download my Résumé</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>What kind of person am I? My outdoor passions are traveling, rock climbing and motorcycles. I want to explore the world on two wheels and reach the highest summits. At home I like to cool off with some video games and a hoppy brew.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <a href="/adventure" class="btn"><i class="fa fa-globe"></i>Read more about my adventures</a>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <a href="/gaming" class="btn"><i class="fa fa-gamepad"></i>Read more about my gaming</a>
                 </div>
             </div>
         </div>
     </section>
-    <projects></projects>
-    <contact></contact>
+    <projects>
+        <section id="projects">
+            <div class="container">
+                <h1>Work</h1>
+                <div class="row">
+                    <div ng-repeat="project in projects" class="col-sm-3">
+                        <a href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
+                            <div class="title">{{ project.name }}</div>
+                            <div class="desc">{{ project.desc }}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </projects>
+    <contact>
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h1>Contact</h1>
+                        <ul class="contact-info">
+                            <li>
+                                <a href="mailto:{{ email }}" class="social-anchor">
+                                    <i class="general foundicon-mail"></i> {{ email }}
+                                </a>
+                            </li>
+                            <li>{{ phone }}</li>
+                            <li>{{ location }}</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="contactMap"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </contact>
 </div>
 <footer></footer>
