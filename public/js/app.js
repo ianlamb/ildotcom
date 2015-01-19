@@ -4,10 +4,8 @@ angular.module('ildotcomApp', [
     'appRoutes',
     'appDirectives',
     'mainController',
-    'devController',
     'adventureController',
     'gameController',
-    'devService',
     'adventureService',
     'gameService'
 ]);
