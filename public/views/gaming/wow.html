@@ -117,17 +117,17 @@
         <h3>Main Character</h3>
         <div class="row">
             <div class="col-lg-6 col-md-6">
-                <img src="http://us.battle.net/static-render/us/{{ wowProfile.main.thumbnail }}" />
+                <img ng-src="http://us.battle.net/static-render/us/{{ wowProfile.main.thumbnail }}" />
                 <h3>{{ wowProfile.main.name }}</h3>
                 <p>{{ wowProfile.main.level }} {{ wowProfile.main.gender }} {{ wowProfile.main.race }} {{ wowProfile.main.class }}, {{ wowProfile.main.realm }}</p>
                 <p>Highest Raid Progression {{ wowProfile.main.progression.best }}</p>
                 <h4>PvP</h4>
                 <p>Arena 2v2 {{ wowProfile.main.pvp.brackets.ARENA_BRACKET_2v2.rating }}</p>
                 <p>Last Updated {{ wowProfile.main.lastModified }}</p>
-                <h4>Recent Activity</h4>
+<!--                 <h4>Recent Activity</h4>
                 <ul class="feed">
                     <li ng-repeat="feedItem in wowProfile.main.feed">{{ parseFeedItem(feedItem) }} {{ feedItem.name }} <span class="minor">{{ fromNow(feedItem.timestamp) }}</span></li>
-                </ul>
+                </ul> -->
             </div>
             <div class="col-lg-6 col-md-6">
                 <h4>Equipment</h4>
@@ -146,7 +146,7 @@
                 <div class="character">
                     <h3>{{ character.name }}</h3>
                     <p>{{ character.level }} {{ character.gender }} {{ character.race }} {{ character.class }}, {{ character.realm }}</p>
-                    <img ng-if="character" src="http://us.battle.net/static-render/us/{{ character.thumbnail }}" />
+                    <img ng-src="http://us.battle.net/static-render/us/{{ character.thumbnail }}" />
                 </div>
             </div>
         </div>

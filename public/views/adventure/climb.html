@@ -60,7 +60,7 @@
             <div ng-repeat="session in climbSessions" class="session">
                 <div class="date" title="{{ session.dateFormatted }}">{{ session.dateFromNow }}</div>
                 <div ng-if="session.photos.length > 0" class="photos">
-                    <img ng-repeat="photo in session.photos" src="images/{{ photo.file }}" class="photo" />
+                    <img ng-repeat="photo in session.photos" ng-src="images/{{ photo.file }}" class="photo" />
                 </div>
                 <a href="{{ session.place.url }}" class="place">&commat;{{ session.place.name }}</a>
                 <div ng-repeat="climb in session.climbs" class="type {{ climb.type.replace(' ','').toLowerCase() }}">
