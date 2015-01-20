@@ -77,7 +77,8 @@ angular.module('appDirectives', [])
             controller: function($scope, $interval) {
                 $scope.email = 'ianlamb32@gmail.com';
                 $scope.phone = '+1 (519) 902 6533';
-                $scope.location = 'London, Canada'
+                $scope.location = 'London, Canada';
+
 
                 var placesData = [
                     { latLng: [42.9837, -81.2497], name: 'London, ON' }
@@ -102,9 +103,9 @@ angular.module('appDirectives', [])
                             fill: 'orangered',
                             'fill-opacity': 1,
                             'stroke-fill': 'orangered',
-                            'stroke-width': 10,
+                            'stroke-width': 0,
                             'stroke-opacity': 0.5,
-                            r: 10
+                            r: 2
                         },
                         hover: {
                             'stroke-fill': '#00C80A',
@@ -115,16 +116,22 @@ angular.module('appDirectives', [])
                     markers: placesData
                 });
 
-                var beacon = $interval(function() {
-                    $('#contactMap .jvectormap-marker')
-                        .animate({
-                            'stroke-width': '30px'
-                        }, 800, function() {
-                            $(this).animate({
-                                'stroke-width': '10px'
-                            }, 1200)
-                        })
-                }, 2500);
+                var homeCoords = $('#contactMap .jvectormap-marker').position();
+                var homeIcon = $('<div class="home-icon"><i class="fa fa-home"></i></div>')
+                    .css('top', homeCoords.top)
+                    .css('left', homeCoords.left);
+                $('#contactMap').append(homeIcon);
+
+                // var beacon = $interval(function() {
+                //     $('#contactMap .jvectormap-marker')
+                //         .animate({
+                //             'stroke-width': '30px'
+                //         }, 800, function() {
+                //             $(this).animate({
+                //                 'stroke-width': '10px'
+                //             }, 1200)
+                //         })
+                // }, 2500);
             }
         };
     })
