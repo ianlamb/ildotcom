@@ -1195,12 +1195,17 @@ a.hex:hover {
 .social-link:hover span { display: block; transition: all 300ms; -webkit-transition: all 300ms; }
 
 
-/* LAYOUT */
-@media screen and (min-width: 1900px) {
+/* medium */
+@media only screen and (max-width: 1200px) {
+    html, body {
+        font-size: 11pt;
+    }
 }
-
-/* MOBILE */
-@media only screen and (max-width: 960px) {
+/* small */
+@media only screen and (max-width: 991px) {
+    html, body {
+        font-size: 10pt;
+    }
     .container {
         width: 100%;
     }
@@ -1209,6 +1214,7 @@ a.hex:hover {
         padding: 0.5em;
     }
 }
+/* mobile */
 @media only screen and (max-width: 767px) {
     html, body {
         font-size: 10pt;
