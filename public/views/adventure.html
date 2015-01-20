@@ -1,16 +1,23 @@
 <div id="adventure">
     <div class="header-image"></div>
+    <div id="subNav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="/adventure/travel" class="{{ tab == 'travel' ? 'selected' : '' }}">Travel</a>
+                </div>
+                <div class="col-md-3">
+                    <a href="/adventure/climb" class="{{ tab == 'climb' ? 'selected' : '' }}">Climbing</a>
+                </div>
+                <!-- <div class="col-md-3">
+                    <a href="/adventure/vehicles" class="{{ tab == 'vehicles' ? 'selected' : '' }}">Vehicles</a>
+                </div> -->
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
-            <div id="sideNav" class="col-lg-2 col-md-3">
-                <a class="title">Adventure</a>
-                <ul>
-                    <li><a href="/adventure/travel" class="{{ tab == 'travel' ? 'selected' : '' }}">Travel</a></li>
-                    <li><a href="/adventure/climb" class="{{ tab == 'climb' ? 'selected' : '' }}">Climb</a></li>
-                    <li><a href="/adventure/activity" class="{{ tab == 'activity' ? 'selected' : '' }}">Activity</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-10 col-md-9">
+            <div class="col-sm-12">
                 <ng-switch on="tab">
                   <div ng-switch-when="travel">
                       <travel-section></travel-section>
@@ -18,8 +25,8 @@
                   <div ng-switch-when="climb">
                       <climb-section></climb-section>
                   </div>
-                  <div ng-switch-when="activity">
-                      <activity-section></activity-section>
+                  <div ng-switch-when="vehicles">
+                      <vehicle-section></vehicle-section>
                   </div>
                 </ng-switch>
             </div>

@@ -89,11 +89,11 @@ angular.module('appDirectives', [])
                     zoomOnScroll: false,
                     regionStyle: {
                         initial: {
-                            fill: '#627176',
+                            fill: '#5C6B68',
                             'fill-opacity': 1
                         },
                         hover: {
-                            fill: '#627176',
+                            fill: '#5C6B68',
                             'fill-opacity': 1
                         }
                     },
@@ -180,36 +180,36 @@ angular.module('appDirectives', [])
             restrict: 'E',
             templateUrl: 'views/adventure/vehicles.html',
             controller: function($scope) {
-                // $http.get('/api/autos')
-                //     .success(function(autos) {
-                //         var stats = {
-                //             distanceDriven: 0,
-                //             carsOwned: 0,
-                //             motorcyclesOwned: 0
-                //         };
+                $http.get('/api/vehicles')
+                    .success(function(autos) {
+                        var stats = {
+                            distanceDriven: 0,
+                            carsOwned: 0,
+                            motorcyclesOwned: 0
+                        };
 
-                //         autos.forEach(function(auto) {
-                //             auto.distanceDriven = auto.odometer.latest - auto.odometer.atPurchase;
-                //             stats.distanceDriven += auto.distanceDriven;
-                //             if(auto.type === 'motorcycle')
-                //                 stats.motorcyclesOwned++;
-                //             if(auto.type === 'car')
-                //                 stats.carsOwned++;
-                //             if(!auto.dateOfSale)
-                //                 auto.dateOfSale = 'N/A';
-                //         });
+                        autos.forEach(function(auto) {
+                            auto.distanceDriven = auto.odometer.latest - auto.odometer.atPurchase;
+                            stats.distanceDriven += auto.distanceDriven;
+                            if(auto.type === 'motorcycle')
+                                stats.motorcyclesOwned++;
+                            if(auto.type === 'car')
+                                stats.carsOwned++;
+                            if(!auto.dateOfSale)
+                                auto.dateOfSale = 'N/A';
+                        });
 
-                //         commaSeparator = $.animateNumber.numberStepFactories.separator(',');
-                //         $('#distanceDriven').animateNumber({ number: stats.distanceDriven, numberStep: commaSeparator }, 1000);
-                //         $('#carsOwned').animateNumber({ number: stats.carsOwned }, 1000);
-                //         $('#motorcyclesOwned').animateNumber({ number: stats.motorcyclesOwned }, 1000);
+                        commaSeparator = $.animateNumber.numberStepFactories.separator(',');
+                        $('#distanceDriven').animateNumber({ number: stats.distanceDriven, numberStep: commaSeparator }, 1000);
+                        $('#carsOwned').animateNumber({ number: stats.carsOwned }, 1000);
+                        $('#motorcyclesOwned').animateNumber({ number: stats.motorcyclesOwned }, 1000);
 
-                //         $scope.autos = autos;
-                //         $scope.stats = stats;
-                //     })
-                //     .error(function(err) {
-                //         console.log('Error: ' + err);
-                //     });
+                        $scope.autos = autos;
+                        $scope.stats = stats;
+                    })
+                    .error(function(err) {
+                        console.log('Error: ' + err);
+                    });
             }
         }
     })

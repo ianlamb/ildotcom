@@ -28,16 +28,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controller: 'MainController'
         })
 
-        // developer section
-        .when('/developer', {
-            templateUrl: 'views/developer.html',
-            controller: 'DeveloperController'
-        })
-        .when('/developer/:tab', {
-            templateUrl: 'views/developer.html',
-            controller: 'DeveloperController'
-        })
-
         // adventure section
         .when('/adventure', {
             templateUrl: 'views/adventure.html',

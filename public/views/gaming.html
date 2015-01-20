@@ -1,17 +1,26 @@
 <div id="gaming">
     <div class="header-image"></div>
+    <div id="subNav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="/gaming/wow" class="{{ tab == 'wow' ? 'selected' : '' }}">World of Warcraft</a>
+                </div>
+                <div class="col-md-3">
+                    <a href="/gaming/diablo" class="{{ tab == 'diablo' ? 'selected' : '' }}">Diablo 3</a>
+                </div>
+                <div class="col-md-3">
+                    <a href="/gaming/starcraft" class="{{ tab == 'starcraft' ? 'selected' : '' }}">Starcraft 2</a>
+                </div>
+                <!-- <div class="col-md-3">
+                    <a href="/gaming/steam" class="{{ tab == 'steam' ? 'selected' : '' }}">Steam Games</a>
+                </div> -->
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
-            <div id="sideNav" class="col-lg-2 col-md-3">
-                <a class="title">Games</a>
-                <ul>
-                    <li><a href="/gaming/wow" class="{{ tab == 'wow' ? 'selected' : '' }}">World of Warcraft</a></li>
-                    <li><a href="/gaming/diablo" class="{{ tab == 'diablo' ? 'selected' : '' }}">Diablo 3</a></li>
-                    <li><a href="/gaming/starcraft" class="{{ tab == 'starcraft' ? 'selected' : '' }}">Starcraft 2</a></li>
-                    <li><a href="/gaming/steam" class="{{ tab == 'steam' ? 'selected' : '' }}">Steam Games</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-10 col-md-9">
+            <div class="col-sm-12">
                 <ng-switch on="tab">
                   <div ng-switch-when="wow">
                       <wow-section></wow-section>
