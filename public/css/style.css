@@ -317,13 +317,31 @@ label {
     display: inline-block;
     margin-left: 5px;
 }
-.social-icons a {
+.social-icons a .fa {
     color: #3B484A;
     font-size: 2em;
+    -webkit-transition: all .4s;
+    transition: all .4s;
 }
-.social-icons a:hover {
-    color: rgb(12, 151, 229);
-    text-shadow: 0 1px 0 rgba(0,0,0,.3);
+.social-icons a:hover .fa {
+    text-shadow: 0 1px 0 rgba(0,0,0,.2);
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+.social-icons a:hover .fa-flickr {
+    color: #ff0085;
+}
+.social-icons a:hover .fa-facebook-square {
+    color: #3a5795;
+}
+.social-icons a:hover .fa-twitter-square {
+    color: #55acee;
+}
+.social-icons a:hover .fa-linkedin-square {
+    color: #287bbc;
+}
+.social-icons a:hover .fa-github-square {
+    color: #fff;
 }
 
 .page {
