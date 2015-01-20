@@ -16,22 +16,16 @@
     <link rel="stylesheet" href="libs/components-font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <div id="splash" ng-cloak>
-        <div class="center">
-            <div class="loader">Loading...</div>
-        </div>
-    </div>
+<body ng-app="ildotcomApp" ng-controller="MainController">
 
     <script src="libs/angular/angular.min.js"></script>
 
-    <div ng-app="ildotcomApp" ng-controller="MainController" id="app">
+    <div class="wrapper">
         <navigation></navigation>
 
         <div class="page" ng-view></div>
-
-        <footer></footer>
     </div>
+    <footer id="footer"></footer>
 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
