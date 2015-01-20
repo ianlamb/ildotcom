@@ -2,20 +2,20 @@
     <div class="header-image"></div>
     <div id="subNav">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="/gaming/wow" class="{{ tab == 'wow' ? 'selected' : '' }}">World of Warcraft</a>
-                </div>
-                <div class="col-md-3">
-                    <a href="/gaming/diablo" class="{{ tab == 'diablo' ? 'selected' : '' }}">Diablo 3</a>
-                </div>
-                <div class="col-md-3">
-                    <a href="/gaming/starcraft" class="{{ tab == 'starcraft' ? 'selected' : '' }}">Starcraft 2</a>
-                </div>
-                <!-- <div class="col-md-3">
-                    <a href="/gaming/steam" class="{{ tab == 'steam' ? 'selected' : '' }}">Steam Games</a>
-                </div> -->
-            </div>
+            <ul>
+                <li class="{{ tab == 'wow' ? 'selected' : '' }}">
+                    <a href="/gaming/wow">World of Warcraft</a>
+                    <div class="underline"></div>
+                </li>
+                <li class="{{ tab == 'diablo' ? 'selected' : '' }}">
+                    <a href="/gaming/diablo">Diablo 3</a>
+                    <div class="underline"></div>
+                </li>
+                <li class="{{ tab == 'starcraft' ? 'selected' : '' }}">
+                    <a href="/gaming/starcraft">Starcraft 2</a>
+                    <div class="underline"></div>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="container">

@@ -2,17 +2,20 @@
     <div class="header-image"></div>
     <div id="subNav">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="/adventure/travel" class="{{ tab == 'travel' ? 'selected' : '' }}">Travel</a>
-                </div>
-                <div class="col-md-3">
-                    <a href="/adventure/climb" class="{{ tab == 'climb' ? 'selected' : '' }}">Climbing</a>
-                </div>
-                <!-- <div class="col-md-3">
-                    <a href="/adventure/vehicles" class="{{ tab == 'vehicles' ? 'selected' : '' }}">Vehicles</a>
-                </div> -->
-            </div>
+            <ul>
+                <li class="{{ tab == 'travel' ? 'selected' : '' }}">
+                    <a href="/adventure/travel">Travel</a>
+                    <div class="underline"></div>
+                </li>
+                <li class="{{ tab == 'climb' ? 'selected' : '' }}">
+                    <a href="/adventure/climb">Climbing</a>
+                    <div class="underline"></div>
+                </li>
+                <li class="{{ tab == 'bucket-list' ? 'selected' : '' }}">
+                    <a href="/adventure/bucket-list">Bucket List</a>
+                    <div class="underline"></div>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="container">

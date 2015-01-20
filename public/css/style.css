@@ -409,14 +409,24 @@ label {
 
 #subNav {
     position: relative;
+    background: #454545;
+}
+#subNav ul {
+    padding: 0;
+    margin: 0;
+}
+#subNav li {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 24%;
 }
 #subNav a {
     display: block;
     width: 100%;
     padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.7);
     color: #ccc;
-    border: 1px solid #ccc;
     font-size: 1.2em;
     cursor: pointer;
     text-align: center;
@@ -424,16 +434,27 @@ label {
     -webkit-transition: all .4s;
     transition: all .4s;
 }
-#subNav a:hover {
+#subNav li .underline {
+    position: relative;
+    height: 4px;
+    width: 0;
+    background: #00BE9A;
+    transition: width .2s;
+}
+#subNav li:hover a {
     color: #00BE9A;
-    border-color: #00BE9A;
-    background: rgba(0, 0, 0, 0.5);
     -webkit-transition: all .2s;
     transition: all .2s;
 }
-#subNav a.selected {
+#subNav li:hover .underline {
+    width: 100%;
+    transition: width .2s;
+}
+#subNav li.selected a {
     color: #00BE9A;
-    border-color: #00BE9A;
+}
+#subNav li.selected .underline {
+    width: 100%;
 }
 
 .header-image {
