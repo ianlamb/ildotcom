@@ -2,25 +2,45 @@
     <section id="header">
         <div class="overlay">
             <div class="container">
-                <img src="images/16225753476_a3c1e8be71_o.jpg" class="profile-photo" />
+                <img src="images/16225753476_a3c1e8be71_o.jpg" class="profile-photo animated fadeIn" />
                 <div class="row">
                     <div class="col-sm-12 text-center">
                         <div id="intro">
-                            <h1>My name is Ian and I'm a web developer in Canada.</h1>
+                            <h1 class="animated fadeIn delay-short">My name is Ian and I'm a web developer in Canada.</h1>
                         </div>
 
-                        <quotation></quotation>
+                        <quotation>
+                            <p id="quotation" class="animated fadeIn delay-medium">
+                                &ldquo;<span class="quote">{{ quote.text }}</span>&rdquo;
+                                &ndash; <a href="{{ quote.link }}" class="person">{{ quote.person }}</a>
+                            </p>
+                        </quotation>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <projects>
+        <section id="projects">
+            <div class="container">
+                <h1>Work</h1>
+                <div class="row">
+                    <div ng-repeat="project in projects" class="col-sm-3">
+                        <a href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
+                            <div class="title">{{ project.name }}</div>
+                            <div class="desc">{{ project.desc }}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </projects>
     <section id="about">
         <div class="container">
+            <h1>What I do</h1>
             <div class="row">
                 <div class="col-sm-12">
-                    <h1>About</h1>
-                    <h3>I am a Web UI Developer at EK3 Technologies. I turn coffee into simple, intuitive web applications. </h3>
+                    <h3>I am a Web UI Developer at EK3 Technologies. I turn coffee into web applications.</h3>
                     <div class="process">
                         <i class="fa fa-coffee"></i>
                         <i class="fa fa-long-arrow-right"></i>
@@ -28,12 +48,55 @@
                         <i class="fa fa-long-arrow-right"></i>
                         <i class="fa fa-desktop"></i>
                     </div>
-                    <h3>What kind of person am I? My outdoor passions are traveling, rock climbing and motorcycles. I want to explore the world on two wheels and reach the highest summits. At home I cool off with some video games.</h3>
+                    <h3>I specialize in <i>simple</i>, <i>intuitive</i> and <i>functional</i> interfaces. My industry experience is diverse and I can demostrate proficiency in almost any area of the web stack. My focus is making the best user experiences possible and I am never satisfied with "good enough".</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <button type="button">Download my Résumé</button>
                 </div>
             </div>
         </div>
     </section>
-    <projects></projects>
-    <contact></contact>
+    <section>
+        <div class="container">
+            <h1>Who I am</h1>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>My outdoor passions are traveling, rock climbing and motorcycles. I want to explore the world on two wheels and reach the highest summits. At home I like to cool off with some video games and a hoppy brew.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <a href="/adventure"><i class="fa fa-globe fa-big"></i>Read more about my adventures</a>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <a href="/gaming"><i class="fa fa-gamepad fa-big"></i>Read more about my gaming</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <contact>
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h1>Contact</h1>
+                        <ul class="contact-info">
+                            <li>
+                                <a href="mailto:{{ email }}" class="social-anchor">
+                                    <i class="general foundicon-mail"></i> {{ email }}
+                                </a>
+                            </li>
+                            <li>{{ phone }}</li>
+                            <li>{{ location }}</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="contactMap"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </contact>
 </div>
-<footer></footer>

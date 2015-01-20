@@ -6,7 +6,6 @@ angular.module('appDirectives', [])
             controller: function($scope, $location) {
                 $scope.navLinks = [
                     { slug: 'home', text: 'Home', sortRank: 0 },
-                    { slug: 'developer', text: 'Developer', sortRank: 1 },
                     { slug: 'adventure', text: 'Adventure', sortRank: 2 },
                     { slug: 'gaming', text: 'Gaming', sortRank: 3 }
                 ];
@@ -41,32 +40,31 @@ angular.module('appDirectives', [])
     .directive('projects', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/templates/projects.html',
             controller: function($scope) {
                 $scope.projects = [
                     {
                         name: 'Tempus Notes',
                         url: 'http://notes.ianlamb.com/',
-                        image: 'IMG_20141103_212626.jpg',
-                        desc: 'A simple note-taker, great for remembering what you did for daily scrum'
+                        image: 'tempus-notes-opt.png',
+                        desc: 'A very simple note-taker, great for remembering what you did for daily scrum'
                     },
                     {
                         name: 'Dark Souls Challenge Runs',
                         url: 'http://darksouls.ianlamb.com/challenges',
-                        image: '',
-                        desc: 'A fun little randomizer for Dark Souls play-throughs'
+                        image: 'dscrgen-opt.png',
+                        desc: 'A fun little randomizer for Dark Souls challenge runs'
                     },
                     {
                         name: 'Z-Code',
                         url: 'http://zcode.ianlamb.com/',
-                        image: '',
-                        desc: 'HTML5 Game that my buddy and I made in college'
+                        image: 'zcode-opt.png',
+                        desc: 'HTML5 game that my buddy and I made in college'
                     },
                     {
                         name: 'Creekside Landscaping',
                         url: 'http://www.creeksidelandscaping.ca/',
-                        image: '',
-                        desc: 'WordPress redesign'
+                        image: 'creekside-landscaping-opt.png',
+                        desc: 'WordPress redesign for my neighbour\'s landscaping business'
                     }
                 ];
             }
@@ -76,11 +74,11 @@ angular.module('appDirectives', [])
     .directive('contact', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/templates/contact.html',
-            controller: function($scope) {
+            controller: function($scope, $interval) {
                 $scope.email = 'ianlamb32@gmail.com';
                 $scope.phone = '+1 (519) 902 6533';
-                $scope.location = 'London, Canada'
+                $scope.location = 'London, Canada';
+
 
                 var placesData = [
                     { latLng: [42.9837, -81.2497], name: 'London, ON' }
@@ -92,32 +90,48 @@ angular.module('appDirectives', [])
                     zoomOnScroll: false,
                     regionStyle: {
                         initial: {
-                            fill: '#000',
-                            'fill-opacity': 0.3
+                            fill: '#5C6B68',
+                            'fill-opacity': 1
                         },
                         hover: {
-                            fill: '#000',
-                            'fill-opacity': 0.3
+                            fill: '#5C6B68',
+                            'fill-opacity': 1
                         }
                     },
                     markerStyle: {
                         initial: {
-                            fill: '#DA45F7',
+                            fill: 'orangered',
                             'fill-opacity': 1,
-                            'stroke-fill': '#DA45F7',
-                            'stroke-width': 20,
+                            'stroke-fill': 'orangered',
+                            'stroke-width': 0,
                             'stroke-opacity': 0.5,
-                            r: 5
+                            r: 2
                         },
                         hover: {
-                            'stroke-fill': '#DA45F7',
-                            'stroke-width': 20,
+                            'stroke-fill': '#00C80A',
+                            'stroke-width': 10,
                             'stroke-opacity': 0.5,
                         }
                     },
-                    markers: placesData,
-                    onRegionTipShow: null
+                    markers: placesData
                 });
+
+                var homeCoords = $('#contactMap .jvectormap-marker').position();
+                var homeIcon = $('<div class="home-icon"><i class="fa fa-home"></i></div>')
+                    .css('top', homeCoords.top)
+                    .css('left', homeCoords.left);
+                $('#contactMap').append(homeIcon);
+
+                // var beacon = $interval(function() {
+                //     $('#contactMap .jvectormap-marker')
+                //         .animate({
+                //             'stroke-width': '30px'
+                //         }, 800, function() {
+                //             $(this).animate({
+                //                 'stroke-width': '10px'
+                //             }, 1200)
+                //         })
+                // }, 2500);
             }
         };
     })
@@ -125,7 +139,6 @@ angular.module('appDirectives', [])
     .directive('quotation', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/templates/quotation.html',
             controller: function($scope) {
                 var quotes = [
                     {
@@ -184,36 +197,36 @@ angular.module('appDirectives', [])
             restrict: 'E',
             templateUrl: 'views/adventure/vehicles.html',
             controller: function($scope) {
-                // $http.get('/api/autos')
-                //     .success(function(autos) {
-                //         var stats = {
-                //             distanceDriven: 0,
-                //             carsOwned: 0,
-                //             motorcyclesOwned: 0
-                //         };
+                $http.get('/api/vehicles')
+                    .success(function(autos) {
+                        var stats = {
+                            distanceDriven: 0,
+                            carsOwned: 0,
+                            motorcyclesOwned: 0
+                        };
 
-                //         autos.forEach(function(auto) {
-                //             auto.distanceDriven = auto.odometer.latest - auto.odometer.atPurchase;
-                //             stats.distanceDriven += auto.distanceDriven;
-                //             if(auto.type === 'motorcycle')
-                //                 stats.motorcyclesOwned++;
-                //             if(auto.type === 'car')
-                //                 stats.carsOwned++;
-                //             if(!auto.dateOfSale)
-                //                 auto.dateOfSale = 'N/A';
-                //         });
+                        autos.forEach(function(auto) {
+                            auto.distanceDriven = auto.odometer.latest - auto.odometer.atPurchase;
+                            stats.distanceDriven += auto.distanceDriven;
+                            if(auto.type === 'motorcycle')
+                                stats.motorcyclesOwned++;
+                            if(auto.type === 'car')
+                                stats.carsOwned++;
+                            if(!auto.dateOfSale)
+                                auto.dateOfSale = 'N/A';
+                        });
 
-                //         commaSeparator = $.animateNumber.numberStepFactories.separator(',');
-                //         $('#distanceDriven').animateNumber({ number: stats.distanceDriven, numberStep: commaSeparator }, 1000);
-                //         $('#carsOwned').animateNumber({ number: stats.carsOwned }, 1000);
-                //         $('#motorcyclesOwned').animateNumber({ number: stats.motorcyclesOwned }, 1000);
+                        commaSeparator = $.animateNumber.numberStepFactories.separator(',');
+                        $('#distanceDriven').animateNumber({ number: stats.distanceDriven, numberStep: commaSeparator }, 1000);
+                        $('#carsOwned').animateNumber({ number: stats.carsOwned }, 1000);
+                        $('#motorcyclesOwned').animateNumber({ number: stats.motorcyclesOwned }, 1000);
 
-                //         $scope.autos = autos;
-                //         $scope.stats = stats;
-                //     })
-                //     .error(function(err) {
-                //         console.log('Error: ' + err);
-                //     });
+                        $scope.autos = autos;
+                        $scope.stats = stats;
+                    })
+                    .error(function(err) {
+                        console.log('Error: ' + err);
+                    });
             }
         }
     })

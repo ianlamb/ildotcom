@@ -1,116 +1,120 @@
 <div id="wow">
-    <h3>Achievements</h3>
-    <div class="row achievements">
-        <div class="col-md-12">
-            <label>Total Complete</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements.completed, wowProfile.achievements.possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements.completed, wowProfile.achievements.possible) }}%;">{{ formatProgress(wowProfile.achievements.completed, wowProfile.achievements.possible) }}</div>
+    <div class="achievements animated fadeIn delay-short">
+        <h3>Achievements</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <label>Total Complete</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements.completed, wowProfile.achievements.possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements.completed, wowProfile.achievements.possible) }}%;">{{ formatProgress(wowProfile.achievements.completed, wowProfile.achievements.possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>General</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['General'].completed, wowProfile.achievements['General'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['General'].completed, wowProfile.achievements['General'].possible) }}%;">{{ formatProgress(wowProfile.achievements['General'].completed, wowProfile.achievements['General'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>General</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['General'].completed, wowProfile.achievements['General'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['General'].completed, wowProfile.achievements['General'].possible) }}%;">{{ formatProgress(wowProfile.achievements['General'].completed, wowProfile.achievements['General'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Quests</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Quests'].completed, wowProfile.achievements['Quests'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Quests'].completed, wowProfile.achievements['Quests'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Quests'].completed, wowProfile.achievements['Quests'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Quests</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Quests'].completed, wowProfile.achievements['Quests'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Quests'].completed, wowProfile.achievements['Quests'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Quests'].completed, wowProfile.achievements['Quests'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Exploration</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Exploration'].completed, wowProfile.achievements['Exploration'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Exploration'].completed, wowProfile.achievements['Exploration'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Exploration'].completed, wowProfile.achievements['Exploration'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Exploration</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Exploration'].completed, wowProfile.achievements['Exploration'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Exploration'].completed, wowProfile.achievements['Exploration'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Exploration'].completed, wowProfile.achievements['Exploration'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Player vs. Player</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Player vs. Player'].completed, wowProfile.achievements['Player vs. Player'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Player vs. Player'].completed, wowProfile.achievements['Player vs. Player'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Player vs. Player'].completed, wowProfile.achievements['Player vs. Player'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Player vs. Player</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Player vs. Player'].completed, wowProfile.achievements['Player vs. Player'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Player vs. Player'].completed, wowProfile.achievements['Player vs. Player'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Player vs. Player'].completed, wowProfile.achievements['Player vs. Player'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Dungeons &amp; Raids</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Dungeons &mp; Raids'].completed, wowProfile.achievements['Dungeons &amp; Raids'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Dungeons &amp; Raids'].completed, wowProfile.achievements['Dungeons &amp; Raids'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Dungeons &amp; Raids'].completed, wowProfile.achievements['Dungeons &amp; Raids'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Dungeons &amp; Raids</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Dungeons &mp; Raids'].completed, wowProfile.achievements['Dungeons &amp; Raids'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Dungeons &amp; Raids'].completed, wowProfile.achievements['Dungeons &amp; Raids'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Dungeons &amp; Raids'].completed, wowProfile.achievements['Dungeons &amp; Raids'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Professions</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Professions'].completed, wowProfile.achievements['Professions'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Professions'].completed, wowProfile.achievements['Professions'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Professions'].completed, wowProfile.achievements['Professions'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Professions</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Professions'].completed, wowProfile.achievements['Professions'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Professions'].completed, wowProfile.achievements['Professions'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Professions'].completed, wowProfile.achievements['Professions'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Reputation</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Reputation'].completed, wowProfile.achievements['Reputation'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Reputation'].completed, wowProfile.achievements['Reputation'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Reputation'].completed, wowProfile.achievements['Reputation'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Reputation</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Reputation'].completed, wowProfile.achievements['Reputation'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Reputation'].completed, wowProfile.achievements['Reputation'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Reputation'].completed, wowProfile.achievements['Reputation'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Scenarios</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Scenarios'].completed, wowProfile.achievements['Scenarios'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Scenarios'].completed, wowProfile.achievements['Scenarios'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Scenarios'].completed, wowProfile.achievements['Scenarios'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Scenarios</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Scenarios'].completed, wowProfile.achievements['Scenarios'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Scenarios'].completed, wowProfile.achievements['Scenarios'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Scenarios'].completed, wowProfile.achievements['Scenarios'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>World Events</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['World Events'].completed, wowProfile.achievements['World Events'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['World Events'].completed, wowProfile.achievements['World Events'].possible) }}%;">{{ formatProgress(wowProfile.achievements['World Events'].completed, wowProfile.achievements['World Events'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>World Events</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['World Events'].completed, wowProfile.achievements['World Events'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['World Events'].completed, wowProfile.achievements['World Events'].possible) }}%;">{{ formatProgress(wowProfile.achievements['World Events'].completed, wowProfile.achievements['World Events'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Pet Battles</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Pet Battles'].completed, wowProfile.achievements['Pet Battles'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Pet Battles'].completed, wowProfile.achievements['Pet Battles'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Pet Battles'].completed, wowProfile.achievements['Pet Battles'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Pet Battles</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Pet Battles'].completed, wowProfile.achievements['Pet Battles'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Pet Battles'].completed, wowProfile.achievements['Pet Battles'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Pet Battles'].completed, wowProfile.achievements['Pet Battles'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Collections</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Collections'].completed, wowProfile.achievements['Collections'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Collections'].completed, wowProfile.achievements['Collections'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Collections'].completed, wowProfile.achievements['Collections'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Collections</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Collections'].completed, wowProfile.achievements['Collections'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Collections'].completed, wowProfile.achievements['Collections'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Collections'].completed, wowProfile.achievements['Collections'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Garrisons</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Garrisons'].completed, wowProfile.achievements['Garrisons'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Garrisons'].completed, wowProfile.achievements['Garrisons'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Garrisons'].completed, wowProfile.achievements['Garrisons'].possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Garrisons</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements['Garrisons'].completed, wowProfile.achievements['Garrisons'].possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements['Garrisons'].completed, wowProfile.achievements['Garrisons'].possible) }}%;">{{ formatProgress(wowProfile.achievements['Garrisons'].completed, wowProfile.achievements['Garrisons'].possible) }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Legacy</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">{{ wowProfile.achievements['Legacy'].legacyTotal }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Legacy</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">{{ wowProfile.achievements['Legacy'].legacyTotal }}</div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <label>Feats of Strength</label>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">{{ wowProfile.achievements['Feats of Strength'].foSTotal }}</div>
-            </div>
-        </div>
-    </div>
-
-    <h3>Collections</h3>
-    <div class="row">
-        <div class="col-md-6">
-            <label>Mounts Collected</label>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}%;">{{ formatProgress(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}</div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label>Pets Collected</label>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.pets.numCollected, wowProfile.pets.possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.pets.numCollected, wowProfile.pets.possible) }}%;">{{ formatProgress(wowProfile.pets.numCollected, wowProfile.pets.possible) }}</div>
+            <div class="col-lg-3 col-md-4">
+                <label>Feats of Strength</label>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">{{ wowProfile.achievements['Feats of Strength'].foSTotal }}</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <h3>Main Character</h3>
-    <div class="character showcase">
+    <div class="collections animated fadeIn delay-medium">
+        <h3>Collections</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Mounts Collected</label>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}%;">{{ formatProgress(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>Pets Collected</label>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.pets.numCollected, wowProfile.pets.possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.pets.numCollected, wowProfile.pets.possible) }}%;">{{ formatProgress(wowProfile.pets.numCollected, wowProfile.pets.possible) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="character showcase animated fadeIn delay-long">
+        <h3>Main Character</h3>
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <img src="http://us.battle.net/static-render/us/{{ wowProfile.main.thumbnail }}" />
@@ -135,13 +139,15 @@
         </div>
     </div>
 
-    <h3>Alternate Characters</h3>
-    <div class="row">
-        <div ng-repeat="character in wowProfile.alts" class="col-lg-4 col-md-6">
-            <div class="character">
-                <h3>{{ character.name }}</h3>
-                <p>{{ character.level }} {{ character.gender }} {{ character.race }} {{ character.class }}, {{ character.realm }}</p>
-                <img ng-if="character" src="http://us.battle.net/static-render/us/{{ character.thumbnail }}" />
+    <div class="alts animated fadeIn delay-long">
+        <h3>Alternate Characters</h3>
+        <div class="row">
+            <div ng-repeat="character in wowProfile.alts" class="col-lg-4 col-md-6">
+                <div class="character">
+                    <h3>{{ character.name }}</h3>
+                    <p>{{ character.level }} {{ character.gender }} {{ character.race }} {{ character.class }}, {{ character.realm }}</p>
+                    <img ng-if="character" src="http://us.battle.net/static-render/us/{{ character.thumbnail }}" />
+                </div>
             </div>
         </div>
     </div>
