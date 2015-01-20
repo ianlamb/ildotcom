@@ -74,7 +74,7 @@ angular.module('appDirectives', [])
     .directive('contact', function() {
         return {
             restrict: 'E',
-            controller: function($scope) {
+            controller: function($scope, $interval) {
                 $scope.email = 'ianlamb32@gmail.com';
                 $scope.phone = '+1 (519) 902 6533';
                 $scope.location = 'London, Canada'
@@ -114,6 +114,17 @@ angular.module('appDirectives', [])
                     },
                     markers: placesData
                 });
+
+                var beacon = $interval(function() {
+                    $('#contactMap .jvectormap-marker')
+                        .animate({
+                            'stroke-width': '30px'
+                        }, 800, function() {
+                            $(this).animate({
+                                'stroke-width': '10px'
+                            }, 1200)
+                        })
+                }, 2500);
             }
         };
     })
@@ -121,7 +132,6 @@ angular.module('appDirectives', [])
     .directive('quotation', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/templates/quotation.html',
             controller: function($scope) {
                 var quotes = [
                     {

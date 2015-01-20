@@ -2,14 +2,19 @@
     <section id="header">
         <div class="overlay">
             <div class="container">
-                <img src="images/16225753476_a3c1e8be71_o.jpg" class="profile-photo" />
+                <img src="images/16225753476_a3c1e8be71_o.jpg" class="profile-photo animated fadeIn" />
                 <div class="row">
                     <div class="col-sm-12 text-center">
                         <div id="intro">
-                            <h1>My name is Ian and I'm a web developer in Canada.</h1>
+                            <h1 class="animated fadeIn delay-short">My name is Ian and I'm a web developer in Canada.</h1>
                         </div>
 
-                        <quotation></quotation>
+                        <quotation>
+                            <p id="quotation" class="animated fadeIn delay-medium">
+                                &ldquo;<span class="quote">{{ quote.text }}</span>&rdquo;
+                                &ndash; <a href="{{ quote.link }}" class="person">{{ quote.person }}</a>
+                            </p>
+                        </quotation>
                     </div>
                 </div>
             </div>
@@ -95,4 +100,3 @@
         </section>
     </contact>
 </div>
-<footer></footer>

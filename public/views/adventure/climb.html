@@ -27,7 +27,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 animated fadeIn delay-short">
             <div>
                 <dl>
                     <dt>Best Boulder</dt><dd id="bestBoulder">
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-9 animated fadeIn delay-medium">
             <div ng-repeat="session in climbSessions" class="session">
                 <div class="date" title="{{ session.dateFormatted }}">{{ session.dateFromNow }}</div>
                 <div ng-if="session.photos.length > 0" class="photos">

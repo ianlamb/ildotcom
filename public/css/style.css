@@ -313,7 +313,7 @@ label {
 }
 
 .page {
-    position: absolute;
+    position: relative;
     top: 50px;
     left: 0;
     right: 0;
@@ -326,6 +326,7 @@ label {
     background: #5C6B68;
     color: #1E2728;
     text-shadow: 0 1px 0 rgba(255,255,255,.1);
+    margin-top: 50px;
     padding-top: 20px;
     padding-bottom: 50px;
     font-size: 0.9em;
@@ -751,11 +752,11 @@ a.hex:hover {
 }
 #travel .top {
     position: relative;
-    margin-top: -200px;
+    margin-top: -180px;
 }
 #travel #map {
     position: relative;
-    top: 20px;
+    top: 30px;
     width: 100%;
     height: 550px;
 }
@@ -1193,22 +1194,22 @@ a.hex:hover {
 
 /* loader */
 .page .loader {
-  margin: 6em auto;
-  font-size: 10px;
-  position: relative;
-  text-indent: -9999em;
-  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-left: 1.1em solid #ffffff;
-  -webkit-animation: load8 1.1s infinite linear;
-  animation: load8 1.1s infinite linear;
+    margin: 6em auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-left: 1.1em solid #ffffff;
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
 }
 .page .loader,
 .page .loader:after {
-  border-radius: 50%;
-  width: 10em;
-  height: 10em;
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
 }
 
 @-webkit-keyframes load8 {
@@ -1232,7 +1233,85 @@ a.hex:hover {
   }
 }
 
-/* misc animations */
+/* animations */
+
+.animated {
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+.animated.delay-short {
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+}
+.animated.delay-medium {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.animated.delay-long {
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+          animation-name: fadeInDown;
+}
 
 /* rotate */
 @-webkit-keyframes rotate {
