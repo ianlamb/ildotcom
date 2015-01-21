@@ -11,9 +11,10 @@ pids
 logs
 results
 config
-scripts
 
 npm-debug.log
 node_modules
 
 public/libs
+
+scripts/ian.js
