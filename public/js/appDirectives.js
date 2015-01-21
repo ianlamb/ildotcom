@@ -103,9 +103,9 @@ angular.module('appDirectives', [])
                             fill: 'orangered',
                             'fill-opacity': 1,
                             'stroke-fill': 'orangered',
-                            'stroke-width': 0,
+                            'stroke-width': 10,
                             'stroke-opacity': 0.5,
-                            r: 2
+                            r: 10
                         },
                         hover: {
                             'stroke-fill': '#00C80A',
@@ -116,22 +116,22 @@ angular.module('appDirectives', [])
                     markers: placesData
                 });
 
-                var homeCoords = $('#contactMap .jvectormap-marker').position();
-                var homeIcon = $('<div class="home-icon"><i class="fa fa-home"></i></div>')
-                    .css('top', homeCoords.top)
-                    .css('left', homeCoords.left);
-                $('#contactMap').append(homeIcon);
+                // var homeCoords = $('#contactMap .jvectormap-marker').position();
+                // var homeIcon = $('<div class="home-icon"><i class="fa fa-home"></i></div>')
+                //     .css('top', homeCoords.top)
+                //     .css('left', homeCoords.left);
+                // $('#contactMap').append(homeIcon);
 
-                // var beacon = $interval(function() {
-                //     $('#contactMap .jvectormap-marker')
-                //         .animate({
-                //             'stroke-width': '30px'
-                //         }, 800, function() {
-                //             $(this).animate({
-                //                 'stroke-width': '10px'
-                //             }, 1200)
-                //         })
-                // }, 2500);
+                var beacon = $interval(function() {
+                    $('#contactMap .jvectormap-marker')
+                        .animate({
+                            'stroke-width': '30px'
+                        }, 700, function() {
+                            $(this).animate({
+                                'stroke-width': '10px'
+                            }, 700)
+                        })
+                }, 1500);
             }
         };
     })
@@ -511,6 +511,19 @@ angular.module('appDirectives', [])
                 $scope.percent = function(value) {
                     return parseInt(value * 100) + '%';
                 }
+
+                $scope.formatSlug = function(slug) {
+                    var formatted;
+                    var parts = slug.split('-');
+                    for(var i = 0; i < parts.length; i++) {
+                        parts[i] = capitaliseFirstLetter(parts[i]);
+                    }
+                    return parts.join(' ');
+                }
+                function capitaliseFirstLetter(string)
+                {
+                    return string.charAt(0).toUpperCase() + string.slice(1);
+                }
             }
         }
     })
@@ -524,6 +537,23 @@ angular.module('appDirectives', [])
                     .success(function(data) {
                         $scope.starcraftProfile = data;
                     });
+
+                $scope.percent = function(partial, total) {
+                    return parseInt(partial / total * 100);
+                };
+
+                $scope.formatSlug = function(slug) {
+                    var formatted;
+                    var parts = slug.split('-');
+                    for(var i = 0; i < parts.length; i++) {
+                        capitaliseFirstLetter(parts[i]);
+                    }
+                    return parts.join(' ');
+                }
+                function capitaliseFirstLetter(string)
+                {
+                    return string.charAt(0).toUpperCase() + string.slice(1);
+                }
             }
         }
     })

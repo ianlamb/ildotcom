@@ -69,7 +69,6 @@ dd {
 }
 
 button, .button {
-    width: 100%;
     border-style: solid;
     border-width: 0;
     cursor: pointer;
@@ -133,7 +132,7 @@ label {
 }
 
 
-#splash {
+.splash {
     position: absolute;
     z-index: 95;
     top: 0;
@@ -143,7 +142,7 @@ label {
     background: #333;
     color: #222;
 }
-#splash .center {
+.splash .center {
     position: absolute;
     top: 35%;
     left: 40%;
@@ -153,25 +152,25 @@ label {
     text-align: center;
 }
 
-#splash .loader,
-#splash .loader:before,
-#splash .loader:after {
+.splash .loader,
+.splash .loader:before,
+.splash .loader:after {
     background: #05B0FA;
     -webkit-animation: load1 1s infinite ease-in-out;
     animation: load1 1s infinite ease-in-out;
     width: 1em;
     height: 4em;
 }
-#splash .loader:before,
-#splash .loader:after {
+.splash .loader:before,
+.splash .loader:after {
     position: absolute;
     top: 0;
     content: '';
 }
-#splash .loader:before {
+.splash .loader:before {
     left: -1.5em;
 }
-#splash .loader {
+.splash .loader {
     text-indent: -9999em;
     margin: 8em auto;
     position: relative;
@@ -179,7 +178,7 @@ label {
     -webkit-animation-delay: -0.16s;
     animation-delay: -0.16s;
 }
-#splash .loader:after {
+.splash .loader:after {
     left: 1.5em;
     -webkit-animation-delay: -0.32s;
     animation-delay: -0.32s;
@@ -317,7 +316,7 @@ label {
     height: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 50px 0 140px 0;
+    padding: 50px 0 180px 0;
 }
 
 #footer {
@@ -486,6 +485,13 @@ label {
     display: block;
     margin-top: 0.5em;
     font-size: 8em;
+}
+
+.progress {
+    background: #999;
+}
+.progress-bar {
+    overflow: visible;
 }
 
 
@@ -936,7 +942,7 @@ a.hex:hover {
 #climbing .session {
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #5E5E5E;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 #climbing .session .date {
     font-size: 1.8em;
@@ -1064,26 +1070,53 @@ a.hex:hover {
     background-image: url('http://us.blizzard.com/static/_images/company/careers/backgrounds/header-bg-jobs.jpg');
 }
 #gaming .character {
+    display: block;
     background: #fff;
     color: #454545;
     border-radius: 6px;
-    box-shadow: 5px 5px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 16px rgba(0,0,0,0.1);
     padding: 16px 16px 16px 16px;
     margin-bottom: 20px;
-    text-align: center;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+#gaming .character:hover {
+    box-shadow: 0 3px 20px rgba(0,0,0,0.2);
+    -webkit-transition: all .2s;
+    transition: all .2s;
 }
 #gaming .character.showcase {
     text-align: left;
 }
 #gaming .character img {
-    border: 1px solid #333;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+#gaming .alts .character {
+    height: 86px;
+    padding: 0;
+}
+#gaming .alts .character .details {
+    display: inline-block;
+}
+#gaming .alts .character img {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+}
+#gaming .alts .character h3 {
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px 0 5px 0;
+}
+#gaming .alts .character p {
+    margin: 0;
 }
 #gaming .items {
     list-style: none;
     padding: 0;
 }
-#gaming .items li {
+#gaming .items td, #gaming .items th {
+    padding: 2px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 #gaming .items a:hover {
     text-decoration: underline;
@@ -1111,17 +1144,16 @@ a.hex:hover {
 }
 
 #starcraft {
-    margin-top: 60px;
 }
 #starcraft .portrait {
     display: inline-block;
-    float: left;
     margin-right: 10px;
     width: 90px;
     height: 90px;
 }
-#starcraft .name {
+#starcraft .details {
     display: inline-block;
+    vertical-align: top;
     margin: 0 0 5px 0;
 }
 

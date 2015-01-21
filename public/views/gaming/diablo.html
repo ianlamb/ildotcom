@@ -1,6 +1,6 @@
 <div id="diablo">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h3>Career</h3>
             <div class="career animated fadeIn delay-short">
                 <dl>
@@ -14,14 +14,14 @@
 
                 <h4>Time Played by Class</h4>
                 <div ng-repeat="(class, time) in diabloProfile.timePlayed">
-                    {{ class }}
+                    {{ formatSlug(class) }}
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(time) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(time) }};">{{ percent(time) }}</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <h3>Characters</h3>
             <div class="stats animated fadeIn delay-medium">
                 <table>

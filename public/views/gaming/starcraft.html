@@ -1,11 +1,7 @@
 <div id="starcraft">
     <div class="row">
-        <div class="col-md-8">
-            <div class="portrait" style="background: url({{ starcraftProfile.portrait.url }}) no-repeat {{ starcraftProfile.portrait.x }}px {{ starcraftProfile.portrait.y }}px;"></div>
-            <h3 class="name">{{ starcraftProfile.displayName }}</h3>
-            <div>{{ starcraftProfile.achievements.points.totalPoints }}</div>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+            <h3>Career</h3>
             <dl>
                 <dt>Total Career Games</dt>
                 <dd>{{ starcraftProfile.career.careerTotalGames }}</dd>
@@ -14,6 +10,28 @@
                 <dt>Highest Team Rank</dt>
                 <dd>{{ starcraftProfile.career.highestTeamRank }}</dd>
             </dl>
+        </div>
+        <div class="col-md-9">
+            <h3>Profile</h3>
+            <div class="panel">
+                <div class="portrait" style="background: url({{ starcraftProfile.portrait.url }}) no-repeat {{ starcraftProfile.portrait.x }}px {{ starcraftProfile.portrait.y }}px;"></div>
+                <div class="details">
+                    <h3 class="name">{{ starcraftProfile.displayName }}</h3>
+                    <div>{{ starcraftProfile.achievements.points.totalPoints }}</div>
+                </div>
+
+                <h3>Swarm Levels</h3>
+                Level {{ starcraftProfile.swarmLevels.level }}
+                <div class="row">
+                    <div ng-repeat="(swarm, data) in starcraftProfile.swarmLevels" ng-if="data.level >= 0" class="col-md-4">
+                        <label>{{ formatSlug(swarm) }}</label>
+                        Level {{ data.level }}
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(data.currentLevelXP, data.totalLevelXP) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(data.currentLevelXP, data.totalLevelXP) }}%;">{{ data.currentLevelXP }} / {{ data.totalLevelXP }} ({{ percent(data.currentLevelXP, data.totalLevelXP) }}%)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
