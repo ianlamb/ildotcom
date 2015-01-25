@@ -3,71 +3,31 @@
 
     <div class="top animated fadeIn delay-medium">
         <dl>
-            <dt>Kilometers Traveled</dt><dd id="kmsTraveled">12,354</dd>
-            <dt>Countries</dt><dd id="countries">3</dd>
-            <dt>Cities</dt><dd id="cities">8</dd>
+            <dt>Cities</dt><dd id="cities">{{ citiesVisited }}</dd>
+            <dt>Countries</dt><dd id="countries">{{ countriesVisited }}</dd>
         </dl>
     </div>
 
-    <div class="trips animated fadeIn delay-long">
-        <div class="trip">
-            <div class="title">
-                <h3>Chicago</h3>
-                <div class="date">Jan 5th - Jan 10th, 2012</div>
-            </div>
-            <div class="photos">
-                <div class="photo-container">
-                    <img class="photo" src="images/IMG_20140920_141355.jpg" />
+    <div class="row trips animated fadeIn delay-long">
+        <div ng-repeat="trip in trips | orderBy:'startDate':true" class="col-sm-4">
+            <div class="trip">
+                <div class="title">
+                    <h3>{{ trip.name }}</h3>
+                    <div class="date">{{ formatStartEndDates(trip.startDate, trip.endDate) }}</div>
                 </div>
-                <div class="photo-container">
-                    <img class="photo" src="images/IMG_20140920_132819.jpg" />
+                <div class="photos">
+                    <p ng-if="trip.photos.length==0">No Photos :(</p>
+                    <a ng-repeat="photo in trip.photos | limitTo:3" href="{{ photo.url }}" title="{{ photo.title }}" class="photo-container">
+                        <img src="{{ photo.thumb }}" alt="{{ photo.title }}" class="photo" />
+                    </a>
                 </div>
-                <div class="photo-container">
-                    <img class="photo" src="images/IMG_20140920_175316.jpg" />
+                <div class="desc">
+                    <ul>
+                        <li ng-repeat="poi in trip.pointsOfInterest">
+                            <a href="{{ poi.url }}">{{ poi.name }}</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            <div class="footer">
-                hi
-            </div>
-        </div>
-        <div class="trip">
-            <div class="title">
-                <h3>Chicago</h3>
-                <div class="date">Jan 5th - Jan 10th, 2012</div>
-            </div>
-            <div class="photos">
-                <div class="photo-container">
-                    <img class="photo" src="images/IMG_20140920_141355.jpg" />
-                </div>
-                <div class="photo-container">
-                    <img class="photo" src="images/IMG_20140920_132819.jpg" />
-                </div>
-                <div class="photo-container">
-                    <img class="photo" src="images/IMG_20140920_175316.jpg" />
-                </div>
-            </div>
-            <div class="footer">
-                hi
-            </div>
-        </div>
-        <div class="trip">
-            <div class="title">
-                <h3>Chicago</h3>
-                <div class="date">Jan 5th - Jan 10th, 2012</div>
-            </div>
-            <div class="photos">
-                <div class="photo-container">
-                    <img class="photo" src="images/IMG_20140920_141355.jpg" />
-                </div>
-                <div class="photo-container">
-                    <img class="photo" src="images/IMG_20140920_132819.jpg" />
-                </div>
-                <div class="photo-container">
-                    <img class="photo" src="images/IMG_20140920_175316.jpg" />
-                </div>
-            </div>
-            <div class="footer">
-                hi
             </div>
         </div>
     </div>

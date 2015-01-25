@@ -1,13 +1,16 @@
 module.exports = function(app, router) {
 
-    var Person       = require('./models/person');
-    var Place       = require('./models/place');
-    var Photo       = require('./models/photo');
-    var ClimbSession = require('./models/climb-session');
-    var WowProfile   = require('./models/wow-profile');
-    var DiabloProfile   = require('./models/diablo-profile');
-    var StarcraftProfile   = require('./models/starcraft-profile');
-    var SteamProfile   = require('./models/steam-profile');
+    var AdventureManager    = require('./managers/adventure-manager.js');
+    
+    var Person              = require('./models/person');
+    var Place               = require('./models/place');
+    var Photo               = require('./models/photo');
+    var Trip                = require('./models/trip');
+    var ClimbSession        = require('./models/climb-session');
+    var WowProfile          = require('./models/wow-profile');
+    var DiabloProfile       = require('./models/diablo-profile');
+    var StarcraftProfile    = require('./models/starcraft-profile');
+    var SteamProfile        = require('./models/steam-profile');
 
     // server routes ===========================================================
     // middleware to use for all requests
@@ -51,9 +54,9 @@ module.exports = function(app, router) {
     });
 
     // travel
-    router.route('/travels').get(function(req, res) {
-        ClimbSession.find()
-            .populate('place')
+    router.route('/trips').get(function(req, res) {
+        Trip.find()
+            .populate('places')
             .populate('photos')
             .sort('-date')
             .exec(function(err, data) {
@@ -63,9 +66,9 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-
-    router.route('/travel').put(function(req, res) {
-        // todo
+    
+    router.route('/trip').put(function(req, res) {
+        AdventureManager.saveTrip(req.body);
     });
 
     // games

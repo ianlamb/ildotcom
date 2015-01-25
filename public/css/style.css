@@ -231,7 +231,6 @@ label {
     -webkit-border-radius: 0;
     border-radius: 0;
     margin: 0;
-    border-bottom: 4px solid #00BE9A;
 /*    -webkit-animation: expand-header 0.4s linear;
     animation: expand-header 0.4s linear;*/
 }
@@ -465,7 +464,6 @@ label {
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: center center;
-    box-shadow: inset 0 2px 20px rgba(0,0,0,0.8);
     border-top: 1px solid #222;
     border-bottom: 1px solid #222;
 }
@@ -843,7 +841,7 @@ a.hex:hover {
 /* ADVENTURE */
 #adventure .header-image {
     background-color: #0a0d23;
-    background-image: url('http://www.northwest-landscapes.com/images/mountains/mission_mountain_range_100mm_hres.jpg');
+    background-image: url('../images/03_panorama.jpg');
     background-size: 100%;
 }
 
@@ -852,7 +850,8 @@ a.hex:hover {
 }
 #travel .top {
     position: relative;
-    margin-top: -180px;
+    margin-top: -300px;
+    height: 320px;
 }
 #travel #map {
     position: relative;
@@ -864,25 +863,26 @@ a.hex:hover {
 }
 #travel .trip {
     display: inline-block;
+    width: 100%;
     background: #fff;
     border-radius: 6px;
     box-shadow: 0 0 0 3px #ccc;
     box-shadow: 5px 5px 16px rgba(0,0,0,0.1);
-    margin: 0 2% 2% 0;
-    padding: 16px 0 0 0;
+    padding: 0;
+    margin-bottom: 20px;
     box-sizing: border-box;
     position: relative;
     text-align: center;
-    width: 31.5%;
     vertical-align: top;
 }
 #travel .trip:nth-child(3) {
     margin-right: 0;
 }
 #travel .trip .title {
-    height: 60px;
+    padding: 15px;
 }
 #travel .trip .title h3 {
+    font-size: 1.2em;
     color: #666;
     margin: 0;
 }
@@ -899,7 +899,7 @@ a.hex:hover {
     position: relative;
     display: inline-block;
     float: left;
-    width: 33.3%;
+    width: 33.333333%;
     height: 120px;
     margin: 0;
     padding: 0;
@@ -908,18 +908,34 @@ a.hex:hover {
 #travel .trip .photos .photo {
     display: block;
     min-width: 100%;
-    max-height: 200px;
-    max-width: 220%;
-    margin: 0;
+    max-height: 240%;
+    max-width: 240%;
+    margin: 0 auto;
     padding: 0;
 }
-#travel .trip .footer {
+#travel .trip .desc {
     clear: both;
-    height: 60px;
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     font-size: 0.8em;
     color: #aaa;
+}
+#travel .trip .desc ul {
+    list-style: none;
+    padding: 0;
+    height: 50px;
+}
+#travel .trip .desc li {
+    display: inline-block;
+    margin-right: 5px;
+    padding-right: 5px;
+    border-right: 3px solid rgba(0,0,0,0.3);
+    line-height: 3px;
+}
+#travel .trip .desc li:last-child {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 
@@ -1071,6 +1087,7 @@ a.hex:hover {
 }
 #gaming .character {
     display: block;
+    overflow: hidden;
     background: #fff;
     color: #454545;
     border-radius: 6px;
@@ -1091,7 +1108,7 @@ a.hex:hover {
 #gaming .character img {
 }
 #gaming .alts .character {
-    height: 86px;
+    height: 84px;
     padding: 0;
 }
 #gaming .alts .character .details {
@@ -1263,6 +1280,14 @@ a.hex:hover {
     .container {
         width: 100%;
     }
+    #travel #map {
+        height: 400px;
+    }
+    #travel .top {
+        margin-top: -200px;
+        margin-left: 20px;
+        height: 200px;
+    }
     #about .process .fa {
         font-size: 5em;
         padding: 0.5em;
@@ -1273,6 +1298,11 @@ a.hex:hover {
     html, body {
         font-size: 10pt;
     }
+    #subNav li {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
     #home section {
         padding-top: 60px;
     }
@@ -1282,6 +1312,14 @@ a.hex:hover {
     }
     #contactMap {
         height: 200px;
+    }
+    #travel #map {
+        height: 200px;
+    }
+    #travel .top {
+        margin-top: 0;
+        margin-left: 20px;
+        height: 100px;
     }
     #footer .footer-links {
         font-size: 1.2em;

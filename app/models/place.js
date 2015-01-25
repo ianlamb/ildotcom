@@ -8,11 +8,11 @@ var PlaceSchema = new Schema({
     city: String,
     region: String,
     country: String,
-    phone: String,
+    countryCode: String,
     url: String,
     notes: String,
     lat: Number,
-    lon: Number,
+    lng: Number,
     photos: [{ type: Schema.Types.ObjectId, ref: 'Photo' }]
 });
 

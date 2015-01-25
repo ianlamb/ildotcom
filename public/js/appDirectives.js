@@ -231,69 +231,78 @@ angular.module('appDirectives', [])
         }
     })
 
-    .directive('travelSection', function() {
+    .directive('travelSection', function(Trips) {
         return {
             restrict: 'E',
             templateUrl: 'views/adventure/travel.html',
             controller: function($scope) {
-                var travels;
+                Trips.get()
+                    .success(function(data) {
+                        $scope.trips = data;
+                        $scope.countriesVisited = 0;
+                        $scope.citiesVisited = 0;
+                        var countryData = {};
+                        var geoData = [];
+                    
+                        $scope.trips.forEach(function(trip) {
+                            trip.places.forEach(function(place) {
+                                var geoObject = {
+                                    latLng: [place.lat, place.lng],
+                                    name: place.city + ', ' + place.countryCode
+                                };
+                                geoData.push(geoObject);
+                                if(!countryData[place.countryCode]) {
+                                    countryData[place.countryCode] = 10;
+                                    $scope.countriesVisited++;
+                                }
+                            });
+                        });
+                        $scope.citiesVisited = geoData.length;
 
-                var countryData = {
-                    "CA": 10,
-                    "US": 10,
-                    "MX": 10,
-                };
-
-                var placesData = [
-                    { latLng: [42.9837, -81.2497], name: 'London, ON' },
-                    { latLng: [43.4667, -80.5167], name: 'Waterloo, ON' },
-                    { latLng: [40.7127, -74.0059], name: 'New York City, NY' },
-                    { latLng: [41.8369, -87.6847], name: 'Chicago, IL' },
-                    { latLng: [32.0167, -81.1167], name: 'Savannah, GA' },
-                    { latLng: [21.1606, -87.6847], name: 'Cancun, MX' }
-                ];
-
-                $('#map').vectorMap({
-                    map: 'world_mill_en',
-                    backgroundColor: 'transparent',
-                    zoomOnScroll: false,
-                    regionStyle: {
-                        initial: {
-                            fill: '#ccc',
-                            'fill-opacity': 0.7
-                        },
-                        hover: {
-                            'fill-opacity': 1
-                        }
-                    },
-                    markerStyle: {
-                        initial: {
-                            fill: '#DA45F7',
-                            'fill-opacity': 1,
-                            'stroke-fill': '#DA45F7',
-                            'stroke-width': 10,
-                            'stroke-opacity': 0.5,
-                            r: 5
-                        },
-                        hover: {
-                            'stroke-fill': '#DA45F7',
-                            'stroke-width': 10,
-                            'stroke-opacity': 0.5,
-                        }
-                    },
-                    series: {
-                        regions: [{
-                            values: countryData,
-                            scale: ['#009CF3']
-                        }]
-                    },
-                    normalizeFunction: 'polynomial',
-                    hoverOpacity: 1,
-                    hoverColor: false,
-                    markers: placesData
-                });
-
-                $scope.travels = travels;
+                        $('#map').vectorMap({
+                            map: 'world_mill_en',
+                            backgroundColor: 'transparent',
+                            zoomOnScroll: false,
+                            regionStyle: {
+                                initial: {
+                                    fill: '#ccc',
+                                    'fill-opacity': 0.7
+                                },
+                                hover: {
+                                    'fill-opacity': 1
+                                }
+                            },
+                            markerStyle: {
+                                initial: {
+                                    fill: '#DA45F7',
+                                    'fill-opacity': 1,
+                                    'stroke-fill': '#DA45F7',
+                                    'stroke-width': 2,
+                                    'stroke-opacity': 0.5,
+                                    r: 3
+                                },
+                                hover: {
+                                    'stroke-fill': '#DA45F7',
+                                    'stroke-width': 6,
+                                    'stroke-opacity': 0.5,
+                                }
+                            },
+                            series: {
+                                regions: [{
+                                    values: countryData,
+                                    scale: ['#009CF3']
+                                }]
+                            },
+                            normalizeFunction: 'polynomial',
+                            hoverOpacity: 1,
+                            hoverColor: false,
+                            markers: geoData
+                        });
+                    });
+                
+                $scope.formatStartEndDates = function(startDate, endDate) {
+                    return moment(startDate).format("MMM Do YY") + ' - ' + moment(endDate).format("MMM Do YY");
+                };  
             }
         };
     })
@@ -326,6 +335,31 @@ angular.module('appDirectives', [])
                         };
                         var consecutiveDays = [];
                         var climbSessions = data;
+                        var chartData = {
+                            labels: ["January", "February", "March", "April", "May", "June", "July"],
+                            datasets: [
+                                {
+                                    label: "My First dataset",
+                                    fillColor: "rgba(220,220,220,0.2)",
+                                    strokeColor: "rgba(220,220,220,1)",
+                                    pointColor: "rgba(220,220,220,1)",
+                                    pointStrokeColor: "#fff",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(220,220,220,1)",
+                                    data: [65, 59, 80, 81, 56, 55, 40]
+                                },
+                                {
+                                    label: "My Second dataset",
+                                    fillColor: "rgba(151,187,205,0.2)",
+                                    strokeColor: "rgba(151,187,205,1)",
+                                    pointColor: "rgba(151,187,205,1)",
+                                    pointStrokeColor: "#fff",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(151,187,205,1)",
+                                    data: [28, 48, 40, 19, 86, 27, 90]
+                                }
+                            ]
+                        };
 
                         climbSessions.forEach(function(session) {
                             session.dateFromNow = moment(session.date).fromNow();
@@ -422,6 +456,9 @@ angular.module('appDirectives', [])
                         if(stats.bestTopRope.indexOf('+') > -1)
                             $('#bestTopRope .suffix').hide().html('+').delay(1100).fadeIn(500);
                         $('#bestTopRope .number').animateNumber({ number: stats.bestTopRope.replace('5.','').replace('+','').replace('-','') }, 1000);
+
+                        var ctx = document.getElementById('climbingChart').getContext('2d');
+                        var chart = new Chart(ctx).Line(chartData);
 
                         $scope.climbSessions = climbSessions;
                         $scope.stats = stats;
@@ -567,6 +604,15 @@ angular.module('appDirectives', [])
                     .success(function(data) {
                         $scope.steamProfile = data;
                     });
+            }
+        }
+    })
+
+    .directive('continuousLoading', function() {
+        return {
+            restrict: 'A',
+            controller: function($scope) {
+                
             }
         }
     });

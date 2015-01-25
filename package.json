@@ -1,13 +1,13 @@
 {
-    "name": "ildotcom",
-    "main": "server.js",
-    "dependencies": {
-        "express": "~4.5.1",
-        "mongoose": "~3.8.0",
-        "body-parser": "~1.4.2",
-        "method-override": "~2.0.2",
-        "request": "~2.51.0",
-        "promise": "~6.0.1"
-    }
+  "name": "ildotcom",
+  "main": "server.js",
+  "dependencies": {
+    "async": "^0.9.0",
+    "body-parser": "~1.4.2",
+    "express": "~4.5.1",
+    "method-override": "~2.0.2",
+    "mongoose": "~3.8.0",
+    "promise": "~6.0.1",
+    "request": "~2.51.0"
+  }
 }
-

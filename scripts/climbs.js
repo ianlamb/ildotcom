@@ -176,6 +176,12 @@ climbs = [
 ];
 createClimbSession(climbs, 'junction', new Date('2015-01-05 20:00 GMT-0400'));
 
+climbs = [
+    { type: 'Boulder', sends: ['V1', 'V2', 'V3', 'V3', 'V3', 'V3', 'V5', 'V5'] },
+    { type: 'Lead', sends: ['5.9', '5.9'] }
+];
+createClimbSession(climbs, 'junction', new Date('2015-01-05 20:00 GMT-0400'));
+
 
 
 function createClimbSession(climbs, location, workingDate, images, notes) {
