@@ -27,8 +27,11 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 animated fadeIn delay-short">
+        <div class="col-md-3 animated fadeIn delay-medium">
             <div>
+                <dl>
+                    <dt>Last Climb</dt><dd id="lastClimb">{{ stats.lastClimb }}</dd>
+                </dl>
                 <dl>
                     <dt>Best Boulder</dt><dd id="bestBoulder">
                         <span class="prefix"></span><span class="number"></span>
@@ -48,21 +51,15 @@
                     <dt>Routes Climbed</dt><dd id="routesClimbed"></dd>
                 </dl>
                 <dl>
-                    <dt>Days Climbed</dt><dd id="daysClimbed"></dd>
-                </dl>
-                <dl>
-                    <dt>Most Consecutive Days</dt><dd id="consecutiveDays"></dd>
+                    <dt>Climbing Sessions</dt><dd id="daysClimbed"></dd>
                 </dl>
             </div>
             <canvas id="climbingChart" width="240" height="200"></canvas>
         </div>
 
-        <div class="col-md-9 animated fadeIn delay-medium">
+        <div class="col-md-9 animated fadeIn delay-long">
             <div ng-repeat="session in climbSessions" class="session">
-                <div class="date" title="{{ session.dateFormatted }}">{{ session.dateFromNow }}</div>
-                <div ng-if="session.photos.length > 0" class="photos">
-                    <img ng-repeat="photo in session.photos" ng-src="images/{{ photo.file }}" class="photo" />
-                </div>
+                <div class="date" title="{{ session.dateFormatted }}">{{ session.dateFriendly }}</div>
                 <a href="{{ session.place.url }}" class="place">&commat;{{ session.place.name }}</a>
                 <div ng-repeat="climb in session.climbs" class="type {{ climb.type.replace(' ','').toLowerCase() }}">
                     <h5>{{ climb.type }}</h5>

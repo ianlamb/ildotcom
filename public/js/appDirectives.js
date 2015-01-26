@@ -327,13 +327,11 @@ angular.module('appDirectives', [])
                     .success(function(data) {
                         var stats = {
                             daysClimbed: 0,
-                            consecutiveDays: 0,
                             routesClimbed: 0,
                             bestBoulder: boulderGrades[0],
                             bestLead: climbGrades[0],
                             bestTopRope: climbGrades[0]
                         };
-                        var consecutiveDays = [];
                         var climbSessions = data;
                         var chartData = {
                             labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -362,8 +360,8 @@ angular.module('appDirectives', [])
                         };
 
                         climbSessions.forEach(function(session) {
-                            session.dateFromNow = moment(session.date).fromNow();
-                            session.dateFormatted = moment(session.date).format('MMMM Do YYYY');
+                            session.dateFriendly = moment(session.date).format('MMMM Do, YYYY');
+                            session.dateFormatted = moment(session.date).format('YYYY-MM-DD');
                             session.dateStandard = moment(session.date.split('T')[0]).format('YYYY-MM-DD');
                             session.sendCount = 0;
                             var topSendsForComp = [];
@@ -427,20 +425,10 @@ angular.module('appDirectives', [])
                             session.climbs.sort(function(a, b) { 
                                 return a.type > b.type;
                             });
-                            if(consecutiveDays.length > 0
-                                && consecutiveDays[consecutiveDays.length-1] == moment(session.dateStandard).add(1, 'days').format('YYYY-MM-DD')) {
-                                consecutiveDays.push(session.dateStandard);
-                                if(consecutiveDays.length > stats.consecutiveDays) {
-                                    stats.consecutiveDays = consecutiveDays.length;
-                                }
-                            } else {
-                                consecutiveDays = [session.dateStandard];
-                            }
                         });
                         stats.daysClimbed = climbSessions.length;
 
                         $('#daysClimbed').animateNumber({ number: stats.daysClimbed }, 1000);
-                        $('#consecutiveDays').animateNumber({ number: stats.consecutiveDays }, 1000);
                         $('#routesClimbed').animateNumber({ number: stats.routesClimbed }, 1000);
                         $('#bestBoulder .prefix').html('V');
                         $('#bestBoulder .number').animateNumber({ number: stats.bestBoulder.replace('V','') }, 1000);
@@ -457,8 +445,10 @@ angular.module('appDirectives', [])
                             $('#bestTopRope .suffix').hide().html('+').delay(1100).fadeIn(500);
                         $('#bestTopRope .number').animateNumber({ number: stats.bestTopRope.replace('5.','').replace('+','').replace('-','') }, 1000);
 
-                        var ctx = document.getElementById('climbingChart').getContext('2d');
-                        var chart = new Chart(ctx).Line(chartData);
+                        // var ctx = document.getElementById('climbingChart').getContext('2d');
+                        // var chart = new Chart(ctx).Line(chartData);
+
+                        stats.lastClimb = moment(climbSessions[0].date).fromNow();
 
                         $scope.climbSessions = climbSessions;
                         $scope.stats = stats;

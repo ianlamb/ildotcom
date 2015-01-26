@@ -59,7 +59,7 @@ module.exports = {
                     mongoose.disconnect();
                 });
             });
-        }, 2000);
+        }, 500);
     },
 
     geocodeLocation: function(locationSearch) {
