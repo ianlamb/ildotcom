@@ -180,7 +180,13 @@ climbs = [
     { type: 'Boulder', sends: ['V1', 'V2', 'V3', 'V3', 'V3', 'V3', 'V5', 'V5'] },
     { type: 'Lead', sends: ['5.9', '5.9'] }
 ];
-createClimbSession(climbs, 'junction', new Date('2015-01-05 20:00 GMT-0400'));
+createClimbSession(climbs, 'junction', new Date('2015-01-22 20:00 GMT-0400'));
+
+climbs = [
+    { type: 'Boulder', sends: ['V0', 'V1', 'V1', 'V2', 'V2', 'V2', 'V2', 'V3', 'V3', 'V5'] },
+    { type: 'Top Rope', sends: ['5.8', '5.11-'] }
+];
+createClimbSession(climbs, 'junction', new Date('2015-01-24 16:00 GMT-0400'));
 
 
 

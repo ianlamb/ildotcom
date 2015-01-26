@@ -464,6 +464,10 @@ label {
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
     border-top: 1px solid #222;
     border-bottom: 1px solid #222;
 }
@@ -513,7 +517,7 @@ label {
     height: 980px;
     padding: 0;
     color: #efefef;
-    background: url(../images/1291799092408.jpg) no-repeat center center fixed;
+    background: url(../images/16343127406_80afebb299_k.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -842,7 +846,6 @@ a.hex:hover {
 #adventure .header-image {
     background-color: #0a0d23;
     background-image: url('../images/03_panorama.jpg');
-    background-size: 100%;
 }
 
 /* TRAVEL */
@@ -1303,8 +1306,28 @@ a.hex:hover {
         width: 100%;
         text-align: center;
     }
+    #subNav li a {
+        -webkit-transition: none;
+        transition: none;
+    }
+    #subNav li:hover a {
+        -webkit-transition: none;
+        transition: none;
+    }
     #home section {
         padding-top: 60px;
+    }
+    #home section#header {
+        height: 620px;   
+    }
+    #home .profile-photo {
+        margin: 50px auto;
+    }
+    #home #quotation {
+        margin-top: 100px;   
+    }
+    #home .project {
+        margin-bottom: 20px;   
     }
     #about .process .fa {
         font-size: 2.5em;
