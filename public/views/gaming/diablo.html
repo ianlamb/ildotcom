@@ -14,10 +14,10 @@
 
                 <h4>Time Played by Class</h4>
                 <div ng-repeat="(class, time) in diabloProfile.timePlayed">
-                    {{ formatSlug(class) }}
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(time) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(time) }};">{{ percent(time) }}</div>
-                    </div>
+                    <label>{{ formatSlug(class) }}</label>
+                    <progressbar value="percent(time)">
+                        {{ percent(time) }}%
+                    </progressbar>
                 </div>
             </div>
         </div>

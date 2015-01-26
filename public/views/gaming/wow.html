@@ -4,34 +4,34 @@
             <div class="achievements">
                 <h3>Achievements</h3>
                 <label>Total Complete</label>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.achievements.completed, wowProfile.achievements.possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.achievements.completed, wowProfile.achievements.possible) }}%;">{{ formatProgress(wowProfile.achievements.completed, wowProfile.achievements.possible) }}</div>
-                </div>
+                <progressbar value="percent(wowProfile.achievements.completed, wowProfile.achievements.possible)">
+                    {{ formatProgress(wowProfile.achievements.completed, wowProfile.achievements.possible) }}
+                </progressbar>
                 <div ng-repeat="(category, achievements) in wowProfile.achievements" ng-if="achievements.completed">
                     <label>{{ category }}</label>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(achievements.completed, achievements.possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(achievements.completed, achievements.possible) }}%;">{{ formatProgress(achievements.completed, achievements.possible) }}</div>
-                    </div>
+                    <progressbar value="percent(achievements.completed, achievements.possible)">
+                        {{ formatProgress(achievements.completed, achievements.possible) }}
+                    </progressbar>
                 </div>
                 <label>Legacy</label>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">{{ wowProfile.achievements['Legacy'].legacyTotal }}</div>
-                </div>
+                <progressbar value="100">
+                    {{ wowProfile.achievements['Legacy'].legacyTotal }}
+                </progressbar>
                 <label>Feats of Strength</label>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">{{ wowProfile.achievements['Feats of Strength'].foSTotal }}</div>
-                </div>
+                <progressbar value="100">
+                    {{ wowProfile.achievements['Feats of Strength'].foSTotal }}
+                </progressbar>
             </div>
             <div class="collections">
                 <h3>Collections</h3>
                 <label>Mounts Collected</label>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}%;">{{ formatProgress(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}</div>
-                </div>
+                <progressbar value="percent(wowProfile.mounts.numCollected, wowProfile.mounts.possible)">
+                    {{ formatProgress(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}
+                </progressbar>
                 <label>Pets Collected</label>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(wowProfile.pets.numCollected, wowProfile.pets.possible) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(wowProfile.pets.numCollected, wowProfile.pets.possible) }}%;">{{ formatProgress(wowProfile.pets.numCollected, wowProfile.pets.possible) }}</div>
-                </div>
+                <progressbar value="percent(wowProfile.pets.numCollected, wowProfile.pets.possible)">
+                    {{ formatProgress(wowProfile.pets.numCollected, wowProfile.pets.possible) }}
+                </progressbar>
             </div>
         </div>
 

@@ -536,7 +536,7 @@ angular.module('appDirectives', [])
                     });
 
                 $scope.percent = function(value) {
-                    return parseInt(value * 100) + '%';
+                    return parseInt(value * 100);
                 }
 
                 $scope.formatSlug = function(slug) {

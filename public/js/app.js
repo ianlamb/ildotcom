@@ -3,6 +3,7 @@ angular.module('ildotcomApp', [
     'ngAnimate',
     'appRoutes',
     'appDirectives',
+    'ui.bootstrap',
     'mainController',
     'adventureController',
     'gameController',
