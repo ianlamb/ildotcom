@@ -16,17 +16,20 @@ module.exports = {
         trip.endDate = new Date(trip.endDate);
         
         if(data.photosetId) {
-            var promise = retrievePhotoset(data.photosetId).then(function(data) {
-                var images = [];
-                data.photoset.photo.forEach(function(photo) {
-                    var newImage = {};
-                    newImage.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/' + photo.id;
-                    newImage.thumb = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg';
-                    newImage.title = photo.title;
-                    trip.photos.push(newImage);
-                });
+            var promise = new Promise(function(resolve, reject) {
+                retrievePhotoset(data.photosetId).then(function(data) {
+                    var images = [];
+                    data.photoset.photo.forEach(function(photo) {
+                        var newImage = {};
+                        newImage.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/' + photo.id;
+                        newImage.thumb = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg';
+                        newImage.title = photo.title;
+                        trip.photos.push(newImage);
+                    });
+                    resolve();
+                }, reject);
             });
-            promises.push(retrievePhotoset(data.photosetId));
+            promises.push(promise);
         }
         
         if(data.locations) {
@@ -42,6 +45,7 @@ module.exports = {
                             reject();
                         }
                         trip.places.push(place._id);
+                        console.log('place created '  + place.city + ', ' + place.country);
                         resolve();
                     });
                 });
@@ -49,17 +53,19 @@ module.exports = {
             });
         }
 
-        setTimeout(function() {
-            Promise.all(promises).then(function() {
-                trip.created_at = new Date();
-                trip.save(function(err) {
-                    if(err) {
-                        console.error(err);
-                    }
-                    mongoose.disconnect();
-                });
+        Promise.all(promises).then(function(data) {
+            console.log('promises resolved, saving trip...');
+            trip.created_at = new Date();
+            trip.save(function(err) {
+                if(err) {
+                    console.error(err);
+                }
+                console.log('created ' + trip.name);
+                //mongoose.disconnect();
             });
-        }, 500);
+        }, function(err) {
+            console.error(err);
+        });
     },
 
     geocodeLocation: function(locationSearch) {
@@ -92,10 +98,10 @@ module.exports = {
             });
         });
     }
-}
+};
 
 function retrievePhotoset(photosetId) {
-    return new Promise(function(resolve) {
+    return new Promise(function(resolve, reject) {
         console.log('querying flickr api...');
         var options = {
             uri: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=' + app.keys.flickr + '&photoset_id=' + photosetId + '&format=json&nojsoncallback=1',
@@ -108,7 +114,7 @@ function retrievePhotoset(photosetId) {
             if(!body) {
                 console.log('request returned empty');
                 mongoose.disconnect();
-                return;
+                reject();
             }
             var data = JSON.parse(body);
             if(data) {
@@ -117,10 +123,12 @@ function retrievePhotoset(photosetId) {
             } else {
                 console.log('unexpected results...');
                 mongoose.disconnect();
+                reject();
             }
         }).on('error', function(e) {
             console.error(e.message);
             mongoose.disconnect();
+            reject(e.message);
         });
     });
 }

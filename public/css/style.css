@@ -447,10 +447,14 @@ label {
 }
 #subNav li:hover .underline {
     width: 100%;
+    -webkit-transition: width .2s;
     transition: width .2s;
 }
 #subNav li.selected a {
     color: #00BE9A;
+    background: #555856;
+    -webkit-transition: all .2s;
+    transition: all .2s;
 }
 #subNav li.selected .underline {
     width: 100%;
@@ -1301,6 +1305,10 @@ a.hex:hover {
     html, body {
         font-size: 10pt;
     }
+    #subNav .container {
+        padding: 0;
+        width: 100%;
+    }
     #subNav li {
         display: block;
         width: 100%;
@@ -1311,6 +1319,10 @@ a.hex:hover {
         transition: none;
     }
     #subNav li:hover a {
+        -webkit-transition: none;
+        transition: none;
+    }
+    #subNav li:hover .underline {
         -webkit-transition: none;
         transition: none;
     }

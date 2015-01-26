@@ -122,7 +122,7 @@ trips.push({
             lng: -87.6847
         }
     ],
-    photosetId: ''
+    photosetId: '72157650416623466'
 });
 
 trips.push({
