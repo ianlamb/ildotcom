@@ -43,26 +43,44 @@ angular.module('appDirectives', [])
             controller: function($scope) {
                 $scope.projects = [
                     {
+                        name: 'GoodLife Fitness Sales',
+                        url: 'http://www.goodlifefitness.com/training-programs/team-training/camps/ontario/london',
+                        repo: '',
+                        image: 'Screenshot - 15-01-27 - 01:05:30 PM.png',
+                        desc: 'Sales engine for selling GoodLife team training contracts online'
+                    },
+                    {
+                        name: 'Store Finder',
+                        url: 'http://apps.ianlamb.com/storefinder/',
+                        repo: 'https://github.com/ianlamb/storefinder',
+                        image: '',
+                        desc: 'Component for selecting stores from a large network'
+                    },
+                    {
                         name: 'Tempus Notes',
                         url: 'http://notes.ianlamb.com/',
+                        repo: 'https://github.com/ianlamb/notes',
                         image: 'tempus-notes-opt.png',
                         desc: 'A very simple note-taker, great for remembering what you did for daily scrum'
                     },
                     {
                         name: 'Dark Souls Challenge Runs',
                         url: 'http://darksouls.ianlamb.com/challenges',
+                        repo: 'https://github.com/ianlamb/darksouls-challenges',
                         image: 'dscrgen-opt.png',
                         desc: 'A fun little randomizer for Dark Souls challenge runs'
                     },
                     {
                         name: 'Z-Code',
                         url: 'http://zcode.ianlamb.com/',
+                        repo: 'https://github.com/ianlamb/zcode',
                         image: 'zcode-opt.png',
                         desc: 'HTML5 game that my buddy and I made in college'
                     },
                     {
                         name: 'Creekside Landscaping',
                         url: 'http://www.creeksidelandscaping.ca/',
+                        repo: '',
                         image: 'creekside-landscaping-opt.png',
                         desc: 'WordPress redesign for my neighbour\'s landscaping business'
                     }
@@ -168,26 +186,6 @@ angular.module('appDirectives', [])
                 }
 
                 $scope.quote = randomQuote();
-            }
-        }
-    })
-
-    .directive('projectsSection', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'views/developer/projects.html',
-            controller: function($scope) {
-
-            }
-        }
-    })
-
-    .directive('resumeSection', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'views/developer/resume.html',
-            controller: function($scope) {
-
             }
         }
     })

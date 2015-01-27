@@ -25,11 +25,17 @@
             <div class="container">
                 <h1>Work</h1>
                 <div class="row">
-                    <div ng-repeat="project in projects" class="col-sm-3">
-                        <a href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
-                            <div class="title">{{ project.name }}</div>
-                            <div class="desc">{{ project.desc }}</div>
-                        </a>
+                    <div ng-repeat="project in projects" class="col-sm-4">
+                        <div class="project-wrapper">
+                            <div href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
+                                <div class="title">{{ project.name }}</div>
+                                <div class="desc">{{ project.desc }}</div>
+                                <div class="controls">
+                                    <a href="{{ project.repo }}" target="_blank"><i class="fa fa-external-link"></i>Live</a>
+                                    <a href="{{ project.repo }}" target="_blank"><i class="fa fa-github"></i>Source</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
