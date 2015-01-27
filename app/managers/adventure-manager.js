@@ -9,62 +9,70 @@ var Photo  = require('../models/photo');
 
 module.exports = {
     saveTrip: function(data) {
-        var trip = new Trip(data);
-        var promises = [];
+        return new Promise(function(resolve, reject) {
+            console.log('connecting to db...');
+            mongoose.connect(db.url);
+            
+            var trip = new Trip(data);
+            var promises = [];
 
-        trip.startDate = new Date(trip.startDate);
-        trip.endDate = new Date(trip.endDate);
-        
-        if(data.photosetId) {
-            var promise = new Promise(function(resolve, reject) {
-                retrievePhotoset(data.photosetId).then(function(data) {
-                    var images = [];
-                    data.photoset.photo.forEach(function(photo) {
-                        var newImage = {};
-                        newImage.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/' + photo.id;
-                        newImage.thumb = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg';
-                        newImage.title = photo.title;
-                        trip.photos.push(newImage);
-                    });
-                    resolve();
-                }, reject);
-            });
-            promises.push(promise);
-        }
-        
-        if(data.locations) {
-            data.locations.forEach(function(location) {
+            trip.startDate = new Date(trip.startDate);
+            trip.endDate = new Date(trip.endDate);
+
+            if(data.photosetId) {
                 var promise = new Promise(function(resolve, reject) {
-                    Place.create(location, function(err, place) {
-                        if (err) {
-                            console.error(err);
-                            reject(err);
-                        }
-                        if (!place) {
-                            console.warn('failed to create Place');
-                            reject();
-                        }
-                        trip.places.push(place._id);
-                        console.log('place created '  + place.city + ', ' + place.country);
+                    retrievePhotoset(data.photosetId).then(function(data) {
+                        data.photoset.photo.forEach(function(photo) {
+                            var newImage = {};
+                            newImage.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/' + photo.id;
+                            newImage.thumb = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg';
+                            newImage.title = photo.title;
+                            trip.photos.push(newImage);
+                        });
+                        console.log('added ' + trip.photos.length + ' photos to trip');
                         resolve();
-                    });
+                    }, reject);
                 });
                 promises.push(promise);
-            });
-        }
+            }
 
-        Promise.all(promises).then(function(data) {
-            console.log('promises resolved, saving trip...');
-            trip.created_at = new Date();
-            trip.save(function(err) {
-                if(err) {
-                    console.error(err);
-                }
-                console.log('created ' + trip.name);
-                //mongoose.disconnect();
+            if(data.locations) {
+                data.locations.forEach(function(location) {
+                    var promise = new Promise(function(resolve, reject) {
+                        Place.create(location, function(err, place) {
+                            if (err) {
+                                console.error(err);
+                                reject(err);
+                            }
+                            if (!place) {
+                                console.warn('failed to create Place');
+                                reject();
+                            }
+                            trip.places.push(place._id);
+                            console.log('place created '  + place.city + ', ' + place.country);
+                            resolve();
+                        });
+                        resolve();
+                    });
+                    promises.push(promise);
+                });
+            }
+
+            Promise.all(promises).then(function(data) {
+                console.log('promises resolved, saving trip...');
+                trip.created_at = new Date();
+                trip.save(function(err) {
+                    if(err) {
+                        console.error(err);
+                    }
+                    console.log('created ' + trip.name);
+                    mongoose.disconnect();
+                    resolve();
+                });
+            }, function(err) {
+                console.error(err);
+                reject();
             });
-        }, function(err) {
-            console.error(err);
         });
     },
 
