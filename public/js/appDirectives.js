@@ -46,14 +46,14 @@ angular.module('appDirectives', [])
                         name: 'GoodLife Fitness Sales',
                         url: 'http://www.goodlifefitness.com/training-programs/team-training/camps/ontario/london',
                         repo: '',
-                        image: 'Screenshot - 15-01-27 - 01:05:30 PM.png',
+                        image: 'glf-sales-opt.png',
                         desc: 'Sales engine for selling GoodLife team training contracts online'
                     },
                     {
                         name: 'Store Finder',
                         url: 'http://apps.ianlamb.com/storefinder/',
                         repo: 'https://github.com/ianlamb/storefinder',
-                        image: '',
+                        image: 'store-finder-opt.png',
                         desc: 'Component for selecting stores from a large network'
                     },
                     {

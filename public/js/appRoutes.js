@@ -29,25 +29,13 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         })
 
         // adventure section
-        .when('/adventure', {
-            templateUrl: 'views/adventure.html',
-            controller: 'AdventureController'
-        })
-        .when('/adventure/:tab', {
-            templateUrl: 'views/adventure.html',
-            controller: 'AdventureController'
-        })
-        .when('/adventure/:tab/:action', {
+        .when('/adventure/:tab?/:action?', {
             templateUrl: 'views/adventure.html',
             controller: 'AdventureController'
         })
 
         // gaming section
-        .when('/gaming', {
-            templateUrl: 'views/gaming.html',
-            controller: 'GamingController'
-        })
-        .when('/gaming/:tab', {
+        .when('/gaming/:tab?', {
             templateUrl: 'views/gaming.html',
             controller: 'GamingController'
         })
