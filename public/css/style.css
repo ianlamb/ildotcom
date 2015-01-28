@@ -250,6 +250,13 @@ label {
         height: 60px;
     }
 }
+.navbar .navbar-brand > img.logo {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    top: -2px;
+    margin-right: 0.3em;
+}
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
     color: #00BE9A;
     background-color: transparent;
