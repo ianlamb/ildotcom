@@ -27,7 +27,7 @@ html, body {
 html {
     position: relative;
     min-height: 100%;
-    background: #efefef url(http://subtlepatterns.com/patterns/fancy_deboss.png);
+    background: #efefef url(../images/fancy_deboss.png);
 }
 body {
     letter-spacing: 0.1em;
