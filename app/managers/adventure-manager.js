@@ -24,7 +24,7 @@ module.exports = {
                     retrievePhotoset(data.photosetId).then(function(data) {
                         data.photoset.photo.forEach(function(photo) {
                             var newImage = {};
-                            newImage.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/' + photo.id;
+                            newImage.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/' + photo.id + '/in/set-' + photosetId;
                             newImage.thumb = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg';
                             newImage.title = photo.title;
                             trip.photos.push(newImage);

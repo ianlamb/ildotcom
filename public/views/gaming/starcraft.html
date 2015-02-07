@@ -13,22 +13,51 @@
         </div>
         <div class="col-md-9 animated fadeIn delay-medium">
             <h3>Profile</h3>
-            <div class="panel">
+            <div class="character">
                 <div class="portrait" style="background: url({{ starcraftProfile.portrait.url }}) no-repeat {{ starcraftProfile.portrait.x }}px {{ starcraftProfile.portrait.y }}px;"></div>
                 <div class="details">
                     <h3 class="name">{{ starcraftProfile.displayName }}</h3>
                     <div>{{ starcraftProfile.achievements.points.totalPoints }}</div>
                 </div>
 
-                <h3>Swarm Levels</h3>
-                Level {{ starcraftProfile.swarmLevels.level }}
+                <h3>Campaign</h3>
                 <div class="row">
-                    <div ng-repeat="(swarm, data) in starcraftProfile.swarmLevels" ng-if="data.level >= 0" class="col-md-4">
-                        <label>{{ formatSlug(swarm) }}</label>
-                        Level {{ data.level }}
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="{{ percent(data.currentLevelXP, data.totalLevelXP) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent(data.currentLevelXP, data.totalLevelXP) }}%;">{{ data.currentLevelXP }} / {{ data.totalLevelXP }} ({{ percent(data.currentLevelXP, data.totalLevelXP) }}%)</div>
-                        </div>
+                    <div class="col-md-4">
+                        <h4>Wings of Liberty</h4>
+                        <span>{{ starcraftProfile.campaign.wol }}</span>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Heart of the Swarm</h4>
+                        <span>{{ starcraftProfile.campaign.hots }}</span>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Legacy of the Void</h4>
+                        <span>Coming Soon...</span>
+                    </div>
+                </div>
+
+                <h3>Swarm Levels</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Terran</label>
+                        Level {{ starcraftProfile.swarmLevels.terran.level }}
+                        <progressbar value="percent(starcraftProfile.swarmLevels.terran.currentLevelXP, starcraftProfile.swarmLevels.terran.totalLevelXP)">
+                            {{ starcraftProfile.swarmLevels.terran.currentLevelXP }} / {{ starcraftProfile.swarmLevels.terran.totalLevelXP }}
+                        </progressbar>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Zerg</label>
+                        Level {{ starcraftProfile.swarmLevels.zerg.level }}
+                        <progressbar value="percent(starcraftProfile.swarmLevels.zerg.currentLevelXP, starcraftProfile.swarmLevels.zerg.totalLevelXP)">
+                            {{ starcraftProfile.swarmLevels.zerg.currentLevelXP }} / {{ starcraftProfile.swarmLevels.zerg.totalLevelXP }}
+                        </progressbar>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Protoss</label>
+                        Level {{ starcraftProfile.swarmLevels.protoss.level }}
+                        <progressbar value="percent(starcraftProfile.swarmLevels.protoss.currentLevelXP, starcraftProfile.swarmLevels.protoss.totalLevelXP)">
+                            {{ starcraftProfile.swarmLevels.protoss.currentLevelXP }} / {{ starcraftProfile.swarmLevels.protoss.totalLevelXP }}
+                        </progressbar>
                     </div>
                 </div>
             </div>

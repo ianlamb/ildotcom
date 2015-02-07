@@ -508,10 +508,29 @@ label {
 }
 
 .progress {
-    background: #999;
+    background: #A5A5A5;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
+    cursor: default;
 }
 .progress-bar {
     overflow: visible;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.3);
+    box-shadow: 0 0 2px rgba(0,0,0,.3);
+    background: #1e5799;
+    background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8));
+    background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+    background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+    background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+}
+.progress span {
+    white-space: nowrap;
+    position: absolute;
+    width: 100%;
+    left: 0;
 }
 
 
@@ -1149,15 +1168,14 @@ a.hex:hover {
     overflow: hidden;
     background: #fff;
     color: #454545;
-    border-radius: 6px;
-    box-shadow: 0 3px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     padding: 16px 16px 16px 16px;
     margin-bottom: 20px;
     -webkit-transition: all .4s;
     transition: all .4s;
 }
 #gaming .character:hover {
-    box-shadow: 0 3px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
     -webkit-transition: all .2s;
     transition: all .2s;
 }
@@ -1195,7 +1213,7 @@ a.hex:hover {
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 #gaming .items a:hover {
-    text-decoration: underline;
+    
 }
 #gaming .items .trash { color: #9d9d9d; }
 #gaming .items .common { color: #fff; }
