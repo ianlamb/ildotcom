@@ -10,7 +10,8 @@
     "jvectormap": "~2.0.0",
     "components-font-awesome": "~4.2.0",
     "chartjs": "~1.0.1",
-    "angular-bootstrap": "~0.12.0"
+    "angular-bootstrap": "~0.12.0",
+    "angular-ui-router": "~0.2.13"
   },
   "resolutions": {
     "angular": "1.3.10"

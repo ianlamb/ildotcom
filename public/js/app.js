@@ -1,12 +1,17 @@
 angular.module('ildotcomApp', [
-    'ngRoute',
-    'ngAnimate',
-    'appRoutes',
-    'appDirectives',
     'ui.bootstrap',
+    'ui.router',
+    'ngAnimate',
+    'appDirectives',
+    'appRoutes',
     'mainController',
     'adventureController',
+    'travelController',
+    'climbController',
     'gameController',
+    'wowController',
+    'diabloController',
+    'starcraftController',
     'adventureService',
     'gameService'
 ]);
