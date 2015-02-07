@@ -3,12 +3,12 @@
     <div id="subNav">
         <div class="container">
             <ul>
-                <li class="{{ tab == 'travel' ? 'selected' : '' }}">
-                    <a href="/adventure/travel">Travel</a>
+                <li class="{{ state.name == 'adventure.travel' ? 'selected' : '' }}">
+                    <a ui-sref=".travel">Travel</a>
                     <div class="underline"></div>
                 </li>
-                <li class="{{ tab == 'climb' ? 'selected' : '' }}">
-                    <a href="/adventure/climb">Climbing</a>
+                <li class="{{ state.name == 'adventure.climb' ? 'selected' : '' }}">
+                    <a ui-sref=".climb">Climbing</a>
                     <div class="underline"></div>
                 </li>
                 <!-- <li class="{{ tab == 'activity' ? 'selected' : '' }}">
@@ -23,20 +23,6 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <ng-switch on="tab">
-                  <div ng-switch-when="travel">
-                      <travel-section></travel-section>
-                  </div>
-                  <div ng-switch-when="climb">
-                      <climb-section></climb-section>
-                  </div>
-                  <div ng-switch-when="vehicles">
-                      <vehicle-section></vehicle-section>
-                  </div>
-                </ng-switch>
-            </div>
-        </div>
+        <div ui-view></div>
     </div>
 </div>

@@ -3,15 +3,15 @@
     <div id="subNav">
         <div class="container">
             <ul>
-                <li class="{{ tab == 'wow' ? 'selected' : '' }}">
+                <li class="{{ state.name == 'gaming.wow' ? 'selected' : '' }}">
                     <a href="/gaming/wow">World of Warcraft</a>
                     <div class="underline"></div>
                 </li>
-                <li class="{{ tab == 'diablo' ? 'selected' : '' }}">
+                <li class="{{ state.name == 'gaming.diablo' ? 'selected' : '' }}">
                     <a href="/gaming/diablo">Diablo 3</a>
                     <div class="underline"></div>
                 </li>
-                <li class="{{ tab == 'starcraft' ? 'selected' : '' }}">
+                <li class="{{ state.name == 'gaming.starcraft' ? 'selected' : '' }}">
                     <a href="/gaming/starcraft">Starcraft 2</a>
                     <div class="underline"></div>
                 </li>
@@ -19,23 +19,6 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <ng-switch on="tab">
-                  <div ng-switch-when="wow">
-                      <wow-section></wow-section>
-                  </div>
-                  <div ng-switch-when="diablo">
-                      <diablo-section></diablo-section>
-                  </div>
-                  <div ng-switch-when="starcraft">
-                      <starcraft-section></starcraft-section>
-                  </div>
-                  <div ng-switch-when="steam">
-                      <steam-section></steam-section>
-                  </div>
-                </ng-switch>
-            </div>
-        </div>
+        <div ui-view></div>
     </div>
 </div>

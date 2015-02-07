@@ -1,17 +1,8 @@
-angular.module('adventureController', []).controller('AdventureController', function($scope, $routeParams) {
+angular.module('adventureController', ['ui.router']).controller('AdventureController', function($scope, $rootScope, $state) {
 
-    $scope.params = $routeParams;
-
-    var tabs = [
-        'travel',
-        'climb',
-        'activity'
-    ];
-
-    if($.inArray($scope.params.tab, tabs) === -1) {
-        $scope.tab = tabs[0];
-    } else {
-        $scope.tab = $scope.params.tab;
-    }
+    $scope.state = $state.current;
+    $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+        $scope.state = toState;
+    });
 
 });

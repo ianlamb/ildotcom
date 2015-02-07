@@ -1,50 +1,60 @@
-angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 
-    $routeProvider
+    $urlRouterProvider
+        .when('/adventure', '/adventure/travel')
+        .when('/gaming', '/gaming/wow')
+        .otherwise('/');
 
-        // home page
-        .when('/', {
+    $stateProvider
+        .state('home', {
+            url: '/',
             templateUrl: 'views/home.html',
             controller: 'MainController'
         })
-        .when('/home', {
-            templateUrl: 'views/home.html',
-            controller: 'MainController'
-        })
 
-        // about page
-        .when('/about', {
+        .state('about', {
+            url: '/about',
             templateUrl: 'views/about.html',
             controller: 'MainController'
         })
 
-        // errors
-        .when('/error/404', {
-            templateUrl: 'views/error/404.html',
-            controller: 'MainController'
-        })
-        .when('/error/500', {
-            templateUrl: 'views/error/500.html',
-            controller: 'MainController'
-        })
-
-        // adventure section
-        .when('/adventure/:tab?/:action?', {
+        .state('adventure', {
+            url: '/adventure',
             templateUrl: 'views/adventure.html',
             controller: 'AdventureController'
         })
+            .state('adventure.travel', {
+                url: '/travel',
+                templateUrl: 'views/adventure/travel.html',
+                controller: 'TravelController'
+            })
+            .state('adventure.climb', {
+                url: '/climb',
+                templateUrl: 'views/adventure/climb.html',
+                controller: 'ClimbController'
+            })
 
-        // gaming section
-        .when('/gaming/:tab?', {
+        .state('gaming', {
+            url: '/gaming',
             templateUrl: 'views/gaming.html',
             controller: 'GamingController'
         })
-
-        // redirect to 404
-        .otherwise({
-            redirectTo: '/error/404'
-        });
+            .state('gaming.wow', {
+                url: '/wow',
+                templateUrl: 'views/gaming/wow.html',
+                controller: 'WowController'
+            })
+            .state('gaming.diablo', {
+                url: '/diablo',
+                templateUrl: 'views/gaming/diablo.html',
+                controller: 'DiabloController'
+            })
+            .state('gaming.starcraft', {
+                url: '/starcraft',
+                templateUrl: 'views/gaming/starcraft.html',
+                controller: 'StarcraftController'
+            })
 
     $locationProvider.html5Mode(true);
 
-}]);
+});
