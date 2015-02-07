@@ -8,6 +8,10 @@
 
 /* COLOUR PALETTE
  * =======
+ * BLUE_DEFAULT     #00abff
+ * BLUE_HOVER       #0091d8
+ * BLUE_GRAY        #353535
+ *
  * GREEN_DEFAULT    #00BE9A
  * GREEN_HOVER      #00A384
  * GREEN_GRAY       #5C6B68
@@ -43,14 +47,14 @@ hr { border-width: 1px; border-color: rgba(0,0,0,0.2); }
 
 a, a:link, a:visited {
     text-decoration: none;
-    color: #00BE9A;
+    color: #00abff;
     transition: color .15s;
 }
 a:hover {
-    color: #00A384;
+    color: #0091d8;
     transition: color .3s;
 }
-a:active { color: #00BE9A; }
+a:active { color: #00abff; }
 
 dl {
     width: 185px;
@@ -62,7 +66,7 @@ dt {
     font-weight: normal;
 }
 dd {
-    color: #00BE9A;
+    color: #00abff;
     font-size: 2.0em;
     margin-bottom: 5px;
     cursor: default;
@@ -87,13 +91,13 @@ button, .button {
     padding-bottom: 0.94444rem;
     padding-left: 1.77778rem;
     font-size: 1.0em;
-    background-color: #00BE9A;
-    border-color: #00A384;
+    background-color: #00abff;
+    border-color: #0091d8;
     color: #FFFFFF;
     transition: background-color 300ms ease-out;
 }
 button:hover, .button:hover {
-    background: #00A384;
+    background: #0091d8;
 }
 
 select {
@@ -258,7 +262,7 @@ label {
     margin-right: 0.3em;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-    color: #00BE9A;
+    color: #00abff;
     background-color: transparent;
 }
 .navbar a {
@@ -266,7 +270,7 @@ label {
     transition: all .4s;
 }
 .navbar a:hover {
-    color: #00A384 !important;
+    color: #0091d8 !important;
     -webkit-transition: all .2s;
     transition: all .2s;
 }
@@ -399,6 +403,9 @@ label {
 .social-icons a:hover .fa-linkedin-square {
     color: #287bbc;
 }
+.social-icons a:hover .fa-google-plus-square {
+    color: #d73d32;
+}
 .social-icons a:hover .fa-github-square {
     color: #fff;
 }
@@ -444,11 +451,11 @@ label {
     position: relative;
     height: 4px;
     width: 0;
-    background: #00BE9A;
+    background: #00abff;
     transition: width .2s;
 }
 #subNav li:hover a {
-    color: #00BE9A;
+    color: #00abff;
     -webkit-transition: all .2s;
     transition: all .2s;
 }
@@ -458,7 +465,7 @@ label {
     transition: width .2s;
 }
 #subNav li.selected a {
-    color: #00BE9A;
+    color: #00abff;
     background: #555856;
     -webkit-transition: all .2s;
     transition: all .2s;
@@ -730,7 +737,7 @@ label {
 }
 #navPortal a:hover {
     background-size: 220%;
-    border-color: #00BE9A;
+    border-color: #00abff;
 }
 #navPortal a.developer {
     background-image: url(../images/mrFIa4e.jpg);
@@ -804,7 +811,7 @@ a.hex {
 .hex .piece.left {
     float: left;
     width: 0;
-    border-right: 30px solid #00BE9A;
+    border-right: 30px solid #00abff;
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
     z-index: 5;
@@ -813,14 +820,14 @@ a.hex {
     float: left;
     width: 60px;
     height: 104px;
-    background: #00BE9A;
+    background: #00abff;
     padding-top: 35%;
     z-index: 5;
 }
 .hex .piece.right {
     float: left;
     width: 0;
-    border-left: 30px solid #00BE9A;
+    border-left: 30px solid #00abff;
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
     z-index: 5;
@@ -836,7 +843,7 @@ a.hex {
     background: rgba(0,0,0,0.2);
 }
 .hex .tip span {
-    color: #00BE9A;
+    color: #00abff;
 }
 a.hex:hover {
     color: #fff;
@@ -930,7 +937,7 @@ a.hex:hover {
     padding: 15px;
 }
 #travel .trip .title h3 {
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #666;
     margin: 0;
 }
