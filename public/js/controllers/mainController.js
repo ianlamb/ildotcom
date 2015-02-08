@@ -9,6 +9,7 @@ angular.module('mainController', []).controller('MainController', function($scop
             e.preventDefault();
             $state.go('gaming.wow');
         }
+        $window.scrollTo(0,0);
     });
 
     $scope.$on('$viewContentLoaded', function(event) {

@@ -508,12 +508,17 @@ label {
 }
 
 .progress {
-    background: #A5A5A5;
     -webkit-border-radius: 2px;
     border-radius: 2px;
     -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
     box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
     cursor: default;
+    background: #7b8289; /* Old browsers */
+    background: -moz-linear-gradient(top,  #7b8289 0%, #aab5bf 50%, #9ba8b2 51%, #b6bdc1 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7b8289), color-stop(50%,#aab5bf), color-stop(51%,#9ba8b2), color-stop(100%,#b6bdc1)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #7b8289 0%,#aab5bf 50%,#9ba8b2 51%,#b6bdc1 100%); /* Chrome10+,Safari5.1+ */
+    background: -ms-linear-gradient(top,  #7b8289 0%,#aab5bf 50%,#9ba8b2 51%,#b6bdc1 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #7b8289 0%,#aab5bf 50%,#9ba8b2 51%,#b6bdc1 100%); /* W3C */
 }
 .progress-bar {
     overflow: visible;
@@ -525,6 +530,9 @@ label {
     background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
     background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
     background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+}
+.progress-bar[aria-valuenow="0"] {
+    color: #fff;
 }
 .progress span {
     white-space: nowrap;
@@ -582,27 +590,42 @@ label {
     width: 100%;
     height: 100%;
     background: #999 no-repeat top center;
-    background-size: 150%;
+    background-size: 100%;
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
 #projects .project:hover {
-    background-size: 120%;
+    background-size: 105%;
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
+}
+#projects .project .overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #efefef;
+    background: rgba(0,0,0,0.7);
+    opacity: 0;
+    -webkit-transition: opacity .3s ease-out;
+    transition: opacity .3s ease-out;
+}
+#projects .project:hover .overlay {
+    opacity: 1;
+    -webkit-transition: opacity .3s ease-out;
+    transition: opacity .3s ease-out;
 }
 #projects .project .title {
     width: 100%;
     height: 40px;
     padding: 10px;
-    color: #efefef;
-    background: #5C6B68;
+    -webkit-transform: translateY(-60px);
+    transform: translateY(-60px);
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
 #projects .project:hover .title {
-    -webkit-transform: translateY(-60px);
-    transform: translateY(-60px);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
@@ -611,14 +634,14 @@ label {
     height: 100px;
     margin-top: 140px;
     padding: 10px;
-    color: #efefef;
-    background: #5C6B68;
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
 #projects .project:hover .desc {
-    -webkit-transform: translateY(100px);
-    transform: translateY(100px);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
@@ -626,8 +649,6 @@ label {
     position: relative;
     width: 100%;
     padding: 10px;
-    color: #efefef;
-    background: rgba(0,0,0,0.7);
     text-align: center;
     opacity: 0;
     -webkit-transition: opacity .3s ease-out;

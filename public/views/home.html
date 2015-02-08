@@ -2,7 +2,7 @@
     <section id="header">
         <div class="overlay">
             <div class="container">
-                <img src="images/16225753476_a3c1e8be71_o.jpg" class="profile-photo animated fadeIn" />
+                <img src="images/profile-photo-146.jpg" class="profile-photo animated fadeIn" />
                 <div class="row">
                     <div class="col-sm-12 text-center">
                         <div id="intro">
@@ -28,11 +28,13 @@
                     <div ng-repeat="project in projects" class="col-sm-4">
                         <div class="project-wrapper">
                             <div href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
-                                <div class="title">{{ project.name }}</div>
-                                <div class="desc">{{ project.desc }}</div>
-                                <div class="controls">
-                                    <a href="{{ project.url }}" target="_blank"><i class="fa fa-external-link"></i>Live</a>
-                                    <a ng-if="project.repo" href="{{ project.repo }}" target="_blank"><i class="fa fa-github"></i>Source</a>
+                                <div class="overlay">
+                                    <div class="title">{{ project.name }}</div>
+                                    <div class="desc">{{ project.desc }}</div>
+                                    <div class="controls">
+                                        <a href="{{ project.url }}" target="_blank"><i class="fa fa-external-link"></i>Live</a>
+                                        <a ng-if="project.repo" href="{{ project.repo }}" target="_blank"><i class="fa fa-github"></i>Source</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
