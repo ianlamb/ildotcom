@@ -1174,6 +1174,9 @@ a.hex:hover {
     -webkit-transition: all .4s;
     transition: all .4s;
 }
+#gaming .character dl dd {
+    font-size: 1.6em;
+}
 #gaming .character:hover {
     box-shadow: 0 3px 15px rgba(0,0,0,0.2);
     -webkit-transition: all .2s;
@@ -1212,6 +1215,9 @@ a.hex:hover {
     padding: 2px;
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
+#gaming .items td:first-child {
+    white-space: nowrap;
+}
 #gaming .items a:hover {
     
 }
@@ -1221,6 +1227,11 @@ a.hex:hover {
 #gaming .items .rare { color: #0070dd; }
 #gaming .items .epic { color: #a335ee; }
 #gaming .items .legendary { color: #ff8000; }
+#gaming .items .white { color: #fff; }
+#gaming .items .blue { color: blue; }
+#gaming .items .yellow { color: yellow; }
+#gaming .items .green { color: #00ff00; }
+#gaming .items .orange { color: #bf642f; }
 #gaming .feed {
     list-style: none;
     padding: 0;

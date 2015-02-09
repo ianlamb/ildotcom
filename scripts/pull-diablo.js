@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var app = require('../config/app');
 var db = require('../config/db');
 var request = require('request');
+var Promise = require('promise');
 var DiabloProfile = require('../app/models/diablo-profile');
 
 console.log('connecting to db...');
@@ -25,14 +26,54 @@ request(options, function(err, res, body) {
     if(data) {
         console.log('received info for battletag: ' + data.battleTag);
         var profile = new DiabloProfile(data);
-        console.log('saving profile...');
-        profile.save(function(err) {
-            if(err) {
-                console.error(err);
-            }
-            console.log('d3 profile created');
+        var promises = [];
+        for (var i = 0; i < profile.heroes.length; i++) {
+            var promise = new Promise(function(resolve, reject) {
+                var options = {
+                    uri: 'http://us.battle.net/api/d3/profile/' + app.d3.battleTag + '/hero/' + profile.heroes[i].id,
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+                request(options, function(err, res, body) {
+                    if(!body) {
+                        console.log('request returned empty');
+                        mongoose.disconnect();
+                        return;
+                    }
+                    var data = JSON.parse(body);
+                    if(data) {
+                        console.log('received info for character: ' + data.name);
+                        profile.heroes[i-1] = data;
+                        resolve(data);
+                    } else {
+                        console.log('unexpected results...');
+                        reject('unexpected results...');
+                    }
+                }).on('error', function(e) {
+                    console.error(e.message);
+                    reject(e.message);
+                });
+            });
+            promises.push(promise);
+        }
+
+        Promise.all(promises).then(function() {
+            console.log('all requests complete, saving profile..');
+            console.log(profile);
+            profile.created_at = new Date();
+            profile.save(function(err) {
+                if(err) {
+                    console.error(err);
+                }
+                console.log('d3 profile created');
+                mongoose.disconnect();
+                console.log('done');
+            });
+        }, function(err) {
+            console.error(err);
             mongoose.disconnect();
-            console.log('done');
         });
     } else {
         console.log('unexpected results...');

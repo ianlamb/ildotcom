@@ -22,7 +22,7 @@ app.wow.characters.forEach(function(character) {
         };
         if(character.showcase) {
             // just ensure we only pull these once, all characters return account-wide pets and mounts
-            options.uri +=  '?fields=feed,items,pvp,progression,pets,mounts,achievements';
+            options.uri +=  '?fields=feed,items,stats,pvp,progression,pets,mounts,achievements';
         }
         request(options, function(err, res, body) {
             if(!body) {

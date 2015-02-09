@@ -18,7 +18,126 @@ var DiabloProfileSchema = new Schema({
             'gender': Number, // 0-1
             'dead': Boolean,
             'class': String,
-            'last-updated': Number
+            'last-updated': Number,
+            'items': {
+                'head': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'torso': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'feet': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'hands': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'shoulders': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'legs': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'bracers': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'mainHand': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'waist': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'rightFinger': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'leftFinger': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                },
+                'neck': {
+                    'id': String,
+                    'name': String,
+                    'icon': String,
+                    'displayColor': String,
+                    'tooltipParams': String
+                }
+            },
+            'stats': {
+                'life': Number,
+                'damage': Number,
+                'toughness': Number,
+                'healing': Number,
+                'attackSpeed': Number,
+                'armor': Number,
+                'strength': Number,
+                'dexterity': Number,
+                'vitality': Number,
+                'intelligence': Number,
+                'physicalResist': Number,
+                'fireResist': Number,
+                'coldResist': Number,
+                'lightningResist': Number,
+                'poisonResist': Number,
+                'arcaneResist': Number,
+                'critDamage': Number,
+                'blockChance': Number,
+                'blockAmountMin': Number,
+                'blockAmountMax': Number,
+                'damageIncrease': Number,
+                'critChance': Number,
+                'damageReduction': Number,
+                'thorns': Number,
+                'lifeSteal': Number,
+                'lifePerKill': Number,
+                'goldFind': Number,
+                'magicFind': Number,
+                'lifeOnHit': Number,
+                'primaryResource': Number,
+                'secondaryResource': Number
+            },
         }
     ],
     'lastHeroPlayed': Number,

@@ -199,6 +199,17 @@ var climbs, images;
 // ];
 // createClimbSession(climbs, 'junction', new Date('2015-01-29 16:00 GMT-0400'));
 
+climbs = [
+     { type: 'Boulder', sends: [] },
+     { type: 'Top Rope', sends: ['5.11-', '5.9+'] }
+];
+createClimbSession(climbs, 'junction', new Date('2015-02-05 16:00 GMT-0400'));
+
+climbs = [
+     { type: 'Boulder', sends: [] }
+];
+createClimbSession(climbs, 'junction', new Date('2015-02-08 16:00 GMT-0400'));
+
 
 
 function createClimbSession(climbs, location, workingDate, images, notes) {
