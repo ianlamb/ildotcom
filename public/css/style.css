@@ -1169,8 +1169,8 @@ a.hex:hover {
     transition: all .2s;
 }
 #climbing .session .type .grade .bubble.send {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     animation: fadeInToHalf 1s linear 0.2s;
     -webkit-animation: fadeInToHalf 1s linear 0.2s;
 }
@@ -1187,7 +1187,7 @@ a.hex:hover {
           animation-name: fadeInToHalf;
 }
 .grade.points .bubble { background: rgb(150, 89, 216); }
-.grade.V0 .bubble, .grade.five6 .bubble { background: white; }
+.grade.V0 .bubble, .grade.five6 .bubble { background: rgb(171, 171, 171); }
 .grade.V1 .bubble, .grade.five7 .bubble { background: rgb(30, 133, 228); }
 .grade.V2 .bubble, .grade.five8 .bubble { background: rgb(30, 220, 228); }
 .grade.V3 .bubble, .grade.five9 .bubble { background: rgb(28, 179, 28); }
@@ -1524,37 +1524,15 @@ a.hex:hover {
 
 /* ANIMATIONS */
 
-.fade {
+[ui-view].ng-enter {
+    -webkit-transition:all .7s ease-in;
+    -moz-transition:all .7s ease-in;
+    transition:all .7s ease-in;
 }
-.fade.ng-enter {
-    -webkit-transition: all 1.2s;
-    -moz-transition: all 1.2s;
-    -o-transition: all 1.2s;
-    transition: all 1.2s;
-}
-.fade.ng-leave {
-    -webkit-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    -o-transition: all 0.6s;
-    transition: all 0.6s;
-}
-.fade.ng-enter {
-    opacity: 0;
-}
-.fade.ng-enter-active {
-    opacity: 1;
-}
-.fade.ng-leave {
-    opacity: 1;
-}
-.fade.ng-leave-active {
-    opacity: 0;
-}
-
-[ui-view].ng-enter, [ui-view].ng-leave {
-    -webkit-transition:all .5s ease-in-out;
-    -moz-transition:all .5s ease-in-out;
-    transition:all .5s ease-in-out;
+[ui-view].ng-leave {
+    -webkit-transition:all .2;
+    -moz-transition:all .2;
+    transition:all .2;
 }
 
 [ui-view].ng-enter {

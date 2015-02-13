@@ -200,15 +200,25 @@ var climbs, images;
 // createClimbSession(climbs, 'junction', new Date('2015-01-29 16:00 GMT-0400'));
 
 climbs = [
-     { type: 'Boulder', sends: [] },
+     { type: 'Boulder', sends: ['V1', 'V3', 'V3', 'V3', 'V4', 'V6'] },
      { type: 'Top Rope', sends: ['5.11-', '5.9+'] }
 ];
 createClimbSession(climbs, 'junction', new Date('2015-02-05 16:00 GMT-0400'));
 
 climbs = [
-     { type: 'Boulder', sends: [] }
+     { type: 'Boulder', sends: ['V2', 'V3', 'V3', 'V4', 'V4', 'V5', 'V5', 'V5'] }
 ];
 createClimbSession(climbs, 'junction', new Date('2015-02-08 16:00 GMT-0400'));
+
+climbs = [
+     { type: 'Boulder', sends: ['V2', 'V3', 'V3', 'V4', 'V4', 'V5', 'V5', 'V5'] }
+];
+createClimbSession(climbs, 'junction', new Date('2015-02-10 16:00 GMT-0400'));
+
+climbs = [
+     { type: 'Boulder', sends: ['V3', 'V3', 'V5', 'V5', 'V5', 'V4', 'V3', 'V2'] }
+];
+createClimbSession(climbs, 'junction', new Date('2015-02-12 16:00 GMT-0400'));
 
 
 
