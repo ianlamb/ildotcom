@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/public'));
 // server routes ==================================================
 var router = express.Router();
 var routes = require('./app/routes');
-routes(app, router, jwt);
+routes(app, router);
 
 // start app ===============================================
 app.listen(port);	
