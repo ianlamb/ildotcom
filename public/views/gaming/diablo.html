@@ -23,16 +23,30 @@
         </div>
         <div class="col-md-9 animated fadeIn delay-medium">
             <h3>Characters</h3>
-            <div class="stats">
-                <table>
-                    <tbody>
-                        <tr ng-repeat="hero in diabloProfile.heroes">
-                            <td>{{ hero.name }}</td>
-                            <td>{{ hero.level }}</td>
-                            <td>{{ hero.class }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="characters">
+                <div ng-repeat="hero in diabloProfile.heroes" class="character">
+                    <div class="col-md-4">
+                        <h3>{{ hero.name }}</h3>
+                        <p>{{ hero.level }} {{ formatSlug(hero.class) }}</p>
+                    </div>
+                    <div class="col-md-8">
+                        <h4>Equipment</h4>
+                        <table class="items">
+                            <thead>
+                                <tr>
+                                    <th>Slot</th>
+                                    <th>Item</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="(slot, item) in hero.items">
+                                    <td>{{ formatSlug(slot) }}</td>
+                                    <td><a href="http://us.battle.net/d3/en/{{ item.tooltipParams }}" class="{{ displayColor }}">[{{ item.name }}]</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

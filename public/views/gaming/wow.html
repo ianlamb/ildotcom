@@ -43,11 +43,23 @@
                         <img ng-src="http://us.battle.net/static-render/us/{{ wowProfile.main.thumbnail }}" />
                         <h3><a href="http://us.battle.net/wow/en/character/{{ wowProfile.main.realm }}/{{ wowProfile.main.name }}/simple" title="View Armory">{{ wowProfile.main.name }}</a></h3>
                         <p>{{ wowProfile.main.level }} {{ wowProfile.main.gender }} {{ wowProfile.main.race }} {{ wowProfile.main.class }}, {{ wowProfile.main.realm }}</p>
-                        <p>Highest Raid Progression {{ wowProfile.main.progression.best }}</p>
+                        <h4>Stats</h4>
+                        <dl>
+                            <dt>Health</dt><dd>{{ wowProfile.main.stats.health }}</dd>
+                            <dt>Strength</dt><dd>{{ wowProfile.main.stats.str }}</dd>
+                            <dt>Haste</dt><dd>{{ wowProfile.main.stats.hasteRating }}</dd>
+                            <dt>Multistrike</dt><dd>{{ wowProfile.main.stats.multistrikeRating }}</dd>
+                            <dt>Mastery</dt><dd>{{ wowProfile.main.stats.masteryRating }}</dd>
+                            <dt>Versatility</dt><dd>{{ wowProfile.main.stats.versatility }}</dd>
+                            <dt>Critical Strike</dt><dd>{{ wowProfile.main.stats.critRating }}</dd>
+                        </dl>
                         <h4>PvP</h4>
-                        <p>Arena 2v2 {{ wowProfile.main.pvp.brackets.ARENA_BRACKET_2v2.rating }}</p>
-                        <p>Arena 3v3 {{ wowProfile.main.pvp.brackets.ARENA_BRACKET_3v3.rating }}</p>
-                        <p>Arena 5v5 {{ wowProfile.main.pvp.brackets.ARENA_BRACKET_5v5.rating }}</p>
+                        <dl>
+                            <dt>Honourable Kills</dt><dd>{{ wowProfile.main.totalHonorableKills }}</dd>
+                            <dt>Arena 2v2</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_2v2.rating }}</dd>
+                            <dt>Arena 3v3</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_3v3.rating }}</dd>
+                            <dt>Arena 5v5</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_5v5.rating }}</dd>
+                        </dl>
                         <p>Last Updated {{ wowProfile.main.lastModified }}</p>
         <!--                 <h4>Recent Activity</h4>
                         <ul class="feed">
