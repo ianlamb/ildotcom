@@ -565,6 +565,24 @@ label {
 }
 
 
+/* LOGIN PAGE */
+.password-field {
+    display: block;
+    margin: 200px auto;
+    width: 200px;
+    background: #fff;
+    border: 1px solid #999;
+    padding: 1em;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+.password-field:focus {
+    border-color: #00abff;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+
+
 /* HOME PAGE */
 .overlay {
     background: rgba(0, 0, 0, 0.4);

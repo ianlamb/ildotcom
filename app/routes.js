@@ -28,7 +28,9 @@ module.exports = function(app, router) {
     });
 
     router.route('/auth').post(function(req, res) {
-        if (req.password !== config.authSecret) {
+        if (!req.body.password
+            || !config.authSecret
+            || req.body.password !== config.authSecret) {
             return res.send(401);
         }
 
@@ -42,8 +44,6 @@ module.exports = function(app, router) {
             token : token,
             expires: expires
         });
-
-        res.send(200);
     });
 
     // climbing
