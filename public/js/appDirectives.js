@@ -41,11 +41,12 @@ angular.module('appDirectives', [])
     .directive('login', function() {
         return {
             restrict: 'A',
-            controller: function($scope) {
+            controller: function(Auth) {
                 $(document).on('keypress', '#login', function(e) {
-                    if ( e.which == 13 ) {
+                    var password = e.target.value;
+                    if (e.which === 13) {
                         e.preventDefault();
-                        alert('yo');
+                        Auth.post(password);
                     }
                 });
             }

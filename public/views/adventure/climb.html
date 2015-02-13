@@ -1,31 +1,4 @@
 <div id="climbing">
-    <div ng-if="params.action == 'create'" class="panel">
-        <form action="/api/climbs/create">
-            <div class="row">
-                <div class="col-xs-3">
-                    <div class="form-group">
-                        <label for="type">Type</label>
-                        <select name="type" id="type" ng-model="grades" ng-options="type for (type, grades) in climbTypes"></select>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="form-group">
-                        <label for="grade">Grade</label>
-                        <select name="grade" id="grade" ng-disabled="!grades" ng-options="grade for grade in grades">
-                            <option></option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <button type="button" data-action="add-climb">Add</button>
-                </div>
-                <div class="col-xs-3">
-                    <button type="button" data-action="save-climbs">Save</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
     <div class="row">
         <div class="col-md-3">
             <div>
@@ -58,6 +31,29 @@
         </div>
 
         <div class="col-md-9">
+            <div ng-if="authorized" class="panel">
+                <form action="/api/climbs/create">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label for="type">Type</label>
+                                <select name="type" id="type" ng-model="grades" ng-options="type for (type, grades) in climbTypes"></select>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label for="grade">Grade</label>
+                                <select name="grade" id="grade" ng-model="grade" ng-disabled="!grades" ng-options="grade for grade in grades">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <button type="button" data-action="add-climb">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div ng-repeat="session in climbSessions" class="session">
                 <div class="date" title="{{ session.dateFormatted }}">{{ session.dateFriendly }}</div>
                 <a href="{{ session.place.url }}" class="place">&commat;{{ session.place.name }}</a>

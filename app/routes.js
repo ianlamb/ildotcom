@@ -1,4 +1,5 @@
 var jwt     = require('jwt-simple');
+var auth    = require('./auth.js');
 var config  = require('../config/app.js');
 
 module.exports = function(app, router) {
@@ -47,7 +48,7 @@ module.exports = function(app, router) {
     });
 
     // climbing
-    router.route('/climbs').get(function(req, res) {
+    router.get('/climbs', function(req, res) {
         ClimbSession.find()
             .populate('place')
             .populate('photos')
@@ -60,8 +61,8 @@ module.exports = function(app, router) {
             });
     });
 
-    router.route('/climb').put(function(req, res) {
-        // todo
+    router.put('/climb', [auth], function(req, res) {
+        res.json({foo:'bar'});
     });
 
     // travel

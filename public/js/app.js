@@ -4,6 +4,7 @@ angular.module('ildotcomApp', [
     'ngAnimate',
     'appDirectives',
     'appRoutes',
+    'authService',
     'mainController',
     'adventureController',
     'travelController',
