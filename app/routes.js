@@ -1,3 +1,6 @@
+var jwt     = require('jwt-simple');
+var config  = require('../config/app.js');
+
 module.exports = function(app, router) {
 
     var AdventureManager    = require('./managers/adventure-manager.js');
@@ -21,18 +24,26 @@ module.exports = function(app, router) {
 
     // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
     router.get('/', function(req, res) {
-        res.json({ message: 'hi :)' });   
+        res.json({ message: 'hi :)' });
     });
 
-    router.route('/ian').get(function(req, res) {
-        Person.findOne({ slug: 'ian' })
-            .populate('photos')
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
-            });
+    router.route('/auth').post(function(req, res) {
+        if (req.password !== config.authSecret) {
+            return res.send(401);
+        }
+
+        var expires = new Date().getTime() + (8 * 1000 * 60 * 60); // 8 hours
+        var token = jwt.encode({
+            iss: 'root',
+            exp: expires
+        }, app.get('jwtTokenSecret'));
+         
+        res.json({
+            token : token,
+            expires: expires
+        });
+
+        res.send(200);
     });
 
     // climbing
