@@ -542,6 +542,29 @@ label {
 }
 
 
+.button, a.button {
+    display: inline-block;
+    padding: 1em;
+    font-weight: bold;
+    background: transparent;
+    color: #00abff;
+    border: 3px solid #00abff;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+.button:hover, a.button:hover {
+    background: transparent;
+    color: #337ab7;
+    border-color: #337ab7;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+.button .fa {
+    margin-right: 0.4em;
+    font-size: 1.2em;
+}
+
+
 /* HOME PAGE */
 .overlay {
     background: rgba(0, 0, 0, 0.4);
