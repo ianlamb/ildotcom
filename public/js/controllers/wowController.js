@@ -1,5 +1,7 @@
 angular.module('wowController', []).controller('WowController', function($scope, WowProfile) {
 
+    $scope.wowProfile = {};
+
     WowProfile.get()
         .success(function(data) {
             $scope.wowProfile = data;

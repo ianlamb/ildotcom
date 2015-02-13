@@ -27,7 +27,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 animated fadeIn delay-medium">
+        <div class="col-md-3">
             <div>
                 <dl>
                     <dt>Last Climb</dt><dd id="lastClimb">{{ stats.lastClimb }}</dd>
@@ -54,10 +54,10 @@
                     <dt>Climbing Sessions</dt><dd id="daysClimbed"></dd>
                 </dl>
             </div>
-            <canvas id="climbingChart" width="240" height="200"></canvas>
+            <!--<canvas id="climbingChart" width="240" height="200"></canvas>-->
         </div>
 
-        <div class="col-md-9 animated fadeIn delay-long">
+        <div class="col-md-9">
             <div ng-repeat="session in climbSessions" class="session">
                 <div class="date" title="{{ session.dateFormatted }}">{{ session.dateFriendly }}</div>
                 <a href="{{ session.place.url }}" class="place">&commat;{{ session.place.name }}</a>

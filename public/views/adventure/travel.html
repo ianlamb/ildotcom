@@ -1,14 +1,14 @@
 <div id="travel">
-    <div id="map" class="animated fadeIn"></div>
+    <div id="map" class="animated fadeIn delay-short"></div>
 
-    <div class="top animated fadeIn delay-medium">
+    <div class="top">
         <dl>
             <dt>Cities</dt><dd id="cities">{{ citiesVisited }}</dd>
             <dt>Countries</dt><dd id="countries">{{ countriesVisited }}</dd>
         </dl>
     </div>
 
-    <div class="row trips animated fadeIn delay-long">
+    <div class="row trips">
         <div ng-repeat="trip in trips | orderBy:'startDate':true" class="col-sm-4">
             <div class="trip">
                 <div class="title">
