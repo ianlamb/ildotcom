@@ -38,6 +38,20 @@ angular.module('appDirectives', [])
         };
     })
 
+    .directive('login', function() {
+        return {
+            restrict: 'A',
+            controller: function($scope) {
+                $(document).on('keypress', '#login', function(e) {
+                    if ( e.which == 13 ) {
+                        e.preventDefault();
+                        alert('yo');
+                    }
+                });
+            }
+        };
+    })
+
     .directive('projects', function() {
         return {
             restrict: 'E',
