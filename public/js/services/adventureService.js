@@ -14,6 +14,19 @@ angular.module('adventureService', [])
         return {
             get: function() {
                 return $http.get('/api/climbs');
+            },
+            put: function(data) {
+                return $http.put('/api/climb', data);
+            }
+        };
+
+    }])
+
+    .factory('Places', ['$http', function($http) {
+
+        return {
+            get: function() {
+                return $http.get('/api/places');
             }
         };
 

@@ -1,4 +1,5 @@
 var jwt     = require('jwt-simple');
+var moment  = require('moment');
 var auth    = require('./auth.js');
 var config  = require('../config/app.js');
 
@@ -47,6 +48,18 @@ module.exports = function(app, router) {
         });
     });
 
+    // places
+    router.get('/places', function(req, res) {
+        Place.find()
+            .where('name').ne(null)
+            .exec(function(err, data) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(data);
+            });
+    });
+
     // climbing
     router.get('/climbs', function(req, res) {
         ClimbSession.find()
@@ -62,7 +75,9 @@ module.exports = function(app, router) {
     });
 
     router.put('/climb', [auth], function(req, res) {
-        res.json({foo:'bar'});
+        AdventureManager.saveClimbSession(req.body).then(function(data) {
+            res.json(data);
+        });
     });
 
     // travel
@@ -80,7 +95,9 @@ module.exports = function(app, router) {
     });
     
     router.route('/trip').put(function(req, res) {
-        AdventureManager.saveTrip(req.body);
+        AdventureManager.saveTrip(req.body).then(function() {
+            // do stuff
+        });
     });
 
     // games

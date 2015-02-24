@@ -1,5 +1,5 @@
 angular.module('authService', [])
-    .factory('Auth', ['$http', function($http, $location) {
+    .factory('Auth', ['$http', '$location', function($http, $location) {
 
         return {
             post: function(password) {

@@ -1,11 +1,13 @@
-var mongoose = require('mongoose');
-var request = require('request');
-var Promise = require('promise');
-var app = require('../../config/app');
-var db = require('../../config/db');
-var Trip   = require('../models/trip');
-var Place  = require('../models/place');
-var Photo  = require('../models/photo');
+var mongoose        = require('mongoose');
+var request         = require('request');
+var Promise         = require('promise');
+var app             = require('../../config/app');
+var db              = require('../../config/db');
+var Trip            = require('../models/trip');
+var Place           = require('../models/place');
+var Photo           = require('../models/photo');
+var Climb           = require('../models/climb');
+var ClimbSession    = require('../models/climb-session');
 
 module.exports = {
     saveTrip: function(data) {
@@ -61,13 +63,54 @@ module.exports = {
             Promise.all(promises).then(function(data) {
                 console.log('promises resolved, saving trip...');
                 trip.created_at = new Date();
-                trip.save(function(err) {
+                trip.save(function(err, savedTrip) {
                     if(err) {
                         console.error(err);
                     }
                     console.log('created ' + trip.name);
                     mongoose.disconnect();
-                    resolve();
+                    resolve(savedTrip);
+                });
+            }, function(err) {
+                console.error(err);
+                reject();
+            });
+        });
+    },
+
+    saveClimbSession: function(session) {
+        return new Promise(function(resolve) {
+            var promises = [];
+            var savedClimbs = [];
+            session.climbs.forEach(function(c) {
+                var promise = new Promise(function(resolve, reject) {
+                    Climb.create(c, function(err, cl) {
+                        if(err) {
+                            console.error(err);
+                        }
+                        console.log(cl);
+                        savedClimbs.push(cl);
+                        resolve();
+                    });
+                });
+                promises.push(promise);
+            });
+            Promise.all(promises).then(function() {
+                session.climbs = savedClimbs;
+                ClimbSession.create(session, function(err, newSession) {
+                    if(err) {
+                        console.error(err);
+                    }
+                    console.log('Created Climbing Session: ' + newSession._id);
+                    Place.find({ _id: mongoose.Types.ObjectId(session.place) })
+                        .exec(function(err, place) {
+                            if (err) {
+                                res.send(err);
+                            }
+                            console.log('Found place: ' + place.name);
+                            newSession.place = place;
+                            resolve(newSession);
+                        });
                 });
             }, function(err) {
                 console.error(err);

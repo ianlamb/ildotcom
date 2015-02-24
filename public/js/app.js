@@ -2,6 +2,7 @@ angular.module('ildotcomApp', [
     'ui.bootstrap',
     'ui.router',
     'ngAnimate',
+    'infinite-scroll',
     'appDirectives',
     'appRoutes',
     'authService',
