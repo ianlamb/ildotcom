@@ -31,17 +31,23 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
         $scope.$apply(function() {
             var type = $('#type').val();
             var grade = $('#grade option:selected').html();
-            var result = $.grep($scope.newSession.climbs, function(e){ return e.type == type; });
-            if (result.length == 0) {
+            var typeExists = false;
+            for (var i = 0; i < $scope.newSession.climbs.length; i++) {
+                if ($scope.newSession.climbs[i].type === type) {
+                    $scope.newSession.climbs[i].sends.push(grade);
+                    typeExists = true;
+                    break;
+                }
+            }
+            if (!typeExists) {
                 $scope.newSession.climbs.push({ type: type, sends: [grade] });
-            } else if (result.length == 1) {
-                result[0].sends.push(grade);
             }
         });
     });
 
     $(document).on('click', '[data-action="save-session"]', function() {
         $scope.newSession.place = $('#place').val();
+        $scope.newSession.date = $('#timestamp').val();
         if(!$scope.newSession.place) {
             alert('Place required');
             return;

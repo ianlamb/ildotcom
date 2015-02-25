@@ -34,7 +34,7 @@
             <div ng-if="authorized" class="panel">
                 <form id="addClimbForm">
                     <div class="row">
-                        <div class="col-xs-4">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="place">Place</label>
                                 <select name="place" id="place" ng-model="place">
@@ -42,7 +42,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="timestamp">Timestamp</label>
                                 <input type="text" name="timestamp" id="timestamp" value="{{ newSession.date }}">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4">
+                        <div class="col-sm-4 col-xs-5">
                             <div class="form-group">
                                 <label for="type">Type</label>
                                 <select name="type" id="type" ng-model="grades" ng-options="type for (type, grades) in climbTypes"></select>
@@ -62,7 +62,7 @@
                                 <select name="grade" id="grade" ng-model="grade" ng-disabled="!grades" ng-options="grade for grade in grades"></select>
                             </div>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-sm-4 col-xs-3">
                             <button type="button" data-action="add-climb"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <li ng-repeat="climb in newSession.climbs">
                             {{ climb.type }}
                             <ul>
-                                <li ng-repeat="send in climb.sends">{{ send }}</li>
+                                <li ng-repeat="send in climb.sends track by $index">{{ send }}</li>
                             </ul>
                         </li>
                     </ul>
