@@ -10,7 +10,7 @@ var ClimbSessionSchema = new Schema({
     }],
     'place': { 'type': Schema.Types.ObjectId, 'ref': 'Place' },
     created_at: Date,
-    modified_at: Date
+    updated_at: Date
 });
 
 ClimbSessionSchema.pre('save', function(next){
