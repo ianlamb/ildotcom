@@ -20,7 +20,7 @@ var WowProfileSchema = new Schema({
         thumbnail: String,
         totalHonorableKills: Number,
         feed: [{
-            type: String,
+            type: { type: String },
             timestamp: Number,
             name: String,
             quantity: Number,

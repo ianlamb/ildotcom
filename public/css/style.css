@@ -56,6 +56,8 @@ a:hover {
 }
 a:active { color: #00abff; }
 
+label { color: #666; }
+
 dl {
     width: 185px;
     display: inline-block;
@@ -130,9 +132,6 @@ label {
 
 .panel {
     padding: 1.0em 2.0em;
-}
-.panel label {
-    color: #222;
 }
 
 
@@ -1119,6 +1118,8 @@ a.hex:hover {
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(0,0,0,0.2);
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
 }
 #climbing .session .date {
     font-size: 1.8em;

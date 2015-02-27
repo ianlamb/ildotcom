@@ -36,7 +36,7 @@ module.exports = function(app, router) {
             return res.send(401);
         }
 
-        var expires = new Date().getTime() + (8 * 1000 * 60 * 60); // 8 hours
+        var expires = new Date().getTime() + (7 * 24 * 60 * 60 * 1000); // 7 days
         var token = jwt.encode({
             iss: 'root',
             exp: expires

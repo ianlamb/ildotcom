@@ -3,36 +3,40 @@
         <div class="col-md-3">
             <div>
                 <dl>
-                    <dt>Last Climb</dt><dd id="lastClimb">{{ stats.lastClimb }}</dd>
+                    <dt>Last Climb</dt>
+                    <dd id="lastClimb" style="font-size: 1.6em;">{{ stats.lastClimb }}</dd>
                 </dl>
                 <dl>
-                    <dt>Best Boulder</dt><dd id="bestBoulder">
-                        <span class="prefix"></span><span class="number"></span>
-                    </dd>
+                    <dt>Best Boulder</dt>
+                    <dd id="bestBoulder">{{ stats.bestBoulder }}</dd>
                 </dl>
                 <dl>
-                    <dt>Best Lead</dt><dd id="bestLead">
-                        <span class="prefix"></span><span class="number"></span><span class="suffix"></span>
-                    </dd>
+                    <dt>Best Lead</dt>
+                    <dd id="bestLead">{{ stats.bestLead }}</dd>
                 </dl>
                 <dl>
-                    <dt>Best Top Rope</dt><dd id="bestTopRope">
-                        <span class="prefix"></span><span class="number"></span><span class="suffix"></span>
-                    </dd>
+                    <dt>Best Top Rope</dt>
+                    <dd id="bestTopRope">{{ stats.bestTopRope }}</dd>
                 </dl>
                 <dl>
-                    <dt>Routes Climbed</dt><dd id="routesClimbed"></dd>
+                    <dt>Boulder Problems</dt>
+                    <dd id="problemsClimbed">{{ stats.problemsClimbed }}</dd>
                 </dl>
                 <dl>
-                    <dt>Climbing Sessions</dt><dd id="daysClimbed"></dd>
+                    <dt>Routes</dt>
+                    <dd id="routesClimbed">{{ stats.routesClimbed }}</dd>
+                </dl>
+                <dl>
+                    <dt>Sessions</dt>
+                    <dd id="daysClimbed">{{ stats.daysClimbed }}</dd>
                 </dl>
             </div>
             <!--<canvas id="climbingChart" width="240" height="200"></canvas>-->
         </div>
-
         <div class="col-md-9">
             <div ng-if="authorized" class="panel">
                 <form id="addClimbForm">
+                    <h3>New Session</h3>
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
@@ -80,7 +84,7 @@
             </div>
             <div infinite-scroll="loadMore()" class="sessions">
                 <div ng-repeat="session in climbSessions" class="session">
-                    <div class="date" title="{{ session.dateFormatted }}">{{ session.dateFriendly }}</div>
+                    <div class="date" title="{{ moment(session.date).format('YYYY-MM-DD') }}">{{ moment(session.date).format('MMMM Do, YYYY') }}</div>
                     <a href="{{ session.place.url }}" class="place">&commat;{{ session.place.name }}</a>
                     <div ng-repeat="climb in session.climbs" class="type {{ climb.type.replace(' ','').toLowerCase() }}">
                         <h5>{{ climb.type }}</h5>
@@ -90,7 +94,11 @@
                         </div>
                     </div>
                     <div class="footer">
-                        <div class="count">Climbed <span>{{ session.sendCount }}</span> routes</div>
+                        <div class="count">
+                            Climbed 
+                            <span ng-if="session.routeCount">{{ session.routeCount }} route{{ session.routeCount > 1 ? 's' : '' }}</span>
+                            <span ng-if="session.problemCount">{{ session.routeCount ? 'and' : '' }} {{ session.problemCount }} problem{{ session.problemCount > 1 ? 's' : '' }}</span>
+                        </div>
                         <div ng-if="session.totalPoints" class="total-points">Scored <span>{{session.totalPoints}}</span> points</div>
                         <div ng-if="session.notes" class="notes">{{session.notes}}</div>
                     </div>

@@ -64,6 +64,7 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
                     climbs: []
                 };
                 $scope.climbSessions.unshift(parseClimb(data));
+                $scope.stats.lastClimb = moment(climbSessions[0].date).fromNow();
             });
     });
 
@@ -72,6 +73,7 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
             $scope.stats = {
                 daysClimbed: 0,
                 routesClimbed: 0,
+                problemsClimbed: 0,
                 bestBoulder: boulderGrades[0],
                 bestLead: climbGrades[0],
                 bestTopRope: climbGrades[0]
@@ -79,24 +81,24 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
             var climbSessions = data;
 
             climbSessions.forEach(parseClimb);
-            $scope.stats.daysClimbed = climbSessions.length;
 
-            $('#daysClimbed').animateNumber({ number: $scope.stats.daysClimbed }, 1000);
-            $('#routesClimbed').animateNumber({ number: $scope.stats.routesClimbed }, 1000);
-            $('#bestBoulder .prefix').html('V');
-            $('#bestBoulder .number').animateNumber({ number: $scope.stats.bestBoulder.replace('V','') }, 1000);
-            $('#bestLead .prefix').html('5.');
-            if($scope.stats.bestLead.indexOf('-') > -1)
-                $('#bestLead .suffix').hide().html('-').delay(1100).fadeIn(500);
-            if($scope.stats.bestLead.indexOf('+') > -1)
-                $('#bestLead .suffix').hide().html('+').delay(1100).fadeIn(500);
-            $('#bestLead .number').animateNumber({ number: $scope.stats.bestLead.replace('5.','').replace('+','').replace('-','') }, 1000);
-            $('#bestTopRope .prefix').html('5.');
-            if($scope.stats.bestTopRope.indexOf('-') > -1)
-                $('#bestTopRope .suffix').hide().html('-').delay(1100).fadeIn(500);
-            if($scope.stats.bestTopRope.indexOf('+') > -1)
-                $('#bestTopRope .suffix').hide().html('+').delay(1100).fadeIn(500);
-            $('#bestTopRope .number').animateNumber({ number: $scope.stats.bestTopRope.replace('5.','').replace('+','').replace('-','') }, 1000);
+            // $('#daysClimbed').animateNumber({ number: $scope.stats.daysClimbed }, 1000);
+            // $('#routesClimbed').animateNumber({ number: $scope.stats.routesClimbed }, 1000);
+            // $('#problemsClimbed').animateNumber({ number: $scope.stats.problemsClimbed }, 1000);
+            // $('#bestBoulder .prefix').html('V');
+            // $('#bestBoulder .number').animateNumber({ number: $scope.stats.bestBoulder.replace('V','') }, 1000);
+            // $('#bestLead .prefix').html('5.');
+            // if($scope.stats.bestLead.indexOf('-') > -1)
+            //     $('#bestLead .suffix').hide().html('-').delay(1100).fadeIn(500);
+            // if($scope.stats.bestLead.indexOf('+') > -1)
+            //     $('#bestLead .suffix').hide().html('+').delay(1100).fadeIn(500);
+            // $('#bestLead .number').animateNumber({ number: $scope.stats.bestLead.replace('5.','').replace('+','').replace('-','') }, 1000);
+            // $('#bestTopRope .prefix').html('5.');
+            // if($scope.stats.bestTopRope.indexOf('-') > -1)
+            //     $('#bestTopRope .suffix').hide().html('-').delay(1100).fadeIn(500);
+            // if($scope.stats.bestTopRope.indexOf('+') > -1)
+            //     $('#bestTopRope .suffix').hide().html('+').delay(1100).fadeIn(500);
+            // $('#bestTopRope .number').animateNumber({ number: $scope.stats.bestTopRope.replace('5.','').replace('+','').replace('-','') }, 1000);
 
             // var ctx = document.getElementById('climbingChart').getContext('2d');
             // var chart = new Chart(ctx).Line(chartData);
@@ -128,11 +130,8 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
         });
 
     function parseClimb(session) {
-        session.dateFriendly = moment(session.date).format('MMMM Do, YYYY');
-        session.dateFormatted = moment(session.date).format('YYYY-MM-DD');
-        session.dateStandard = moment(session.date.split('T')[0]).format('YYYY-MM-DD');
-        session.sendCount = 0;
-        var topSendsForComp = [];
+        session.routeCount = 0;
+        session.problemCount = 0;
         session.climbs.forEach(function(c) {
             c.mappedSends = [];
             c.sends.forEach(function(s) {
@@ -141,23 +140,22 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
                     var gradeClass;
                     switch(c.type) {
                     case 'Boulder':
-                        if(c.purpose === 'comp') {
-                            gradeClass = 'points';
-                        } else {
-                            gradeClass = s;
-                            if(boulderGrades.indexOf(s) > boulderGrades.indexOf($scope.stats.bestLead))
-                                $scope.stats.bestBoulder = s;
-                        }
+                        gradeClass = s;
+                        if(boulderGrades.indexOf(s) > boulderGrades.indexOf($scope.stats.bestLead))
+                            $scope.stats.bestBoulder = s;
+                        session.problemCount++;
                         break;
                     case 'Lead':
                         gradeClass = 'five' + s.replace('5.','').replace('+','').replace('-','');
                         if(climbGrades.indexOf(s) > climbGrades.indexOf($scope.stats.bestLead))
                             $scope.stats.bestLead = s;
+                        session.routeCount++;
                         break;
                     case 'Top Rope':
                         gradeClass = 'five' + s.replace('5.','').replace('+','').replace('-','');
                         if(climbGrades.indexOf(s) > climbGrades.indexOf($scope.stats.bestTopRope))
                             $scope.stats.bestTopRope = s;
+                        session.routeCount++;
                         break;
                     }
                     c.mappedSends.push({ grade: s, gradeClass: gradeClass, sends: [s] });
@@ -165,31 +163,10 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
                     res[0].sends.push(s)
                 }
             });
-            if(c.purpose === 'comp') {
-                topSendsForComp = [];
-                c.mappedSends.forEach(function(s) {
-                    topSendsForComp.push({ grade: s.grade });
-                });
-                topSendsForComp = topSendsForComp.sort(function(a, b) {
-                    return parseInt(a.grade) < parseInt(b.grade);
-                });
-                topSendsForComp = topSendsForComp.slice(0, 6);
-                session.totalPoints = 0;
-                var i = 0;
-                topSendsForComp.forEach(function(s) {
-                    session.totalPoints += parseInt(s.grade);
-                    s.grade = '#' + (++i) + ' - ' + s.grade;
-                });
-            }
-            session.sendCount = c.sends.length;
-            $scope.stats.routesClimbed += session.sendCount;
         });
-        if(topSendsForComp.length > 0) {
-            session.climbs.push({
-                type: 'Top Sends',
-                mappedSends: topSendsForComp
-            });
-        }
+        $scope.stats.routesClimbed += session.routeCount;
+        $scope.stats.problemsClimbed += session.problemCount;
+        $scope.stats.daysClimbed++;
         session.climbs.sort(function(a, b) { 
             return a.type > b.type;
         });

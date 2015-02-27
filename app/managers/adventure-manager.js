@@ -6,7 +6,6 @@ var db              = require('../../config/db');
 var Trip            = require('../models/trip');
 var Place           = require('../models/place');
 var Photo           = require('../models/photo');
-var Climb           = require('../models/climb');
 var ClimbSession    = require('../models/climb-session');
 
 module.exports = {
@@ -81,22 +80,7 @@ module.exports = {
     saveClimbSession: function(session) {
         return new Promise(function(resolve) {
             var promises = [];
-            var savedClimbs = [];
-            session.climbs.forEach(function(c) {
-                var promise = new Promise(function(resolve, reject) {
-                    Climb.create(c, function(err, cl) {
-                        if(err) {
-                            console.error(err);
-                        }
-                        console.log(cl);
-                        savedClimbs.push(cl);
-                        resolve();
-                    });
-                });
-                promises.push(promise);
-            });
             Promise.all(promises).then(function() {
-                session.climbs = savedClimbs;
                 ClimbSession.create(session, function(err, newSession) {
                     if(err) {
                         console.error(err);

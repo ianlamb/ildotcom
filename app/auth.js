@@ -7,14 +7,14 @@ module.exports = function(req, res, next) {
         try {
             var decoded = jwt.decode(token, config.jwtTokenSecret);
             if (decoded.exp <= Date.now()) {
-                res.end('Access token has expired', 400);
+                res.send(401, 'Access token has expired');
+            } else if (decoded.iss !== 'root') {
+                res.send(401, 'User has no privileges');
+            } else {
+                next();
             }
-            if (decoded.iss !== 'root') {
-                res.end('User has no privileges', 401);
-            }
-            next();
         } catch (err) {
-            res.end('Access token is muddy, aborting request', 500);
+            res.send(500, 'Access token is muddy, aborting request');
         }
     } else {
         res.send(401);
