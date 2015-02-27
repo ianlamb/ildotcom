@@ -8,7 +8,18 @@ var ClimbSessionSchema = new Schema({
         'type': { type: String },
         'sends': [String]
     }],
-    'place': { 'type': Schema.Types.ObjectId, 'ref': 'Place' }
+    'place': { 'type': Schema.Types.ObjectId, 'ref': 'Place' },
+    created_at: Date,
+    modified_at: Date
+});
+
+ClimbSessionSchema.pre('save', function(next){
+    now = new Date();
+    this.updated_at = now;
+    if ( !this.created_at ) {
+        this.created_at = now;
+    }
+    next();
 });
 
 module.exports = mongoose.model('ClimbSession', ClimbSessionSchema);
