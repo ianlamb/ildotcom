@@ -33,15 +33,15 @@ angular.module('wowController', []).controller('WowController', function($scope,
     };
 
     $scope.parseFeedItem = function(feedItem) {
-        switch(feedItem) {
+        switch(feedItem.type) {
             case "CRITERIA":
-                return "Completed step of achievement";
+                return 'Completed step of achievement "' + feedItem.achievement.title + '"';
             case "ACHIEVEMENT":
-                return "Earned the achievement";
+                return 'Earned the achievement "' + feedItem.achievement.title + '"';
             case "BOSSKILL":
-                return "Killed";
+                return feedItem.achievement.title;
             case "LOOT":
-                return "Looted"
+                return 'Looted Item ' + feedItem.itemId;
         }
     };
 

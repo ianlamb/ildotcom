@@ -48,11 +48,11 @@ hr { border-width: 1px; border-color: rgba(0,0,0,0.2); }
 a, a:link, a:visited {
     text-decoration: none;
     color: #00abff;
-    transition: color .15s;
+    transition: all .2s;
 }
 a:hover {
     color: #0091d8;
-    transition: color .3s;
+    transition: all .4s;
 }
 a:active { color: #00abff; }
 
@@ -1251,47 +1251,59 @@ a.hex:hover {
     background: #fff;
     color: #454545;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    padding: 16px 16px 16px 16px;
-    margin-bottom: 20px;
+    padding: 0;
+    margin-top: 20px;
     -webkit-transition: all .4s;
     transition: all .4s;
 }
+#gaming .character .extended {
+    padding: 16px 16px 16px 16px;
+}
 #gaming .character dl dd {
-    font-size: 1.6em;
+    font-size: 1.4em;
 }
 #gaming .character:hover {
     box-shadow: 0 3px 15px rgba(0,0,0,0.2);
     -webkit-transition: all .2s;
     transition: all .2s;
 }
-#gaming .character.showcase {
-    text-align: left;
+#gaming .character a.main {
+    display: block;
+    color: #454545;
+    border-bottom: 4px solid #00abff;
+}
+#gaming .character a.main:hover {
+    background: #00abff;
+    color: #fff;
+    border-bottom-color: #0091d8;
+}
+#gaming .character.showcase a.main p {
+    font-size: 1.4em;
+}
+#gaming .character.showcase a.main h3 {
+    font-size: 2.0em;
 }
 #gaming .character img {
-}
-#gaming .alts .character {
-    height: 84px;
-    padding: 0;
-}
-#gaming .alts .character .details {
-    display: inline-block;
-}
-#gaming .alts .character img {
     display: inline-block;
     vertical-align: top;
     margin-right: 5px;
 }
-#gaming .alts .character h3 {
+#gaming .character .details {
+    display: inline-block;
+    vertical-align: top;
+}
+#gaming .character h3 {
     display: inline-block;
     vertical-align: top;
     margin: 5px 0 5px 0;
 }
-#gaming .alts .character p {
+#gaming .character p {
     margin: 0;
 }
 #gaming .items {
     list-style: none;
     padding: 0;
+    width: 100%;
 }
 #gaming .items td, #gaming .items th {
     padding: 2px;
@@ -1310,8 +1322,8 @@ a.hex:hover {
 #gaming .items .epic { color: #a335ee; }
 #gaming .items .legendary { color: #ff8000; }
 #gaming .items .white { color: #fff; }
-#gaming .items .blue { color: blue; }
-#gaming .items .yellow { color: yellow; }
+#gaming .items .blue { color: rgb(50, 79, 226); }
+#gaming .items .yellow { color: rgb(218, 215, 14); }
 #gaming .items .green { color: #00ff00; }
 #gaming .items .orange { color: #bf642f; }
 #gaming .feed {
@@ -1319,29 +1331,87 @@ a.hex:hover {
     padding: 0;
 }
 
+#diablo .portrait {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 0 0;
+    height: 66px;
+    width: 83px;
+    background: url('http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg');
+}
+#diablo .portrait.barbarian-male {
+    background-position: 0 0;
+}
+#diablo .portrait.barbarian-female {
+    background-position: -83px 0;
+}
+#diablo .portrait.demon-hunter-male {
+    background-position: 0 -66px;
+}
+#diablo .portrait.demon-hunter-female {
+    background-position: -83px -66px;
+}
+#diablo .portrait.monk-male {
+    background-position: 0 -132px;
+}
+#diablo .portrait.monk-female {
+    background-position: -83px -132px;
+}
+#diablo .portrait.witch-doctor-male {
+    background-position: 0 -198px;
+}
+#diablo .portrait.witch-doctor-female {
+    background-position: -83px -198px;
+}
+#diablo .portrait.wizard-male {
+    background-position: 0 -264px;
+}
+#diablo .portrait.wizard-female {
+    background-position: -83px -264px;
+}
+#diablo .portrait.crusader-male {
+    background-position: 0 -330px;
+}
+#diablo .portrait.crusader-female {
+    background-position: -83px -330px;
+}
 #diablo .stats table {
     width: 100%;
     border-collapse: collapse;
-    border-spacing: 0px;  /* <---- won't really need this if you have border-collapse = collapse */
-    border-style:none;
+    border-spacing: 0px;
+    border-style: none;
 }
 #diablo .stats table td {
     padding: 10px 20px;
     border: 1px solid rgba(0,0,0,0.2);
 }
-
-#starcraft {
+#diablo .character dl {
+    width: 100%;
 }
+#diablo .character dl dt {
+    display: inline-block;
+    width: 50%;
+}
+#diablo .character dl dd {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+    font-size: 1.2em;
+}
+
+
 #starcraft .portrait {
     display: inline-block;
-    margin-right: 10px;
+    vertical-align: top;
+    margin: 0 10px 0 0;
     width: 90px;
     height: 90px;
 }
-#starcraft .details {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 0 5px 0;
+
+.timestamp {
+    color: #777;
+    font-size: 0.8em;
+    float: right;
 }
 
 

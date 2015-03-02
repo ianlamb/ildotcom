@@ -12,52 +12,54 @@
             </dl>
         </div>
         <div class="col-md-9">
-            <h3>Profile</h3>
             <div class="character">
-                <div class="portrait" style="background: url({{ starcraftProfile.portrait.url }}) no-repeat {{ starcraftProfile.portrait.x }}px {{ starcraftProfile.portrait.y }}px;"></div>
-                <div class="details">
-                    <h3 class="name">{{ starcraftProfile.displayName }}</h3>
-                    <div>{{ starcraftProfile.achievements.points.totalPoints }}</div>
-                </div>
+                <a href="http://us.battle.net/sc2/en{{ starcraftProfile.profilePath }}" target="_blank" title="View Profile" class="main">
+                    <div class="portrait" style="background: url('{{ starcraftProfile.portrait.url }}') no-repeat {{ starcraftProfile.portrait.x }}px {{ starcraftProfile.portrait.y }}px;"></div>
+                    <div class="details">
+                        <h3>{{ starcraftProfile.displayName }}</h3>
+                        <div>{{ starcraftProfile.achievements.points.totalPoints }}</div>
+                    </div>
+                </a>
+                <div class="extended">
+                    <h3>Campaign</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4>Wings of Liberty</h4>
+                            <span>{{ starcraftProfile.campaign.wol }}</span>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Heart of the Swarm</h4>
+                            <span>{{ starcraftProfile.campaign.hots }}</span>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Legacy of the Void</h4>
+                            <span>Coming Soon...</span>
+                        </div>
+                    </div>
 
-                <h3>Campaign</h3>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4>Wings of Liberty</h4>
-                        <span>{{ starcraftProfile.campaign.wol }}</span>
-                    </div>
-                    <div class="col-md-4">
-                        <h4>Heart of the Swarm</h4>
-                        <span>{{ starcraftProfile.campaign.hots }}</span>
-                    </div>
-                    <div class="col-md-4">
-                        <h4>Legacy of the Void</h4>
-                        <span>Coming Soon...</span>
-                    </div>
-                </div>
-
-                <h3>Swarm Levels</h3>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label>Terran</label>
-                        Level {{ starcraftProfile.swarmLevels.terran.level }}
-                        <progressbar value="percent(starcraftProfile.swarmLevels.terran.currentLevelXP, starcraftProfile.swarmLevels.terran.totalLevelXP)">
-                            {{ starcraftProfile.swarmLevels.terran.currentLevelXP }} / {{ starcraftProfile.swarmLevels.terran.totalLevelXP }}
-                        </progressbar>
-                    </div>
-                    <div class="col-md-4">
-                        <label>Zerg</label>
-                        Level {{ starcraftProfile.swarmLevels.zerg.level }}
-                        <progressbar value="percent(starcraftProfile.swarmLevels.zerg.currentLevelXP, starcraftProfile.swarmLevels.zerg.totalLevelXP)">
-                            {{ starcraftProfile.swarmLevels.zerg.currentLevelXP }} / {{ starcraftProfile.swarmLevels.zerg.totalLevelXP }}
-                        </progressbar>
-                    </div>
-                    <div class="col-md-4">
-                        <label>Protoss</label>
-                        Level {{ starcraftProfile.swarmLevels.protoss.level }}
-                        <progressbar value="percent(starcraftProfile.swarmLevels.protoss.currentLevelXP, starcraftProfile.swarmLevels.protoss.totalLevelXP)">
-                            {{ starcraftProfile.swarmLevels.protoss.currentLevelXP }} / {{ starcraftProfile.swarmLevels.protoss.totalLevelXP }}
-                        </progressbar>
+                    <h3>Swarm Levels</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Terran</label>
+                            Level {{ starcraftProfile.swarmLevels.terran.level }}
+                            <progressbar value="percent(starcraftProfile.swarmLevels.terran.currentLevelXP, starcraftProfile.swarmLevels.terran.totalLevelXP)">
+                                {{ starcraftProfile.swarmLevels.terran.currentLevelXP }} / {{ starcraftProfile.swarmLevels.terran.totalLevelXP }}
+                            </progressbar>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Zerg</label>
+                            Level {{ starcraftProfile.swarmLevels.zerg.level }}
+                            <progressbar value="percent(starcraftProfile.swarmLevels.zerg.currentLevelXP, starcraftProfile.swarmLevels.zerg.totalLevelXP)">
+                                {{ starcraftProfile.swarmLevels.zerg.currentLevelXP }} / {{ starcraftProfile.swarmLevels.zerg.totalLevelXP }}
+                            </progressbar>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Protoss</label>
+                            Level {{ starcraftProfile.swarmLevels.protoss.level }}
+                            <progressbar value="percent(starcraftProfile.swarmLevels.protoss.currentLevelXP, starcraftProfile.swarmLevels.protoss.totalLevelXP)">
+                                {{ starcraftProfile.swarmLevels.protoss.currentLevelXP }} / {{ starcraftProfile.swarmLevels.protoss.totalLevelXP }}
+                            </progressbar>
+                        </div>
                     </div>
                 </div>
             </div>

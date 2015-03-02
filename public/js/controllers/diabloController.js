@@ -5,6 +5,10 @@ angular.module('diabloController', []).controller('DiabloController', function($
             $scope.diabloProfile = data;
         });
 
+    $scope.getClassSlug = function(hero) {
+        return hero.class + '-' + (hero.gender ? 'female' : 'male');
+    }
+
     $scope.percent = function(value) {
         return parseInt(value * 100);
     }

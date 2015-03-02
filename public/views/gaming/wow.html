@@ -1,6 +1,17 @@
 <div id="wow">
     <div class="row">
         <div class="col-sm-3">
+            <div class="collections">
+                <h3>Collections</h3>
+                <label>Mounts Collected</label>
+                <progressbar value="percent(wowProfile.mounts.numCollected, wowProfile.mounts.possible)">
+                    {{ formatProgress(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}
+                </progressbar>
+                <label>Pets Collected</label>
+                <progressbar value="percent(wowProfile.pets.numCollected, wowProfile.pets.possible)">
+                    {{ formatProgress(wowProfile.pets.numCollected, wowProfile.pets.possible) }}
+                </progressbar>
+            </div>
             <div class="achievements">
                 <h3>Achievements</h3>
                 <label>Total Complete</label>
@@ -22,84 +33,89 @@
                     {{ wowProfile.achievements['Feats of Strength'].foSTotal }}
                 </progressbar>
             </div>
-            <div class="collections">
-                <h3>Collections</h3>
-                <label>Mounts Collected</label>
-                <progressbar value="percent(wowProfile.mounts.numCollected, wowProfile.mounts.possible)">
-                    {{ formatProgress(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}
-                </progressbar>
-                <label>Pets Collected</label>
-                <progressbar value="percent(wowProfile.pets.numCollected, wowProfile.pets.possible)">
-                    {{ formatProgress(wowProfile.pets.numCollected, wowProfile.pets.possible) }}
-                </progressbar>
-            </div>
+            <span class="timestamp">Last Updated {{ wowProfile.main.lastModified }}</span>
         </div>
 
         <div class="col-sm-9">
-            <h3>Main Character</h3>
             <div class="character showcase">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img ng-src="http://us.battle.net/static-render/us/{{ wowProfile.main.thumbnail }}" />
-                        <h3><a href="http://us.battle.net/wow/en/character/{{ wowProfile.main.realm }}/{{ wowProfile.main.name }}/simple" title="View Armory">{{ wowProfile.main.name }}</a></h3>
+                <a href="http://us.battle.net/wow/en/character/{{ wowProfile.main.realm }}/{{ wowProfile.main.name }}/simple" target="_blank" title="View Armory" class="main">
+                    <img ng-src="http://us.battle.net/static-render/us/{{ wowProfile.main.thumbnail }}" />
+                    <div class="details">
+                        <h3>{{ wowProfile.main.name }}</h3>
                         <p>{{ wowProfile.main.level }} {{ wowProfile.main.gender }} {{ wowProfile.main.race }} {{ wowProfile.main.class }}, {{ wowProfile.main.realm }}</p>
-                        <h4>Stats</h4>
-                        <dl>
-                            <dt>Health</dt><dd>{{ wowProfile.main.stats.health }}</dd>
-                            <dt>Strength</dt><dd>{{ wowProfile.main.stats.str }}</dd>
-                            <dt>Haste</dt><dd>{{ wowProfile.main.stats.hasteRating }}</dd>
-                            <dt>Multistrike</dt><dd>{{ wowProfile.main.stats.multistrikeRating }}</dd>
-                            <dt>Mastery</dt><dd>{{ wowProfile.main.stats.masteryRating }}</dd>
-                            <dt>Versatility</dt><dd>{{ wowProfile.main.stats.versatility }}</dd>
-                            <dt>Critical Strike</dt><dd>{{ wowProfile.main.stats.critRating }}</dd>
-                        </dl>
-                        <h4>PvP</h4>
-                        <dl>
-                            <dt>Honourable Kills</dt><dd>{{ wowProfile.main.totalHonorableKills }}</dd>
-                            <dt>Arena 2v2</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_2v2.rating }}</dd>
-                            <dt>Arena 3v3</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_3v3.rating }}</dd>
-                            <dt>Arena 5v5</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_5v5.rating }}</dd>
-                        </dl>
-                        <p>Last Updated {{ wowProfile.main.lastModified }}</p>
-                        <h4>Recent Activity</h4>
-                        <ul class="feed">
-                            <li ng-repeat="feedItem in wowProfile.main.feed">{{ parseFeedItem(feedItem) }} {{ feedItem.name }} <span class="minor">{{ fromNow(feedItem.timestamp) }}</span></li>
-                        </ul>
                     </div>
-                    <div class="col-md-8">
-                        <h4>Equipment</h4>
-                        <p>Average Item Level: {{ wowProfile.main.items.averageItemLevel }}</p>
-                        <table class="items">
-                            <thead>
-                                <tr>
-                                    <th>Slot</th>
-                                    <th>Level</th>
-                                    <th>Item</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in wowProfile.main.items" ng-if="item.name">
-                                    <td>{{ item.slot }}</td>
-                                    <td>{{ item.itemLevel }}</td>
-                                    <td><a href="http://www.wowhead.com/item={{ item.id }}" class="{{ itemQuality(item.quality) }}">[{{ item.name }}]</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                </a>
+                <div class="extended">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4>Stats</h4>
+                            <dl>
+                                <dt>Health</dt><dd>{{ wowProfile.main.stats.health }}</dd>
+                                <dt>Strength</dt><dd>{{ wowProfile.main.stats.str }}</dd>
+                                <dt>Haste</dt><dd>{{ wowProfile.main.stats.hasteRating }}</dd>
+                                <dt>Multistrike</dt><dd>{{ wowProfile.main.stats.multistrikeRating }}</dd>
+                                <dt>Mastery</dt><dd>{{ wowProfile.main.stats.masteryRating }}</dd>
+                                <dt>Versatility</dt><dd>{{ wowProfile.main.stats.versatility }}</dd>
+                                <dt>Critical Strike</dt><dd>{{ wowProfile.main.stats.critRating }}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>PvP</h4>
+                            <dl>
+                                <dt>Honourable Kills</dt><dd>{{ wowProfile.main.totalHonorableKills }}</dd>
+                                <dt>Arena 2v2</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_2v2.rating }}</dd>
+                                <dt>Arena 3v3</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_3v3.rating }}</dd>
+                                <dt>Arena 5v5</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_5v5.rating }}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Progression</h4>
+                            Coming soon...
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Equipment</h4>
+                            <p>Average Item Level: {{ wowProfile.main.items.averageItemLevel }}</p>
+                            <table class="items">
+                                <thead>
+                                    <tr>
+                                        <th>Slot</th>
+                                        <th>Level</th>
+                                        <th>Item</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in wowProfile.main.items" ng-if="item.name">
+                                        <td>{{ item.slot }}</td>
+                                        <td>{{ item.itemLevel }}</td>
+                                        <td><a href="http://www.wowhead.com/item={{ item.id }}" class="{{ itemQuality(item.quality) }}">[{{ item.name }}]</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-12">
+                            <h4>Recent Activity</h4>
+                            <ul class="feed">
+                                <li ng-repeat="feedItem in wowProfile.main.feed | limitTo:20">{{ parseFeedItem(feedItem) }} <span class="timestamp">{{ fromNow(feedItem.timestamp) }}</span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="alts">
-                <h3>Alternate Characters</h3>
                 <div class="row">
-                    <div ng-repeat="character in wowProfile.alts" class="col-lg-6 col-md-6">
-                        <a href="http://us.battle.net/wow/en/character/{{ character.realm }}/{{ character.name }}/simple" title="View Armory" class="character">
-                            <img ng-src="http://us.battle.net/static-render/us/{{ character.thumbnail }}" />
-                            <div class="details">
-                                <h3>{{ character.name }}</h3>
-                                <p>{{ character.level }} {{ character.gender }} {{ character.race }} {{ character.class }}</p>
-                                <p>{{ character.realm }}</p>
-                            </div>
-                        </a>
+                    <div ng-repeat="character in wowProfile.alts | orderBy:'level':true" class="col-lg-6 col-md-6">
+                        <div class="character">
+                            <a href="http://us.battle.net/wow/en/character/{{ character.realm }}/{{ character.name }}/simple" target="_blank" title="View Armory" class="main">
+                                <img ng-src="http://us.battle.net/static-render/us/{{ character.thumbnail }}" />
+                                <div class="details">
+                                    <h3>{{ character.name }}</h3>
+                                    <p>{{ character.level }} {{ character.gender }} {{ character.race }} {{ character.class }}</p>
+                                    <p>{{ character.realm }}</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

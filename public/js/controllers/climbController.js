@@ -14,7 +14,6 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
     var climbGrades = ['5.5','5.6','5.7','5.8','5.9-','5.9','5.9+','5.10-','5.10','5.10+','5.11-','5.11','5.11+',
                         '5.12-','5.12','5.12+'];
 
-    $scope.moment = moment;
     $scope.boulderGrades = boulderGrades;
     $scope.climbGrades = climbGrades;
     $scope.climbTypes = {

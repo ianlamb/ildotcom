@@ -45,7 +45,13 @@ request(options, function(err, res, body) {
                     var data = JSON.parse(body);
                     if(data) {
                         console.log('received info for character: ' + data.name);
-                        profile.heroes[i-1] = data;
+                        for (var j = 0; j < profile.heroes.length; j++) {
+                            if(profile.heroes[j].id === data.id) {
+                                profile.heroes[j].items = data.items;
+                                profile.heroes[j].stats = data.stats;
+                                break;
+                            }
+                        }
                         resolve(data);
                     } else {
                         console.log('unexpected results...');
@@ -61,8 +67,7 @@ request(options, function(err, res, body) {
 
         Promise.all(promises).then(function() {
             console.log('all requests complete, saving profile..');
-            console.log(profile);
-            profile.created_at = new Date();
+            //console.log(profile);
             profile.save(function(err) {
                 if(err) {
                     console.error(err);

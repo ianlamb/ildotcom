@@ -12,6 +12,8 @@ angular.module('mainController', []).controller('MainController', function($scop
         $window.scrollTo(0,0);
     });
 
+    $rootScope.moment = moment;
+
     $scope.$on('$viewContentLoaded', function(event) {
         $window.ga('send', 'pageview', { page: $location.url() });
     });
