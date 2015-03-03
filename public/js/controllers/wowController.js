@@ -8,11 +8,12 @@ angular.module('wowController', []).controller('WowController', function($scope,
         });
 
     $scope.percent = function(partial, total) {
-        return parseInt(partial / total * 100);
+        var retval = parseInt(partial / total * 100);
+        return isNaN(retval) ? 0 : retval;
     };
 
     $scope.formatProgress = function(partial, total) {
-        return partial + ' / ' + total + ' (' + $scope.percent(partial, total) + '%)';
+        return (partial ? partial : 0) + ' / ' + (total ? total : 0) + ' (' + $scope.percent(partial, total) + '%)';
     };
 
     $scope.itemQuality = function(quality) {

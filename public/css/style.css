@@ -59,7 +59,6 @@ a:active { color: #00abff; }
 label { color: #666; }
 
 dl {
-    width: 185px;
     display: inline-block;
     vertical-align: top;
     margin-bottom: 0;
@@ -72,6 +71,20 @@ dd {
     font-size: 2.0em;
     margin-bottom: 5px;
     cursor: default;
+}
+
+dl.table-list {
+    width: 100%;
+}
+dl.table-list dt {
+    display: inline-block;
+    width: 50%;
+}
+dl.table-list dd {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+    font-size: 1.2em;
 }
 
 button, .button {
@@ -481,10 +494,10 @@ label {
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     border-top: 1px solid #222;
     border-bottom: 1px solid #222;
 }
@@ -622,7 +635,7 @@ button {
     height: 980px;
     padding: 0;
     color: #efefef;
-    background: url(../images/16343127406_80afebb299_k.jpg) no-repeat center center fixed;
+    background: #454545 url(../images/16343127406_80afebb299_k.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -749,6 +762,7 @@ button {
 #contactMap {
     width: 100%;
     height: 380px;
+    margin-top: -40px;
 }
 #contactMap .jvectormap-tip {
     display: none;
@@ -996,7 +1010,7 @@ a.hex:hover {
 /* ADVENTURE */
 #adventure .header-image {
     background-color: #0a0d23;
-    background-image: url('../images/03_panorama.jpg');
+    background-image: url('../images/header-adventure.jpg');
 }
 
 /* TRAVEL */
@@ -1243,11 +1257,12 @@ a.hex:hover {
 }
 #gaming .header-image {
     background-color: #0a0d23;
-    background-image: url('http://us.blizzard.com/static/_images/company/careers/backgrounds/header-bg-jobs.jpg');
+    background-image: url('../images/header-gaming.jpg');
 }
 #gaming .character {
     display: block;
     overflow: hidden;
+    width: 100%;
     background: #fff;
     color: #454545;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -1258,9 +1273,6 @@ a.hex:hover {
 }
 #gaming .character .extended {
     padding: 16px 16px 16px 16px;
-}
-#gaming .character dl dd {
-    font-size: 1.4em;
 }
 #gaming .character:hover {
     box-shadow: 0 3px 15px rgba(0,0,0,0.2);
@@ -1276,12 +1288,6 @@ a.hex:hover {
     background: #00abff;
     color: #fff;
     border-bottom-color: #0091d8;
-}
-#gaming .character.showcase a.main p {
-    font-size: 1.4em;
-}
-#gaming .character.showcase a.main h3 {
-    font-size: 2.0em;
 }
 #gaming .character img {
     display: inline-block;
@@ -1385,19 +1391,6 @@ a.hex:hover {
     padding: 10px 20px;
     border: 1px solid rgba(0,0,0,0.2);
 }
-#diablo .character dl {
-    width: 100%;
-}
-#diablo .character dl dt {
-    display: inline-block;
-    width: 50%;
-}
-#diablo .character dl dd {
-    display: inline-block;
-    width: 50%;
-    text-align: right;
-    font-size: 1.2em;
-}
 
 
 #starcraft .portrait {
@@ -1409,9 +1402,10 @@ a.hex:hover {
 }
 
 .timestamp {
+    float: right;
     color: #777;
     font-size: 0.8em;
-    float: right;
+    margin-bottom: 5px;
 }
 
 
@@ -1597,6 +1591,9 @@ a.hex:hover {
         font-size: 2.5em;
         padding: 0.3em;
     }
+    #gaming .character p {
+        font-size: 0.9em;
+    }
     #contactMap {
         height: 200px;
     }
@@ -1617,8 +1614,8 @@ a.hex:hover {
     #footer .right {
         text-align: center;
     }
-    .social-icons {
-        font-size: 2em;
+    #footer .social-icons {
+        font-size: 1.6em;
     }
 }
 

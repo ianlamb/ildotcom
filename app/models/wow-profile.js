@@ -2,7 +2,6 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var WowProfileSchema = new Schema({
-    created_at: Date,
     achievementPoints: Number,
     mounts: { numCollected: Number, numNotCollected: Number },
     pets: { numCollected: Number, numNotCollected: Number },
@@ -253,7 +252,18 @@ var WowProfileSchema = new Schema({
             "attackPower": Number,
             "rangedAttackPower": Number
         }
-    }]
+    }],
+    created_at: Date,
+    updated_at: Date
 }, { strict: true });
+
+WowProfileSchema.pre('save', function(next){
+    now = new Date();
+    this.updated_at = now;
+    if ( !this.created_at ) {
+        this.created_at = now;
+    }
+    next();
+});
 
 module.exports = mongoose.model('WowProfile', WowProfileSchema);

@@ -18,18 +18,60 @@
                 <progressbar value="percent(wowProfile.achievements.completed, wowProfile.achievements.possible)">
                     {{ formatProgress(wowProfile.achievements.completed, wowProfile.achievements.possible) }}
                 </progressbar>
-                <div ng-repeat="(category, achievements) in wowProfile.achievements" ng-if="achievements.completed">
-                    <label>{{ category }}</label>
-                    <progressbar value="percent(achievements.completed, achievements.possible)">
-                        {{ formatProgress(achievements.completed, achievements.possible) }}
-                    </progressbar>
-                </div>
+                <label>General</label>
+                <progressbar value="percent(wowProfile.achievements['General'].completed, wowProfile.achievements['General'].possible)">
+                    {{ formatProgress(wowProfile.achievements['General'].completed, wowProfile.achievements['General'].possible) }}
+                </progressbar>
+                <label>Collections</label>
+                <progressbar value="percent(wowProfile.achievements['Collections'].completed, wowProfile.achievements['Collections'].possible)">
+                    {{ formatProgress(wowProfile.achievements['Collections'].completed, wowProfile.achievements['Collections'].possible) }}
+                </progressbar>
+                <label>Quests</label>
+                <progressbar value="percent(wowProfile.achievements['Quests'].completed, wowProfile.achievements['Quests'].possible)">
+                    {{ formatProgress(wowProfile.achievements['Quests'].completed, wowProfile.achievements['Quests'].possible) }}
+                </progressbar>
+                <label>Dungeons & Raids</label>
+                <progressbar value="percent(wowProfile.achievements['Dungeons & Raids'].completed, wowProfile.achievements['Dungeons & Raids'].possible)">
+                    {{ formatProgress(wowProfile.achievements['Dungeons & Raids'].completed, wowProfile.achievements['Dungeons & Raids'].possible) }}
+                </progressbar>
+                <label>Player vs. Player</label>
+                <progressbar value="percent(wowProfile.achievements['Player vs. Player'].completed, wowProfile.achievements['Player vs. Player'].possible)">
+                    {{ formatProgress(wowProfile.achievements['Player vs. Player'].completed, wowProfile.achievements['Player vs. Player'].possible) }}
+                </progressbar>
+                <label>Exploration</label>
+                <progressbar value="percent(wowProfile.achievements['Exploration'].completed, wowProfile.achievements['Exploration'].possible)">
+                    {{ formatProgress(wowProfile.achievements['Exploration'].completed, wowProfile.achievements['Exploration'].possible) }}
+                </progressbar>
+                <label>Professions</label>
+                <progressbar value="percent(wowProfile.achievements['Professions'].completed, wowProfile.achievements['Professions'].possible)">
+                    {{ formatProgress(wowProfile.achievements['Professions'].completed, wowProfile.achievements['Professions'].possible) }}
+                </progressbar>
+                <label>Reputation</label>
+                <progressbar value="percent(wowProfile.achievements['Reputation'].completed, wowProfile.achievements['Reputation'].possible)">
+                    {{ formatProgress(wowProfile.achievements['Reputation'].completed, wowProfile.achievements['Reputation'].possible) }}
+                </progressbar>
+                <label>Scenarios</label>
+                <progressbar value="percent(wowProfile.achievements['Scenarios'].completed, wowProfile.achievements['Scenarios'].possible)">
+                    {{ formatProgress(wowProfile.achievements['Scenarios'].completed, wowProfile.achievements['Scenarios'].possible) }}
+                </progressbar>
+                <label>Garrisons</label>
+                <progressbar value="percent(wowProfile.achievements['Garrisons'].completed, wowProfile.achievements['Garrisons'].possible)">
+                    {{ formatProgress(wowProfile.achievements['Garrisons'].completed, wowProfile.achievements['Garrisons'].possible) }}
+                </progressbar>
+                <label>Pet Battles</label>
+                <progressbar value="percent(wowProfile.achievements['Pet Battles'].completed, wowProfile.achievements['Pet Battles'].possible)">
+                    {{ formatProgress(wowProfile.achievements['Pet Battles'].completed, wowProfile.achievements['Pet Battles'].possible) }}
+                </progressbar>
+                <label>World Events</label>
+                <progressbar value="percent(wowProfile.achievements['World Events'].completed, wowProfile.achievements['World Events'].possible)">
+                    {{ formatProgress(wowProfile.achievements['World Events'].completed, wowProfile.achievements['World Events'].possible) }}
+                </progressbar>
                 <label>Legacy</label>
-                <progressbar value="100">
+                <progressbar value="1">
                     {{ wowProfile.achievements['Legacy'].legacyTotal }}
                 </progressbar>
                 <label>Feats of Strength</label>
-                <progressbar value="100">
+                <progressbar value="1">
                     {{ wowProfile.achievements['Feats of Strength'].foSTotal }}
                 </progressbar>
             </div>
@@ -42,14 +84,15 @@
                     <img ng-src="http://us.battle.net/static-render/us/{{ wowProfile.main.thumbnail }}" />
                     <div class="details">
                         <h3>{{ wowProfile.main.name }}</h3>
-                        <p>{{ wowProfile.main.level }} {{ wowProfile.main.gender }} {{ wowProfile.main.race }} {{ wowProfile.main.class }}, {{ wowProfile.main.realm }}</p>
+                        <p>{{ wowProfile.main.level }} {{ wowProfile.main.gender }} {{ wowProfile.main.race }} {{ wowProfile.main.class }}</p>
+                        <p>{{ wowProfile.main.realm }}</p>
                     </div>
                 </a>
                 <div class="extended">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <h4>Stats</h4>
-                            <dl>
+                            <dl class="table-list">
                                 <dt>Health</dt><dd>{{ wowProfile.main.stats.health }}</dd>
                                 <dt>Strength</dt><dd>{{ wowProfile.main.stats.str }}</dd>
                                 <dt>Haste</dt><dd>{{ wowProfile.main.stats.hasteRating }}</dd>
@@ -59,18 +102,30 @@
                                 <dt>Critical Strike</dt><dd>{{ wowProfile.main.stats.critRating }}</dd>
                             </dl>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
+                            <h4>Progression</h4>
+                            Coming soon...
                             <h4>PvP</h4>
                             <dl>
                                 <dt>Honourable Kills</dt><dd>{{ wowProfile.main.totalHonorableKills }}</dd>
-                                <dt>Arena 2v2</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_2v2.rating }}</dd>
-                                <dt>Arena 3v3</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_3v3.rating }}</dd>
-                                <dt>Arena 5v5</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_5v5.rating }}</dd>
                             </dl>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Progression</h4>
-                            Coming soon...
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <dl>
+                                        <dt>Arena 2v2</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_2v2.rating }}</dd>
+                                    </dl>
+                                </div>
+                                <div class="col-md-4">
+                                    <dl>
+                                        <dt>Arena 3v3</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_3v3.rating }}</dd>
+                                    </dl>
+                                </div>
+                                <div class="col-md-4">
+                                    <dl>
+                                        <dt>Arena 5v5</dt><dd>{{ wowProfile.main.pvp.brackets.ARENA_BRACKET_5v5.rating }}</dd>
+                                    </dl>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -97,7 +152,7 @@
                         <div class="col-md-12">
                             <h4>Recent Activity</h4>
                             <ul class="feed">
-                                <li ng-repeat="feedItem in wowProfile.main.feed | limitTo:20">{{ parseFeedItem(feedItem) }} <span class="timestamp">{{ fromNow(feedItem.timestamp) }}</span></li>
+                                <li ng-repeat="feedItem in wowProfile.main.feed track by $index | limitTo:20">{{ parseFeedItem(feedItem) }} <span class="timestamp">{{ fromNow(feedItem.timestamp) }}</span></li>
                             </ul>
                         </div>
                     </div>

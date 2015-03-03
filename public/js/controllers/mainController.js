@@ -16,6 +16,7 @@ angular.module('mainController', []).controller('MainController', function($scop
 
     $scope.$on('$viewContentLoaded', function(event) {
         $window.ga('send', 'pageview', { page: $location.url() });
+        $(".navbar-collapse.collapse.in").collapse('hide');
     });
 
 });

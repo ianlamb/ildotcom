@@ -76,7 +76,18 @@ var StarcraftProfileSchema = new Schema({
                 'completionDate': Number
             }
         ]
+    },
+    created_at: Date,
+    updated_at: Date
+});
+
+StarcraftProfileSchema.pre('save', function(next){
+    now = new Date();
+    this.updated_at = now;
+    if ( !this.created_at ) {
+        this.created_at = now;
     }
+    next();
 });
 
 module.exports = mongoose.model('StarcraftProfile', StarcraftProfileSchema);
