@@ -576,17 +576,19 @@ button {
 }
 .button, a.button {
     display: inline-block;
+    width: 100%;
     padding: 1em;
     font-weight: bold;
-    background: transparent;
+    background: #fff;
     color: #00abff;
-    border: 3px solid #00abff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-bottom: 4px solid #00abff;
     -webkit-transition: all .4s;
     transition: all .4s;
 }
 .button:hover, a.button:hover {
-    background: transparent;
-    color: #337ab7;
+    background: #00abff;
+    color: #fff;
     border-color: #337ab7;
     -webkit-transition: all .4s;
     transition: all .4s;
@@ -629,7 +631,7 @@ button {
 #home section {
     width: 100%;
     margin: 0;
-    padding-top: 100px;
+    padding-top: 3em;
 }
 #home section#header {
     height: 980px;
@@ -641,16 +643,22 @@ button {
     -o-background-size: cover;
     background-size: cover;
 }
-#about {
-}
-#about .process {
+#home #about h2.headline {
     text-align: center;
+    margin-top: 0;
+    margin-bottom: 2em;
+    padding: 1em 2em;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
-#about .process .fa {
+#home #about p {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 0 5px;
+}
+#home #about .fa {
     font-size: 6em;
-    padding: 0.6em;
-}
-#projects {
+    margin-bottom: 0.2em;
 }
 #projects .project-wrapper {
     background: #000;
@@ -1522,7 +1530,7 @@ a.hex:hover {
         margin-left: 20px;
         height: 200px;
     }
-    #about .process .fa {
+    #about .fa {
         font-size: 5em;
         padding: 0.5em;
     }
@@ -1587,7 +1595,7 @@ a.hex:hover {
         -webkit-transition: none;
         transition: none;
     }
-    #about .process .fa {
+    #about .fa {
         font-size: 2.5em;
         padding: 0.3em;
     }
@@ -1619,13 +1627,6 @@ a.hex:hover {
     }
 }
 
-
-#about .process .fa:first-child {
-    padding-left: 0;
-}
-#about .process .fa:last-child {
-    padding-right: 0;
-}
 
 /* ANIMATIONS */
 
