@@ -1344,6 +1344,9 @@ a.hex:hover {
     list-style: none;
     padding: 0;
 }
+#gaming .feed li {
+    clear: both;
+}
 
 #diablo .portrait {
     display: inline-block;

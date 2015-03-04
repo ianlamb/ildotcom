@@ -152,7 +152,7 @@
                         <div class="col-md-12">
                             <h4>Recent Activity</h4>
                             <ul class="feed">
-                                <li ng-repeat="feedItem in wowProfile.main.feed track by $index | limitTo:20">{{ parseFeedItem(feedItem) }} <span class="timestamp">{{ fromNow(feedItem.timestamp) }}</span></li>
+                                <li ng-repeat="feedItem in wowProfile.main.feed | limitTo:20 track by $index">{{ parseFeedItem(feedItem) }} <span class="timestamp">{{ fromNow(feedItem.timestamp) }}</span></li>
                             </ul>
                         </div>
                     </div>
