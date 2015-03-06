@@ -17,9 +17,11 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
     $scope.boulderGrades = boulderGrades;
     $scope.climbGrades = climbGrades;
     $scope.climbTypes = {
-        'Boulder': boulderGrades,
-        'Lead': climbGrades,
-        'Top Rope': climbGrades
+        'Boulder': ['V0','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12','V13','V14','V15'],
+        'Lead': ['5.5','5.6','5.7','5.8','5.9-','5.9','5.9+','5.10-','5.10','5.10+','5.11-','5.11','5.11+',
+                        '5.12-','5.12','5.12+'],
+        'Top Rope': ['5.5','5.6','5.7','5.8','5.9-','5.9','5.9+','5.10-','5.10','5.10+','5.11-','5.11','5.11+',
+                        '5.12-','5.12','5.12+']
     };
     $scope.newSession = {
         date: moment().format(),
@@ -27,10 +29,14 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
     };
 
     $(document).on('click', '[data-action="add-climb"]', function() {
+        var type = $('#type').val();
+        var grade = $('#grade option:selected').html();
+        if(!grade) {
+            alert('Type and grade required');
+            return;
+        }
+        var typeExists = false;
         $scope.$apply(function() {
-            var type = $('#type').val();
-            var grade = $('#grade option:selected').html();
-            var typeExists = false;
             for (var i = 0; i < $scope.newSession.climbs.length; i++) {
                 if ($scope.newSession.climbs[i].type === type) {
                     $scope.newSession.climbs[i].sends.push(grade);
@@ -57,7 +63,7 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
         }
         Climbs.put($scope.newSession)
             .success(function(data) {
-                $scope.message = "Climbing session saved!";
+                $scope.message = 'Climbing session saved!';
                 $scope.newSession = {
                     date: moment().format(),
                     climbs: []
@@ -166,9 +172,6 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
         $scope.stats.routesClimbed += session.routeCount;
         $scope.stats.problemsClimbed += session.problemCount;
         $scope.stats.daysClimbed++;
-        session.climbs.sort(function(a, b) { 
-            return a.type > b.type;
-        });
         return session;
     }
 

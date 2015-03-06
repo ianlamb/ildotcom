@@ -59,7 +59,7 @@ a:active { color: #00abff; }
 label { color: #666; }
 
 dl {
-    display: inline-block;
+    display: block;
     vertical-align: top;
     margin-bottom: 0;
 }
@@ -477,13 +477,13 @@ label {
     transition: width .2s;
 }
 #subNav li.selected a {
-    color: #00abff;
+    color: #00abff !important;
     background: #555856;
     -webkit-transition: all .2s;
     transition: all .2s;
 }
 #subNav li.selected .underline {
-    width: 100%;
+    width: 100% !important;
 }
 
 .header-image {
@@ -1125,16 +1125,22 @@ a.hex:hover {
 #climbing {
     padding-top: 60px;
 }
-#climbing .photos {
-    float: right;
-    width: 600px;
-    height: 150px;
-    text-align: right;
+#climbing .new-climb-session {
+    padding-left: 0;
+    list-style: none;
 }
-#climbing .photos .photo {
+#climbing .new-climb-session > li {
     display: inline-block;
-    width: auto;
-    height: 150px;
+    vertical-align: top;
+    margin-right: 40px;
+}
+#climbing .new-sends {
+    padding-left: 20px;
+    list-style: square;
+}
+#climbing .new-sends li {
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
 }
 #climbing .session {
     margin-bottom: 20px;
@@ -1541,7 +1547,14 @@ a.hex:hover {
 /* mobile */
 @media only screen and (max-width: 767px) {
     html, body {
-        font-size: 10pt;
+        font-size: 11pt;
+    }
+    dl {
+        width: 100%;
+        text-align: center;
+    }
+    dl dd {
+        margin-bottom: 0.5em;
     }
     #subNav .container {
         padding: 0;
@@ -1557,10 +1570,16 @@ a.hex:hover {
         transition: none;
     }
     #subNav li:hover a {
+        color: #ccc;
         -webkit-transition: none;
         transition: none;
     }
     #subNav li:hover .underline {
+        width: 0;
+        -webkit-transition: none;
+        transition: none;
+    }
+    #subNav li.selected a {
         -webkit-transition: none;
         transition: none;
     }
@@ -1609,12 +1628,11 @@ a.hex:hover {
         height: 200px;
     }
     #travel #map {
-        height: 200px;
+        height: 260px;
     }
     #travel .top {
-        margin-top: 0;
-        margin-left: 20px;
-        height: 100px;
+        margin-top: 20px;
+        height: 140px;
     }
     #footer .footer-links {
         font-size: 1.2em;

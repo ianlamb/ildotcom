@@ -1,6 +1,6 @@
 <div id="climbing">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-sm-3">
             <div>
                 <dl>
                     <dt>Last Climb</dt>
@@ -33,7 +33,7 @@
             </div>
             <!--<canvas id="climbingChart" width="240" height="200"></canvas>-->
         </div>
-        <div class="col-md-9">
+        <div class="col-sm-9">
             <div ng-if="authorized" class="panel">
                 <form id="addClimbForm">
                     <h3>New Session</h3>
@@ -70,25 +70,26 @@
                             <button type="button" data-action="add-climb"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
-                    <ul>
+                    <ul class="new-climb-session">
                         <li ng-repeat="climb in newSession.climbs">
-                            {{ climb.type }}
-                            <ul>
+                            <h4>{{ climb.type }}</h4>
+                            <ul class="new-sends">
                                 <li ng-repeat="send in climb.sends track by $index">{{ send }}</li>
                             </ul>
                         </li>
                     </ul>
+                    <br>
                     <button type="button" data-action="save-session">Save Session</button>
-                    <div ng-if="message" class="alert success">{{ message }}</div>
+                    <div ng-if="message" class="alert alert-success">{{ message }}</div>
                 </form>
             </div>
             <div infinite-scroll="loadMore()" class="sessions">
                 <div ng-repeat="session in climbSessions" class="session">
                     <div class="date" title="{{ moment(session.date).format('YYYY-MM-DD') }}">{{ moment(session.date).format('MMMM Do, YYYY') }}</div>
                     <a href="{{ session.place.url }}" class="place">&commat;{{ session.place.name }}</a>
-                    <div ng-repeat="climb in session.climbs" class="type {{ climb.type.replace(' ','').toLowerCase() }}">
+                    <div ng-repeat="climb in session.climbs | orderBy:'type'" class="type {{ climb.type.replace(' ','').toLowerCase() }}">
                         <h5>{{ climb.type }}</h5>
-                        <div ng-repeat="ms in climb.mappedSends" class="grade {{ ms.gradeClass }}">
+                        <div ng-repeat="ms in climb.mappedSends | orderBy:'grade'" class="grade {{ ms.gradeClass }}">
                             <div class="header">{{ ms.grade }}</div>
                             <div ng-repeat="s in ms.sends track by $id($index)" class="bubble send"></div>
                         </div>
