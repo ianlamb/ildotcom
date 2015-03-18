@@ -24,14 +24,14 @@
 html, body {
     margin: 0;
     padding: 0;
-    color: #5C6B68;
+    color: #999;
     font-family: 'Ubuntu', verdana, sans-serif;
     font-size: 12pt;
 }
 html {
     position: relative;
     min-height: 100%;
-    background: #efefef url(../images/fancy_deboss.png);
+    background: #22262b;
 }
 body {
     letter-spacing: 0.1em;
@@ -43,7 +43,7 @@ h3 {  }
 h4 {  }
 h5 {  }
 p { margin: 0 0 1.0em 0; }
-hr { border-width: 1px; border-color: rgba(0,0,0,0.2); }
+hr { border-width: 1px; border-color: rgba(255,255,255,0.2); }
 
 a, a:link, a:visited {
     text-decoration: none;
@@ -145,6 +145,8 @@ label {
 
 .panel {
     padding: 1.0em 2.0em;
+    background: #454545;
+    border-radius: 0;
 }
 
 
@@ -273,9 +275,25 @@ label {
     top: -1px;
     margin-right: 0.3em;
 }
+.navbar-default .navbar-nav>li>a {
+  color: #999;
+}
+.navbar-default {
+    background-color: #333;
+    border-color: #454545;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #454545;
+}
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
     color: #00abff;
     background-color: transparent;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #555;
+}
+.navbar-default .navbar-toggle {
+    border-color: #777;
 }
 .navbar a {
     -webkit-transition: all .4s;
@@ -345,11 +363,9 @@ label {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 160px;
+    height: 100px;
     margin-top: 50px;
     padding-top: 20px;
-    background: #5C6B68;
-    color: #1E2728;
     text-shadow: 0 1px 0 rgba(255,255,255,.1);
     font-size: 0.9em;
 }
@@ -357,7 +373,7 @@ label {
     padding: 0;
 }
 #footer .footer-links a {
-    color: #1E2728;
+    color: #777;
 }
 #footer .footer-links a:hover {
     color: #ccc;
@@ -384,26 +400,41 @@ label {
 #footer .copyright {
     margin-top: 0;
 }
+#connect {
+    text-align: center;
+}
+#connect .title {
+    text-transform: uppercase;
+    vertical-align: middle;
+}
 .social-icons {
+    display: inline-block;
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 .social-icons li {
     display: inline-block;
-    margin-left: 5px;
 }
 .social-icons a .fa {
-    color: #3B484A;
-    font-size: 2em;
-    -webkit-transition: all .4s;
-    transition: all .4s;
+    color: #999;
+    font-size: 2.2em;
+    margin: 0 0.1em 0 0.3em;
+    -webkit-transition: color .4s;
+    transition: color .4s;
+    vertical-align: middle;
+    -webkit-animation: spin-left 0.5s;
+    animation: spin-left 0.5s;
 }
 .social-icons a:hover .fa {
+    color: #00abff;
     text-shadow: 0 1px 0 rgba(0,0,0,.2);
-    -webkit-transition: all .2s;
-    transition: all .2s;
+    -webkit-animation: spin-right 0.3s;
+    animation: spin-right 0.3s;
+    -webkit-transition: color .2s;
+    transition: color .2s;
 }
-.social-icons a:hover .fa-flickr {
+/*.social-icons a:hover .fa-flickr {
     color: #ff0085;
 }
 .social-icons a:hover .fa-facebook-square {
@@ -420,6 +451,46 @@ label {
 }
 .social-icons a:hover .fa-github-square {
     color: #fff;
+}*/
+@-webkit-keyframes spin-right {
+    0% {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, -200deg);
+    }
+    100% {
+        transform-origin: center;
+        transform: none;
+    }
+}
+@keyframes spin-right {
+    0% {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, -200deg);
+    }
+    100% {
+        transform-origin: center;
+        transform: none;
+    }
+}
+@-webkit-keyframes spin-left {
+    0% {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, 200deg);
+    }
+    100% {
+        transform-origin: center;
+        transform: none;
+    }
+}
+@keyframes spin-left {
+    0% {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, 200deg);
+    }
+    100% {
+        transform-origin: center;
+        transform: none;
+    }
 }
 
 .background {
@@ -579,7 +650,7 @@ button {
     width: 100%;
     padding: 1em;
     font-weight: bold;
-    background: #fff;
+    background: #454545;
     color: #00abff;
     text-transform: uppercase;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -705,12 +776,12 @@ button {
 #home #about .fa {
     font-size: 6em;
     margin-bottom: 0.2em;
+    color: #d6d6d6;
 }
 
 
 #projects h1 {
     text-transform: uppercase;
-    border-bottom: 3px solid #5C6B68;
 }
 #projects .project-wrapper {
     float: left;
@@ -760,7 +831,7 @@ button {
     width: 100%;
     height: 100%;
     color: #efefef;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 126, 203, 0.8);
     opacity: 0;
     -webkit-transition: opacity .3s ease-out;
     transition: opacity .3s ease-out;
@@ -774,14 +845,25 @@ button {
     width: 100%;
     height: 40px;
     padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0,0,0,.4);
     -webkit-transform: translateY(-60px);
     transform: translateY(-60px);
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
+#projects .secondary .project .title {
+    font-size: 1.6em;
+}
+#projects .tertiary .project .title {
+    font-size: 1.2em;
+}
 #projects .project:hover .title {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
@@ -1135,8 +1217,7 @@ a.hex:hover {
 #travel .trip {
     display: inline-block;
     width: 100%;
-    background: #fff;
-    border-radius: 6px;
+    background: #454545;
     box-shadow: 0 0 0 3px #ccc;
     box-shadow: 5px 5px 16px rgba(0,0,0,0.1);
     padding: 0;
@@ -1154,12 +1235,12 @@ a.hex:hover {
 }
 #travel .trip .title h3 {
     font-size: 1.1em;
-    color: #666;
+    color: #999;
     margin: 0;
 }
 #travel .trip .title .date {
     font-size: 0.8em;
-    color: #aaa;
+    color: #777;
 }
 #travel .trip .photos {
     position: relative;
@@ -1204,7 +1285,7 @@ a.hex:hover {
     display: inline-block;
     margin-right: 5px;
     padding-right: 5px;
-    border-right: 3px solid rgba(0,0,0,0.3);
+    border-right: 3px solid rgba(255,255,255,.3);
     line-height: 3px;
 }
 #travel .trip .desc li:last-child {
@@ -1239,7 +1320,7 @@ a.hex:hover {
 #climbing .session {
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
 }
@@ -1307,7 +1388,7 @@ a.hex:hover {
 }
 #climbing .session .type.lead .grade .header,
 #climbing .session .type.toprope .grade .header {
-    width: 40px;
+    width: 50px;
 }
 #climbing .session .type .grade.points .header {
     width: 30px;
@@ -1605,10 +1686,6 @@ a.hex:hover {
     -webkit-transition: all .5s;
 }
 
-.social-link { display: inline-block; margin: 0 10px 10px 0; font-size: 1.2em; line-height: 20px; }
-.social-link i { display: inline-block; font-size: 1.2em; position: relative; top: 4px; }
-.social-link span { display: none; position: absolute; margin: -0.5em 0 0 0.5em; color: #666; font-size: 0.9em; }
-.social-link:hover span { display: block; transition: all 300ms; -webkit-transition: all 300ms; }
 
 
 /* medium */
@@ -1676,6 +1753,25 @@ a.hex:hover {
         -webkit-transition: none;
         transition: none;
     }
+    #connect .title {
+        display: block;
+    }
+    #connect .panel {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .social-icons {
+        font-size: 1.2em;
+    }
+    .social-icons a .fa {
+        margin: 0;
+    }
+    .social-icons li {
+        margin-left: 2px;
+    }
+    .social-icons li:first-child {
+        margin-left: 0;
+    }
     #home section#header .scroll-down {
         margin-top: 1em;
     }
@@ -1683,13 +1779,15 @@ a.hex:hover {
         padding-top: 60px;
     }
     #home section#header {
-        height: 620px;   
+        height: 620px;
     }
     #home .profile-photo {
         margin: 50px auto;
     }
-    #home #quotation {
-        margin-top: 100px;
+    #home #about .fa {
+        font-size: 8em;
+        margin: 0;
+        padding: 0.2em;
     }
     #projects .project-wrapper {
         width: 100% !important;
@@ -1742,9 +1840,6 @@ a.hex:hover {
     }
     #footer .right {
         text-align: center;
-    }
-    #footer .social-icons {
-        font-size: 1.6em;
     }
 }
 
@@ -1942,7 +2037,7 @@ a.hex:hover {
     color: #777;
   }
   10% {
-    color: #999;
+    color: #ccc;
   }
   100% {
     color: #777;
@@ -1953,7 +2048,7 @@ a.hex:hover {
     color: #777;
   }
   10% {
-    color: #999;
+    color: #ccc;
   }
   100% {
     color: #777;

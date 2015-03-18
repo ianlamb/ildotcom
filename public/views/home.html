@@ -20,9 +20,53 @@
             </div>
         </div>
     </section>
+    <section id="connect">
+        <div class="container">
+            <div class="panel">
+                <span class="title">Connect with me</span>
+                <ul class="social-icons">
+                    <li>
+                        <a href="https://www.flickr.com/photos/128441783@N07/" title="My photo albums from various adventures" target="_blank">
+                            <i class="fa fa-flickr"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com/ianlamb32/" title="Random snaps from my daily life" target="_blank">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/ianmlamb" title="Keep in touch on a personal basis" target="_blank">
+                            <i class="fa fa-facebook-square"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/Ian_Lamb" title="I mostly tweet about technology, interesting facts and beer" target="_blank">
+                            <i class="fa fa-twitter-square"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://lnkd.in/vDaVpa" title="Potential business partner? Let's connect!" target="_blank">
+                            <i class="fa fa-linkedin-square"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+IanLamb32" title="Do people still use this?" rel="me" target="_blank">
+                            <i class="fa fa-google-plus-square"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ianlamb" title="All of my code projects and contributions" target="_blank">
+                            <i class="fa fa-github-square"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
     <section id="about">
         <div class="container">
-            <h2 class="headline">I specialize in <i>simple</i>, <i>intuitive</i> and <i>functional</i> web applications.</h2>
+            <!-- <h2 class="headline">I specialize in <i>simple</i>, <i>intuitive</i> and <i>functional</i> web applications.</h2> -->
             <div class="row">
                 <div class="col-sm-4">
                     <div class="text-center">
@@ -34,7 +78,7 @@
                 <div class="col-sm-4">
                     <div class="text-center">
                         <i class="fa fa-globe"></i>
-                        <p>My outdoor passions are traveling, rock climbing and motorcycles. I want to discover what the world has to offer &ndash; raw &amp; uncensored.</p>
+                        <p>My outdoor passions are traveling, rock climbing and motorcycles. I want to discover what the world has to offer give back as much as I can.</p>
                     </div>
                     <a href="/adventure" class="button">View Adventures</a>
                 </div>
@@ -51,19 +95,14 @@
     <projects>
         <section id="projects">
             <div class="container">
-                <h1>Web Development Work</h1>
+                <h1>Work</h1>
                 <div ng-repeat="project in projects track by $index" class="project-wrapper 
                     {{ $index == 0 ? 'primary' : $index == 1 ? 'secondary' : 'tertiary' }}">
-                    <div href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
+                    <a href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
                         <div class="overlay">
                             <div class="title">{{ project.name }}</div>
-                            <div class="desc">{{ project.desc }}</div>
-                            <div class="controls">
-                                <a href="{{ project.url }}" target="_blank"><i class="fa fa-external-link"></i>Live</a>
-                                <a ng-if="project.repo" href="{{ project.repo }}" target="_blank"><i class="fa fa-github"></i>Source</a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>

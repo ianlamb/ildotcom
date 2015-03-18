@@ -124,11 +124,11 @@ angular.module('appDirectives', [])
                     zoomOnScroll: false,
                     regionStyle: {
                         initial: {
-                            fill: '#5C6B68',
+                            fill: '#999',
                             'fill-opacity': 1
                         },
                         hover: {
-                            fill: '#5C6B68',
+                            fill: '#999',
                             'fill-opacity': 1
                         }
                     },
