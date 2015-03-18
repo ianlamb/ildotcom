@@ -574,28 +574,25 @@ button {
     top: -2px;
     padding: 0.7em 1.4em;
 }
-.button, a.button {
+#home .button {
     display: inline-block;
     width: 100%;
     padding: 1em;
     font-weight: bold;
     background: #fff;
     color: #00abff;
+    text-transform: uppercase;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     border-bottom: 4px solid #00abff;
     -webkit-transition: all .4s;
     transition: all .4s;
 }
-.button:hover, a.button:hover {
+#home .button:hover {
     background: #00abff;
     color: #fff;
     border-color: #337ab7;
     -webkit-transition: all .4s;
     transition: all .4s;
-}
-.button .fa {
-    margin-right: 0.4em;
-    font-size: 1.2em;
 }
 
 
@@ -619,7 +616,7 @@ button {
 
 /* HOME PAGE */
 .overlay {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100%;
 }
@@ -634,7 +631,7 @@ button {
     padding-top: 3em;
 }
 #home section#header {
-    height: 980px;
+    height: 920px;
     padding: 0;
     color: #efefef;
     background: #454545 url(../images/16343127406_80afebb299_k.jpg) no-repeat center center fixed;
@@ -643,6 +640,55 @@ button {
     -o-background-size: cover;
     background-size: cover;
 }
+#home section#header .scroll-down {
+    margin: 7em auto 0;
+    font-size: 3em;
+    -webkit-animation: bounce 3s infinite;
+    animation: bounce 3s infinite;
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+@-webkit-keyframes bounce {
+    0%, 10%, 26%, 40%, 50% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translate3d(0,0,0);
+    }
+    20%, 22% {
+        transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -30px, 0);
+    }
+    35% {
+        transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -15px, 0);
+    }
+    45% {
+        transform: translate3d(0,-4px,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+@keyframes bounce {
+    0%, 10%, 26%, 40%, 50% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translate3d(0,0,0);
+    }
+    20%, 22% {
+        transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -30px, 0);
+    }
+    35% {
+        transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -15px, 0);
+    }
+    45% {
+        transform: translate3d(0,-4px,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
 #home #about h2.headline {
     text-align: center;
     margin-top: 0;
@@ -660,23 +706,52 @@ button {
     font-size: 6em;
     margin-bottom: 0.2em;
 }
+
+
+#projects h1 {
+    text-transform: uppercase;
+    border-bottom: 3px solid #5C6B68;
+}
 #projects .project-wrapper {
+    float: left;
     background: #000;
-    height: 280px;
-    margin-bottom: 20px;
+    margin: 0 0.2% 0.2% 0;
     overflow: hidden;
+    vertical-align: top;
+}
+#projects .project-wrapper.primary {
+    height: 520px;
+    width: 66.6%;
+}
+#projects .project-wrapper.secondary {
+    height: 259px;
+    width: 33%;
+}
+#projects .project-wrapper.tertiary {
+    height: 128px;
+    width: 16.4%;
 }
 #projects .project {
     display: inline-block;
-    width: 100%;
-    height: 100%;
+    position: relative;
+    top: -10%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
     background: #999 no-repeat top center;
     background-size: 100%;
+    -webkit-transform: rotate(-7deg);
+    transform: rotate(-7deg);
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
 #projects .project:hover {
-    background-size: 105%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
@@ -753,19 +828,38 @@ button {
     -webkit-transition: opacity .3s ease-out;
     transition: opacity .3s ease-out;
 }
+
+
 #contact {
     font-size: 1.6em;
     padding: 50px 0;
+    text-transform: uppercase;
+}
+#contact h1 {
 }
 #contact h3 {
     font-size: 2em;
 }
 #contact .contact-info {
-    list-style: none;
-    padding: 0;
+    white-space: nowrap;
+    overflow: visible;
+    margin-top: 1em;
 }
-#contact .contact-info li {
-    margin-bottom: 0.3em;
+#contact .contact-info > div {
+    margin-bottom: 0.8em;
+    font-size: 1.4em;
+    color: #00abff;
+}
+#contact .contact-info > label {
+    margin-top: -2.2em;
+    font-size: 0.6em;
+    color: #888;
+}
+#contact .phone span:nth-child(1) {
+}
+#contact .phone span:nth-child(2) {
+}
+#contact .phone span:nth-child(3) {
 }
 #contactMap {
     width: 100%;
@@ -1123,7 +1217,7 @@ a.hex:hover {
 
 /* CLIMBING */
 #climbing {
-    padding-top: 60px;
+    padding-top: 30px;
 }
 #climbing .new-climb-session {
     padding-left: 0;
@@ -1498,7 +1592,7 @@ a.hex:hover {
     height: 150px;
     border-radius: 50%;
     border: 2px solid #efefef;
-    margin: 100px auto;
+    margin: 8em auto;
 }
 .profile-photo-overlay {
     opacity: 0;
@@ -1550,8 +1644,7 @@ a.hex:hover {
         font-size: 11pt;
     }
     dl {
-        width: 100%;
-        text-align: center;
+        
     }
     dl dd {
         margin-bottom: 0.5em;
@@ -1583,6 +1676,9 @@ a.hex:hover {
         -webkit-transition: none;
         transition: none;
     }
+    #home section#header .scroll-down {
+        margin-top: 1em;
+    }
     #home section {
         padding-top: 60px;
     }
@@ -1595,8 +1691,9 @@ a.hex:hover {
     #home #quotation {
         margin-top: 100px;
     }
-    #home .project {
-        margin-bottom: 20px;
+    #projects .project-wrapper {
+        width: 100% !important;
+        height: 260px !important;
     }
     #projects .project {
         -webkit-transition: none;
@@ -1617,15 +1714,18 @@ a.hex:hover {
         -webkit-transition: none;
         transition: none;
     }
-    #about .fa {
-        font-size: 2.5em;
-        padding: 0.3em;
-    }
     #gaming .character p {
         font-size: 0.9em;
     }
+    #contact .contact-info > div {
+        font-size: 1.0em;
+    }
+    #contact .contact-info > label {
+        margin-top: -1.6em;
+    }
     #contactMap {
-        height: 200px;
+        height: 240px;
+        margin: 0;
     }
     #travel #map {
         height: 260px;

@@ -8,13 +8,13 @@
                         <div id="intro">
                             <h1 class="animated fadeIn delay-short">Hi! My name is Ian and I craft websites.</h1>
                         </div>
-
-                        <quotation>
+<!--                         <quotation>
                             <p id="quotation" class="animated fadeIn delay-medium">
                                 &ldquo;<span class="quote">{{ quote.text }}</span>&rdquo;
                                 &ndash; <a href="{{ quote.link }}" class="person">{{ quote.person }}</a>
                             </p>
-                        </quotation>
+                        </quotation> -->
+                        <i class="fa fa-arrow-circle-o-down scroll-down"></i>
                     </div>
                 </div>
             </div>
@@ -28,22 +28,22 @@
                     <div class="text-center">
                         <i class="fa fa-cogs"></i>
                         <p>I am a Web UI Developer at Cineplex Digital Networks where we provide the world's leading digital in-store platforms to enterprise clients.</p>
-                        <a href="https://docs.google.com/document/d/18SijxHJ3JiNIhjwTh9px_2CnK_yN4Urt73RybVbGukg/edit?usp=sharing" class="button">View Résumé</a>
                     </div>
+                    <a href="https://docs.google.com/document/d/18SijxHJ3JiNIhjwTh9px_2CnK_yN4Urt73RybVbGukg/edit?usp=sharing" class="button">View Résumé</a>
                 </div>
                 <div class="col-sm-4">
                     <div class="text-center">
                         <i class="fa fa-globe"></i>
                         <p>My outdoor passions are traveling, rock climbing and motorcycles. I want to discover what the world has to offer &ndash; raw &amp; uncensored.</p>
-                        <a href="/adventure" class="button">View Adventures</a>
                     </div>
+                    <a href="/adventure" class="button">View Adventures</a>
                 </div>
                 <div class="col-sm-4">
                     <div class="text-center">
                         <i class="fa fa-gamepad"></i>
                         <p>Who doesn't like to cool off with some video games now-a-days? I have a particular fondness of completing goals and tracking my progress in games.</p>
-                        <a href="/gaming" class="button">View Game Stats</a>
                     </div>
+                    <a href="/gaming" class="button">View Game Stats</a>
                 </div>
             </div>
         </div>
@@ -51,19 +51,16 @@
     <projects>
         <section id="projects">
             <div class="container">
-                <h1>Work</h1>
-                <div class="row">
-                    <div ng-repeat="project in projects" class="col-sm-4">
-                        <div class="project-wrapper">
-                            <div href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
-                                <div class="overlay">
-                                    <div class="title">{{ project.name }}</div>
-                                    <div class="desc">{{ project.desc }}</div>
-                                    <div class="controls">
-                                        <a href="{{ project.url }}" target="_blank"><i class="fa fa-external-link"></i>Live</a>
-                                        <a ng-if="project.repo" href="{{ project.repo }}" target="_blank"><i class="fa fa-github"></i>Source</a>
-                                    </div>
-                                </div>
+                <h1>Web Development Work</h1>
+                <div ng-repeat="project in projects track by $index" class="project-wrapper 
+                    {{ $index == 0 ? 'primary' : $index == 1 ? 'secondary' : 'tertiary' }}">
+                    <div href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
+                        <div class="overlay">
+                            <div class="title">{{ project.name }}</div>
+                            <div class="desc">{{ project.desc }}</div>
+                            <div class="controls">
+                                <a href="{{ project.url }}" target="_blank"><i class="fa fa-external-link"></i>Live</a>
+                                <a ng-if="project.repo" href="{{ project.repo }}" target="_blank"><i class="fa fa-github"></i>Source</a>
                             </div>
                         </div>
                     </div>
@@ -77,15 +74,24 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <h1>Contact</h1>
-                        <ul class="contact-info">
-                            <li>
+                        <div class="contact-info">
+                            <div class="phone">
+                                <span>519</span>
+                                <span>902</span>
+                                <span>6533</span>
+                            </div>
+                            <label>Mobile Phone</label>
+                            <div class="location">
+                                {{ location }}
+                            </div>
+                            <label>Location</label>
+                            <div class="email">
                                 <a href="mailto:{{ email }}" class="social-anchor">
-                                    <i class="general foundicon-mail"></i> {{ email }}
+                                    {{ email }}
                                 </a>
-                            </li>
-                            <li>{{ phone }}</li>
-                            <li>{{ location }}</li>
-                        </ul>
+                            </div>
+                            <label>Email</label>
+                        </div>
                     </div>
                     <div class="col-sm-8">
                         <div id="contactMap"></div>

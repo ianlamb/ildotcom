@@ -191,6 +191,10 @@ angular.module('appDirectives', [])
                         text: 'One cannot step twice in the same river',
                         person: 'Heraclitus', link: 'http://en.wikipedia.org/wiki/Heraclitus'
                     },
+                    {
+                        text: 'He who fights with monsters should look to it that he himself does not become a monster. And when you gaze long into an abyss the abyss also gazes into you.',
+                        person: 'Friedrich Nietzsche', link: 'http://en.wikiquote.org/wiki/Friedrich_Nietzsche'
+                    }
                 ];
 
                 function randomQuote() {

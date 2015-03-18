@@ -1,11 +1,12 @@
 <div id="climbing">
     <div class="row">
         <div class="col-sm-3">
-            <div>
                 <dl>
                     <dt>Last Climb</dt>
                     <dd id="lastClimb" style="font-size: 1.6em;">{{ stats.lastClimb }}</dd>
                 </dl>
+        <div class="row">
+            <div class="col-xs-6 col-sm-12">
                 <dl>
                     <dt>Best Boulder</dt>
                     <dd id="bestBoulder">{{ stats.bestBoulder }}</dd>
@@ -18,6 +19,8 @@
                     <dt>Best Top Rope</dt>
                     <dd id="bestTopRope">{{ stats.bestTopRope }}</dd>
                 </dl>
+            </div>
+            <div class="col-xs-6 col-sm-12">
                 <dl>
                     <dt>Boulder Problems</dt>
                     <dd id="problemsClimbed">{{ stats.problemsClimbed }}</dd>
@@ -30,6 +33,7 @@
                     <dt>Sessions</dt>
                     <dd id="daysClimbed">{{ stats.daysClimbed }}</dd>
                 </dl>
+            </div>
             </div>
             <!--<canvas id="climbingChart" width="240" height="200"></canvas>-->
         </div>
@@ -84,7 +88,7 @@
                 </form>
             </div>
             <div infinite-scroll="loadMore()" class="sessions">
-                <div ng-repeat="session in climbSessions" class="session">
+                <div ng-repeat="session in climbSessions" class="session" data-id="{{ session._id }}">
                     <div class="date" title="{{ moment(session.date).format('YYYY-MM-DD') }}">{{ moment(session.date).format('MMMM Do, YYYY') }}</div>
                     <a href="{{ session.place.url }}" class="place">&commat;{{ session.place.name }}</a>
                     <div ng-repeat="climb in session.climbs | orderBy:'type'" class="type {{ climb.type.replace(' ','').toLowerCase() }}">
