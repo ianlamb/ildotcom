@@ -12,6 +12,7 @@ module.exports = function(app, router) {
     var Photo               = require('./models/photo');
     var Trip                = require('./models/trip');
     var ClimbSession        = require('./models/climb-session');
+    var BucketListItem      = require('./models/bucket-list-item');
     var WowProfile          = require('./models/wow-profile');
     var DiabloProfile       = require('./models/diablo-profile');
     var StarcraftProfile    = require('./models/starcraft-profile');
@@ -94,9 +95,25 @@ module.exports = function(app, router) {
             });
     });
     
-    router.route('/trip').put(function(req, res) {
+    router.route('/trip', [auth]).put(function(req, res) {
         AdventureManager.saveTrip(req.body).then(function() {
             // do stuff
+        });
+    });
+
+    // bucket list
+    router.route('/bucketlist').get(function(req, res) {
+        BucketListItem.find({}, {}, { sort: { 'created_at': -1 }})
+            .exec(function(err, data) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(data);
+            });
+    });
+    router.route('/bucketlist', [auth]).put(function(req, res) {
+        AdventureManager.saveBucketListItem(req.body).then(function(data) {
+            res.json(data);
         });
     });
 

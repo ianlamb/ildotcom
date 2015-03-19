@@ -1,0 +1,38 @@
+<div id="bucketList">
+    <div ng-if="authorized" class="panel">
+        <form id="todo-form" ng-submit="addTodo()">
+            <input type="text" id="new-todo" ng-model="newTodo.title" ng-disabled="saving" placeholder="New Item" autofocus>
+        </form>
+    </div>
+    <div class="row" ng-show="bucketList.length" ng-cloak>
+        <div class="col-sm-12">
+            <span id="todo-count"><strong>{{remainingCount}}</strong>
+                <ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
+            </span>
+            <ul id="filters">
+                <li>
+                    <a ng-class="{selected: status == ''} " href="#/">All</a>
+                </li>
+                <li>
+                    <a ng-class="{selected: status == 'active'}" href="#/active">Active</a>
+                </li>
+                <li>
+                    <a ng-class="{selected: status == 'completed'}" href="#/completed">Completed</a>
+                </li>
+            </ul>
+            <button id="clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear completed ({{completedCount}})</button>
+        </div>
+    </div>
+    <ul id="todo-list">
+        <li ng-repeat="todo in bucketList track by $index" class="{{ item.completed ? 'completed' : '' }}">
+            <div class="view">
+                <input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)">
+                <label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
+                <button class="destroy" ng-click="removeTodo(todo)"></button>
+            </div>
+            <form ng-submit="saveEdits(todo, 'submit')">
+                <input class="edit" ng-trim="false" ng-model="todo.title" todo-escape="revertEdits(todo)" ng-blur="saveEdits(todo, 'blur')" todo-focus="todo == editedTodo">
+            </form>
+        </li>
+    </ul>
+</div>

@@ -39,6 +39,11 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
                 templateUrl: 'views/adventure/climb.html',
                 controller: 'ClimbController'
             })
+            .state('adventure.bucket-list', {
+                url: '/bucket-list',
+                templateUrl: 'views/adventure/bucket-list.html',
+                controller: 'BucketListController'
+            })
 
         .state('gaming', {
             url: '/gaming',

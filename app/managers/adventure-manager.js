@@ -7,6 +7,7 @@ var Trip            = require('../models/trip');
 var Place           = require('../models/place');
 var Photo           = require('../models/photo');
 var ClimbSession    = require('../models/climb-session');
+var BucketListItem  = require('../models/bucket-list-item');
 
 module.exports = {
     saveTrip: function(data) {
@@ -25,7 +26,7 @@ module.exports = {
                     retrievePhotoset(data.photosetId).then(function(data) {
                         data.photoset.photo.forEach(function(photo) {
                             var newImage = {};
-                            newImage.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/' + photo.id + '/in/set-' + photosetId;
+                            newImage.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/' + photo.id + '/in/set-' + data.photoset.id;
                             newImage.thumb = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg';
                             newImage.title = photo.title;
                             trip.photos.push(newImage);
@@ -103,6 +104,17 @@ module.exports = {
         });
     },
 
+    saveBucketListItem: function(item) {
+        return new Promise(function(resolve) {
+            BucketListItem.create(item, function(err, newItem) {
+                if(err) {
+                    console.error(err);
+                }
+                resolve(newItem);
+            });
+        });
+    },
+
     geocodeLocation: function(locationSearch) {
         return new Promise(function(resolve) {
             console.log('geocoding...');
@@ -152,11 +164,11 @@ function retrievePhotoset(photosetId) {
                 reject();
             }
             var data = JSON.parse(body);
-            if(data) {
+            if(data && data.photoset) {
                 console.log('received photo data');
                 resolve(data);
             } else {
-                console.log('unexpected results...');
+                console.log('unexpected results...', data);
                 mongoose.disconnect();
                 reject();
             }

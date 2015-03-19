@@ -30,4 +30,17 @@ angular.module('adventureService', [])
             }
         };
 
+    }])
+
+    .factory('BucketList', ['$http', function($http) {
+
+        return {
+            get: function() {
+                return $http.get('/api/bucketlist');
+            },
+            put: function(data) {
+                return $http.put('/api/bucketlist', data);
+            }
+        };
+
     }]);

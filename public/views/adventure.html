@@ -14,11 +14,11 @@
                 <!-- <li class="{{ tab == 'activity' ? 'selected' : '' }}">
                     <a href="/adventure/activity">Activity</a>
                     <div class="underline"></div>
-                </li>
-                <li class="{{ tab == 'bucket-list' ? 'selected' : '' }}">
-                    <a href="/adventure/bucket-list">Bucket List</a>
-                    <div class="underline"></div>
                 </li> -->
+                <li class="{{ state.name == 'adventure.bucket-list' ? 'selected' : '' }}">
+                    <a ui-sref=".bucket-list">Bucket List</a>
+                    <div class="underline"></div>
+                </li>
             </ul>
         </div>
     </div>
