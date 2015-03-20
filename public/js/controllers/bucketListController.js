@@ -48,7 +48,7 @@ angular.module('bucketListController', []).config(['$httpProvider', function($ht
         $scope.saving = true;
         BucketList.put(newTodo)
             .then(function success(data) {
-                $scope.newTodo = '';
+                $scope.newTodo = { title: '' };
                 $scope.bucketList.unshift(newTodo);
             })
             .finally(function () {
