@@ -155,7 +155,7 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
             month = now.getMonth(),
             sessionDate = moment(session.date).toDate();
         if (sessionDate.getFullYear() === year && sessionDate.getMonth() === month) {
-            var climbValue = ((session.routeCount*5) + session.problemCount * 3);
+            var climbValue = ((session.routeCount*8) + session.problemCount * 4);
             var heatValue = climbValue / 100;
             if (heatValue > 1) {
                 heatValue = 1;
