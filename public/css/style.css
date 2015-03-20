@@ -1438,28 +1438,28 @@ a.hex:hover {
     display: inline-block;
     margin: 0 0.6em 0 0;
     font-size: 1.2em;
-    font-family: monospace;
     text-align: left;
     white-space: nowrap;
+    width: 30px;
+}
+#climbing .session .type .grade .header > span {
+    font-size: 0.8em;
 }
 #climbing .session .type.boulder .grade .header {
-    width: 16px;
+    width: 30px;
 }
 #climbing .session .type.lead .grade .header,
 #climbing .session .type.toprope .grade .header {
-    width: 50px;
-}
-#climbing .session .type .grade.points .header {
     width: 30px;
+    font-size: 1.0em;
 }
 #climbing .session .type .grade .bubble {
     display: inline-block;
     position: relative;
     top: 2px;
-    width: 20px;
+    width: 10px;
     height: 20px;
     overflow: visible;
-    border-radius: 50%;
     padding: 0.5em;
     margin: 0 0.5em 0 0;
     opacity: 0.5;
@@ -1470,8 +1470,6 @@ a.hex:hover {
     transition: all .2s;
 }
 #climbing .session .type .grade .bubble.send {
-    width: 8px;
-    height: 8px;
     animation: fadeInToHalf 1s linear 0.2s;
     -webkit-animation: fadeInToHalf 1s linear 0.2s;
 }
