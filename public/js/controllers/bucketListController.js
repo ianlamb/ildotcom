@@ -3,7 +3,7 @@ angular.module('bucketListController', []).config(['$httpProvider', function($ht
     if (token) {
         $httpProvider.defaults.headers.common = { 'x-access-token': token }
     }
-}]).controller('BucketListController', function($scope, $filter, BucketList) {
+}]).controller('BucketListController', function($scope, $filter, $stateParams, BucketList) {
     'use strict';
 
     var token = window.localStorage.getItem('token');
@@ -18,12 +18,19 @@ angular.module('bucketListController', []).config(['$httpProvider', function($ht
             $scope.$watch('bucketList', function () {
                 $scope.remainingCount = $filter('filter')(bucketList, { completed: false }).length;
                 $scope.completedCount = bucketList.length - $scope.remainingCount;
-                $scope.allChecked = !$scope.remainingCount;
             }, true);
         })
         .error(function(err) {
             console.error(err);
         });
+    
+    $scope.$on('stateChangeSuccess', function () {
+        var status = $scope.status = $stateParams.status || '';
+
+        $scope.statusFilter = (status === 'active') ?
+            { completed: false } : (status === 'completed') ?
+            { completed: true } : null;
+    });
     
     $scope.newTodo = { title: '' };
     $scope.editedTodo = null;
@@ -40,8 +47,9 @@ angular.module('bucketListController', []).config(['$httpProvider', function($ht
 
         $scope.saving = true;
         BucketList.put(newTodo)
-            .then(function success() {
+            .then(function success(data) {
                 $scope.newTodo = '';
+                $scope.bucketList.unshift(newTodo);
             })
             .finally(function () {
                 $scope.saving = false;
@@ -79,21 +87,32 @@ angular.module('bucketListController', []).config(['$httpProvider', function($ht
     };
 
     $scope.removeTodo = function (todo) {
-        BucketList.delete(todo);
+        BucketList.delete(todo)
+            .success(function() {
+                for (var i = 0; i < $scope.bucketList.length; i++) {
+                    if ($scope.bucketList[i]._id == todo._id) {
+                        $scope.bucketList.splice(i, 1);
+                    }
+                }
+            });
     };
 
     $scope.saveTodo = function (todo) {
         BucketList.put(todo);
     };
 
-    $scope.toggleCompleted = function (todo, completed) {
-        if (angular.isDefined(completed)) {
-            todo.completed = completed;
-        }
-        store.put(todo, todos.indexOf(todo))
-            .then(function success() {}, function error() {
+    $scope.toggleCompleted = function (todo) {
+        BucketList.put(todo)
+            .success(function() {
+                console.log('success!');
+            })
+            .error(function() {
                 todo.completed = !todo.completed;
             });
+    };
+
+    $scope.percent = function(partial, total) {
+        return parseInt(partial / total * 100);
     };
 
 });

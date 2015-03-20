@@ -104,17 +104,6 @@ module.exports = {
         });
     },
 
-    saveBucketListItem: function(item) {
-        return new Promise(function(resolve) {
-            BucketListItem.create(item, function(err, newItem) {
-                if(err) {
-                    console.error(err);
-                }
-                resolve(newItem);
-            });
-        });
-    },
-
     geocodeLocation: function(locationSearch) {
         return new Promise(function(resolve) {
             console.log('geocoding...');

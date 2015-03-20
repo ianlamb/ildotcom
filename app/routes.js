@@ -30,6 +30,7 @@ module.exports = function(app, router) {
         res.json({ message: 'hi :)' });
     });
 
+    // authenticate
     router.route('/auth').post(function(req, res) {
         if (!req.body.password
             || !config.authSecret
@@ -112,9 +113,34 @@ module.exports = function(app, router) {
             });
     });
     router.route('/bucketlist', [auth]).put(function(req, res) {
-        AdventureManager.saveBucketListItem(req.body).then(function(data) {
-            res.json(data);
+        var data = { title: req.body.title, completed: req.body.completed };
+        BucketListItem.findOne({ _id: req.body._id }, function(err, todo) {
+            if (err) {
+                res.end(err);
+            }
+            if (!todo) {
+                todo = new BucketListItem(data);
+            } else {
+                todo.title = data.title;
+                todo.completed = data.completed;
+            }
+            todo.save(function(err) {
+                if (err) {
+                    res.end(err);
+                }
+                res.json(todo);
+            });
         });
+    });
+    router.route('/bucketlist/:id', [auth]).delete(function(req, res) {
+        var todoId = req.params.id;
+        BucketListItem.remove({ _id: todoId })
+            .exec(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.send(200);
+            });
     });
 
     // games
@@ -127,7 +153,6 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-
     router.route('/d3').get(function(req, res) {
         DiabloProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
             .exec(function(err, data) {
@@ -137,19 +162,8 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-
     router.route('/sc2').get(function(req, res) {
         StarcraftProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
-            });
-    });
-
-    router.route('/steam').get(function(req, res) {
-        SteamProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
             .exec(function(err, data) {
                 if (err) {
                     res.send(err);

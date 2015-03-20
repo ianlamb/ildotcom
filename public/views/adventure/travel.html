@@ -9,7 +9,7 @@
     </div>
 
     <div class="row trips">
-        <div ng-repeat="trip in trips | orderBy:'startDate':true" class="col-sm-4">
+        <div ng-repeat="trip in trips | orderBy:'startDate':true track by $index" class="col-sm-4">
             <div class="trip">
                 <div class="title">
                     <h3>{{ trip.name }}</h3>
@@ -17,7 +17,8 @@
                 </div>
                 <div class="photos">
                     <p ng-if="trip.photos.length==0" class="no-photo"><i class="fa fa-image"></i>No Photos :(</p>
-                    <a ng-repeat="photo in trip.photos | limitTo:3" href="{{ photo.url }}" title="{{ photo.title }}" class="photo-container">
+                    <a ng-repeat="photo in trip.photos | limitTo:3" href="{{ photo.url }}" title="{{ photo.title }}" class="photo-container" 
+                       style="-webkit-animation: photoTransition1 9s infinite 0.{{ $index }}s;">
                         <img src="{{ photo.thumb }}" alt="{{ photo.title }}" class="photo" />
                     </a>
                 </div>

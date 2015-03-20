@@ -40,6 +40,9 @@ angular.module('adventureService', [])
             },
             put: function(data) {
                 return $http.put('/api/bucketlist', data);
+            },
+            delete: function(data) {
+                return $http.delete('/api/bucketlist/' + data._id);
             }
         };
 
