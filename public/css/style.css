@@ -34,6 +34,7 @@ html {
     background: #22262b;
 }
 body {
+    padding-top: 50px;
     letter-spacing: 0.1em;
     background: transparent;
 }
@@ -357,7 +358,7 @@ label {
     height: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 50px 0 180px 0;
+    padding: 0 0 180px 0;
 }
 
 #footer {
@@ -1499,6 +1500,48 @@ a.hex:hover {
 .grade.V6 .bubble, .grade.five11 .bubble { background: orangered; }
 .grade.V7 .bubble, .grade.five12 .bubble { background: red; }
 .grade.V8 .bubble, .grade.five13 .bubble { background: black; }
+
+
+.heatCalendar {
+    width: 100%;
+}
+.heatCalendar .title {
+    margin: 0;
+    text-align: center;
+    font-weight: normal;
+}
+.heatCalendar table {
+    border-collapse: separate;
+    border-spacing: 2px;
+    width: 100%;
+}
+.heatCalendar table tr td, .heatCalendar table tr th {
+    width: 10%;
+    height: 30px;
+    text-align: center;
+    font-weight: normal;
+}
+.heatCalendar table tr td {
+    background: #454545;
+    border: 2px solid transparent;
+    color: transparent;
+    cursor: default;
+    -webkit-transition: color .5s ease-in;
+    transition: color .5s ease-in;
+}
+.heatCalendar table tr td:hover {
+    color: #efefef;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+}
+.heatCalendar table tr td.today {
+    border-color: #efefef;
+}
+.heatCalendar table tr td.lastMonth {
+    background: #3f3f3f;
+}
+.heatCalendar table tr td.nextMonth {
+    background: #3f3f3f;
 
 
 

@@ -249,11 +249,122 @@ angular.module('appDirectives', [])
         }
     })
 
-    .directive('continuousLoading', function() {
+    .directive('heatcalendar', function() {
         return {
-            restrict: 'A',
-            controller: function($scope) {
+            restrict: 'E',
+            controller: function($scope, $timeout) {
+//                var data = {
+//                    '2015-03-01': 0.5
+//                }
                 
+                $timeout(function() {
+                    var data = $scope.heatCalendarData;
+
+                    var now = new Date();
+                    var year = now.getFullYear()
+                    var month = now.getMonth()
+                    var date = now.getDate();
+                    var days = getDays(month, year);
+                    var firstDay = new Date(year, month, 1).getDay() + 1;
+                    var text = '';
+                    text += '<h4 class="title">' + getMonthName(now.getMonth()) + '</h4>';
+                    text += '<table>';
+                    text += '<thead>';
+                    text +=     '<tr>';
+                    text +=         '<th>S</th>';
+                    text +=         '<th>M</th>';
+                    text +=         '<th>T</th>';
+                    text +=         '<th>W</th>';
+                    text +=         '<th>T</th>';
+                    text +=         '<th>F</th>';
+                    text +=         '<th>S</th>';
+                    text +=     '</tr>';
+                    text += '</thead>';
+                    text += '<tbody>';
+
+                    var digit = 1;
+                    var curCell = 1;
+                    for (var row = 1; row <= Math.ceil((days + firstDay - 1) / 7); ++row) {
+                        text += '<tr>';
+                        for (var col = 1; col <= 7; ++col) {
+                            //if (digit > days) {
+                            //    break;
+                            //}
+                            var current = new Date(year, month, digit).toISOString().split('T')[0];
+                            var className = '';
+                            var style = '';
+                            var value = red = green = blue = alpha = 0;
+                            if (data[current] > 0) {
+                                value = data[current] * 510;
+                                red = Math.ceil(value/2 + 130);
+                                green = Math.ceil((510)-value);
+                                blue = Math.ceil(data[current] * 30);
+                                alpha = 0.8;
+                                style = 'background: rgba('+red+','+green+','+blue+','+alpha+')';
+                            }
+                            if (curCell < firstDay) {
+                                className = 'lastMonth';
+                                curCell++;
+                            } else if (digit > days) {
+                                className = 'nextMonth';
+                            } else {
+                                if (digit == date) {
+                                    className = 'today';
+                                }
+                                digit++;
+                            }
+                            text += '<td class="' + className + '" style="' + style + '">' + digit + '</td>';
+                        }
+                        text += '</tr>';
+                    }
+
+                    text += '</tbody>';
+                    text += '</table>';
+                    var container = document.getElementsByTagName('heatcalendar')[0];
+                    container.className = 'heatCalendar';
+                    container.innerHTML = text;
+                }, 200);
+
+                function leapYear(year) {
+                    if (year % 4 == 0) // basic rule
+                    return true // is leap year
+                    /* else */ // else not needed when statement is "return"
+                    return false // is not leap year
+                }
+
+                function getDays(month, year) {
+                    var ar = new Array(12)
+                    ar[0] = 31 // January
+                    ar[1] = (leapYear(year)) ? 29 : 28 // February
+                    ar[2] = 31 // March
+                    ar[3] = 30 // April
+                    ar[4] = 31 // May
+                    ar[5] = 30 // June
+                    ar[6] = 31 // July
+                    ar[7] = 31 // August
+                    ar[8] = 30 // September
+                    ar[9] = 31 // October
+                    ar[10] = 30 // November
+                    ar[11] = 31 // December
+                    return ar[month]
+                }
+
+                function getMonthName(month) {
+                    var ar = new Array(12)
+                    ar[0] = "January"
+                    ar[1] = "February"
+                    ar[2] = "March"
+                    ar[3] = "April"
+                    ar[4] = "May"
+                    ar[5] = "June"
+                    ar[6] = "July"
+                    ar[7] = "August"
+                    ar[8] = "September"
+                    ar[9] = "October"
+                    ar[10] = "November"
+                    ar[11] = "December"
+                    return ar[month]
+                }
             }
         }
     });
