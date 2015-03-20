@@ -1,4 +1,9 @@
 angular.module('mainController', []).controller('MainController', function($scope, $rootScope, $window, $location, $state) {
+    
+    var token = window.localStorage.getItem('token');
+    if (token) {
+        $rootScope.authorized = true;
+    }
 
     $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
         if (toState.name === 'adventure') { 

@@ -1,14 +1,5 @@
-angular.module('climbController', []).config(['$httpProvider', function($httpProvider) {
-    var token = window.localStorage.getItem('token');
-    if (token) {
-        $httpProvider.defaults.headers.common = { 'x-access-token': token }
-    }
-}]).controller('ClimbController', function($scope, Climbs, Places) {
-
-    var token = window.localStorage.getItem('token');
-    if (token) {
-        $scope.authorized = true;
-    }
+angular.module('climbController', []).controller('ClimbController', function($scope, Climbs, Places) {
+    'use strict';
 
     var boulderGrades = ['V0','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12','V13','V14','V15'];
     var climbGrades = ['5.5','5.6','5.7','5.8','5.9-','5.9','5.9+','5.10-','5.10','5.10+','5.11-','5.11','5.11+',
@@ -155,7 +146,8 @@ angular.module('climbController', []).config(['$httpProvider', function($httpPro
             month = now.getMonth(),
             sessionDate = moment(session.date).toDate();
         if (sessionDate.getFullYear() === year && sessionDate.getMonth() === month) {
-            var climbValue = ((session.routeCount*8) + session.problemCount * 4);
+            var weightFactor = 5;
+            var climbValue = ((session.routeCount*2) + session.problemCount) * weightFactor;
             var heatValue = climbValue / 100;
             if (heatValue > 1) {
                 heatValue = 1;

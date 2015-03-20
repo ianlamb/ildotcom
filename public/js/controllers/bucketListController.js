@@ -1,15 +1,5 @@
-angular.module('bucketListController', []).config(['$httpProvider', function($httpProvider) {
-    var token = window.localStorage.getItem('token');
-    if (token) {
-        $httpProvider.defaults.headers.common = { 'x-access-token': token }
-    }
-}]).controller('BucketListController', function($scope, $filter, $stateParams, BucketList) {
+angular.module('bucketListController', []).controller('BucketListController', function($scope, $filter, $stateParams, BucketList) {
     'use strict';
-
-    var token = window.localStorage.getItem('token');
-    if (token) {
-        $scope.authorized = true;
-    }
 
     BucketList.get()
         .success(function(data) {

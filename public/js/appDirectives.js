@@ -41,12 +41,25 @@ angular.module('appDirectives', [])
     .directive('login', function() {
         return {
             restrict: 'A',
-            controller: function(Auth) {
+            controller: function($rootScope, $location, Auth) {
                 $(document).on('keypress', '#login', function(e) {
                     var password = e.target.value;
                     if (e.which === 13) {
                         e.preventDefault();
-                        Auth.post(password);
+                        Auth.post(password)
+                            .success(function(data, status, headers, config) {
+                                window.localStorage.setItem('token', data.token);
+                                $.ajaxSetup({
+                                    headers: {
+                                        'x-access-token': data.token
+                                    }
+                                });
+                                $rootScope.authorized = true;
+                                $location.path('/home').replace();
+                            })
+                            .error(function(data, status, headers, config) {
+                                alert('Unauthorized');
+                            });
                     }
                 });
             }

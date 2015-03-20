@@ -26,7 +26,7 @@
             <ul id="todo-list">
                 <li ng-repeat="todo in bucketList track by $index" class="{{ item.completed ? 'completed' : '' }}">
                     <div class="view">
-                        <input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)">
+                        <input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)" {{ authorized ? '' : 'disabled' }}>
                         <label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
                         <button class="destroy" ng-click="removeTodo(todo)"></button>
                     </div>

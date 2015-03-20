@@ -17,4 +17,9 @@ angular.module('ildotcomApp', [
     'starcraftController',
     'adventureService',
     'gameService'
-]);
+]).config(['$httpProvider', function($httpProvider) {
+    var token = window.localStorage.getItem('token');
+    if (token) {
+        $httpProvider.defaults.headers.common = { 'x-access-token': token }
+    }
+}]);

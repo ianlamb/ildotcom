@@ -24,6 +24,15 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
             controller: 'MainController'
         })
 
+        .state('logout', {
+            url: '/logout',
+            controller: function($rootScope, $location) {
+                delete window.localStorage.token;
+                $rootScope.authorized = false;
+                $location.path('/home').replace();
+            }
+        })
+
         .state('adventure', {
             url: '/adventure',
             templateUrl: 'views/adventure.html',
