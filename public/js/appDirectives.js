@@ -253,13 +253,21 @@ angular.module('appDirectives', [])
         return {
             restrict: 'E',
             controller: function($scope, $timeout) {
-//                var data = {
-//                    '2015-03-01': 0.5
-//                }
-                
                 $timeout(function() {
                     var data = $scope.heatCalendarData;
-
+//                    var data = {
+//                        '2015-03-01': 0.1,
+//                        '2015-03-02': 0.2,
+//                        '2015-03-03': 0.3,
+//                        '2015-03-04': 0.4,
+//                        '2015-03-05': 0.5,
+//                        '2015-03-06': 0.6,
+//                        '2015-03-07': 0.7,
+//                        '2015-03-08': 0.8,
+//                        '2015-03-09': 0.9,
+//                        '2015-03-10': 1.0
+//                    }
+                    
                     var now = new Date();
                     var year = now.getFullYear()
                     var month = now.getMonth()
@@ -282,38 +290,37 @@ angular.module('appDirectives', [])
                     text += '</thead>';
                     text += '<tbody>';
 
-                    var digit = 1;
+                    var dayOfMonth = 1;
                     var curCell = 1;
                     for (var row = 1; row <= Math.ceil((days + firstDay - 1) / 7); ++row) {
                         text += '<tr>';
                         for (var col = 1; col <= 7; ++col) {
-                            //if (digit > days) {
-                            //    break;
-                            //}
-                            var current = new Date(year, month, digit).toISOString().split('T')[0];
+                            var current = new Date(year, month, dayOfMonth).toISOString().split('T')[0];
                             var className = '';
                             var style = '';
+                            var cellBody = '';
                             var value = red = green = blue = alpha = 0;
                             if (data[current] > 0) {
-                                value = data[current] * 510;
-                                red = Math.ceil(value/2 + 130);
-                                green = Math.ceil((510)-value);
-                                blue = Math.ceil(data[current] * 30);
+                                value = data[current];
+                                red = Math.ceil(value * 20 + 20);
+                                green = Math.ceil(value * 100 + 75);
+                                blue = Math.ceil((value * 255) / 2 + 130);
                                 alpha = 0.8;
                                 style = 'background: rgba('+red+','+green+','+blue+','+alpha+')';
                             }
                             if (curCell < firstDay) {
                                 className = 'lastMonth';
                                 curCell++;
-                            } else if (digit > days) {
+                            } else if (dayOfMonth > days) {
                                 className = 'nextMonth';
                             } else {
-                                if (digit == date) {
+                                if (dayOfMonth == date) {
                                     className = 'today';
                                 }
-                                digit++;
+                                cellBody = dayOfMonth;
+                                dayOfMonth++;
                             }
-                            text += '<td class="' + className + '" style="' + style + '">' + digit + '</td>';
+                            text += '<td class="' + className + '" style="' + style + '">' + cellBody + '</td>';
                         }
                         text += '</tr>';
                     }
