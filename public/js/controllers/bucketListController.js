@@ -39,7 +39,7 @@ angular.module('bucketListController', []).controller('BucketListController', fu
         BucketList.put(newTodo)
             .then(function success(data) {
                 $scope.newTodo = { title: '' };
-                $scope.bucketList.unshift(newTodo);
+                $scope.bucketList.unshift(data);
             })
             .finally(function () {
                 $scope.saving = false;

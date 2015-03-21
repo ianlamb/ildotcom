@@ -33,6 +33,18 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
             }
         })
 
+        .state('work', {
+            url: '/work',
+            templateUrl: 'views/work.html',
+            controller: 'WorkController'
+        })
+
+        .state('blog', {
+            url: '/blog',
+            templateUrl: 'views/blog.html',
+            controller: 'BlogController'
+        })
+
         .state('adventure', {
             url: '/adventure',
             templateUrl: 'views/adventure.html',

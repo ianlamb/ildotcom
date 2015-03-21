@@ -7,6 +7,8 @@ module.exports = function(app, router) {
 
     var AdventureManager    = require('./managers/adventure-manager.js');
     
+    var Post                = require('./models/post');
+    var Project             = require('./models/project');
     var Person              = require('./models/person');
     var Place               = require('./models/place');
     var Photo               = require('./models/photo');
@@ -48,6 +50,58 @@ module.exports = function(app, router) {
             token : token,
             expires: expires
         });
+    });
+
+    // blog
+    router.route('/posts').get(function(req, res) {
+        Post.find({}, {}, { sort: { 'created_at': -1 }})
+            .exec(function(err, data) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(data);
+            });
+    });
+    router.route('/post', [auth]).put(function(req, res) {
+        var data = { title: req.body.title, body: req.body.body, slug: req.body.slug, tags: req.body.tags };
+        Post.findOne({ _id: req.body._id }, function(err, post) {
+            if (err) {
+                res.end(err);
+            }
+            if (!post) {
+                post = new Post(data);
+            } else {
+                post.title = data.title;
+                post.completed = data.completed;
+            }
+            post.save(function(err, newPost) {
+                if (err) {
+                    res.end(err);
+                }
+                res.json(newPost);
+            });
+        });
+    });
+    router.route('/post/:id', [auth]).delete(function(req, res) {
+        var postId = req.params.id;
+        Post.remove({ _id: postId })
+            .exec(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.send(200);
+            });
+    });
+
+    // work
+    router.route('/projects').get(function(req, res) {
+        Project.find({}, {}, { sort: { 'created_at': -1 }})
+            .exec(function(err, data) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(data);
+            });
     });
 
     // places
@@ -124,11 +178,11 @@ module.exports = function(app, router) {
                 todo.title = data.title;
                 todo.completed = data.completed;
             }
-            todo.save(function(err) {
+            todo.save(function(err, newTodo) {
                 if (err) {
                     res.end(err);
                 }
-                res.json(todo);
+                res.json(newTodo);
             });
         });
     });

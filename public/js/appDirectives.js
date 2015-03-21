@@ -6,9 +6,11 @@ angular.module('appDirectives', [])
             controller: function($scope, $location) {
                 $scope.navLinks = [
                     { slug: 'home', text: 'Home', sortRank: 0 },
-                    { slug: 'about', text: 'About', sortRank: 1 },
+                    { slug: 'work', text: 'Work', sortRank: 1 },
                     { slug: 'adventure', text: 'Adventure', sortRank: 2 },
-                    { slug: 'gaming', text: 'Gaming', sortRank: 3 }
+                    { slug: 'gaming', text: 'Gaming', sortRank: 3 },
+                    { slug: 'blog', text: 'Blog', sortRank: 4 },
+                    { slug: 'about', text: 'About', sortRank: 5 }
                 ];
 
                 $scope.isActive = function(slug) {

@@ -83,7 +83,7 @@ angular.module('climbController', []).controller('ClimbController', function($sc
 
             $scope.climbSessions = [];
             var climbCounter;
-            for (climbCounter = 0; climbCounter < 10; climbCounter++) {
+            for (climbCounter = 0; climbCounter < 10 && climbSessions[climbCounter]; climbCounter++) {
                 $scope.climbSessions.push(climbSessions[climbCounter]);
             }
 

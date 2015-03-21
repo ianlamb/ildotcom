@@ -37,6 +37,10 @@ body {
     padding-top: 50px;
     letter-spacing: 0.1em;
     background: transparent;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-ms-font-smoothing: antialiased;
+	font-smoothing: antialiased;
 }
 h1 { margin: 0 0 15px 0; }
 h2 {  }
@@ -70,8 +74,12 @@ dt {
 dd {
     color: #00abff;
     font-size: 2.0em;
-    margin-bottom: 5px;
+    line-height: 0.9em;
+    margin-bottom: 0.5em;
     cursor: default;
+}
+dd.smaller {
+    font-size: 1.6em;
 }
 
 dl.table-list {
@@ -1180,6 +1188,121 @@ a.hex:hover {
 
 
 
+/* BLOG */
+#blog {
+    padding-top: 30px;
+}
+#blog #postTitle {
+    margin-bottom: 10px;
+}
+#blog #postBody {
+    width: 100%;
+    height: 200px;
+    padding: 0.4em 1.0em 0.4em 0.6em;
+}
+#blog #newPost,
+.edit {
+	position: relative;
+	margin: 0;
+	width: 100%;
+	font-family: inherit;
+	font-weight: inherit;
+	line-height: 1.4em;
+	border: 0;
+	outline: none;
+	color: inherit;
+	padding: 6px;
+	border: 1px solid #999;
+	box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#newPost {
+	padding: 10px;
+	border: none;
+	background: rgba(0, 0, 0, 0.003);
+	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+}
+
+#blogPosts {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#blogPosts li {
+	position: relative;
+    margin-bottom: 10px;
+}
+
+#blogPosts li h2 {
+    margin: 0;
+}
+
+#blogPosts li:last-child {
+	border-bottom: none;
+}
+
+#blogPosts li.editing {
+	border-bottom: none;
+	padding: 0;
+}
+
+#blogPosts li.editing .edit {
+	display: block;
+	width: 506px;
+	padding: 13px 17px 12px 17px;
+	margin: 0 0 0 43px;
+}
+
+#blogPosts li.editing .view {
+	display: none;
+}
+
+#blogPosts li .toggle {
+	text-align: center;
+	width: 40px;
+	/* auto, since non-WebKit browsers doesn't support input styling */
+	height: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+	border: none; /* Mobile Safari */
+    cursor: pointer;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+}
+
+#blogPosts li label {
+    font-size: 18px;
+    margin: 10px 0;
+	white-space: pre;
+	word-break: break-word;
+	padding: 10px 60px 5px 15px;
+	margin-left: 45px;
+	display: block;
+	line-height: 1.2;
+	transition: color 0.4s;
+}
+
+#blogPosts li .edit {
+	display: none;
+}
+
+#blogPosts li.editing:last-child {
+	margin-bottom: -1px;
+}
+
+
+
+/* WORK */
+#work {
+    padding-top: 30px;
+}
+
 
 /* ADVENTURE */
 #adventure .header-image {
@@ -1548,7 +1671,7 @@ a.hex:hover {
     padding-top: 30px;
 }
 
-#new-todo,
+#newTodo,
 .edit {
 	position: relative;
 	margin: 0;
@@ -1571,57 +1694,51 @@ a.hex:hover {
 	font-smoothing: antialiased;
 }
 
-#new-todo {
+#newTodo {
 	padding: 10px;
 	border: none;
 	background: rgba(0, 0, 0, 0.003);
 	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 }
 
-#main {
-	position: relative;
-	z-index: 2;
-	border-top: 1px solid #e6e6e6;
-}
-
 label[for='toggle-all'] {
 	display: none;
 }
 
-#todo-list {
+#todoList {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-#todo-list li {
+#todoList li {
 	position: relative;
 	font-size: 24px;
 	border-bottom: 1px solid #666;
     margin-bottom: 10px;
 }
 
-#todo-list li:last-child {
+#todoList li:last-child {
 	border-bottom: none;
 }
 
-#todo-list li.editing {
+#todoList li.editing {
 	border-bottom: none;
 	padding: 0;
 }
 
-#todo-list li.editing .edit {
+#todoList li.editing .edit {
 	display: block;
 	width: 506px;
 	padding: 13px 17px 12px 17px;
 	margin: 0 0 0 43px;
 }
 
-#todo-list li.editing .view {
+#todoList li.editing .view {
 	display: none;
 }
 
-#todo-list li .toggle {
+#todoList li .toggle {
 	text-align: center;
 	width: 40px;
 	/* auto, since non-WebKit browsers doesn't support input styling */
@@ -1637,19 +1754,19 @@ label[for='toggle-all'] {
 	appearance: none;
 }
 
-#todo-list li .toggle:focus {
+#todoList li .toggle:focus {
     outline: none;
 }
 
-#todo-list li .toggle:after {
+#todoList li .toggle:after {
 	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><rect width="100" height="100" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
 }
 
-#todo-list li .toggle:checked:after {
+#todoList li .toggle:checked:after {
 	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><rect width="100" height="100" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#00abff" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
 }
 
-#todo-list li label {
+#todoList li label {
     font-size: 18px;
     margin: 10px 0;
 	white-space: pre;
@@ -1661,12 +1778,12 @@ label[for='toggle-all'] {
 	transition: color 0.4s;
 }
 
-#todo-list li.completed label {
+#todoList li.completed label {
 	color: #d9d9d9;
 	text-decoration: line-through;
 }
 
-#todo-list li .destroy {
+#todoList li .destroy {
 	display: none;
 	position: absolute;
 	top: 0;
@@ -1683,53 +1800,24 @@ label[for='toggle-all'] {
 	transition: color 0.2s ease-out;
 }
 
-#todo-list li .destroy:hover {
+#todoList li .destroy:hover {
 	color: #af5b5e;
 }
 
-#todo-list li .destroy:after {
+#todoList li .destroy:after {
 	content: '×';
 }
 
-#todo-list li:hover .destroy {
+#todoList li:hover .destroy {
 	display: block;
 }
 
-#todo-list li .edit {
+#todoList li .edit {
 	display: none;
 }
 
-#todo-list li.editing:last-child {
+#todoList li.editing:last-child {
 	margin-bottom: -1px;
-}
-
-#filters {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-    margin: 5px 0 10px 0;
-}
-
-#filters li {
-	display: inline-block;
-}
-
-#filters li a {
-	color: inherit;
-	margin: 3px;
-	padding: 3px 7px;
-	text-decoration: none;
-	border: 1px solid transparent;
-	border-radius: 3px;
-}
-
-#filters li a.selected,
-#filters li a:hover {
-	border-color: rgba(175, 47, 47, 0.1);
-}
-
-#filters li a.selected {
-	border-color: rgba(175, 47, 47, 0.2);
 }
 
 
@@ -1888,7 +1976,7 @@ label[for='toggle-all'] {
 .timestamp {
     float: right;
     color: #777;
-    font-size: 0.8em;
+    font-size: 12px;
     margin-bottom: 5px;
 }
 
