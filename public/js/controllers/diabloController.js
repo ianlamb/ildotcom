@@ -12,6 +12,10 @@ angular.module('diabloController', []).controller('DiabloController', function($
     $scope.percent = function(value) {
         return parseInt(value * 100);
     }
+    
+    $scope.sluggify = function(text) {
+        return text.toLowerCase().split('\'').join('').split(' ').join('-');
+    }
 
     $scope.formatSlug = function(slug) {
         var formatted;

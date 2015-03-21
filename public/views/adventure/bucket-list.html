@@ -10,19 +10,6 @@
                     <input type="text" id="new-todo" ng-model="newTodo.title" ng-disabled="saving" placeholder="New Item" autofocus>
                 </form>
             </div>
-<!--
-            <ul id="filters">
-                <li>
-                    <a ng-class="{selected: status == ''} " href="#/">All</a>
-                </li>
-                <li>
-                    <a ng-class="{selected: status == 'active'}" href="#/active">Active</a>
-                </li>
-                <li>
-                    <a ng-class="{selected: status == 'completed'}" href="#/completed">Completed</a>
-                </li>
-            </ul>
--->
             <ul id="todo-list">
                 <li ng-repeat="todo in bucketList track by $index" class="{{ item.completed ? 'completed' : '' }}">
                     <div class="view">
