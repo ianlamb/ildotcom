@@ -7,6 +7,7 @@ angular.module('ildotcomApp', [
     'appDirectives',
     'appRoutes',
     'mainController',
+    'authController',
     'workController',
     'blogController',
     'adventureController',

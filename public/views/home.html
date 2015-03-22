@@ -8,12 +8,6 @@
                         <div id="intro">
                             <h1 class="animated fadeIn delay-short">Hi! My name is Ian and I craft websites.</h1>
                         </div>
-<!--                         <quotation>
-                            <p id="quotation" class="animated fadeIn delay-medium">
-                                &ldquo;<span class="quote">{{ quote.text }}</span>&rdquo;
-                                &ndash; <a href="{{ quote.link }}" class="person">{{ quote.person }}</a>
-                            </p>
-                        </quotation> -->
                         <i class="fa fa-arrow-circle-o-down scroll-down"></i>
                     </div>
                 </div>
@@ -92,51 +86,47 @@
             </div>
         </div>
     </section>
-    <projects>
-        <section id="projects">
-            <div class="container">
-                <h1>Work</h1>
-                <div ng-repeat="project in projects track by $index" class="project-wrapper 
-                    {{ $index == 0 ? 'primary' : $index == 1 ? 'secondary' : 'tertiary' }}">
-                    <a href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
-                        <div class="overlay">
-                            <div class="title">{{ project.name }}</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </projects>
-    <contact>
-        <section id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h1>Contact</h1>
-                        <div class="contact-info">
-                            <div class="phone">
-                                <span>519</span>
-                                <span>902</span>
-                                <span>6533</span>
-                            </div>
-                            <label>Mobile Phone</label>
-                            <div class="location">
-                                {{ location }}
-                            </div>
-                            <label>Location</label>
-                            <div class="email">
-                                <a href="mailto:{{ email }}" class="social-anchor">
-                                    {{ email }}
-                                </a>
-                            </div>
-                            <label>Email</label>
-                        </div>
+    <section id="projects">
+        <div class="container">
+            <h1>Work</h1>
+            <div ng-repeat="project in projects track by $index" class="project-wrapper 
+                {{ $index == 0 ? 'primary' : $index == 1 ? 'secondary' : 'tertiary' }}">
+                <a href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
+                    <div class="overlay">
+                        <div class="title">{{ project.name }}</div>
                     </div>
-                    <div class="col-sm-8">
-                        <div id="contactMap"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h1>Contact</h1>
+                    <div class="contact-info">
+                        <div class="phone">
+                            <span>519</span>
+                            <span>902</span>
+                            <span>6533</span>
+                        </div>
+                        <label>Mobile Phone</label>
+                        <div class="location">
+                            {{ location.name }}
+                        </div>
+                        <label>Location</label>
+                        <div class="email">
+                            <a href="mailto:{{ email }}" class="social-anchor">
+                                {{ email }}
+                            </a>
+                        </div>
+                        <label>Email</label>
                     </div>
                 </div>
+                <div class="col-sm-8">
+                    <div id="contactMap" contact-map></div>
+                </div>
             </div>
-        </section>
-    </contact>
+        </div>
+    </section>
 </div>

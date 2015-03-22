@@ -103,7 +103,7 @@ button, .button {
     font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
     font-weight: normal;
     line-height: normal;
-    margin: 1.8em 0 1.11111em 0;
+    margin: 0 0 1em 0;
     position: relative;
     text-decoration: none;
     text-align: center;
@@ -122,6 +122,9 @@ button, .button {
 }
 button:hover, .button:hover {
     background: #0091d8;
+}
+button.form-alignment {
+    margin-top: 1.8em;
 }
 
 select {
@@ -156,6 +159,10 @@ label {
 .panel {
     padding: 1.0em 2.0em;
     background: #454545;
+    border-radius: 0;
+}
+
+.alert {
     border-radius: 0;
 }
 
@@ -638,11 +645,6 @@ input[type="text"] {
     height: 2.5em;
     width: 100%;
 }
-button {
-    position: relative;
-    top: -2px;
-    padding: 0.7em 1.4em;
-}
 #home .button {
     display: inline-block;
     width: 100%;
@@ -665,18 +667,24 @@ button {
 }
 
 
-/* LOGIN PAGE */
-.password-field {
+/* AUTHENTICATION */
+#login, #logout {
+    padding-top: 10em;
+}
+#login button {
+    width: 100%;
+}
+#login .password-field {
     display: block;
-    margin: 200px auto;
-    width: 200px;
+    width: 100%;
     background: #fff;
     border: 1px solid #999;
     padding: 1em;
+    margin-bottom: 1em;
     -webkit-transition: all .4s;
     transition: all .4s;
 }
-.password-field:focus {
+#login .password-field:focus {
     border-color: #00abff;
     -webkit-transition: all .4s;
     transition: all .4s;

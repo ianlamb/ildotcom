@@ -1,10 +1,11 @@
-angular.module('climbController', []).controller('ClimbController', function($scope, Climbs, Places) {
+angular.module('climbController', []).controller('ClimbController', function($scope, $rootScope, Climbs, Places) {
     'use strict';
 
     var boulderGrades = ['V0','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12','V13','V14','V15'];
     var climbGrades = ['5.5','5.6','5.7','5.8','5.9-','5.9','5.9+','5.10-','5.10','5.10+','5.11-','5.11','5.11+',
                         '5.12-','5.12','5.12+'];
 
+    $scope.messages = [];
     $scope.boulderGrades = boulderGrades;
     $scope.climbGrades = climbGrades;
     $scope.climbTypes = {
@@ -19,7 +20,7 @@ angular.module('climbController', []).controller('ClimbController', function($sc
         climbs: []
     };
     
-    $(document).on('click', '[data-action="add-climb"]', function() {
+    $scope.addSend = function() {
         var type = $('#type').val();
         var grade = $('#grade option:selected').html();
         if(!grade) {
@@ -27,21 +28,19 @@ angular.module('climbController', []).controller('ClimbController', function($sc
             return;
         }
         var typeExists = false;
-        $scope.$apply(function() {
-            for (var i = 0; i < $scope.newSession.climbs.length; i++) {
-                if ($scope.newSession.climbs[i].type === type) {
-                    $scope.newSession.climbs[i].sends.push(grade);
-                    typeExists = true;
-                    break;
-                }
+        for (var i = 0; i < $scope.newSession.climbs.length; i++) {
+            if ($scope.newSession.climbs[i].type === type) {
+                $scope.newSession.climbs[i].sends.push(grade);
+                typeExists = true;
+                break;
             }
-            if (!typeExists) {
-                $scope.newSession.climbs.push({ type: type, sends: [grade] });
-            }
-        });
-    });
+        }
+        if (!typeExists) {
+            $scope.newSession.climbs.push({ type: type, sends: [grade] });
+        }
+    };
 
-    $(document).on('click', '[data-action="save-session"]', function() {
+    $scope.saveSession = function() {
         $scope.newSession.place = $('#place').val();
         $scope.newSession.date = $('#timestamp').val();
         if(!$scope.newSession.place) {
@@ -54,15 +53,24 @@ angular.module('climbController', []).controller('ClimbController', function($sc
         }
         Climbs.put($scope.newSession)
             .success(function(data) {
-                $scope.message = 'Climbing session saved!';
+                var latestClimb = parseClimb(data);
+                if (typeof latestClimb.place !== 'object') {
+                    $scope.places.forEach(function(place) {
+                        if (place._id === latestClimb.place) {
+                            latestClimb.place = place;
+                        }
+                    });
+                }
+            
+                $scope.messages.push({ type: 'success', body: 'Climbing session saved!' });
                 $scope.newSession = {
                     date: moment().format(),
                     climbs: []
                 };
-                $scope.climbSessions.unshift(parseClimb(data));
-                $scope.stats.lastClimb = moment(climbSessions[0].date).fromNow();
+                $scope.climbSessions.unshift(latestClimb);
+                $scope.stats.lastClimb = moment(latestClimb.date).fromNow();
             });
-    });
+    };
 
     Climbs.get()
         .success(function(data) {
@@ -97,13 +105,15 @@ angular.module('climbController', []).controller('ClimbController', function($sc
             console.error(err);
         });
 
-    Places.get()
-        .success(function(data) {
-            $scope.places = data;
-        })
-        .error(function(err) {
-            console.error(err);
-        });
+    if ($rootScope.authorized) {
+        Places.get()
+            .success(function(data) {
+                $scope.places = data;
+            })
+            .error(function(err) {
+                console.error(err);
+            });
+    }
 
     function parseClimb(session) {
         session.routeCount = 0;
