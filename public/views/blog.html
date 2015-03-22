@@ -14,7 +14,7 @@
                 <div ng-if="authorized" class="panel">
                     <form id="blogForm" ng-submit="addPost()">
                         <input type="text" id="postTitle" ng-model="newPost.title" ng-disabled="saving" placeholder="Title" autofocus>
-                        <textarea id="postBody" ng-model="newPost.body" ng-disabled="saving" placeholder="Message"></textarea>
+                        <textarea id="postBody" ng-model="newPost.body" ng-disabled="saving" ng-tab="insertTab()" placeholder="Message"></textarea>
                         <button type="submit">Create Post</button>
                     </form>
                 </div>

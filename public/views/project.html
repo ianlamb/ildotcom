@@ -1,0 +1,18 @@
+<div id="projectMain">
+    <div class="carousel-container">
+        <carousel interval="3000">
+            <slide ng-repeat="img in project.images track by $index" active="slide.active">
+                <img ng-src="images/{{ img }}">
+            </slide>
+        </carousel>
+    </div>
+    <div class="details">
+        <h4 class="name">{{ project.name }}</h4>
+        <p>{{ project.desc }}</p>
+        <a ng-if="project.url" href="{{ project.url }}" class="url"><i class="fa fa-external-link"></i> Live Site</a>
+        <a ng-if="project.repo" href="{{ project.repo }}" class="url"><i class="fa fa-github"></i> Source</a>
+        <ul class="technologies">
+            <li ng-repeat="tech in project.technologies">{{ tech }}</li>
+        </ul>
+    </div>
+</div>

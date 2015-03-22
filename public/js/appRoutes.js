@@ -38,6 +38,11 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
             templateUrl: 'views/work.html',
             controller: 'WorkController'
         })
+        .state('work.project', {
+            url: '/work/:slug',
+            templateUrl: 'views/project.html',
+            controller: 'WorkController'
+        })
 
         .state('blog', {
             url: '/blog',

@@ -6,10 +6,10 @@ angular.module('appDirectives', [])
             controller: function($scope, $location) {
                 $scope.navLinks = [
                     { slug: 'home', text: 'Home', sortRank: 0 },
-                    { slug: 'work', text: 'Work', sortRank: 1 },
-                    { slug: 'adventure', text: 'Adventure', sortRank: 2 },
-                    { slug: 'gaming', text: 'Gaming', sortRank: 3 },
-                    { slug: 'blog', text: 'Blog', sortRank: 4 },
+                    { slug: 'blog', text: 'Blog', sortRank: 1 },
+                    { slug: 'work', text: 'Work', sortRank: 2 },
+                    { slug: 'adventure', text: 'Adventure', sortRank: 3 },
+                    { slug: 'gaming', text: 'Gaming', sortRank: 4 },
                     { slug: 'about', text: 'About', sortRank: 5 }
                 ];
 
@@ -262,6 +262,20 @@ angular.module('appDirectives', [])
                     });
             }
         }
+    })
+
+    .directive('ngTab', function () {
+        return function (scope, element, attrs) {
+            element.bind('keydown', function (event) {
+                var TAB_KEY = 9;
+                if(event.which === TAB_KEY) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.ngTab);
+                    });
+                    event.preventDefault();
+                }
+            });
+        };
     })
 
     .directive('heatcalendar', function() {

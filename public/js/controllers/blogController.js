@@ -19,13 +19,13 @@ angular.module('blogController', []).controller('BlogController', function($scop
             console.error(err);
         });
     
-    $scope.newPost = { title: '' };
+    $scope.newPost = { title: '', body: '' };
     $scope.editedPost = null;
     
     $scope.addPost = function () {
         var newPost = {
             title: $scope.newPost.title.trim(),
-            body: $scope.newPost.body.trim(),
+            body: $scope.newPost.body.replace(/\r\n/g, '\n').split('\n').join('<br>').trim(),
             created_at: new Date()
         };
 
@@ -88,5 +88,9 @@ angular.module('blogController', []).controller('BlogController', function($scop
     $scope.savePost = function (post) {
         Posts.put(post);
     };
+    
+    $scope.insertTab = function(e) {
+        $scope.newPost.body += '    ';
+    }
 
 });

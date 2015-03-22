@@ -47,7 +47,7 @@ module.exports = function(app, router) {
         }, app.get('jwtTokenSecret'));
          
         res.json({
-            token : token,
+            token: token,
             expires: expires
         });
     });
@@ -63,16 +63,15 @@ module.exports = function(app, router) {
             });
     });
     router.route('/post', [auth]).put(function(req, res) {
-        var data = { title: req.body.title, body: req.body.body, slug: req.body.slug, tags: req.body.tags };
         Post.findOne({ _id: req.body._id }, function(err, post) {
             if (err) {
                 res.end(err);
             }
             if (!post) {
-                post = new Post(data);
+                post = new Post(req.body);
             } else {
-                post.title = data.title;
-                post.completed = data.completed;
+                post.title = req.body.title;
+                post.completed = req.body.completed;
             }
             post.save(function(err, newPost) {
                 if (err) {
@@ -83,8 +82,7 @@ module.exports = function(app, router) {
         });
     });
     router.route('/post/:id', [auth]).delete(function(req, res) {
-        var postId = req.params.id;
-        Post.remove({ _id: postId })
+        Post.remove({ _id: req.params.id })
             .exec(function(err) {
                 if (err) {
                     res.send(err);
@@ -101,6 +99,37 @@ module.exports = function(app, router) {
                     res.send(err);
                 }
                 res.json(data);
+            });
+    });
+    router.route('/project', [auth]).put(function(req, res) {
+        Project.findOne({ _id: req.body._id }, function(err, project) {
+            if (err) {
+                res.end(err);
+            }
+            if (!project) {
+                project = new Project(req.body);
+            } else {
+                project.name = req.body.name;
+                project.desc = req.body.desc;
+                project.url = req.body.url;
+                project.technologies = req.body.technologies;
+                project.images = req.body.images;
+            }
+            project.save(function(err, newProject) {
+                if (err) {
+                    res.end(err);
+                }
+                res.json(newProject);
+            });
+        });
+    });
+    router.route('/project/:id', [auth]).delete(function(req, res) {
+        Project.remove({ _id: req.params.id })
+            .exec(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.send(200);
             });
     });
 
@@ -129,7 +158,6 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-
     router.put('/climb', [auth], function(req, res) {
         AdventureManager.saveClimbSession(req.body).then(function(data) {
             res.json(data);
@@ -149,7 +177,6 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-    
     router.route('/trip', [auth]).put(function(req, res) {
         AdventureManager.saveTrip(req.body).then(function() {
             // do stuff
@@ -167,16 +194,15 @@ module.exports = function(app, router) {
             });
     });
     router.route('/bucketlist', [auth]).put(function(req, res) {
-        var data = { title: req.body.title, completed: req.body.completed };
         BucketListItem.findOne({ _id: req.body._id }, function(err, todo) {
             if (err) {
                 res.end(err);
             }
             if (!todo) {
-                todo = new BucketListItem(data);
+                todo = new BucketListItem(req.body);
             } else {
-                todo.title = data.title;
-                todo.completed = data.completed;
+                todo.title = req.body.title;
+                todo.completed = req.body.completed;
             }
             todo.save(function(err, newTodo) {
                 if (err) {
@@ -187,8 +213,7 @@ module.exports = function(app, router) {
         });
     });
     router.route('/bucketlist/:id', [auth]).delete(function(req, res) {
-        var todoId = req.params.id;
-        BucketListItem.remove({ _id: todoId })
+        BucketListItem.remove({ _id: req.params.id })
             .exec(function(err) {
                 if (err) {
                     res.send(err);
@@ -198,6 +223,7 @@ module.exports = function(app, router) {
     });
 
     // games
+    // stored profiles are essentially a history, so we only return the latest record to the user
     router.route('/wow').get(function(req, res) {
         WowProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
             .exec(function(err, data) {
