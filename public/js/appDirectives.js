@@ -87,7 +87,7 @@ angular.module('appDirectives', [])
         return {
             restrict: 'E',
             replace: true,
-            controller: function($scope, $timeout) {
+            controller: function($scope, $element, $timeout) {
                 $timeout(function() {
                     var data = $scope.heatCalendarData;
 //                    var data = {
@@ -162,7 +162,7 @@ angular.module('appDirectives', [])
 
                     text += '</tbody>';
                     text += '</table>';
-                    var container = document.getElementsByTagName('heatcalendar')[0];
+                    var container = $element[0];
                     container.className = 'heatCalendar';
                     container.innerHTML = text;
                 }, 200);
