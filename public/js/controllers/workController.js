@@ -1,6 +1,6 @@
-angular.module('workController', []).controller('WorkController', function($scope, $stateParams, Projects) {
+angular.module('workController', []).controller('WorkController', function($scope, $stateParams, $location, Projects) {
     'use strict';
-
+    
     Projects.get()
         .success(function(data) {
             var projects = $scope.projects = data;
