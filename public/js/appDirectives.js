@@ -9,7 +9,7 @@ angular.module('appDirectives', [])
                 $scope.navLinks = [
                     { slug: 'home', text: 'Home', sortRank: 0 },
                     { slug: 'blog', text: 'Blog', sortRank: 1 },
-                    { slug: 'work', text: 'Work', sortRank: 2 },
+                    //{ slug: 'work', text: 'Work', sortRank: 2 },
                     { slug: 'adventure', text: 'Adventure', sortRank: 3 },
                     { slug: 'gaming', text: 'Gaming', sortRank: 4 },
                     { slug: 'about', text: 'About', sortRank: 5 }
