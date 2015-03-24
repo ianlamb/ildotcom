@@ -3,43 +3,43 @@
         <div class="col-sm-3">
             <dl>
                 <dt>Last Climb</dt>
-                <dd id="lastClimb" style="font-size: 1.6em;">{{ stats.lastClimb }}</dd>
+                <dd id="lastClimb" class="smaller">{{ stats.lastClimb }}</dd>
             </dl>
             <div class="row">
                 <div class="col-xs-6 col-sm-12">
                     <dl>
                         <dt>Best Boulder</dt>
-                        <dd id="bestBoulder">{{ stats.bestBoulder }}</dd>
+                        <dd>{{ stats.bestBoulder }}</dd>
                     </dl>
                     <dl>
                         <dt>Best Lead</dt>
-                        <dd id="bestLead">{{ stats.bestLead }}</dd>
+                        <dd>{{ stats.bestLead }}</dd>
                     </dl>
                     <dl>
                         <dt>Best Top Rope</dt>
-                        <dd id="bestTopRope">{{ stats.bestTopRope }}</dd>
+                        <dd>{{ stats.bestTopRope }}</dd>
                     </dl>
                 </div>
                 <div class="col-xs-6 col-sm-12">
                     <dl>
                         <dt>Boulder Problems</dt>
-                        <dd id="problemsClimbed">{{ stats.problemsClimbed }}</dd>
+                        <dd>{{ stats.problemsClimbed }}</dd>
                     </dl>
                     <dl>
                         <dt>Routes</dt>
-                        <dd id="routesClimbed">{{ stats.routesClimbed }}</dd>
+                        <dd>{{ stats.routesClimbed }}</dd>
                     </dl>
                     <dl>
                         <dt>Sessions</dt>
-                        <dd id="daysClimbed">{{ stats.daysClimbed }}</dd>
+                        <dd>{{ stats.daysClimbed }}</dd>
                     </dl>
                 </div>
             </div>
-            <heatcalendar></heatcalendar>
+            <heat-calendar></heat-calendar>
         </div>
         <div class="col-sm-9">
             <div ng-if="authorized" class="panel">
-                <form id="addClimbForm">
+                <form id="addClimbForm" ng-submit="saveSession()">
                     <h3>New Session</h3>
                     <div class="row">
                         <div class="col-sm-4">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4 col-xs-3">
-                            <button type="button" data-action="add-climb"><i class="fa fa-plus"></i></button>
+                            <button type="button" ng-click="addSend()" class="form-alignment"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
                     <ul class="new-climb-session">
@@ -83,8 +83,8 @@
                         </li>
                     </ul>
                     <br>
-                    <button type="button" data-action="save-session">Save Session</button>
-                    <div ng-if="message" class="alert alert-success">{{ message }}</div>
+                    <button type="submit">Save Session</button>
+                    <alert ng-repeat="message in messages" type="{{ message.type }}">{{ message.body }}</alert>
                 </form>
             </div>
             <div infinite-scroll="loadMore()" class="sessions">

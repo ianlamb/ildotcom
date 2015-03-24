@@ -20,17 +20,31 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
 
         .state('login', {
             url: '/login',
-            templateUrl: 'views/login.html',
-            controller: 'MainController'
+            templateUrl: 'views/auth/login.html',
+            controller: 'AuthController'
         })
 
         .state('logout', {
             url: '/logout',
-            controller: function($rootScope, $location) {
-                delete window.localStorage.token;
-                $rootScope.authorized = false;
-                $location.path('/home').replace();
-            }
+            templateUrl: 'views/auth/logout.html',
+            controller: 'AuthController'
+        })
+
+        .state('work', {
+            url: '/work',
+            templateUrl: 'views/work.html',
+            controller: 'WorkController'
+        })
+        .state('work.project', {
+            url: '/work/:slug',
+            templateUrl: 'views/project.html',
+            controller: 'WorkController'
+        })
+
+        .state('blog', {
+            url: '/blog',
+            templateUrl: 'views/blog.html',
+            controller: 'BlogController'
         })
 
         .state('adventure', {

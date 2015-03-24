@@ -1,14 +1,18 @@
 angular.module('appDirectives', [])
-    .directive('navigation', function() {
+
+    .directive('navbar', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/templates/navigation.html',
+            replace: true,
+            templateUrl: 'views/templates/navbar.html',
             controller: function($scope, $location) {
                 $scope.navLinks = [
                     { slug: 'home', text: 'Home', sortRank: 0 },
-                    { slug: 'about', text: 'About', sortRank: 1 },
-                    { slug: 'adventure', text: 'Adventure', sortRank: 2 },
-                    { slug: 'gaming', text: 'Gaming', sortRank: 3 }
+                    { slug: 'blog', text: 'Blog', sortRank: 1 },
+                    //{ slug: 'work', text: 'Work', sortRank: 2 },
+                    { slug: 'adventure', text: 'Adventure', sortRank: 3 },
+                    { slug: 'gaming', text: 'Gaming', sortRank: 4 },
+                    { slug: 'about', text: 'About', sortRank: 5 }
                 ];
 
                 $scope.isActive = function(slug) {
@@ -31,6 +35,7 @@ angular.module('appDirectives', [])
     .directive('footer', function() {
         return {
             restrict: 'E',
+            replace: true,
             templateUrl: 'views/templates/footer.html',
             controller: function($scope) {
                 $scope.year = moment().year();
@@ -38,100 +43,12 @@ angular.module('appDirectives', [])
         };
     })
 
-    .directive('login', function() {
+    .directive('contactMap', function() {
         return {
             restrict: 'A',
-            controller: function($rootScope, $location, Auth) {
-                $(document).on('keypress', '#login', function(e) {
-                    var password = e.target.value;
-                    if (e.which === 13) {
-                        e.preventDefault();
-                        Auth.post(password)
-                            .success(function(data, status, headers, config) {
-                                window.localStorage.setItem('token', data.token);
-                                $.ajaxSetup({
-                                    headers: {
-                                        'x-access-token': data.token
-                                    }
-                                });
-                                $rootScope.authorized = true;
-                                $location.path('/home').replace();
-                            })
-                            .error(function(data, status, headers, config) {
-                                alert('Unauthorized');
-                            });
-                    }
-                });
-            }
-        };
-    })
-
-    .directive('projects', function() {
-        return {
-            restrict: 'E',
-            controller: function($scope) {
-                $scope.projects = [
-                    {
-                        name: 'GoodLife Fitness Sales',
-                        url: 'http://www.goodlifefitness.com/training-programs/team-training/camps/ontario/london',
-                        repo: '',
-                        image: 'glf-sales-opt.png',
-                        desc: 'Sales engine for selling GoodLife team training contracts online'
-                    },
-                    {
-                        name: 'Store Finder',
-                        url: 'http://apps.ianlamb.com/storefinder/',
-                        repo: 'https://github.com/ianlamb/storefinder',
-                        image: 'store-finder-opt.png',
-                        desc: 'Component for selecting stores from a large network'
-                    },
-                    {
-                        name: 'Tempus Notes',
-                        url: 'http://notes.ianlamb.com/',
-                        repo: 'https://github.com/ianlamb/notes',
-                        image: 'tempus-notes-opt.png',
-                        desc: 'A very simple note-taker, great for remembering what you did for daily scrum'
-                    },
-                    {
-                        name: 'Dark Souls Challenge Runs',
-                        url: 'http://darksouls.ianlamb.com/challenges',
-                        repo: 'https://github.com/ianlamb/darksouls-challenges',
-                        image: 'dscrgen-opt.png',
-                        desc: 'A fun little randomizer for Dark Souls challenge runs'
-                    },
-                    {
-                        name: 'Z-Code',
-                        url: 'http://zcode.ianlamb.com/',
-                        repo: 'https://github.com/ianlamb/zcode',
-                        image: 'zcode-opt.png',
-                        desc: 'HTML5 game that my buddy and I made in college'
-                    },
-                    {
-                        name: 'Creekside Landscaping',
-                        url: 'http://www.creeksidelandscaping.ca/',
-                        repo: '',
-                        image: 'creekside-landscaping-opt.png',
-                        desc: 'WordPress redesign for my neighbour\'s landscaping business'
-                    }
-                ];
-            }
-        };
-    })
-
-    .directive('contact', function() {
-        return {
-            restrict: 'E',
-            controller: function($scope, $interval) {
-                $scope.email = 'ianlamb32@gmail.com';
-                $scope.phone = '+1 (519) 902 6533';
-                $scope.location = 'London, Canada';
-
-
-                var placesData = [
-                    { latLng: [42.9837, -81.2497], name: 'London, ON' }
-                ];
-
-                $('#contactMap').vectorMap({
+            replace: true,
+            controller: function($scope, $element) {
+                $($element).vectorMap({
                     map: 'world_mill_en',
                     backgroundColor: 'transparent',
                     zoomOnScroll: false,
@@ -160,112 +77,17 @@ angular.module('appDirectives', [])
                             'stroke-opacity': 0.5,
                         }
                     },
-                    markers: placesData
+                    markers: [$scope.location]
                 });
-
-                // var homeCoords = $('#contactMap .jvectormap-marker').position();
-                // var homeIcon = $('<div class="home-icon"><i class="fa fa-home"></i></div>')
-                //     .css('top', homeCoords.top)
-                //     .css('left', homeCoords.left);
-                // $('#contactMap').append(homeIcon);
-
-                var beacon = $interval(function() {
-                    $('#contactMap .jvectormap-marker')
-                        .animate({
-                            'stroke-width': '30px'
-                        }, 700, function() {
-                            $(this).animate({
-                                'stroke-width': '10px'
-                            }, 700)
-                        })
-                }, 1500);
             }
         };
     })
 
-    .directive('quotation', function() {
+    .directive('heatCalendar', function() {
         return {
             restrict: 'E',
-            controller: function($scope) {
-                var quotes = [
-                    {
-                        text: 'I\'ve got a great ambition to die of exhaustion rather than boredom',
-                        person: 'Thomas Carlyle', link: 'http://en.wikipedia.org/wiki/Thomas_Carlyle'
-                    },
-                    {
-                        text: 'The mind is furnished with ideas by experience alone',
-                        person: 'John Locke', link: 'http://en.wikipedia.org/wiki/John_Locke'
-                    },
-                    {
-                        text: 'The unexamined life is not worth living',
-                        person: 'Socrates', link: 'http://en.wikipedia.org/wiki/Socrates'
-                    },
-                    {
-                        text: 'One cannot step twice in the same river',
-                        person: 'Heraclitus', link: 'http://en.wikipedia.org/wiki/Heraclitus'
-                    },
-                    {
-                        text: 'He who fights with monsters should look to it that he himself does not become a monster. And when you gaze long into an abyss the abyss also gazes into you.',
-                        person: 'Friedrich Nietzsche', link: 'http://en.wikiquote.org/wiki/Friedrich_Nietzsche'
-                    }
-                ];
-
-                function randomQuote() {
-                    if(quotes.length === 0) {
-                        return '';
-                    }
-                    var index = parseInt(Math.random() * quotes.length);
-                    return quotes[index];
-                }
-
-                $scope.quote = randomQuote();
-            }
-        }
-    })
-
-    .directive('vehicleSection', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'views/adventure/vehicles.html',
-            controller: function($scope) {
-                $http.get('/api/vehicles')
-                    .success(function(autos) {
-                        var stats = {
-                            distanceDriven: 0,
-                            carsOwned: 0,
-                            motorcyclesOwned: 0
-                        };
-
-                        autos.forEach(function(auto) {
-                            auto.distanceDriven = auto.odometer.latest - auto.odometer.atPurchase;
-                            stats.distanceDriven += auto.distanceDriven;
-                            if(auto.type === 'motorcycle')
-                                stats.motorcyclesOwned++;
-                            if(auto.type === 'car')
-                                stats.carsOwned++;
-                            if(!auto.dateOfSale)
-                                auto.dateOfSale = 'N/A';
-                        });
-
-                        commaSeparator = $.animateNumber.numberStepFactories.separator(',');
-                        $('#distanceDriven').animateNumber({ number: stats.distanceDriven, numberStep: commaSeparator }, 1000);
-                        $('#carsOwned').animateNumber({ number: stats.carsOwned }, 1000);
-                        $('#motorcyclesOwned').animateNumber({ number: stats.motorcyclesOwned }, 1000);
-
-                        $scope.autos = autos;
-                        $scope.stats = stats;
-                    })
-                    .error(function(err) {
-                        console.log('Error: ' + err);
-                    });
-            }
-        }
-    })
-
-    .directive('heatcalendar', function() {
-        return {
-            restrict: 'E',
-            controller: function($scope, $timeout) {
+            replace: true,
+            controller: function($scope, $element, $timeout) {
                 $timeout(function() {
                     var data = $scope.heatCalendarData;
 //                    var data = {
@@ -340,7 +162,7 @@ angular.module('appDirectives', [])
 
                     text += '</tbody>';
                     text += '</table>';
-                    var container = document.getElementsByTagName('heatcalendar')[0];
+                    var container = $element[0];
                     container.className = 'heatCalendar';
                     container.innerHTML = text;
                 }, 200);
@@ -387,4 +209,32 @@ angular.module('appDirectives', [])
                 }
             }
         }
+    })
+
+    .directive('ngTab', function () {
+        return function (scope, element, attrs) {
+            element.bind('keydown', function (event) {
+                var TAB_KEY = 9;
+                if(event.which === TAB_KEY) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.ngTab);
+                    });
+                    event.preventDefault();
+                }
+            });
+        };
+    })
+
+    .directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind('keypress', function (event) {
+                var ENTER_KEY = 13;
+                if(event.which === ENTER_KEY) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.ngEnter);
+                    });
+                    event.preventDefault();
+                }
+            });
+        };
     });

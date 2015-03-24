@@ -234,18 +234,4 @@ angular.module('gameService', [])
                 });
             }
         }
-    }])
-
-    .factory('SteamProfile', ['$http', function($http) {
-        return {
-            get: function() {
-                return $http.get('/api/steam')
-                .success(function(data) {
-                    return data;
-                })
-                .error(function(err) {
-                    console.error(err);
-                });
-            }
-        }
     }]);
