@@ -5,7 +5,6 @@ var app             = require('../../config/app');
 var db              = require('../../config/db');
 var Trip            = require('../models/trip');
 var Place           = require('../models/place');
-var Photo           = require('../models/photo');
 var ClimbSession    = require('../models/climb-session');
 var BucketListItem  = require('../models/bucket-list-item');
 

@@ -715,6 +715,10 @@ input[type="text"] {
     -o-background-size: cover;
     background-size: cover;
 }
+#home section#header h1 {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.5);
+}
 #home section#header .scroll-down {
     margin: 7em auto 0;
     font-size: 3em;

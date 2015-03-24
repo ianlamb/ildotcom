@@ -9,16 +9,13 @@ module.exports = function(app, router) {
     
     var Post                = require('./models/post');
     var Project             = require('./models/project');
-    var Person              = require('./models/person');
     var Place               = require('./models/place');
-    var Photo               = require('./models/photo');
     var Trip                = require('./models/trip');
     var ClimbSession        = require('./models/climb-session');
     var BucketListItem      = require('./models/bucket-list-item');
     var WowProfile          = require('./models/wow-profile');
     var DiabloProfile       = require('./models/diablo-profile');
     var StarcraftProfile    = require('./models/starcraft-profile');
-    var SteamProfile        = require('./models/steam-profile');
 
     // server routes ===========================================================
     // middleware to use for all requests
