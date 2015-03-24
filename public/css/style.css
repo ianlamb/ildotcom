@@ -38,11 +38,9 @@ body {
     letter-spacing: 0.1em;
     background: transparent;
 }
-h1 { margin: 0 0 15px 0; }
-h2 {  }
-h3 {  }
-h4 {  }
-h5 {  }
+h1, h2, h3, h4, h5 {
+    color: #b2b2b2;
+}
 p { margin: 0 0 1.0em 0; }
 hr { border-width: 1px; border-color: rgba(255,255,255,0.2); }
 
@@ -1765,6 +1763,9 @@ label[for='toggle-all'] {
     color: #d6d6d6;
     border-bottom: 4px solid #00abff;
 }
+#gaming .character a.main h3 {
+    color: #d6d6d6;
+}
 #gaming .character a.main:hover {
     background: #00abff;
     color: #fff;
@@ -1803,16 +1804,16 @@ label[for='toggle-all'] {
     
 }
 #gaming .items .trash { color: #9d9d9d; }
-#gaming .items .common { color: #fff; }
+#gaming .items .common { color: #ffffff; }
 #gaming .items .uncommon { color: #1eff00; }
 #gaming .items .rare { color: #1D87FF; }
 #gaming .items .epic { color: #a335ee; }
-#gaming .items .legendary { color: #ff8000; }
-#gaming .items .white { color: #fff; }
+#gaming .items .legendary { color: #DB820C; }
+#gaming .items .white { color: #ffffff; }
 #gaming .items .blue { color: #1D87FF; }
 #gaming .items .yellow { color: #DAD70E; }
 #gaming .items .green { color: #00ff00; }
-#gaming .items .orange { color: #bf642f; }
+#gaming .items .orange { color: #DB820C; }
 #gaming .feed {
     list-style: none;
     padding: 0;
@@ -1875,6 +1876,22 @@ label[for='toggle-all'] {
     padding: 10px 20px;
     border: 1px solid rgba(0,0,0,0.2);
 }
+#diablo .seasonal {
+    float: right;
+    padding: 5px;
+    color: rgb(0, 147, 0);
+}
+#diablo .hardcore {
+    float: right;
+    padding: 5px;
+    color: rgb(171, 9, 9);
+}
+#gaming .character a.main:hover .seasonal {
+    color: #d6d6d6;
+}
+#gaming .character a.main:hover .hardcore {
+    color: #d6d6d6;
+}
 
 
 #starcraft .portrait {
@@ -1891,66 +1908,6 @@ label[for='toggle-all'] {
     font-size: 0.8em;
     margin-bottom: 5px;
 }
-
-
-/* AUTO */
-#auto .top {
-}
-#auto .autos {
-}
-#auto .auto {
-    background: #fff;
-    margin-bottom: 40px;
-    overflow: hidden;
-    box-sizing: border-box;
-    position: relative;
-    width: 100%;
-    padding: 16px;
-    vertical-align: top;
-    border-radius: 6px;
-    box-shadow: 0 0 0 3px #ccc;
-    box-shadow: 5px 5px 16px rgba(0,0,0,0.1);
-}
-#auto .auto .title {
-    height: 30px;
-}
-#auto .auto .title h3 {
-    color: #666;
-    margin: 0;
-}
-#auto .auto .title .date {
-    font-size: 0.8em;
-    color: #aaa;
-}
-#auto .auto .details {
-}
-#auto .auto .details dl {
-    width: 32.9%;
-}
-#auto .auto .details dd {
-    font-size: 1.2em;
-}
-#auto .auto .details dt {
-    color: #454545;
-}
-#auto .auto .photo {
-    position: relative;
-    left: -2%;
-    right: -2%;
-    bottom: -8%;
-    display: block;
-    width: 104%;
-    height: 500px;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background: no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
 
 
 

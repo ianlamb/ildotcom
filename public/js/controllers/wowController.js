@@ -29,7 +29,7 @@ angular.module('wowController', []).controller('WowController', function($scope,
             case 4:
                 return 'epic';
             case 5:
-                return 'legenday';
+                return 'legendary';
         }
     };
 

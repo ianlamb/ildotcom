@@ -24,13 +24,15 @@
         </div>
         <div class="col-md-9">
             <div class="characters">
-                <div ng-repeat="hero in diabloProfile.heroes | orderBy:'level':true" class="character">
+                <div ng-repeat="hero in diabloProfile.heroes | orderBy:['seasonal', 'level']:true" class="character">
                     <a href="http://us.battle.net/d3/en/profile/{{ diabloProfile.battleTag.split('#').join('-') }}/hero/{{ hero.id }}" target="_blank" title="View Profile" class="main">
                         <div class="portrait {{ getClassSlug(hero) }}"></div>
                         <div class="details">
                             <h3>{{ hero.name }}</h3>
                             <p>{{ hero.level }} {{ formatSlug(hero.class) }}</p>
                         </div>
+                        <div ng-if="hero.seasonal" class="seasonal">Seasonal</div>
+                        <div ng-if="hero.hardcore === 'true'" class="hardcore">Hardcore</div>
                     </a>
                     <div class="extended">
                         <div class="row">
