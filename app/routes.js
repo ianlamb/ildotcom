@@ -30,7 +30,7 @@ module.exports = function(app, router) {
     });
 
     // authenticate
-    router.route('/auth').post(function(req, res) {
+    router.post('/auth', function(req, res) {
         if (!req.body.password
             || !config.authSecret
             || req.body.password !== config.authSecret) {
@@ -48,9 +48,12 @@ module.exports = function(app, router) {
             expires: expires
         });
     });
+    router.get('/testAuth', auth, function(req, res) {
+        res.send('You are authenticated!');
+    });
 
     // blog
-    router.route('/posts').get(function(req, res) {
+    router.get('/posts', function(req, res) {
         Post.find({}, {}, { sort: { 'created_at': -1 }})
             .exec(function(err, data) {
                 if (err) {
@@ -59,7 +62,7 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-    router.route('/post', [auth]).put(function(req, res) {
+    router.put('/post', auth, function(req, res) {
         Post.findOne({ _id: req.body._id }, function(err, post) {
             if (err) {
                 res.end(err);
@@ -78,7 +81,7 @@ module.exports = function(app, router) {
             });
         });
     });
-    router.route('/post/:id', [auth]).delete(function(req, res) {
+    router.delete('/post/:id', auth, function(req, res) {
         Post.remove({ _id: req.params.id })
             .exec(function(err) {
                 if (err) {
@@ -89,7 +92,7 @@ module.exports = function(app, router) {
     });
 
     // work
-    router.route('/projects').get(function(req, res) {
+    router.get('/projects', function(req, res) {
         Project.find({}, {}, { sort: { 'created_at': -1 }})
             .exec(function(err, data) {
                 if (err) {
@@ -98,7 +101,7 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-    router.route('/project', [auth]).put(function(req, res) {
+    router.put('/project', auth, function(req, res) {
         Project.findOne({ _id: req.body._id }, function(err, project) {
             if (err) {
                 res.end(err);
@@ -120,7 +123,7 @@ module.exports = function(app, router) {
             });
         });
     });
-    router.route('/project/:id', [auth]).delete(function(req, res) {
+    router.delete('/project/:id', auth, function(req, res) {
         Project.remove({ _id: req.params.id })
             .exec(function(err) {
                 if (err) {
@@ -162,7 +165,7 @@ module.exports = function(app, router) {
     });
 
     // travel
-    router.route('/trips').get(function(req, res) {
+    router.get('/trips', function(req, res) {
         Trip.find()
             .populate('places')
             .populate('photos')
@@ -174,14 +177,14 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-    router.route('/trip', [auth]).put(function(req, res) {
+    router.put('/trip', auth, function(req, res) {
         AdventureManager.saveTrip(req.body).then(function() {
             // do stuff
         });
     });
 
     // bucket list
-    router.route('/bucketlist').get(function(req, res) {
+    router.get('/bucketlist', function(req, res) {
         BucketListItem.find({}, {}, { sort: { 'created_at': -1 }})
             .exec(function(err, data) {
                 if (err) {
@@ -190,7 +193,7 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-    router.route('/bucketlist', [auth]).put(function(req, res) {
+    router.put('/bucketlist', auth, function(req, res) {
         BucketListItem.findOne({ _id: req.body._id }, function(err, todo) {
             if (err) {
                 res.end(err);
@@ -209,7 +212,7 @@ module.exports = function(app, router) {
             });
         });
     });
-    router.route('/bucketlist/:id', [auth]).delete(function(req, res) {
+    router.delete('/bucketlist/:id', auth, function(req, res) {
         BucketListItem.remove({ _id: req.params.id })
             .exec(function(err) {
                 if (err) {
@@ -221,7 +224,7 @@ module.exports = function(app, router) {
 
     // games
     // stored profiles are essentially a history, so we only return the latest record to the user
-    router.route('/wow').get(function(req, res) {
+    router.get('/wow', function(req, res) {
         WowProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
             .exec(function(err, data) {
                 if (err) {
@@ -230,7 +233,7 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-    router.route('/d3').get(function(req, res) {
+    router.get('/d3', function(req, res) {
         DiabloProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
             .exec(function(err, data) {
                 if (err) {
@@ -239,7 +242,7 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
-    router.route('/sc2').get(function(req, res) {
+    router.get('/sc2', function(req, res) {
         StarcraftProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
             .exec(function(err, data) {
                 if (err) {
