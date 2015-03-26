@@ -162,7 +162,7 @@ angular.module('climbController', []).controller('ClimbController', function($sc
             if (heatValue > 1) {
                 heatValue = 1;
             }
-            $scope.heatCalendarData[session.date.split('T')[0]] = heatValue;
+            $scope.heatCalendarData[moment(session.date).format('YYYY-MM-DD')] = heatValue;
         }
         
         $scope.stats.routesClimbed += session.routeCount;
