@@ -19,13 +19,15 @@ angular.module('blogController', []).controller('BlogController', function($scop
             console.error(err);
         });
     
-    $scope.newPost = { title: '', body: '' };
+    $scope.newPost = { title: '', body: '', tags: '' };
     $scope.editedPost = null;
     
     $scope.addPost = function () {
         var newPost = {
             title: $scope.newPost.title.trim(),
+            slug: $scope.newPost.title.trim().toLowerCase().split('\'').join('').split(' ').join('-'),
             body: $scope.newPost.body.replace(/\r\n/g, '\n').split('\n').join('<br>').trim(),
+            tags: $scope.newPost.tags.split(' '),
             created_at: new Date()
         };
 
@@ -36,7 +38,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
         $scope.saving = true;
         Posts.put(newPost)
             .then(function success(data) {
-                $scope.newPost = { title: '' };
+                $scope.newPost = { title: '', body: '', tags: '' };
                 $scope.posts.unshift(newPost);
             })
             .finally(function () {

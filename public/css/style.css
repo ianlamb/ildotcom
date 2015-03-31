@@ -1201,7 +1201,7 @@ a.hex:hover {
 #blog {
     padding-top: 30px;
 }
-#blog #postTitle {
+#blog input, #blog textarea {
     margin-bottom: 10px;
 }
 #blog #postBody {

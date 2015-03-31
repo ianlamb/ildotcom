@@ -15,6 +15,7 @@
                     <form id="blogForm" ng-submit="addPost()">
                         <input type="text" id="postTitle" ng-model="newPost.title" ng-disabled="saving" placeholder="Title" autofocus>
                         <textarea id="postBody" ng-model="newPost.body" ng-disabled="saving" ng-tab="insertTab()" placeholder="Message"></textarea>
+                        <input type="text" id="postTags" ng-model="newPost.tags" ng-disabled="saving" placeholder="Tags (separate with spaces)">
                         <button type="submit">Create Post</button>
                     </form>
                 </div>
