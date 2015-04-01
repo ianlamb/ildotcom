@@ -59,7 +59,12 @@ a:hover {
 }
 a:active { color: #00abff; }
 
-label { color: #666; }
+label { 
+    display: block;
+    margin: 0;
+    font-weight: inherit;
+    font-size: inherit;
+}
 
 dl {
     display: block;
@@ -147,11 +152,6 @@ select {
 select:hover {
     background-color: #e6e6e6;
     border-color: #454545;
-}
-
-label {
-    display: block;
-    color: #777;
 }
 
 .panel {
@@ -1197,12 +1197,40 @@ a.hex:hover {
 
 
 
+ul.inline-bullets {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9em;
+}
+ul.inline-bullets > li {
+    display: inline-block;
+    margin-right: 5px;
+    padding-right: 5px;
+    border-right: 3px solid rgba(255,255,255,.3);
+    line-height: 3px;
+}
+ul.inline-bullets > li:last-child {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+
 /* BLOG */
 #blog {
     padding-top: 30px;
 }
 #blog input, #blog textarea {
     margin-bottom: 10px;
+}
+#blog .tags {
+    margin-bottom: 5px;
+}
+
+#blog .tags li span.occurrences {
+    font-size: 0.8em;
 }
 #blog #postBody {
     width: 100%;
@@ -1234,42 +1262,47 @@ a.hex:hover {
 	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 }
 
-#blogPosts {
+#blog ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-#blogPosts li {
+#blogPosts > li {
 	position: relative;
     margin-bottom: 10px;
 }
 
-#blogPosts li h2 {
+#blogPosts > li h2 {
     margin: 0;
 }
 
-#blogPosts li:last-child {
+#blogPosts > li .post-body img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+#blogPosts > li:last-child {
 	border-bottom: none;
 }
 
-#blogPosts li.editing {
+#blogPosts > li.editing {
 	border-bottom: none;
 	padding: 0;
 }
 
-#blogPosts li.editing .edit {
+#blogPosts > li.editing .edit {
 	display: block;
 	width: 506px;
 	padding: 13px 17px 12px 17px;
 	margin: 0 0 0 43px;
 }
 
-#blogPosts li.editing .view {
+#blogPosts > li.editing .view {
 	display: none;
 }
 
-#blogPosts li .toggle {
+#blogPosts > li .toggle {
 	text-align: center;
 	width: 40px;
 	/* auto, since non-WebKit browsers doesn't support input styling */
@@ -1285,7 +1318,7 @@ a.hex:hover {
 	appearance: none;
 }
 
-#blogPosts li label {
+#blogPosts > > li label {
     font-size: 18px;
     margin: 10px 0;
 	white-space: pre;
@@ -1297,11 +1330,11 @@ a.hex:hover {
 	transition: color 0.4s;
 }
 
-#blogPosts li .edit {
+#blogPosts > li .edit {
 	display: none;
 }
 
-#blogPosts li.editing:last-child {
+#blogPosts > li.editing:last-child {
 	margin-bottom: -1px;
 }
 

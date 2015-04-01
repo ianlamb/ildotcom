@@ -4,6 +4,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
     Posts.get()
         .success(function(data) {
             $scope.posts = [];
+            $scope.usedTags = {};
             var posts = data;
             var postCounter;
             for (postCounter = 0; postCounter < 5 && posts[postCounter]; postCounter++) {
@@ -14,6 +15,15 @@ angular.module('blogController', []).controller('BlogController', function($scop
                     $scope.posts.push(posts[postCounter++]);
                 }
             };
+
+            posts.forEach(function(post) {
+                for (var i = 0; i < post.tags.length; i++) {
+                    if($scope.usedTags.hasOwnProperty(post.tags[i])) {
+                       $scope.usedTags[post.tags[i]] += 1;
+                    }
+                    $scope.usedTags[post.tags[i]] = 1;
+                }
+            });
         })
         .error(function(err) {
             console.error(err);
