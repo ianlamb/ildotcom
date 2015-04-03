@@ -4,6 +4,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
     Posts.get()
         .success(function(data) {
             $scope.posts = [];
+            $scope.usedTags = {};
             var posts = data;
             var postCounter;
             for (postCounter = 0; postCounter < 5 && posts[postCounter]; postCounter++) {
@@ -14,18 +15,29 @@ angular.module('blogController', []).controller('BlogController', function($scop
                     $scope.posts.push(posts[postCounter++]);
                 }
             };
+
+            posts.forEach(function(post) {
+                for (var i = 0; i < post.tags.length; i++) {
+                    if($scope.usedTags.hasOwnProperty(post.tags[i])) {
+                       $scope.usedTags[post.tags[i]] += 1;
+                    }
+                    $scope.usedTags[post.tags[i]] = 1;
+                }
+            });
         })
         .error(function(err) {
             console.error(err);
         });
     
-    $scope.newPost = { title: '', body: '' };
+    $scope.newPost = { title: '', body: '', tags: '' };
     $scope.editedPost = null;
     
     $scope.addPost = function () {
         var newPost = {
             title: $scope.newPost.title.trim(),
+            slug: $scope.newPost.title.trim().toLowerCase().split('\'').join('').split(' ').join('-'),
             body: $scope.newPost.body.replace(/\r\n/g, '\n').split('\n').join('<br>').trim(),
+            tags: $scope.newPost.tags.split(' '),
             created_at: new Date()
         };
 
@@ -36,7 +48,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
         $scope.saving = true;
         Posts.put(newPost)
             .then(function success(data) {
-                $scope.newPost = { title: '' };
+                $scope.newPost = { title: '', body: '', tags: '' };
                 $scope.posts.unshift(newPost);
             })
             .finally(function () {

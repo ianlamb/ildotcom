@@ -1,4 +1,4 @@
-angular.module('mainController', []).controller('MainController', function($scope, $rootScope, $window, $location, $state) {
+angular.module('mainController', []).controller('MainController', function($scope, $rootScope, $window, $location, $state, Posts) {
     
     var token = window.localStorage.getItem('token');
     if (token) {
@@ -23,6 +23,14 @@ angular.module('mainController', []).controller('MainController', function($scop
         $window.ga('send', 'pageview', { page: $location.url() });
         $(".navbar-collapse.collapse.in").collapse('hide');
     });
+
+    Posts.getLatest()
+        .success(function(data) {
+            $scope.latestPost = data;
+        })
+        .error(function(err) {
+            console.error(err);
+        });
     
     $scope.email = 'ianlamb32@gmail.com';
     $scope.phone = '+1 (519) 902 6533';

@@ -5,6 +5,9 @@ angular.module('blogService', [])
             get: function() {
                 return $http.get('/api/posts');
             },
+            getLatest: function() {
+                return $http.get('/api/post');
+            },
             put: function(data) {
                 return $http.put('/api/post', data);
             },
