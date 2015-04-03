@@ -62,6 +62,15 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
+    router.get('/post', function(req, res) {
+        Post.findOne({}, {}, { sort: { 'created_at': -1 }})
+            .exec(function(err, data) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(data);
+            });
+    });
     router.put('/post', auth, function(req, res) {
         Post.findOne({ _id: req.body._id }, function(err, post) {
             if (err) {
