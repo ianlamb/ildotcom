@@ -4,8 +4,18 @@ angular.module('blogService', [])
         return {
             get: function() {
                 return $http.get('/api/posts');
-            },
-            getLatest: function() {
+            }
+        };
+
+    }])
+
+    .factory('Post', ['$http', function($http) {
+
+        return {
+            get: function(slug) {
+                if (slug) {
+                    return $http.get('/api/post/' + slug);
+                }
                 return $http.get('/api/post');
             },
             put: function(data) {

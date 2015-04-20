@@ -8,7 +8,7 @@ angular.module('appDirectives', [])
             controller: function($scope, $location) {
                 $scope.navLinks = [
                     { slug: 'home', text: 'Home', sortRank: 0 },
-                    { slug: 'blog', text: 'Blog', sortRank: 1 },
+                    { slug: 'blog', text: 'Journal', sortRank: 1 },
                     //{ slug: 'work', text: 'Work', sortRank: 2 },
                     { slug: 'adventure', text: 'Adventure', sortRank: 3 },
                     { slug: 'gaming', text: 'Gaming', sortRank: 4 },

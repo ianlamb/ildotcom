@@ -71,6 +71,19 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
+    router.get('/post/:slug', function(req, res) {
+        var searchCriteria = {};
+        if (req.params.slug) {
+            searchCriteria.slug = req.params.slug;
+        }
+        Post.findOne(searchCriteria, {})
+            .exec(function(err, data) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(data);
+            });
+    });
     router.put('/post', auth, function(req, res) {
         Post.findOne({ _id: req.body._id }, function(err, post) {
             if (err) {

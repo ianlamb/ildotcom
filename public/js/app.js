@@ -10,6 +10,7 @@ angular.module('ildotcomApp', [
     'authController',
     'workController',
     'blogController',
+    'postController',
     'adventureController',
     'travelController',
     'climbController',

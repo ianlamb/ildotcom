@@ -29,16 +29,13 @@
                     <li ng-repeat="post in posts">
                         <div class="post-wrapper panel">
                             <div class="view">
-                                <h2>
-                                    {{ post.title }}
-                                    <span class="timestamp">{{ moment(post.created_at).format('MMMM Do, YYYY') }}</span>
-                                </h2>
+                                <h2><a ui-sref="post({ slug: post.slug })">{{ post.title }}</a></h2>
+                                <span class="timestamp">{{ moment(post.created_at).format('MMMM Do, YYYY') }}</span> &dash;
                                 <ul class="tags inline-bullets">
                                     <li ng-repeat="tag in post.tags">
                                         <a>{{ tag }}</a>
                                     </li>
                                 </ul>
-                                <div class="post-body" ng-bind-html="post.body"></div>
                             </div>
                             <form ng-submit="saveEdits(todo, 'submit')">
                                 <input class="edit" ng-trim="false" ng-model="todo.title" ng-blur="saveEdits(todo, 'blur')">

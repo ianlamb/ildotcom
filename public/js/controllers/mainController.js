@@ -1,4 +1,4 @@
-angular.module('mainController', []).controller('MainController', function($scope, $rootScope, $window, $location, $state, Posts) {
+angular.module('mainController', []).controller('MainController', function($scope, $rootScope, $window, $location, $state, Post) {
     
     var token = window.localStorage.getItem('token');
     if (token) {
@@ -24,7 +24,7 @@ angular.module('mainController', []).controller('MainController', function($scop
         $(".navbar-collapse.collapse.in").collapse('hide');
     });
 
-    Posts.getLatest()
+    Post.get()
         .success(function(data) {
             $scope.latestPost = data;
         })

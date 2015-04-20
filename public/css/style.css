@@ -415,12 +415,14 @@ select:hover {
 #footer .copyright {
     margin-top: 0;
 }
-#connect {
-    text-align: center;
+#main .row {
+    margin-bottom: 20px;
 }
-#connect .title {
-    text-transform: uppercase;
+#main .title {
+    display: block;
     vertical-align: middle;
+    text-transform: uppercase;
+    text-align: right;
 }
 .social-icons {
     display: inline-block;
@@ -434,7 +436,7 @@ select:hover {
 .social-icons a .fa {
     color: #999;
     font-size: 2.2em;
-    margin: 0 0.1em 0 0.3em;
+    margin: -0.1em 0.4em 0 0;
     -webkit-transition: color .4s;
     transition: color .4s;
     vertical-align: middle;
@@ -769,10 +771,10 @@ input[type="text"] {
     }
 }
 
-#home #connect {
+#home #main {
     background: #efefef;
 }
-#home #connect h3 {
+#home #main h3 {
     margin-bottom: 40px;
 }
 
@@ -1274,11 +1276,19 @@ ul.inline-bullets > li:last-child {
 #blog {
     padding-top: 30px;
 }
+#blog h2 {
+    margin-bottom: 0;
+}
 #blog input, #blog textarea {
     margin-bottom: 10px;
 }
+#blog .timestamp {
+    float: none;
+    display: inline-block;
+}
 #blog .tags {
-    margin-bottom: 5px;
+    display: inline-block;
+    margin: 0 0 10px;
 }
 
 #blog .tags li span.occurrences {
@@ -2272,7 +2282,7 @@ label[for='toggle-all'] {
     #home .profile-photo {
         margin: 50px auto;
     }
-    #connect .title {
+    #main .title {
         display: block;
     }
     .social-icons {

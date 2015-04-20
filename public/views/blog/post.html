@@ -1,0 +1,16 @@
+<div id="blog">
+    <div class="container">
+        <div class="post-wrapper">
+            <div class="view">
+                <h2>{{ post.title }}</h2>
+                <span class="timestamp">{{ moment(post.created_at).format('MMMM Do, YYYY') }}</span> &dash;
+                <ul class="tags inline-bullets">
+                    <li ng-repeat="tag in post.tags">
+                        <a>{{ tag }}</a>
+                    </li>
+                </ul>
+                <div class="post-body" ng-bind-html="post.body"></div>
+            </div>
+        </div>
+    </div>
+</div>

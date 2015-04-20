@@ -1,4 +1,4 @@
-angular.module('blogController', []).controller('BlogController', function($scope, $filter, $stateParams, Posts) {
+angular.module('blogController', []).controller('BlogController', function($scope, $filter, $stateParams, Posts, Post) {
     'use strict';
 
     Posts.get()
@@ -46,7 +46,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
         }
 
         $scope.saving = true;
-        Posts.put(newPost)
+        Post.put(newPost)
             .then(function success(data) {
                 $scope.newPost = { title: '', body: '', tags: '' };
                 $scope.posts.unshift(newPost);
@@ -77,7 +77,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
             return;
         }
 
-        Posts[post.title ? 'put' : 'delete'](post)
+        Post[post.title ? 'put' : 'delete'](post)
             .then(function success() {}, function error() {
                 post.title = $scope.originalPost.title;
             })
@@ -87,7 +87,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
     };
 
     $scope.removePost = function (post) {
-        Posts.delete(post)
+        Post.delete(post)
             .success(function() {
                 for (var i = 0; i < $scope.posts.length; i++) {
                     if ($scope.posts[i]._id == post._id) {
@@ -98,7 +98,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
     };
 
     $scope.savePost = function (post) {
-        Posts.put(post);
+        Post.put(post);
     };
     
     $scope.insertTab = function(e) {
