@@ -53,7 +53,7 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
             controller: 'BlogController'
         })
         .state('post', {
-            url: '/post/:slug',
+            url: '/blog/post/:slug',
             templateUrl: 'views/blog/post.html',
             controller: 'PostController'
         })

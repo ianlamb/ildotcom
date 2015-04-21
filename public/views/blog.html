@@ -29,7 +29,7 @@
                     <li ng-repeat="post in posts">
                         <div class="post-wrapper panel">
                             <div class="view">
-                                <h2><a ui-sref="post({ slug: post.slug })">{{ post.title }}</a></h2>
+                                <h3><a ui-sref="post({ slug: post.slug })">{{ post.title }}</a></h3>
                                 <span class="timestamp">{{ moment(post.created_at).format('MMMM Do, YYYY') }}</span> &dash;
                                 <ul class="tags inline-bullets">
                                     <li ng-repeat="tag in post.tags">
