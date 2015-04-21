@@ -1,6 +1,6 @@
 # ianlamb.com
 
-##### This is my personal website that covers the basics of a "web developer portfolio" and goes beyond to demonstrate real-time data management and really just give more insight into the kind of person I am outside of work. Hopefully this repo exhibits everything I stand for in web development and can be used by others as a reference/learning tool.
+##### This is my personal website that covers the basics of a "web developer portfolio" and goes beyond to demonstrate fully dynamic content and really just give more insight into the kind of person I am outside of work. Hopefully this repo exhibits everything I stand for in web development and can be used by others as a reference/learning tool.
 
 ### Technology Stack
 * HTML5
@@ -18,9 +18,9 @@
 ### Libraries
 * jQuery
 * Font Awesome
-* jVectorMap
-* Chart.js
 * Moment
+* jVectorMap
+* jsPDF
 
 ### Tools
 * NPM
