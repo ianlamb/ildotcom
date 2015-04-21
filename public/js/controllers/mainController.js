@@ -79,5 +79,76 @@ angular.module('mainController', []).controller('MainController', function($scop
             desc: 'WordPress redesign for my neighbour\'s landscaping business'
         }
     ];
+    
+    $scope.downloadResume = function() {
+        var doc = new jsPDF();
+        doc.setProperties({
+            title: 'Resume - Ian Lamb',
+            author: 'Ian Lamb'
+        });
+        
+        var fontSize = 12;
+        var leftOffset = 15;
+        var rightOffset = 150;
+        var lineHeight = 6;
+        var maxLineWidth = 180;
+        var cursor = 10;
+        
+        doc.setFontSize(fontSize);
+        
+        // contact info
+        doc.text($('#name').html(), leftOffset, cursor+=lineHeight);
+        doc.text($('#address1').html(), leftOffset, cursor+=lineHeight);
+        doc.text($('#address2').html(), leftOffset, cursor+=lineHeight);
+        doc.text($('#phone').html(), leftOffset, cursor+=lineHeight);
+        doc.text($('#email').html(), leftOffset, cursor+=lineHeight);
+        doc.text($('#website').html(), leftOffset, cursor+=lineHeight);
+        doc.text('', leftOffset, cursor+=lineHeight);
+        
+        // skills
+        doc.text('// SKILLS', leftOffset, cursor+=lineHeight);
+        $('#skills section').each(function() {
+            var text = $(this).find('.category').html();
+            $(this).find('li').each(function() {
+                text += ' | ' + $(this).html();
+            });
+            doc.text(text, leftOffset, cursor+=lineHeight);
+        });
+        doc.text('', leftOffset, cursor+=lineHeight);
+        
+        doc.text('// EXPERIENCE', leftOffset, cursor+=lineHeight);
+        $('#experience section').each(function() {
+            var text = $(this).find('.workplace').html() + ' - ';
+            text += $(this).find('.location').html();
+            text += ' (' + $(this).find('.timestamp').html() + ')';
+            doc.text(text, leftOffset, cursor+=lineHeight);
+            doc.text($(this).find('.position').html().replace('&amp;', '&'), leftOffset, cursor+=lineHeight);
+            $(this).find('li').each(function() {
+                var lines = doc.splitTextToSize('-   ' + $(this).html(), maxLineWidth);
+                lines.forEach(function(line, i) {
+                    doc.text(i > 0 ? '    ' + line : line, leftOffset, cursor+=lineHeight);
+                });
+            });
+            doc.text('', leftOffset, cursor+=lineHeight);
+            if ($(this).find('.workplace').html() === 'Igniteck Inc') {
+                doc.addPage();
+                cursor = 10;
+            }
+        });
+        
+        doc.text('// EDUCATION', leftOffset, cursor+=lineHeight);
+        $('#education section').each(function() {
+            var text = $(this).find('.workplace').html() + ' - ';
+            text += $(this).find('.location').html();
+            text += ' (' + $(this).find('.timestamp').html() + ')';
+            doc.text(text, leftOffset, cursor+=lineHeight);
+            doc.text($(this).find('.certificate').html(), leftOffset, cursor+=lineHeight);
+            doc.text('', leftOffset, cursor+=lineHeight);
+        });
+        
+        doc.text('// REFERENCES AVAILABLE UPON REQUEST', leftOffset, cursor+=lineHeight);
+        
+        doc.save('Resume-IanLamb.pdf');
+    }
 
 });

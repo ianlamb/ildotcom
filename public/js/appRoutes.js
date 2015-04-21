@@ -18,6 +18,12 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
             controller: 'MainController'
         })
 
+        .state('resume', {
+            url: '/resume',
+            templateUrl: 'views/resume.html',
+            controller: 'MainController'
+        })
+
         .state('login', {
             url: '/login',
             templateUrl: 'views/auth/login.html',

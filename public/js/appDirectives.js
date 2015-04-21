@@ -10,9 +10,10 @@ angular.module('appDirectives', [])
                     { slug: 'home', text: 'Home', sortRank: 0 },
                     { slug: 'blog', text: 'Journal', sortRank: 1 },
                     //{ slug: 'work', text: 'Work', sortRank: 2 },
-                    { slug: 'adventure', text: 'Adventure', sortRank: 3 },
-                    { slug: 'gaming', text: 'Gaming', sortRank: 4 },
-                    { slug: 'about', text: 'About', sortRank: 5 }
+                    { slug: 'resume', text: 'Résumé', sortRank: 3 },
+                    { slug: 'adventure', text: 'Adventure', sortRank: 4 },
+                    { slug: 'gaming', text: 'Gaming', sortRank: 5 },
+                    { slug: 'about', text: 'About', sortRank: 6 }
                 ];
 
                 $scope.isActive = function(slug) {

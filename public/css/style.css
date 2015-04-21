@@ -371,7 +371,7 @@ select:hover {
     height: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 0 20px 0;
 }
 
 #footer {
@@ -1477,6 +1477,43 @@ code {
     border: 0;
 }
 
+
+/* RESUME */
+#resume {
+    padding-top: 10px;
+}
+#resume p {
+    margin-bottom: 2px;
+}
+#resume button {
+    margin-top: 20px;
+    width: 100%;
+}
+#resume h1 {
+    padding: 10px 0;
+    margin: 0;
+}
+#resume h3 {
+    padding: 10px 10px 0;
+    margin: 0;
+}
+#resume ul {
+    list-style-type: square;
+    padding: 0;
+    margin: 0;
+}
+#resume ul li {   
+    margin-left: 17px;
+}
+#resume section {
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: background .4s;
+}
+#resume section:hover {
+    background: #292d33;
+    transition: background .2s;
+}
 
 
 /* ADVENTURE */
