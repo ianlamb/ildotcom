@@ -93,7 +93,9 @@ module.exports = function(app, router) {
                 post = new Post(req.body);
             } else {
                 post.title = req.body.title;
-                post.completed = req.body.completed;
+                post.slug = req.body.slug;
+                post.body = req.body.body;
+                post.tags = req.body.tags;
             }
             post.save(function(err, newPost) {
                 if (err) {

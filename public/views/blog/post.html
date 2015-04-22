@@ -1,7 +1,8 @@
 <div id="blog">
     <div class="container">
         <div class="post-wrapper">
-            <div class="view">
+            <div class="view" ng-hide="editing">
+                <button type="button" ng-click="editPost(post)" ng-if="authorized">Edit</button>
                 <h2>{{ post.title }}</h2>
                 <span class="timestamp">{{ moment(post.created_at).format('MMMM Do, YYYY') }}</span> &dash;
                 <ul class="tags inline-bullets">
@@ -9,8 +10,14 @@
                         <a>{{ tag }}</a>
                     </li>
                 </ul>
-                <div class="post-body" ng-bind-html="post.body"></div>
+                <div class="post-body" ng-if="post" ng-bind-html="markdown.toHTML(post.body)"></div>
             </div>
+            <form ng-submit="saveEdits(modifiedPost)" ng-show="editing">
+                <input type="text" id="postTitle" ng-model="modifiedPost.title" ng-disabled="saving" placeholder="Title" autofocus>
+                <textarea id="postBody" ng-model="modifiedPost.body" ng-disabled="saving" ng-tab="insertTab()" placeholder="Message"></textarea>
+                <input type="text" id="postTags" ng-model="modifiedPost.tags" ng-disabled="saving" placeholder="Tags (separate with spaces)">
+                <button type="submit">Save</button>
+            </form>
         </div>
     </div>
 </div>

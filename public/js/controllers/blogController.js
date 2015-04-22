@@ -36,7 +36,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
         var newPost = {
             title: $scope.newPost.title.trim(),
             slug: $scope.newPost.title.trim().toLowerCase().split('\'').join('').split(' ').join('-'),
-            body: $scope.newPost.body.replace(/\r\n/g, '\n').split('\n').join('<br>').trim(),
+            body: $scope.newPost.body.trim(),
             tags: $scope.newPost.tags.split(' '),
             created_at: new Date()
         };
