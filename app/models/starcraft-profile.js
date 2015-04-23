@@ -79,9 +79,7 @@ var StarcraftProfileSchema = new Schema({
     },
     created_at: Date,
     updated_at: Date
-});
-
-StarcraftProfileSchema.pre('save', function(next){
+}).pre('save', function(next){
     now = new Date();
     this.updated_at = now;
     if ( !this.created_at ) {
