@@ -6,7 +6,6 @@ var db              = require('../../config/db');
 var Trip            = require('../models/trip');
 var Place           = require('../models/place');
 var ClimbSession    = require('../models/climb-session');
-var BucketListItem  = require('../models/bucket-list-item');
 
 module.exports = {
     saveTrip: function(data) {
@@ -79,26 +78,31 @@ module.exports = {
 
     saveClimbSession: function(session) {
         return new Promise(function(resolve) {
-            var promises = [];
-            Promise.all(promises).then(function() {
-                ClimbSession.create(session, function(err, newSession) {
+            ClimbSession.findOne({ _id: session._id }, function(err, dbSession) {
+                if (err) {
+                    res.end(err);
+                }
+                if (!dbSession) {
+                    dbSession = new ClimbSession(session);
+                } else {
+                    if (session.date) dbSession.date = session.date;
+                    if (session.place) dbSession.place = session.place;
+                    if (session.climbs) dbSession.climbs = session.climbs
+                }
+                dbSession.save(function(err, newSession) {
                     if(err) {
-                        console.error(err);
+                        res.end(err);
                     }
-                    console.log('Created Climbing Session: ' + newSession._id);
-                    Place.find({ _id: mongoose.Types.ObjectId(session.place) })
-                        .exec(function(err, place) {
+                    ClimbSession.findOne({ _id: newSession._id })
+                        .populate('place')
+                        .populate('photos')
+                        .exec(function(err, data) {
                             if (err) {
                                 res.send(err);
                             }
-                            console.log('Found place: ' + place.name);
-                            newSession.place = place;
-                            resolve(newSession);
+                            resolve(data);
                         });
                 });
-            }, function(err) {
-                console.error(err);
-                reject();
             });
         });
     },

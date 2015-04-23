@@ -14,7 +14,7 @@
                 <h2>{{ post.title }}</h2>
                 <span class="timestamp">{{ moment(post.created_at).format('MMMM Do, YYYY') }}</span> &dash;
                 <ul class="tags inline-bullets">
-                    <li ng-repeat="tag in post.tags.split(' ')">
+                    <li ng-repeat="tag in post.tags.split(' ') track by $index">
                         <a>{{ tag }}</a>
                     </li>
                 </ul>
