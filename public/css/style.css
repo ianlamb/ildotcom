@@ -250,6 +250,36 @@ select:hover {
     z-index: 90;
 }
 
+/* tooltips */
+a.res-tooltip { outline:none; }
+a.res-tooltip strong { line-height:30px; }
+a.res-tooltip:hover { text-decoration:none; } 
+a.res-tooltip span {
+    position: absolute;
+    z-index: 10;
+    padding: 14px 20px;
+    margin-top: 0;
+    left: -280px;
+    width: 280px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.5);
+    opacity: 0;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+a.res-tooltip:hover span {
+    background: #444;
+    color: #ccc;
+    opacity: 1;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+a.res-tooltip .callout {
+    z-index: 20;
+    display: block;
+    margin: 0 auto 20px;
+    border: 0;
+}
+
 
 #error {
     margin-top: 100px;
@@ -721,7 +751,7 @@ input[type="text"] {
     text-shadow: 0 1px 1px rgba(0,0,0,.5);
 }
 #home section#header .scroll-down {
-    margin: 7em auto 0;
+    margin: 6em auto 0;
     font-size: 3em;
     -webkit-animation: bounce 3s infinite;
     animation: bounce 3s infinite;
@@ -1258,6 +1288,7 @@ ul.inline-bullets {
 ul.inline-bullets > li {
     display: inline-block;
     margin-right: 5px;
+    margin-bottom: 12px;
     padding-right: 5px;
     border-right: 3px solid rgba(255,255,255,.3);
     line-height: 3px;
@@ -1272,10 +1303,28 @@ ul.inline-bullets > li:last-child {
 
 /* BLOG */
 #blog {
-    padding-top: 30px;
+}
+#blog .header-image {
+    background: #00b7ea; /* Old browsers */
+    background: -moz-linear-gradient(top,  #00b7ea 0%, #009ec3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00b7ea), color-stop(100%,#009ec3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #00b7ea 0%,#009ec3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #00b7ea 0%,#009ec3 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #00b7ea 0%,#009ec3 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #00b7ea 0%,#009ec3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 ); /* IE6-9 */
+    margin-bottom: 30px;
+}
+#blog .header-image h1 {
+    margin: 100px 0 0 0;
+    color: #f6f6f6;
+}
+#blog .header-image h4 {
+    margin: 0;
+    color: #f6f6f6;
 }
 #blog h2, #blog h3 {
-    margin: 10px 0 0;
+    margin: 10px 0;
 }
 #blog input, #blog textarea {
     margin-bottom: 10px;
@@ -1289,14 +1338,43 @@ ul.inline-bullets > li:last-child {
     margin: 0 0 10px;
 }
 
+#blog .tags li a {
+    padding: 3px 5px;
+    background: #454545;
+}
+#blog .tags li a:hover {
+    color: #f6f6f6;
+    background: #337ab7;
+}
+
 #blog .tags li span.occurrences {
     font-size: 0.8em;
 }
+
+#blog .post-body {
+    color: #b2b2b2;
+    margin-bottom: 20px;
+}
+
+#blog .post-body img {
+    display: block;
+    max-width: 100% !important;
+    max-height: 500px !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 auto 20px;
+}
+
+#blog .post-footer {
+    color: #777;
+}
+
 #blog #postBody {
     width: 100%;
     height: 200px;
     padding: 0.4em 1.0em 0.4em 0.6em;
 }
+
 #blog #newPost,
 .edit {
 	position: relative;
@@ -1340,15 +1418,6 @@ ul.inline-bullets > li:last-child {
 
 #blogPosts > li h2 {
     margin: 0;
-}
-
-#blogPosts > li .post-body img {
-    display: block;
-    max-width: 100% !important;
-    max-height: 500px !important;
-    width: auto !important;
-    height: auto !important;
-    margin: 0 auto 20px;
 }
 
 #blogPosts > li:last-child {
@@ -2259,6 +2328,9 @@ label[for='toggle-all'] {
     .container {
         width: 100%;
     }
+    #home section#header .scroll-down {
+        margin-top: 4em;
+    }
     #travel #map {
         height: 400px;
     }
@@ -2279,6 +2351,12 @@ label[for='toggle-all'] {
     dl dd {
         margin-bottom: 0.5em;
     }
+
+    .timestamp {
+        float: none;
+        display: block;
+    }
+
     #subNav .container {
         padding: 0;
         width: 100%;
@@ -2310,16 +2388,17 @@ label[for='toggle-all'] {
         padding: 30px 0;
     }
     #home section#header .scroll-down {
-        margin-top: 1em;
+        margin-top: 0.8em;
     }
     #home section#header {
-        height: 620px;
+        height: 560px;
     }
     #home .profile-photo {
         margin: 50px auto;
     }
     #main .title {
         display: block;
+        text-align: left;
     }
     .social-icons {
         font-size: 1.2em;
@@ -2366,6 +2445,14 @@ label[for='toggle-all'] {
         -webkit-transform: none;
         transform: none;
     }
+
+    #blog h3 {
+        margin: 0;
+    }
+    #blog .post-wrapper {
+        padding: 0.5em 1.0em;
+    }
+
     #projects .project-wrapper.second-row {
         display: none;
     }

@@ -52,11 +52,16 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
             templateUrl: 'views/blog.html',
             controller: 'BlogController'
         })
-        .state('post', {
-            url: '/blog/post/:slug',
-            templateUrl: 'views/blog/post.html',
-            controller: 'PostController'
-        })
+            .state('blog.roll', {
+                url: '/roll',
+                templateUrl: 'views/blog/roll.html',
+                controller: 'BlogController'
+            })
+            .state('blog.post', {
+                url: '/post/:slug',
+                templateUrl: 'views/blog/post.html',
+                controller: 'PostController'
+            })
 
         .state('adventure', {
             url: '/adventure',

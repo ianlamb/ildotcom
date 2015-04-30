@@ -1,4 +1,4 @@
-angular.module('postController', []).controller('PostController', function($scope, $filter, $stateParams, Post) {
+angular.module('postController', []).controller('PostController', function($scope, $filter, $state, $stateParams, Post) {
     'use strict';
     
     $scope.markdown = markdown;
@@ -24,6 +24,7 @@ angular.module('postController', []).controller('PostController', function($scop
     $scope.saveEdits = function () {
         $scope.saving = true;
         $scope.post.tags = $scope.post.tags.trim().split(' ');
+        $scope.post.slug = slugify($scope.post.title);
 
         Post.put($scope.post)
             .success(function() {
@@ -55,5 +56,11 @@ angular.module('postController', []).controller('PostController', function($scop
                 }
             });
     };
-    
+
+    function slugify(text) {
+        return text.toString().trim().toLowerCase()
+            .replace(/\s+/g, '-')           // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    }
 });

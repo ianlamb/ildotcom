@@ -1,5 +1,10 @@
-angular.module('blogController', []).controller('BlogController', function($scope, $filter, $stateParams, Posts, Post) {
+angular.module('blogController', []).controller('BlogController', function($scope, $rootScope, $filter, $state, $stateParams, Posts, Post) {
     'use strict';
+
+    $scope.state = $state.current;
+    $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+        $scope.state = toState;
+    });
 
     Posts.get()
         .success(function(data) {
@@ -35,7 +40,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
     $scope.addPost = function () {
         var newPost = {
             title: $scope.newPost.title.trim(),
-            slug: $scope.newPost.title.trim().toLowerCase().split('\'').join('').split(' ').join('-'),
+            slug: slugify($scope.newPost.title),
             body: $scope.newPost.body.trim(),
             tags: $scope.newPost.tags.split(' '),
             created_at: new Date()
@@ -103,6 +108,13 @@ angular.module('blogController', []).controller('BlogController', function($scop
     
     $scope.insertTab = function(e) {
         $scope.newPost.body += '    ';
+    }
+
+    function slugify(text) {
+        return text.toString().trim().toLowerCase()
+            .replace(/\s+/g, '-')           // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
     }
 
 });

@@ -6,6 +6,10 @@ angular.module('mainController', []).controller('MainController', function($scop
     }
 
     $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+        if (toState.name === 'blog') { 
+            e.preventDefault();
+            $state.go('blog.roll');
+        }
         if (toState.name === 'adventure') { 
             e.preventDefault();
             $state.go('adventure.travel');
