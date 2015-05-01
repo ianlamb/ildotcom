@@ -5,12 +5,20 @@ module.exports = function(grunt) {
     jshint: {
       files: ['Gruntfile.js', 'public/js/**/*.js'],
       options: {
-        // options here to override JSHint defaults
+        undef: true,
+        // unused: true,
+        curly: true,
+        latedef: true,
+        browser: true,
+        devel: true,
         globals: {
+          $: true,
           jQuery: true,
-          console: true,
           module: true,
-          document: true
+          angular: true,
+          moment: true,
+          markdown: true,
+          jsPDF: true
         }
       }
     },
@@ -127,7 +135,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-processhtml');
 
   grunt.registerTask('test', ['jshint']);
-  grunt.registerTask('default', ['copy', 'concat', 'uglify', 'cssmin', 'processhtml']);
+  grunt.registerTask('default', ['jshint', 'copy', 'concat', 'uglify', 'cssmin', 'processhtml']);
   grunt.registerTask('full', ['jshint', 'copy', 'concat', 'uglify', 'cssmin', 'imagemin', 'processhtml']);
 
 };

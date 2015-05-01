@@ -104,6 +104,7 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
                 templateUrl: 'views/gaming/starcraft.html',
                 controller: 'StarcraftController'
             })
+        ;
 
     $locationProvider.html5Mode(true);
 

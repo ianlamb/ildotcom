@@ -16,9 +16,9 @@ angular.module('starcraftController', []).controller('StarcraftController', func
             capitaliseFirstLetter(parts[i]);
         }
         return parts.join(' ');
-    }
-    function capitaliseFirstLetter(string)
-    {
+    };
+
+    function capitaliseFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 

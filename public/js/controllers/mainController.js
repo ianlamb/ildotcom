@@ -164,6 +164,6 @@ angular.module('mainController', []).controller('MainController', function($scop
         doc.text('// REFERENCES AVAILABLE UPON REQUEST', leftOffset, cursor+=lineHeight);
         
         doc.save('Resume-IanLamb.pdf');
-    }
+    };
 
 });

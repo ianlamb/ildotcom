@@ -1,4 +1,5 @@
-angular.module('postController', []).controller('PostController', function($scope, $filter, $state, $stateParams, Post) {
+angular.module('postController', []).controller('PostController',
+    function($scope, $filter, $state, $stateParams, Post, Utilities) {
     'use strict';
     
     $scope.markdown = markdown;
@@ -24,7 +25,7 @@ angular.module('postController', []).controller('PostController', function($scop
     $scope.saveEdits = function () {
         $scope.saving = true;
         $scope.post.tags = $scope.post.tags.trim().split(' ');
-        $scope.post.slug = slugify($scope.post.title);
+        $scope.post.slug = Utilities.slugify($scope.post.title);
 
         Post.put($scope.post)
             .success(function() {
@@ -35,7 +36,7 @@ angular.module('postController', []).controller('PostController', function($scop
                 $scope.alert = { type: 'alert', message: 'Error while saving post' };
             })
             .finally(function () {
-                $scope.post.tags = $scope.post.tags instanceof Array ? post.tags.join(' ') : post.tags;
+                $scope.post.tags = $scope.post.tags instanceof Array ? $scope.post.tags.join(' ') : $scope.post.tags;
                 $scope.editing = false;
                 $scope.saving = false;
             });
@@ -44,7 +45,7 @@ angular.module('postController', []).controller('PostController', function($scop
     $scope.cancelEdits = function () {
         $scope.post = $scope.originalPost;
         $scope.editing = false;
-    }
+    };
 
     $scope.removePost = function (post) {
         Post.delete(post)
@@ -56,11 +57,4 @@ angular.module('postController', []).controller('PostController', function($scop
                 }
             });
     };
-
-    function slugify(text) {
-        return text.toString().trim().toLowerCase()
-            .replace(/\s+/g, '-')           // Replace spaces with -
-            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-    }
 });
