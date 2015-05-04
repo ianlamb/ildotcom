@@ -11,6 +11,7 @@ var PlaceSchema = new Schema({
     countryCode: String,
     url: String,
     notes: String,
+    climbable: Boolean,
     lat: Number,
     lng: Number,
     photos: [{ type: Schema.Types.ObjectId, ref: 'Photo' }],

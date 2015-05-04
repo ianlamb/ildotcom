@@ -87,7 +87,7 @@ module.exports = function(app, router) {
     router.put('/post', auth, function(req, res) {
         Post.findOne({ _id: req.body._id }, function(err, post) {
             if (err) {
-                res.end(err);
+                res.send(err);
             }
             if (!post) {
                 post = new Post(req.body);
@@ -99,7 +99,7 @@ module.exports = function(app, router) {
             }
             post.save(function(err, newPost) {
                 if (err) {
-                    res.end(err);
+                    res.send(err);
                 }
                 res.json(newPost);
             });
@@ -128,7 +128,7 @@ module.exports = function(app, router) {
     router.put('/project', auth, function(req, res) {
         Project.findOne({ _id: req.body._id }, function(err, project) {
             if (err) {
-                res.end(err);
+                res.send(err);
             }
             if (!project) {
                 project = new Project(req.body);
@@ -141,7 +141,7 @@ module.exports = function(app, router) {
             }
             project.save(function(err, newProject) {
                 if (err) {
-                    res.end(err);
+                    res.send(err);
                 }
                 res.json(newProject);
             });
@@ -168,6 +168,46 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
+    router.put('/place', auth, function(req, res) {
+        Place.findOne({ _id: req.body._id }, function(err, place) {
+            if (err) {
+                res.send(err);
+            }
+            if (!place) {
+                if (!req.body.lat || !req.body.lon) {
+                    res.send(400, req.body);
+                }
+                place = new Place(req.body);
+            } else {
+                place.name = req.body.name;
+                place.address = req.body.address;
+                place.city = req.body.city;
+                place.region = req.body.region;
+                place.country = req.body.country;
+                place.phone = req.body.phone;
+                place.url = req.body.url;
+                place.notes = req.body.notes;
+                place.climbable = req.body.climbable;
+                place.lat = req.body.lat;
+                place.lng = req.body.lng;
+            }
+            place.save(function(err, newPlace) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(newPlace);
+            });
+        });
+    });
+    router.delete('/place/:id', auth, function(req, res) {
+        Place.remove({ _id: req.params.id })
+            .exec(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.send(200);
+            });
+    });
 
     // climbing
     router.get('/climbs', function(req, res) {
@@ -186,6 +226,15 @@ module.exports = function(app, router) {
         AdventureManager.saveClimbSession(req.body).then(function(data) {
             res.json(data);
         });
+    });
+    router.delete('/climb/:id', auth, function(req, res) {
+        ClimbSession.remove({ _id: req.params.id })
+            .exec(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.send(200);
+            });
     });
 
     // travel
@@ -220,7 +269,7 @@ module.exports = function(app, router) {
     router.put('/bucketlist', auth, function(req, res) {
         BucketListItem.findOne({ _id: req.body._id }, function(err, todo) {
             if (err) {
-                res.end(err);
+                res.send(err);
             }
             if (!todo) {
                 todo = new BucketListItem(req.body);
@@ -230,7 +279,7 @@ module.exports = function(app, router) {
             }
             todo.save(function(err, newTodo) {
                 if (err) {
-                    res.end(err);
+                    res.send(err);
                 }
                 res.json(newTodo);
             });

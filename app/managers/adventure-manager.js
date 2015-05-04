@@ -87,6 +87,7 @@ module.exports = {
                 } else {
                     if (session.date) dbSession.date = session.date;
                     if (session.place) dbSession.place = session.place;
+                    if (session.notes) dbSession.notes = session.notes;
                     if (session.climbs) dbSession.climbs = session.climbs
                 }
                 dbSession.save(function(err, newSession) {
