@@ -2,6 +2,8 @@ var jwt     = require('jwt-simple');
 var moment  = require('moment');
 var auth    = require('./auth.js');
 var config  = require('../config/app.js');
+var Environment = require('../config/environment.js');
+var env = new Environment();
 
 module.exports = function(app, router) {
 
@@ -20,7 +22,9 @@ module.exports = function(app, router) {
     // server routes ===========================================================
     // middleware to use for all requests
     router.use(function(req, res, next) {
-        // do logging
+        console.log('--------------');
+        console.log('Request route: ' + req.route);
+        console.log('Request body: ' + req.body);
         next();
     });
 
@@ -330,7 +334,7 @@ module.exports = function(app, router) {
 
     // frontend routes =========================================================
     app.get('*', function(req, res) {
-        res.sendfile('./public/index.html');
+        res.sendfile('./' + env.assetsRoot + '/index.html');
     });
 
 };
