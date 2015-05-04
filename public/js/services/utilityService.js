@@ -1,5 +1,5 @@
 angular.module('utilityService', [])
-    .factory('Utilities', ['', function() {
+    .factory('Utilities', function() {
 
         return {
             slugify: function(text) {
@@ -10,4 +10,4 @@ angular.module('utilityService', [])
             }
         };
 
-    }]);
+    });
