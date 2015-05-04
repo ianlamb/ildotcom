@@ -127,7 +127,9 @@ button:hover, .button:hover {
     background: #0091d8;
 }
 button.form-alignment {
-    margin-top: 1.8em;
+    margin-top: 1.4em;
+    padding-top: 0.68889rem;
+    padding-bottom: 0.74444rem;
 }
 
 select {
@@ -673,6 +675,11 @@ input[type="text"] {
     height: 2.5em;
     width: 100%;
 }
+textarea {
+    width: 100%;
+}
+
+
 #home .button {
     display: inline-block;
     width: 100%;
@@ -1828,10 +1835,8 @@ code {
 #climbing .session .total-points span {
 }
 #climbing .session .notes {
-    display: inline-block;
-    margin-right: 20px;
-    padding-left: 20px;
-    border-left: 1px solid rgba(255,255,255,0.4);
+    display: block;
+    margin-top: 10px;
 }
 
 #climbing .session .type .grade {
