@@ -23,10 +23,14 @@ angular.module('mainController', []).controller('MainController', function($scop
 
     $rootScope.moment = moment;
 
-    $scope.$on('$viewContentLoaded', function(event) {
+    $scope.$on('$viewContentLoaded', function(e) {
         $window.ga('send', 'pageview', { page: $location.url() });
         $(".navbar-collapse.collapse.in").collapse('hide');
     });
+
+    $scope.trackClickEvent = function(label) {
+        ga('send', 'event', 'button', 'click', label);
+    };
 
     Post.get()
         .success(function(data) {
@@ -85,6 +89,8 @@ angular.module('mainController', []).controller('MainController', function($scop
     ];
     
     $scope.downloadResume = function() {
+        ga('send', 'event', 'button', 'click', 'download-resume');
+
         var doc = new jsPDF();
         doc.setProperties({
             title: 'Resume - Ian Lamb',
