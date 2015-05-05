@@ -256,7 +256,7 @@ select:hover {
 a.res-tooltip { outline:none; }
 a.res-tooltip strong { line-height:30px; }
 a.res-tooltip:hover { text-decoration:none; } 
-a.res-tooltip span {
+a.res-tooltip .res-tooltip-panel {
     position: absolute;
     z-index: 10;
     padding: 14px 20px;
@@ -268,7 +268,7 @@ a.res-tooltip span {
     -webkit-transition: all .4s;
     transition: all .4s;
 }
-a.res-tooltip:hover span {
+a.res-tooltip:hover .res-tooltip-panel {
     background: #444;
     color: #ccc;
     opacity: 1;

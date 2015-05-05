@@ -135,7 +135,7 @@ angular.module('mainController', []).controller('MainController', function($scop
 
         doc.text('// EXPERIENCE', leftOffset, cursor+=lineHeight);
         $('#experience section').each(function() {
-            var text = $(this).find('.workplace').text() + ' - ';
+            var text = $(this).find('.workplace .title').text() + ' - ';
             text += $(this).find('.location').text();
             text += ' (' + $(this).find('.timestamp').text() + ')';
             doc.text(text, leftOffset, cursor+=lineHeight);
@@ -147,7 +147,7 @@ angular.module('mainController', []).controller('MainController', function($scop
                 });
             });
             doc.text('', leftOffset, cursor+=lineHeight);
-            if ($(this).find('.workplace').text() === 'GoodLife Fitness') {
+            if ($(this).find('.workplace .title').text() === 'GoodLife Fitness') {
                 doc.addPage();
                 cursor = 10;
             }
@@ -155,7 +155,7 @@ angular.module('mainController', []).controller('MainController', function($scop
         
         doc.text('// EDUCATION', leftOffset, cursor+=lineHeight);
         $('#education section').each(function() {
-            var text = $(this).find('.workplace').text() + ' - ';
+            var text = $(this).find('.workplace .title').text() + ' - ';
             text += $(this).find('.location').text();
             text += ' (' + $(this).find('.timestamp').text() + ')';
             doc.text(text, leftOffset, cursor+=lineHeight);
