@@ -2054,7 +2054,7 @@ label[for='toggle-all'] {
 }
 
 #todoList li.completed label {
-	color: #d9d9d9;
+	color: #777;
 	text-decoration: line-through;
 }
 

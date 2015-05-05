@@ -37,9 +37,9 @@ angular.module('bucketListController', []).controller('BucketListController', fu
 
         $scope.saving = true;
         BucketList.put(newTodo)
-            .then(function success(data) {
+            .then(function success(res) {
                 $scope.newTodo = { title: '' };
-                $scope.bucketList.unshift(data);
+                $scope.bucketList.unshift(res.data);
             })
             .finally(function () {
                 $scope.saving = false;
@@ -77,14 +77,16 @@ angular.module('bucketListController', []).controller('BucketListController', fu
     };
 
     $scope.removeTodo = function (todo) {
-        BucketList.delete(todo)
-            .success(function() {
-                for (var i = 0; i < $scope.bucketList.length; i++) {
-                    if ($scope.bucketList[i]._id == todo._id) {
-                        $scope.bucketList.splice(i, 1);
+        if (confirm('Are you sure you wish to permanently delete this item?')) {
+            BucketList.delete(todo)
+                .success(function() {
+                    for (var i = 0; i < $scope.bucketList.length; i++) {
+                        if ($scope.bucketList[i]._id == todo._id) {
+                            $scope.bucketList.splice(i, 1);
+                        }
                     }
-                }
-            });
+                });
+        }
     };
 
     $scope.saveTodo = function (todo) {
