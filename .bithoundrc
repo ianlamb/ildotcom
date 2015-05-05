@@ -42,7 +42,8 @@
         "**/extjs/resources/**",
         "**/extjs/src/**",
         "**/extjs/welcome/**",
-        "bower_components/**"
+        "bower_components/**",
+        "**/jquery-jvectormap-*.js"
     ],
     "test": [
         "**/test/**",
