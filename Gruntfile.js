@@ -3,7 +3,14 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      files: ['Gruntfile.js', 'public/js/**/*.js'],
+      files: [
+        'Gruntfile.js',
+        'package.json',
+        'bower.json',
+        'server.js',
+        'public/js/**/*.js',
+        'app/**/*.js'
+      ],
       options: {
         undef: true,
         // unused: true,
@@ -18,7 +25,13 @@ module.exports = function(grunt) {
           angular: true,
           moment: true,
           markdown: true,
-          jsPDF: true
+          jsPDF: true,
+          ga: true,
+          require: true,
+          process: true,
+          __dirname: true,
+          exports: true,
+          res: true
         }
       }
     },

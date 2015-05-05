@@ -35,9 +35,7 @@ module.exports = function(app, router) {
 
     // authenticate
     router.post('/auth', function(req, res) {
-        if (!req.body.password
-            || !config.authSecret
-            || req.body.password !== config.authSecret) {
+        if (!req.body.password || !config.authSecret || req.body.password !== config.authSecret) {
             return res.send(401);
         }
 
@@ -96,10 +94,11 @@ module.exports = function(app, router) {
             if (!post) {
                 post = new Post(req.body);
             } else {
-                post.title = req.body.title;
-                post.slug = req.body.slug;
-                post.body = req.body.body;
-                post.tags = req.body.tags;
+                for (var prop in post) {
+                    if (req.body.hasOwnProperty(prop) && req.body[prop]) {
+                        post[prop] = req.body[prop];
+                    }
+                }
             }
             post.save(function(err, newPost) {
                 if (err) {
@@ -137,11 +136,11 @@ module.exports = function(app, router) {
             if (!project) {
                 project = new Project(req.body);
             } else {
-                project.name = req.body.name;
-                project.desc = req.body.desc;
-                project.url = req.body.url;
-                project.technologies = req.body.technologies;
-                project.images = req.body.images;
+                for (var prop in project) {
+                    if (req.body.hasOwnProperty(prop) && req.body[prop]) {
+                        project[prop] = req.body[prop];
+                    }
+                }
             }
             project.save(function(err, newProject) {
                 if (err) {
@@ -183,17 +182,11 @@ module.exports = function(app, router) {
                 }
                 place = new Place(req.body);
             } else {
-                place.name = req.body.name;
-                place.address = req.body.address;
-                place.city = req.body.city;
-                place.region = req.body.region;
-                place.country = req.body.country;
-                place.phone = req.body.phone;
-                place.url = req.body.url;
-                place.notes = req.body.notes;
-                place.climbable = req.body.climbable;
-                place.lat = req.body.lat;
-                place.lng = req.body.lng;
+                for (var prop in place) {
+                    if (req.body.hasOwnProperty(prop) && req.body[prop]) {
+                        place[prop] = req.body[prop];
+                    }
+                }
             }
             place.save(function(err, newPlace) {
                 if (err) {
