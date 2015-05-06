@@ -18,6 +18,9 @@ angular.module('mainController', []).controller('MainController', function($scop
             e.preventDefault();
             $state.go('gaming.wow');
         }
+    });
+
+    $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
         $window.scrollTo(0,0);
     });
 
