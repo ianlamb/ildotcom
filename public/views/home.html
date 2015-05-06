@@ -63,10 +63,14 @@
             </div>
             <div class="row">
                 <div class="col-sm-5">
-                    <span class="title">Last Journal Entry</span>
+                    <span class="title">Recent Journal Entries</span>
                 </div>
                 <div class="col-sm-7">
-                    <a ui-sref="blog.post({ slug: latestPost.slug })" class="link">{{ latestPost.title }}</a>
+                    <ul class="posts">
+                        <li ng-repeat="post in posts">
+                            <a ui-sref="blog.post({ slug: post.slug })" class="link">{{ post.title }}</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

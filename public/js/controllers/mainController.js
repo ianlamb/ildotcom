@@ -1,4 +1,4 @@
-angular.module('mainController', []).controller('MainController', function($scope, $rootScope, $window, $location, $state, Post) {
+angular.module('mainController', []).controller('MainController', function($scope, $rootScope, $window, $location, $state, Posts) {
     
     var token = window.localStorage.getItem('token');
     if (token) {
@@ -32,9 +32,9 @@ angular.module('mainController', []).controller('MainController', function($scop
         ga('send', 'event', 'button', 'click', label);
     };
 
-    Post.get()
+    Posts.getRecent()
         .success(function(data) {
-            $scope.latestPost = data;
+            $scope.posts = data;
         })
         .error(function(err) {
             console.error(err);

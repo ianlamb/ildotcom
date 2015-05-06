@@ -4,6 +4,13 @@ angular.module('blogService', [])
         return {
             get: function() {
                 return $http.get('/api/posts');
+            },
+            getRecent: function() {
+                return $http.get('/api/posts', {
+                    params: {
+                        limit: 3
+                    }
+                });
             }
         };
 

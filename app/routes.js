@@ -56,7 +56,9 @@ module.exports = function(app, router) {
 
     // blog
     router.get('/posts', function(req, res) {
+        var limit = req.query.limit || 50;
         Post.find({}, {}, { sort: { 'created_at': -1 }})
+            .limit(limit)
             .exec(function(err, data) {
                 if (err) {
                     res.send(err);
