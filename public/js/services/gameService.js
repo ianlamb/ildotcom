@@ -23,79 +23,6 @@ angular.module('gameService', [])
             'offHand': 'Off-Hand'
         };
 
-        return {
-            get: function() {
-                return $http.get('/api/wow')
-                .success(function(wowProfile) {
-                    wowProfile.alts = [];
-                    wowProfile.characters.sort(function(a, b) {
-                        return parseInt(a.level) < parseInt(b.level);
-                    }).forEach(function(character) {
-                        // format some properties
-                        character.gender = genders[character.gender];
-                        character.class = classes[character.class];
-                        character.race = races[character.race];
-                        character.lastModified = moment(character.lastModified).fromNow();
-
-                        // handle main/alts
-                        if(character.showcase) {
-                            if(wowProfile.main) {
-                                console.error('multiple characters marked as showcase');
-                            } else {
-                                wowProfile.main = character;
-
-                                // determine best raid progression
-                                wowProfile.main.progression.raids.forEach(function(raid) {
-                                    if(raid.lfr > 0) {
-                                        wowProfile.main.progression.best = raid.name + " (LFR)";
-                                    }
-                                });
-                                wowProfile.main.progression.raids.forEach(function(raid) {
-                                    if(raid.normal > 0) {
-                                        wowProfile.main.progression.best = raid.name + " (Normal)";
-                                    }
-                                });
-                                wowProfile.main.progression.raids.forEach(function(raid) {
-                                    if(raid.heroic > 0) {
-                                        wowProfile.main.progression.best = raid.name + " (Heroic)";
-                                    }
-                                });
-                                wowProfile.main.progression.raids.forEach(function(raid) {
-                                    if(raid.mythic > 0) {
-                                        wowProfile.main.progression.best = raid.name + " (Mythic)";
-                                    }
-                                });
-
-                                // declare the slot names for each item
-                                for(var index in wowProfile.main.items) {
-                                    wowProfile.main.items[index].slot = itemSlots[index];
-                                }
-
-                                // parse feed items]
-                            }
-                        } else {
-                            wowProfile.alts.push(character);
-                        }
-                    });
-
-                    // needed to calculate percentages
-                    wowProfile.mounts.possible = wowProfile.mounts.numCollected + wowProfile.mounts.numNotCollected;
-                    wowProfile.pets.possible = wowProfile.pets.numCollected + wowProfile.pets.numNotCollected;
-
-                    // handle achievements
-                    $http.get('data/achievements.json', { cache: true })
-                        .then(function(data) {
-                            wowProfile.achievements = parseAchievementObject(data.data.supercats, wowProfile.main);
-                        });
-
-                    return wowProfile;
-                })
-                .error(function(err) {
-                    console.error(err);
-                });
-            }
-        }
-
         function parseAchievementObject(supercats, character) {
             var obj = {};
             var completed = {};
@@ -206,6 +133,79 @@ angular.module('gameService', [])
             // Data object we expose externally
             return obj;
         }
+
+        return {
+            get: function() {
+                return $http.get('/api/wow')
+                .success(function(wowProfile) {
+                    wowProfile.alts = [];
+                    wowProfile.characters.sort(function(a, b) {
+                        return parseInt(a.level) < parseInt(b.level);
+                    }).forEach(function(character) {
+                        // format some properties
+                        character.gender = genders[character.gender];
+                        character.class = classes[character.class];
+                        character.race = races[character.race];
+                        character.lastModified = moment(character.lastModified).fromNow();
+
+                        // handle main/alts
+                        if(character.showcase) {
+                            if(wowProfile.main) {
+                                console.error('multiple characters marked as showcase');
+                            } else {
+                                wowProfile.main = character;
+
+                                // determine best raid progression
+                                wowProfile.main.progression.raids.forEach(function(raid) {
+                                    if(raid.lfr > 0) {
+                                        wowProfile.main.progression.best = raid.name + " (LFR)";
+                                    }
+                                });
+                                wowProfile.main.progression.raids.forEach(function(raid) {
+                                    if(raid.normal > 0) {
+                                        wowProfile.main.progression.best = raid.name + " (Normal)";
+                                    }
+                                });
+                                wowProfile.main.progression.raids.forEach(function(raid) {
+                                    if(raid.heroic > 0) {
+                                        wowProfile.main.progression.best = raid.name + " (Heroic)";
+                                    }
+                                });
+                                wowProfile.main.progression.raids.forEach(function(raid) {
+                                    if(raid.mythic > 0) {
+                                        wowProfile.main.progression.best = raid.name + " (Mythic)";
+                                    }
+                                });
+
+                                // declare the slot names for each item
+                                for(var index in wowProfile.main.items) {
+                                    wowProfile.main.items[index].slot = itemSlots[index];
+                                }
+
+                                // parse feed items
+                            }
+                        } else {
+                            wowProfile.alts.push(character);
+                        }
+                    });
+
+                    // needed to calculate percentages
+                    wowProfile.mounts.possible = wowProfile.mounts.numCollected + wowProfile.mounts.numNotCollected;
+                    wowProfile.pets.possible = wowProfile.pets.numCollected + wowProfile.pets.numNotCollected;
+
+                    // handle achievements
+                    $http.get('data/achievements.json', { cache: true })
+                        .then(function(data) {
+                            wowProfile.achievements = parseAchievementObject(data.data.supercats, wowProfile.main);
+                        });
+
+                    return wowProfile;
+                })
+                .error(function(err) {
+                    console.error(err);
+                });
+            }
+        };
     }])
 
     .factory('DiabloProfile', ['$http', function($http) {
@@ -219,7 +219,7 @@ angular.module('gameService', [])
                     console.error(err);
                 });
             }
-        }
+        };
     }])
 
     .factory('StarcraftProfile', ['$http', function($http) {
@@ -233,5 +233,5 @@ angular.module('gameService', [])
                     console.error(err);
                 });
             }
-        }
+        };
     }]);

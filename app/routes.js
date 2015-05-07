@@ -2,6 +2,8 @@ var jwt     = require('jwt-simple');
 var moment  = require('moment');
 var auth    = require('./auth.js');
 var config  = require('../config/app.js');
+var Environment = require('../config/environment.js');
+var env = new Environment();
 
 module.exports = function(app, router) {
 
@@ -20,7 +22,9 @@ module.exports = function(app, router) {
     // server routes ===========================================================
     // middleware to use for all requests
     router.use(function(req, res, next) {
-        // do logging
+        console.log('--------------');
+        console.log('Request route: ' + req.route);
+        console.log('Request body: ' + req.body);
         next();
     });
 
@@ -31,9 +35,7 @@ module.exports = function(app, router) {
 
     // authenticate
     router.post('/auth', function(req, res) {
-        if (!req.body.password
-            || !config.authSecret
-            || req.body.password !== config.authSecret) {
+        if (!req.body.password || !config.authSecret || req.body.password !== config.authSecret) {
             return res.send(401);
         }
 
@@ -71,20 +73,36 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
+    router.get('/post/:slug', function(req, res) {
+        var searchCriteria = {};
+        if (req.params.slug) {
+            searchCriteria.slug = req.params.slug;
+        }
+        Post.findOne(searchCriteria, {})
+            .exec(function(err, data) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(data);
+            });
+    });
     router.put('/post', auth, function(req, res) {
         Post.findOne({ _id: req.body._id }, function(err, post) {
             if (err) {
-                res.end(err);
+                res.send(err);
             }
             if (!post) {
                 post = new Post(req.body);
             } else {
-                post.title = req.body.title;
-                post.completed = req.body.completed;
+                for (var prop in post) {
+                    if (req.body.hasOwnProperty(prop) && req.body[prop]) {
+                        post[prop] = req.body[prop];
+                    }
+                }
             }
             post.save(function(err, newPost) {
                 if (err) {
-                    res.end(err);
+                    res.send(err);
                 }
                 res.json(newPost);
             });
@@ -113,20 +131,20 @@ module.exports = function(app, router) {
     router.put('/project', auth, function(req, res) {
         Project.findOne({ _id: req.body._id }, function(err, project) {
             if (err) {
-                res.end(err);
+                res.send(err);
             }
             if (!project) {
                 project = new Project(req.body);
             } else {
-                project.name = req.body.name;
-                project.desc = req.body.desc;
-                project.url = req.body.url;
-                project.technologies = req.body.technologies;
-                project.images = req.body.images;
+                for (var prop in project) {
+                    if (req.body.hasOwnProperty(prop) && req.body[prop]) {
+                        project[prop] = req.body[prop];
+                    }
+                }
             }
             project.save(function(err, newProject) {
                 if (err) {
-                    res.end(err);
+                    res.send(err);
                 }
                 res.json(newProject);
             });
@@ -153,6 +171,40 @@ module.exports = function(app, router) {
                 res.json(data);
             });
     });
+    router.put('/place', auth, function(req, res) {
+        Place.findOne({ _id: req.body._id }, function(err, place) {
+            if (err) {
+                res.send(err);
+            }
+            if (!place) {
+                if (!req.body.lat || !req.body.lon) {
+                    res.send(400, req.body);
+                }
+                place = new Place(req.body);
+            } else {
+                for (var prop in place) {
+                    if (req.body.hasOwnProperty(prop) && req.body[prop]) {
+                        place[prop] = req.body[prop];
+                    }
+                }
+            }
+            place.save(function(err, newPlace) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(newPlace);
+            });
+        });
+    });
+    router.delete('/place/:id', auth, function(req, res) {
+        Place.remove({ _id: req.params.id })
+            .exec(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.send(200);
+            });
+    });
 
     // climbing
     router.get('/climbs', function(req, res) {
@@ -171,6 +223,15 @@ module.exports = function(app, router) {
         AdventureManager.saveClimbSession(req.body).then(function(data) {
             res.json(data);
         });
+    });
+    router.delete('/climb/:id', auth, function(req, res) {
+        ClimbSession.remove({ _id: req.params.id })
+            .exec(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.send(200);
+            });
     });
 
     // travel
@@ -205,7 +266,7 @@ module.exports = function(app, router) {
     router.put('/bucketlist', auth, function(req, res) {
         BucketListItem.findOne({ _id: req.body._id }, function(err, todo) {
             if (err) {
-                res.end(err);
+                res.send(err);
             }
             if (!todo) {
                 todo = new BucketListItem(req.body);
@@ -215,7 +276,7 @@ module.exports = function(app, router) {
             }
             todo.save(function(err, newTodo) {
                 if (err) {
-                    res.end(err);
+                    res.send(err);
                 }
                 res.json(newTodo);
             });
@@ -266,7 +327,7 @@ module.exports = function(app, router) {
 
     // frontend routes =========================================================
     app.get('*', function(req, res) {
-        res.sendfile('./public/index.html');
+        res.sendfile('./' + env.assetsRoot + '/index.html');
     });
 
 };

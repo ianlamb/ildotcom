@@ -10,6 +10,7 @@ angular.module('ildotcomApp', [
     'authController',
     'workController',
     'blogController',
+    'postController',
     'adventureController',
     'travelController',
     'climbController',
@@ -18,6 +19,7 @@ angular.module('ildotcomApp', [
     'wowController',
     'diabloController',
     'starcraftController',
+    'utilityService',
     'authService',
     'workService',
     'blogService',
@@ -26,6 +28,8 @@ angular.module('ildotcomApp', [
 ]).config(['$httpProvider', function($httpProvider) {
     var token = window.localStorage.getItem('token');
     if (token) {
-        $httpProvider.defaults.headers.common = { 'x-access-token': token }
+        $httpProvider.defaults.headers.common = {
+            'x-access-token': token
+        };
     }
 }]);

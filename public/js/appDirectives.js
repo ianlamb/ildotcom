@@ -8,11 +8,12 @@ angular.module('appDirectives', [])
             controller: function($scope, $location) {
                 $scope.navLinks = [
                     { slug: 'home', text: 'Home', sortRank: 0 },
-                    { slug: 'blog', text: 'Blog', sortRank: 1 },
+                    { slug: 'blog', text: 'Journal', sortRank: 1 },
                     //{ slug: 'work', text: 'Work', sortRank: 2 },
-                    { slug: 'adventure', text: 'Adventure', sortRank: 3 },
-                    { slug: 'gaming', text: 'Gaming', sortRank: 4 },
-                    { slug: 'about', text: 'About', sortRank: 5 }
+                    { slug: 'resume', text: 'Résumé', sortRank: 3 },
+                    { slug: 'adventure', text: 'Adventure', sortRank: 4 },
+                    { slug: 'gaming', text: 'Gaming', sortRank: 5 },
+                    { slug: 'about', text: 'About', sortRank: 6 }
                 ];
 
                 $scope.isActive = function(slug) {
@@ -27,7 +28,7 @@ angular.module('appDirectives', [])
                         return 'active';
                     }
                     return '';
-                }
+                };
             }
         };
     })
@@ -101,11 +102,11 @@ angular.module('appDirectives', [])
 //                        '2015-03-08': 0.8,
 //                        '2015-03-09': 0.9,
 //                        '2015-03-10': 1.0
-//                    }
+//                    };
                     
                     var now = new Date();
-                    var year = now.getFullYear()
-                    var month = now.getMonth()
+                    var year = now.getFullYear();
+                    var month = now.getMonth();
                     var date = now.getDate();
                     var days = getDays(month, year);
                     var firstDay = new Date(year, month, 1).getDay() + 1;
@@ -134,7 +135,7 @@ angular.module('appDirectives', [])
                             var className = '';
                             var style = '';
                             var cellBody = '';
-                            var value = red = green = blue = alpha = 0;
+                            var value = 0, red = 0, green = 0, blue = 0, alpha = 0;
                             if (data[current] > 0) {
                                 value = data[current];
                                 red = Math.ceil(value * 20 + 20);
@@ -168,47 +169,49 @@ angular.module('appDirectives', [])
                 }, 200);
 
                 function leapYear(year) {
-                    if (year % 4 == 0) // basic rule
-                    return true // is leap year
-                    /* else */ // else not needed when statement is "return"
-                    return false // is not leap year
+                    if (year % 4 === 0) {
+                        return true;
+                    }
+                    return false;
                 }
 
                 function getDays(month, year) {
-                    var ar = new Array(12)
-                    ar[0] = 31 // January
-                    ar[1] = (leapYear(year)) ? 29 : 28 // February
-                    ar[2] = 31 // March
-                    ar[3] = 30 // April
-                    ar[4] = 31 // May
-                    ar[5] = 30 // June
-                    ar[6] = 31 // July
-                    ar[7] = 31 // August
-                    ar[8] = 30 // September
-                    ar[9] = 31 // October
-                    ar[10] = 30 // November
-                    ar[11] = 31 // December
-                    return ar[month]
+                    var daysInMonths = [
+                        31, // January
+                        (leapYear(year)) ? 29 : 28, // February
+                        31, // March
+                        30, // April
+                        31, // May
+                        30, // June
+                        31, // July
+                        31, // August
+                        30, // September
+                        31, // October
+                        30, // November
+                        31]; // December
+
+                    return daysInMonths[month];
                 }
 
                 function getMonthName(month) {
-                    var ar = new Array(12)
-                    ar[0] = "January"
-                    ar[1] = "February"
-                    ar[2] = "March"
-                    ar[3] = "April"
-                    ar[4] = "May"
-                    ar[5] = "June"
-                    ar[6] = "July"
-                    ar[7] = "August"
-                    ar[8] = "September"
-                    ar[9] = "October"
-                    ar[10] = "November"
-                    ar[11] = "December"
-                    return ar[month]
+                    var months = [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December"];
+
+                    return months[month];
                 }
             }
-        }
+        };
     })
 
     .directive('ngTab', function () {

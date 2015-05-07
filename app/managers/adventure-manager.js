@@ -1,15 +1,47 @@
 var mongoose        = require('mongoose');
 var request         = require('request');
 var Promise         = require('promise');
-var app             = require('../../config/app');
+var config             = require('../../config/app');
 var db              = require('../../config/db');
 var Trip            = require('../models/trip');
 var Place           = require('../models/place');
 var ClimbSession    = require('../models/climb-session');
-var BucketListItem  = require('../models/bucket-list-item');
 
 module.exports = {
     saveTrip: function(data) {
+        function retrievePhotoset(photosetId) {
+            return new Promise(function(resolve, reject) {
+                console.log('querying flickr api...');
+                var options = {
+                    uri: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=' + config.keys.flickr + '&photoset_id=' + photosetId + '&format=json&nojsoncallback=1',
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+                request(options, function(err, rez, body) {
+                    if(!body) {
+                        console.log('request returned empty');
+                        mongoose.disconnect();
+                        reject();
+                    }
+                    var data = JSON.parse(body);
+                    if(data && data.photoset) {
+                        console.log('received photo data');
+                        resolve(data);
+                    } else {
+                        console.log('unexpected results...', data);
+                        mongoose.disconnect();
+                        reject();
+                    }
+                }).on('error', function(e) {
+                    console.error(e.message);
+                    mongoose.disconnect();
+                    reject(e.message);
+                });
+            });
+        }
+
         return new Promise(function(resolve, reject) {
             console.log('connecting to db...');
             mongoose.connect(db.url);
@@ -79,26 +111,33 @@ module.exports = {
 
     saveClimbSession: function(session) {
         return new Promise(function(resolve) {
-            var promises = [];
-            Promise.all(promises).then(function() {
-                ClimbSession.create(session, function(err, newSession) {
-                    if(err) {
-                        console.error(err);
+            ClimbSession.findOne({ _id: session._id }, function(err, dbSession) {
+                if (err) {
+                    res.send(err);
+                }
+                if (!dbSession) {
+                    dbSession = new ClimbSession(session);
+                } else {
+                    for (var prop in dbSession) {
+                        if (session.hasOwnProperty(prop) && session[prop]) {
+                            dbSession[prop] = session[prop];
+                        }
                     }
-                    console.log('Created Climbing Session: ' + newSession._id);
-                    Place.find({ _id: mongoose.Types.ObjectId(session.place) })
-                        .exec(function(err, place) {
+                }
+                dbSession.save(function(err, newSession) {
+                    if(err) {
+                        res.send(err);
+                    }
+                    ClimbSession.findOne({ _id: newSession._id })
+                        .populate('place')
+                        .populate('photos')
+                        .exec(function(err, data) {
                             if (err) {
                                 res.send(err);
                             }
-                            console.log('Found place: ' + place.name);
-                            newSession.place = place;
-                            resolve(newSession);
+                            resolve(data);
                         });
                 });
-            }, function(err) {
-                console.error(err);
-                reject();
             });
         });
     },
@@ -134,36 +173,3 @@ module.exports = {
         });
     }
 };
-
-function retrievePhotoset(photosetId) {
-    return new Promise(function(resolve, reject) {
-        console.log('querying flickr api...');
-        var options = {
-            uri: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=' + app.keys.flickr + '&photoset_id=' + photosetId + '&format=json&nojsoncallback=1',
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
-        request(options, function(err, rez, body) {
-            if(!body) {
-                console.log('request returned empty');
-                mongoose.disconnect();
-                reject();
-            }
-            var data = JSON.parse(body);
-            if(data && data.photoset) {
-                console.log('received photo data');
-                resolve(data);
-            } else {
-                console.log('unexpected results...', data);
-                mongoose.disconnect();
-                reject();
-            }
-        }).on('error', function(e) {
-            console.error(e.message);
-            mongoose.disconnect();
-            reject(e.message);
-        });
-    });
-}

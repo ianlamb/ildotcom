@@ -1,5 +1,11 @@
-angular.module('blogController', []).controller('BlogController', function($scope, $filter, $stateParams, Posts) {
+angular.module('blogController', []).controller('BlogController',
+    function($scope, $rootScope, $filter, $state, $stateParams, Posts, Post, Utilities) {
     'use strict';
+
+    $scope.state = $state.current;
+    $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+        $scope.state = toState;
+    });
 
     Posts.get()
         .success(function(data) {
@@ -29,14 +35,16 @@ angular.module('blogController', []).controller('BlogController', function($scop
             console.error(err);
         });
     
+    $scope.search = $location.search();
+    
     $scope.newPost = { title: '', body: '', tags: '' };
     $scope.editedPost = null;
     
     $scope.addPost = function () {
         var newPost = {
             title: $scope.newPost.title.trim(),
-            slug: $scope.newPost.title.trim().toLowerCase().split('\'').join('').split(' ').join('-'),
-            body: $scope.newPost.body.replace(/\r\n/g, '\n').split('\n').join('<br>').trim(),
+            slug: Utilities.slugify($scope.newPost.title),
+            body: $scope.newPost.body.trim(),
             tags: $scope.newPost.tags.split(' '),
             created_at: new Date()
         };
@@ -46,7 +54,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
         }
 
         $scope.saving = true;
-        Posts.put(newPost)
+        Post.put(newPost)
             .then(function success(data) {
                 $scope.newPost = { title: '', body: '', tags: '' };
                 $scope.posts.unshift(newPost);
@@ -77,7 +85,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
             return;
         }
 
-        Posts[post.title ? 'put' : 'delete'](post)
+        Post[post.title ? 'put' : 'delete'](post)
             .then(function success() {}, function error() {
                 post.title = $scope.originalPost.title;
             })
@@ -87,7 +95,7 @@ angular.module('blogController', []).controller('BlogController', function($scop
     };
 
     $scope.removePost = function (post) {
-        Posts.delete(post)
+        Post.delete(post)
             .success(function() {
                 for (var i = 0; i < $scope.posts.length; i++) {
                     if ($scope.posts[i]._id == post._id) {
@@ -98,11 +106,11 @@ angular.module('blogController', []).controller('BlogController', function($scop
     };
 
     $scope.savePost = function (post) {
-        Posts.put(post);
+        Post.put(post);
     };
     
     $scope.insertTab = function(e) {
         $scope.newPost.body += '    ';
-    }
+    };
 
 });

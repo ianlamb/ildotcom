@@ -2,12 +2,12 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var BucketListItemSchema = new Schema({
-    title: String,
-    completed: { type: Boolean, default: false },
-    created_at: Date,
-    updated_at: Date
+    "title": String,
+    "completed": { "type": Boolean, "default": false },
+    "created_at": Date,
+    "updated_at": Date
 }).pre('save', function(next){
-    now = new Date();
+    var now = new Date();
     this.updated_at = now;
     if ( !this.created_at ) {
         this.created_at = now;

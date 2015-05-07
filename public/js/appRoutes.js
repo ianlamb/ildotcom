@@ -18,6 +18,12 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
             controller: 'MainController'
         })
 
+        .state('resume', {
+            url: '/resume',
+            templateUrl: 'views/resume.html',
+            controller: 'MainController'
+        })
+
         .state('login', {
             url: '/login',
             templateUrl: 'views/auth/login.html',
@@ -35,17 +41,27 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
             templateUrl: 'views/work.html',
             controller: 'WorkController'
         })
-        .state('work.project', {
-            url: '/work/:slug',
-            templateUrl: 'views/project.html',
-            controller: 'WorkController'
-        })
+            .state('work.project', {
+                url: '/work/:slug',
+                templateUrl: 'views/project.html',
+                controller: 'WorkController'
+            })
 
         .state('blog', {
-            url: '/blog',
+            url: '/blog?tags',
             templateUrl: 'views/blog.html',
             controller: 'BlogController'
         })
+            .state('blog.roll', {
+                url: '/roll',
+                templateUrl: 'views/blog/roll.html',
+                controller: 'BlogController'
+            })
+            .state('blog.post', {
+                url: '/post/:slug',
+                templateUrl: 'views/blog/post.html',
+                controller: 'PostController'
+            })
 
         .state('adventure', {
             url: '/adventure',
@@ -88,6 +104,7 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
                 templateUrl: 'views/gaming/starcraft.html',
                 controller: 'StarcraftController'
             })
+        ;
 
     $locationProvider.html5Mode(true);
 

@@ -58,16 +58,24 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="notes">Notes</label>
+                                <textarea id="notes" ng-model="notes"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-4 col-xs-5">
                             <div class="form-group">
                                 <label for="type">Type</label>
-                                <select name="type" id="type" ng-model="grades" ng-options="type for (type, grades) in climbTypes"></select>
+                                <select name="type" id="type" ng-model="type" ng-options="type for (type, grades) in climbTypes"></select>
                             </div>
                         </div>
                         <div class="col-xs-4">
                             <div class="form-group">
                                 <label for="grade">Grade</label>
-                                <select name="grade" id="grade" ng-model="grade" ng-disabled="!grades" ng-options="grade for grade in grades"></select>
+                                <select name="grade" id="grade" ng-model="grade" ng-disabled="!type" ng-options="grade for grade in type"></select>
                             </div>
                         </div>
                         <div class="col-sm-4 col-xs-3">

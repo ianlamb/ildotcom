@@ -126,24 +126,27 @@ angular.module('climbController', []).controller('ClimbController', function($sc
                 switch(c.type) {
                 case 'Boulder':
                     gradeClass = s;
-                    if(boulderGrades.indexOf(s) > boulderGrades.indexOf($scope.stats.bestLead))
+                    if(boulderGrades.indexOf(s) > boulderGrades.indexOf($scope.stats.bestLead)) {
                         $scope.stats.bestBoulder = s;
+                    }
                     session.problemCount++;
                     break;
                 case 'Lead':
                     gradeClass = 'five' + s.replace('5.','').replace('+','').replace('-','');
-                    if(climbGrades.indexOf(s) > climbGrades.indexOf($scope.stats.bestLead))
+                    if(climbGrades.indexOf(s) > climbGrades.indexOf($scope.stats.bestLead)) {
                         $scope.stats.bestLead = s;
+                    }
                     session.routeCount++;
                     break;
                 case 'Top Rope':
                     gradeClass = 'five' + s.replace('5.','').replace('+','').replace('-','');
-                    if(climbGrades.indexOf(s) > climbGrades.indexOf($scope.stats.bestTopRope))
+                    if(climbGrades.indexOf(s) > climbGrades.indexOf($scope.stats.bestTopRope)) {
                         $scope.stats.bestTopRope = s;
+                    }
                     session.routeCount++;
                     break;
                 }
-                if(res.length == 0) {
+                if(res.length === 0) {
                     c.mappedSends.push({ grade: s, gradeClass: gradeClass, sends: [s] });
                 } else {
                     res[0].sends.push(s);

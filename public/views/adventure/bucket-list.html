@@ -11,7 +11,7 @@
                 </form>
             </div>
             <ul id="todoList">
-                <li ng-repeat="todo in bucketList track by $index" class="{{ item.completed ? 'completed' : '' }}">
+                <li ng-repeat="todo in bucketList | orderBy:['created_at']:true track by $index" class="{{ todo.completed ? 'completed' : '' }}">
                     <div class="view">
                         <input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)" ng-disabled="!authorized">
                         <label ng-dblclick="editTodo(todo)">{{todo.title}}</label>

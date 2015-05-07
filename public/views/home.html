@@ -1,8 +1,9 @@
 <div id="home">
     <section id="header">
+        <video src="videos/splash.mp4" class="video-splash" autoplay loop></video>
         <div class="overlay">
             <div class="container">
-                <img src="images/profile-photo-146.jpg" class="profile-photo animated fadeIn" />
+                <!--<img src="images/profile-photo-146.jpg" class="profile-photo animated fadeIn" />-->
                 <div class="row">
                     <div class="col-sm-12 text-center">
                         <div id="intro">
@@ -14,79 +15,92 @@
             </div>
         </div>
     </section>
-    <section id="connect">
+    <section id="main">
         <div class="container">
-            <div class="panel">
-                <span class="title">Connect with me</span>
-                <ul class="social-icons">
-                    <li>
-                        <a href="https://www.flickr.com/photos/128441783@N07/" title="My photo albums from various adventures" target="_blank">
-                            <i class="fa fa-flickr"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://instagram.com/ianlamb32/" title="Random snaps from my daily life" target="_blank">
-                            <i class="fa fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/ianmlamb" title="Keep in touch on a personal basis" target="_blank">
-                            <i class="fa fa-facebook-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/Ian_Lamb" title="I mostly tweet about technology, interesting facts and beer" target="_blank">
-                            <i class="fa fa-twitter-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://lnkd.in/vDaVpa" title="Potential business partner? Let's connect!" target="_blank">
-                            <i class="fa fa-linkedin-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/+IanLamb32" title="Do people still use this?" rel="me" target="_blank">
-                            <i class="fa fa-google-plus-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/ianlamb" title="All of my code projects and contributions" target="_blank">
-                            <i class="fa fa-github-square"></i>
-                        </a>
-                    </li>
-                </ul>
+            <h3>I am a full-stack developer that specializes in simple and functional web interfaces. I am pursuing a nomadic life-style to align my drive to create awesome websites with my passion for travel and cultural enrichment.</h3>
+            <div class="row">
+                <div class="col-sm-5">
+                    <span class="title">Connect with me</span>
+                </div>
+                <div class="col-sm-7">
+                    <ul class="social-icons">
+                        <li>
+                            <a href="https://www.flickr.com/photos/128441783@N07/" ng-click="trackClickEvent('flickr')" title="My photo albums from various adventures" target="_blank">
+                                <i class="fa fa-flickr"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/ianlamb32/" ng-click="trackClickEvent('instagram')" title="Random snaps from my daily life" target="_blank">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/ianmlamb" ng-click="trackClickEvent('facebook')" title="Keep in touch on a personal basis" target="_blank">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/Ian_Lamb" ng-click="trackClickEvent('twitter')" title="I mostly tweet about technology, interesting facts and beer" target="_blank">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://lnkd.in/vDaVpa" ng-click="trackClickEvent('linkedin')" title="Potential business partner? Let's connect!" target="_blank">
+                                <i class="fa fa-linkedin-square"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://plus.google.com/+IanLamb32" ng-click="trackClickEvent('gplus')" title="Do people still use this?" rel="me" target="_blank">
+                                <i class="fa fa-google-plus-square"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/ianlamb" ng-click="trackClickEvent('github')" title="All of my code projects and contributions" target="_blank">
+                                <i class="fa fa-github-square"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <span class="title">Last Journal Entry</span>
+                </div>
+                <div class="col-sm-7">
+                    <a ui-sref="blog.post({ slug: latestPost.slug })" class="link">{{ latestPost.title }}</a>
+                </div>
             </div>
         </div>
     </section>
-<!--     <section id="activity">
-        <div class="container">
-            {{ latestPost.title }}
-        </div>
-    </section> -->
     <section id="about">
         <div class="container">
-            <!-- <h2 class="headline">I specialize in <i>simple</i>, <i>intuitive</i> and <i>functional</i> web applications.</h2> -->
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="text-center">
-                        <i class="fa fa-cogs"></i>
-                        <p>I am a Web UI Developer at Cineplex Digital Networks where we provide the world's leading digital in-store platforms to enterprise clients.</p>
-                    </div>
-                    <a href="https://docs.google.com/document/d/18SijxHJ3JiNIhjwTh9px_2CnK_yN4Urt73RybVbGukg/edit?usp=sharing" class="button">View Résumé</a>
+                <div class="col-md-4">
+                    <a href="/resume" class="major-link">
+                        <div class="link-desc">
+                            <h2>Career</h2>
+                            <p>I am currently employed as a Web UI Developer at Cineplex Digital Networks where we provide Canada's leading digital in-store platforms to enterprise clients. You can see our products at any Tim Horton's location.</p>
+                            <div class="link-action">View Résumé <i class="fa fa-play"></i></div>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-sm-4">
-                    <div class="text-center">
-                        <i class="fa fa-globe"></i>
-                        <p>My outdoor passions are traveling, rock climbing and motorcycles. I want to discover what the world has to offer give back as much as I can.</p>
-                    </div>
-                    <a href="/adventure" class="button">View Adventures</a>
+                <div class="col-md-4">
+                    <a href="/adventure" class="major-link">
+                        <div class="link-desc">
+                            <h2>Adventure</h2>
+                            <p>My outdoor passions are traveling, rock climbing and motorcycles. I am on a mission to visit 100 countries. We have such an amazing opportunity these days to explore the world that it would be a shame to squander it.</p>
+                            <div class="link-action">View Adventures <i class="fa fa-play"></i></div>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-sm-4">
-                    <div class="text-center">
-                        <i class="fa fa-gamepad"></i>
-                        <p>Who doesn't like to cool off with some video games now-a-days? I have a particular fondness of completing goals and tracking my progress in games.</p>
-                    </div>
-                    <a href="/gaming" class="button">View Game Stats</a>
+                <div class="col-md-4">
+                    <a href="/gaming" class="major-link">
+                        <div class="link-desc">
+                            <h2>Gaming</h2>
+                            <p>Everyone has something that pulls them away from the noise of life, for me it's video games. I have a particular fondness of completing goals and tracking my progress in games, which lead to some fun stat aggregation.</p>
+                            <div class="link-action">View Game Stats <i class="fa fa-play"></i></div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -95,7 +109,7 @@
         <div class="container">
             <h1>Work</h1>
             <div ng-repeat="project in projects track by $index" class="project-wrapper 
-                {{ $index == 0 ? 'primary' : $index == 1 ? 'secondary' : 'tertiary' }}">
+                {{ $index > 2 ? 'second-row' : 'first-row' }}">
                 <a href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
                     <div class="overlay">
                         <div class="title">{{ project.name }}</div>
