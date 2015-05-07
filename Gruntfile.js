@@ -86,6 +86,7 @@ module.exports = function(grunt) {
           'public/libs/angular-bootstrap/ui-bootstrap-tpls.min.js',
           'public/libs/bootstrap/dist/js/bootstrap.min.js',
           'public/libs/jvectormap/jquery.jvectormap.min.js',
+          'public/libs/jwt-decode/build/jwt-decode.min.js',
           'public/js/**/*.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
