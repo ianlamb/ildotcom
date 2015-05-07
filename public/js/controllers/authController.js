@@ -1,18 +1,21 @@
-angular.module('authController', []).controller('AuthController', function($scope, $rootScope, $location, $state, $timeout, Auth) {
+angular.module('authController', []).controller('AuthController',
+    function($scope, $rootScope, $location, $state, $timeout, Auth) {
+    'use strict';
+    
     $scope.login = function() {
         Auth.post($scope.password)
             .success(function(data, status, headers, config) {
                 window.localStorage.setItem('token', data.token);
-                $.ajaxSetup({
-                    headers: {
-                        'x-access-token': data.token
-                    }
-                });
-                $rootScope.authorized = true;
-                $timeout(function() {
-                    $location.path('/home').replace();
-                }, 2000);
-                $scope.message = { type: 'success', body: 'Login success!' };
+                var decoded = jwt_decode(data.token);
+                var now = new Date().getTime();
+                var diff = decoded.exp - now;
+                if (diff < 0) {
+                    $scope.logout();
+                } else {
+                    $timeout($scope.logout, diff);
+                    $rootScope.authorized = true;
+                    $scope.message = { type: 'success', body: 'Login success!' };
+                }
             })
             .error(function(data, status, headers, config) {
                 $scope.message = { type: 'danger', body: 'Unauthorized password' };

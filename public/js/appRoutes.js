@@ -48,7 +48,7 @@ angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $
             })
 
         .state('blog', {
-            url: '/blog',
+            url: '/blog?tags',
             templateUrl: 'views/blog.html',
             controller: 'BlogController'
         })

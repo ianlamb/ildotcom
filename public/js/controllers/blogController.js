@@ -35,6 +35,8 @@ angular.module('blogController', []).controller('BlogController',
             console.error(err);
         });
     
+    $scope.search = $location.search();
+    
     $scope.newPost = { title: '', body: '', tags: '' };
     $scope.editedPost = null;
     

@@ -2,12 +2,12 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var PostSchema = new Schema({
-    title: String,
-    body: String,
-    slug: String,
-    tags: [String],
-    created_at: Date,
-    updated_at: Date
+    "title": String,
+    "body": String,
+    "slug": String,
+    "tags": [String],
+    "created_at": Date,
+    "updated_at": Date
 }).pre('save', function(next){
     var now = new Date();
     this.updated_at = now;

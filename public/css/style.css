@@ -728,7 +728,9 @@ textarea {
 
 /* HOME PAGE */
 .overlay {
-    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100%;
 }
@@ -738,12 +740,14 @@ textarea {
     font-size: 1.2em;
 }
 #home section {
+    position: relative;
     width: 100%;
     margin: 0;
     padding: 40px 0;
+    z-index: 25;
 }
 #home section#header {
-    height: 920px;
+    height: 700px;
     margin: 0;
     padding: 0;
     color: #efefef;
@@ -753,14 +757,16 @@ textarea {
     -o-background-size: cover;
     background-size: cover;
 }
+#home section#header .video-splash {
+    position: fixed;
+    top: 50px;
+    width: 100%;
+}
 #home section#header h1 {
     margin-top: 50px;
-    color: #fff;
-    text-shadow: 0 1px 1px rgba(0,0,0,.5);
 }
 #home section#header .scroll-down {
     margin: 640px auto 0;
-    font-size: 3em;
     -webkit-animation: bounce 3s infinite;
     animation: bounce 3s infinite;
     -webkit-transform-origin: center bottom;
@@ -815,6 +821,7 @@ textarea {
 }
 #home #about {
     padding: 0;
+    background: #22262b;
 }
 #home .posts {
     padding: 0;
@@ -1029,6 +1036,7 @@ textarea {
 #contact {
     font-size: 1.6em;
     text-transform: uppercase;
+    background: #22262b;
 }
 #contact h1 {
 }
@@ -1470,7 +1478,7 @@ ul.inline-bullets > li:last-child {
 	appearance: none;
 }
 
-#blogPosts > > li label {
+#blogPosts > li label {
     font-size: 18px;
     margin: 10px 0;
 	white-space: pre;
