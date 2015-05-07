@@ -747,7 +747,7 @@ textarea {
     z-index: 25;
 }
 #home section#header {
-    height: 700px;
+    height: 900px;
     margin: 0;
     padding: 0;
     color: #efefef;
@@ -765,11 +765,11 @@ textarea {
 }
 #home section#header h1 {
     margin-top: 80px;
-    text-align: right;
     color: #efefef;
 }
 #home section#header .scroll-down {
-    margin: 440px auto 0;
+    position: fixed;
+    margin: 540px auto 0;
     font-size: 3em;
     -webkit-animation: bounce 3s infinite;
     animation: bounce 3s infinite;
@@ -2421,8 +2421,11 @@ label[for='toggle-all'] {
     #home section {
         padding: 30px 0;
     }
+    #home section#header h1 {
+        margin-top: 30px;
+    }
     #home section#header .scroll-down {
-        margin-top: 300px;
+        margin-top: 250px;
     }
     #home section#header {
         height: 560px;

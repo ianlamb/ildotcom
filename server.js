@@ -27,7 +27,7 @@ app.use(multer());
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + env.assetsRoot));
 
-// app.use(compression());
+app.use(compression());
 
 // server routes ==================================================
 var router = express.Router();

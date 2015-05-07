@@ -138,6 +138,27 @@ module.exports = function(grunt) {
           'dist/index.html': ['public/index.html']
         }
       }
+    },
+    pagespeed: {
+      options: {
+        nokey: true
+      },
+      desktop: {
+        options: {
+          url: "http://ianlamb.com",
+          locale: "en_CA",
+          strategy: "desktop",
+          threshold: 80
+        }
+      },
+      mobile: {
+        options: {
+          url: "http://ianlamb.com",
+          locale: "en_CA",
+          strategy: "mobile",
+          threshold: 60
+        }
+      }
     }
   });
 
@@ -148,8 +169,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-processhtml');
+  grunt.loadNpmTasks('grunt-pagespeed');
 
-  grunt.registerTask('test', ['jshint']);
+  grunt.registerTask('test', ['jshint', 'pagespeed']);
   grunt.registerTask('default', ['jshint', 'copy', 'concat', 'uglify', 'cssmin', 'processhtml']);
   grunt.registerTask('full', ['jshint', 'copy', 'concat', 'uglify', 'cssmin', 'imagemin', 'processhtml']);
 
