@@ -26,6 +26,7 @@ module.exports = function(grunt) {
           moment: true,
           markdown: true,
           jsPDF: true,
+          jwt_decode: true,
           ga: true,
           require: true,
           process: true,

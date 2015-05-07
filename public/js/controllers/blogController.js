@@ -1,5 +1,5 @@
 angular.module('blogController', []).controller('BlogController',
-    function($scope, $rootScope, $filter, $state, $stateParams, Posts, Post, Utilities) {
+    function($scope, $rootScope, $filter, $state, $stateParams, $location, Posts, Post, Utilities) {
     'use strict';
 
     $scope.state = $state.current;
