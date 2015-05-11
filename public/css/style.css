@@ -2348,6 +2348,9 @@ label[for='toggle-all'] {
         top: -40px;
         left: 60px;
     }
+    #travel .trip .photos {
+        height: 100px;
+    }
 }
 /* small */
 @media only screen and (max-width: 991px) {
