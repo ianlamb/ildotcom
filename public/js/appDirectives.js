@@ -83,7 +83,7 @@ angular.module('appDirectives', [])
                         },
                         markers: [$scope.location]
                     });
-                });
+                }, 300);
             }
         };
     })
