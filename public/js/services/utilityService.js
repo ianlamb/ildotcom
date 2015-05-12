@@ -7,6 +7,11 @@ angular.module('utilityService', [])
                     .replace(/\s+/g, '-')           // Replace spaces with -
                     .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
                     .replace(/\-\-+/g, '-');        // Replace multiple - with single -
+            },
+            stripHtmlTags: function (html) {
+                var div = document.createElement("div");
+                div.innerHTML = html;
+                return div.textContent || div.innerText || "";
             }
         };
 

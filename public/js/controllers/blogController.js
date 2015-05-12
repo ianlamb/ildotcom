@@ -109,8 +109,16 @@ angular.module('blogController', []).controller('BlogController',
         Post.put(post);
     };
     
-    $scope.insertTab = function(e) {
-        $scope.newPost.body += '    ';
+    $scope.shortPost = function (postBody) {
+        var POST_LENGTH = 140;
+        var parsed = Utilities.stripHtmlTags(markdown.toHTML(postBody)).substr(0, POST_LENGTH);
+        while (parsed[parsed.length-1] != ' ') {
+            if (parsed.length === 0) {
+                break;
+            }
+            parsed = parsed.substr(0, parsed.length-2);
+        }
+        return parsed + "...";
     };
 
 });

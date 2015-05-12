@@ -120,7 +120,7 @@ button, .button {
     font-size: 1.0em;
     background-color: #00abff;
     border-color: #0091d8;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     transition: background-color 300ms ease-out;
 }
 button:hover, .button:hover {
