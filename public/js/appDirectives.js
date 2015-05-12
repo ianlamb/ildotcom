@@ -1,6 +1,8 @@
 angular.module('appDirectives', [])
 
     .directive('navbar', function() {
+        'use strict';
+
         return {
             restrict: 'E',
             replace: true,
@@ -34,6 +36,8 @@ angular.module('appDirectives', [])
     })
 
     .directive('footer', function() {
+        'use strict';
+
         return {
             restrict: 'E',
             replace: true,
@@ -45,6 +49,8 @@ angular.module('appDirectives', [])
     })
 
     .directive('contactMap', function() {
+        'use strict';
+
         return {
             restrict: 'A',
             replace: true,
@@ -89,6 +95,8 @@ angular.module('appDirectives', [])
     })
 
     .directive('heatCalendar', function() {
+        'use strict';
+
         return {
             restrict: 'E',
             replace: true,
@@ -154,7 +162,7 @@ angular.module('appDirectives', [])
                             } else if (dayOfMonth > days) {
                                 className = 'nextMonth';
                             } else {
-                                if (dayOfMonth == date) {
+                                if (dayOfMonth === date) {
                                     className = 'today';
                                 }
                                 cellBody = dayOfMonth;
@@ -219,6 +227,8 @@ angular.module('appDirectives', [])
     })
 
     .directive('ngTab', function () {
+        'use strict';
+
         return function (scope, element, attrs) {
             element.bind('keydown', function (event) {
                 var TAB_KEY = 9;
@@ -233,6 +243,8 @@ angular.module('appDirectives', [])
     })
 
     .directive('ngEnter', function () {
+        'use strict';
+
         return function (scope, element, attrs) {
             element.bind('keypress', function (event) {
                 var ENTER_KEY = 13;

@@ -81,7 +81,7 @@ angular.module('bucketListController', []).controller('BucketListController', fu
             BucketList.delete(todo)
                 .success(function() {
                     for (var i = 0; i < $scope.bucketList.length; i++) {
-                        if ($scope.bucketList[i]._id == todo._id) {
+                        if ($scope.bucketList[i]._id === todo._id) {
                             $scope.bucketList.splice(i, 1);
                         }
                     }

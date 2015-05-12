@@ -4,7 +4,7 @@ angular.module('authController', []).controller('AuthController',
     
     $scope.login = function() {
         Auth.post($scope.password)
-            .success(function(data, status, headers, config) {
+            .success(function(data) {
                 window.localStorage.setItem('token', data.token);
                 var decoded = jwt_decode(data.token);
                 var now = new Date().getTime();
@@ -17,7 +17,8 @@ angular.module('authController', []).controller('AuthController',
                     $scope.message = { type: 'success', body: 'Login success!' };
                 }
             })
-            .error(function(data, status, headers, config) {
+            .error(function(data) {
+                console.warn(data);
                 $scope.message = { type: 'danger', body: 'Unauthorized password' };
             });
     };

@@ -1,11 +1,11 @@
 var jwt     = require('jwt-simple');
-var moment  = require('moment');
 var auth    = require('./auth.js');
 var config  = require('../config/app.js');
 var Environment = require('../config/environment.js');
 var env = new Environment();
 
 module.exports = function(app, router) {
+    'use strict';
 
     var AdventureManager    = require('./managers/adventure-manager.js');
     
@@ -251,7 +251,7 @@ module.exports = function(app, router) {
     });
     router.put('/trip', auth, function(req, res) {
         AdventureManager.saveTrip(req.body).then(function() {
-            // do stuff
+            res.send(501);
         });
     });
 

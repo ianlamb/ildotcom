@@ -1,4 +1,6 @@
-angular.module('wowController', []).controller('WowController', function($scope, WowProfile) {
+angular.module('wowController', [])
+    .controller('WowController', function($scope, WowProfile) {
+    'use strict';
 
     $scope.wowProfile = {};
 

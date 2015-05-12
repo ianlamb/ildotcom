@@ -292,10 +292,12 @@ var DiabloProfileSchema = new Schema({
     },
     "created_at": Date,
     "updated_at": Date
-}).pre('save', function(next){
+}).pre('save', function(next) {
+    'use strict';
+
     var now = new Date();
     this.updated_at = now;
-    if ( !this.created_at ) {
+    if (!this.created_at) {
         this.created_at = now;
     }
     next();

@@ -1,10 +1,11 @@
 module.exports = function(grunt) {
+  'use strict';
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
       files: [
-        'Gruntfile.js',
+        'gruntfile.js',
         'package.json',
         'bower.json',
         'server.js',
@@ -12,15 +13,30 @@ module.exports = function(grunt) {
         'app/**/*.js'
       ],
       options: {
-        undef: true,
-        // unused: true,
+        // enforcing
+        bitwise: true,
+        camelcase: false,
         curly: true,
+        eqeqeq: true,
+        forin: true,
+        freeze: true,
+        immed: false,
+        indent: 4,
+        newcap: false,
+        undef: true,
+        unused: true,
         latedef: true,
+        strict: true,
+
+        // environments
         browser: true,
         devel: true,
+        jquery: true,
+        mocha: true,
+        node: true,
+
+        // globals
         globals: {
-          $: true,
-          jQuery: true,
           module: true,
           angular: true,
           moment: true,

@@ -1,5 +1,6 @@
 angular.module('blogService', [])
     .factory('Posts', ['$http', function($http) {
+        'use strict';
 
         return {
             get: function() {
@@ -17,6 +18,7 @@ angular.module('blogService', [])
     }])
 
     .factory('Post', ['$http', function($http) {
+        'use strict';
 
         return {
             get: function(slug) {

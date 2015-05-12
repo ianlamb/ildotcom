@@ -1,5 +1,6 @@
 angular.module('workService', [])
     .factory('Projects', ['$http', function($http) {
+        'use strict';
 
         return {
             get: function() {

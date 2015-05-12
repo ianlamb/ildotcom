@@ -1,4 +1,6 @@
-angular.module('travelController', []).controller('TravelController', function($scope, Trips) {
+angular.module('travelController', [])
+    .controller('TravelController', function($scope, Trips) {
+    'use strict';
 
     Trips.get()
         .success(function(data) {

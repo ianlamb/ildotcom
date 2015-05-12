@@ -1,5 +1,6 @@
 angular.module('gameService', [])
     .factory('WowProfile', ['$http', function($http) {
+        'use strict';
 
         var races = ['0', '1', 'Orc', '3', '4', 'Undead', '6', '7', '8', '9', 'Blood Elf'];
         var classes = ['0', 'Warrior', 'Paladin', 'Hunter', 'Rogue', 'Priest', 'Death Knight', '7', '8', 'Warlock'];
@@ -178,11 +179,18 @@ angular.module('gameService', [])
                                 });
 
                                 // declare the slot names for each item
-                                for(var index in wowProfile.main.items) {
-                                    wowProfile.main.items[index].slot = itemSlots[index];
+                                for (var item in wowProfile.main.items) {
+                                    // linter is finnicky about this enforcement, so it has to be its own if block
+                                    if (!item.hasOwnProperty) {
+                                        continue;
+                                    }
+                                    if (!itemSlots[item]) {
+                                        continue;
+                                    }
+                                    wowProfile.main.items[item].slot = itemSlots[item];
                                 }
 
-                                // parse feed items
+                                // TODO: parse feed items
                             }
                         } else {
                             wowProfile.alts.push(character);
@@ -209,6 +217,8 @@ angular.module('gameService', [])
     }])
 
     .factory('DiabloProfile', ['$http', function($http) {
+        'use strict';
+
         return {
             get: function() {
                 return $http.get('/api/d3')
@@ -223,6 +233,8 @@ angular.module('gameService', [])
     }])
 
     .factory('StarcraftProfile', ['$http', function($http) {
+        'use strict';
+
         return {
             get: function() {
                 return $http.get('/api/sc2')

@@ -1,4 +1,6 @@
-angular.module('appRoutes', ['ui.router']).config(function($urlRouterProvider, $stateProvider, $locationProvider) {
+angular.module('appRoutes', ['ui.router'])
+    .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
+    'use strict';
 
     $urlRouterProvider
         .when('/adventure', '/adventure/travel')

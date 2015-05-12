@@ -1,5 +1,5 @@
-angular.module('postController', []).controller('PostController',
-    function($scope, $filter, $state, $stateParams, Post, Utilities) {
+angular.module('postController', [])
+    .controller('PostController', function($scope, $filter, $state, $stateParams, Post, Utilities) {
     'use strict';
     
     $scope.markdown = markdown;
@@ -51,7 +51,7 @@ angular.module('postController', []).controller('PostController',
         Post.delete(post)
             .success(function() {
                 for (var i = 0; i < $scope.posts.length; i++) {
-                    if ($scope.posts[i]._id == post._id) {
+                    if ($scope.posts[i]._id === post._id) {
                         $scope.posts.splice(i, 1);
                     }
                 }

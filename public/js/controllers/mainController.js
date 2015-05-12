@@ -1,11 +1,17 @@
-angular.module('mainController', []).controller('MainController', function($scope, $rootScope, $window, $location, $state, Posts) {
+angular.module('mainController', []).controller('MainController',
+    function($scope, $rootScope, $window, $location, $state, Posts) {
+    'use strict';
+
+    $rootScope.moment = moment;
     
+    // check for auth token
     var token = window.localStorage.getItem('token');
     if (token) {
         $rootScope.authorized = true;
     }
 
-    $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+    // direct to default sub modules
+    $rootScope.$on('$stateChangeStart', function(e, toState) {
         if (toState.name === 'blog') { 
             e.preventDefault();
             $state.go('blog.roll');
@@ -20,13 +26,12 @@ angular.module('mainController', []).controller('MainController', function($scop
         }
     });
 
-    $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
+    // scroll to the top of the window to make page changes feel natural
+    $rootScope.$on('$stateChangeSuccess', function() {
         $window.scrollTo(0,0);
     });
 
-    $rootScope.moment = moment;
-
-    $scope.$on('$viewContentLoaded', function(e) {
+    $scope.$on('$viewContentLoaded', function() {
         $window.ga('send', 'pageview', { page: $location.url() });
         $(".navbar-collapse.collapse.in").collapse('hide');
     });
@@ -35,6 +40,8 @@ angular.module('mainController', []).controller('MainController', function($scop
         ga('send', 'event', 'button', 'click', label);
     };
 
+    // get recent posts to display on home page
+    // TODO: change when this fires so it only happens on home page (controller reorg?)
     Posts.getRecent()
         .success(function(data) {
             $scope.posts = data;
@@ -43,6 +50,7 @@ angular.module('mainController', []).controller('MainController', function($scop
             console.error(err);
         });
     
+    // some static data for home page
     $scope.email = 'ianlamb32@gmail.com';
     $scope.phone = '+1 (519) 902 6533';
     $scope.location = { name: 'London, ON', latLng: [42.9837, -81.2497] };
@@ -91,6 +99,7 @@ angular.module('mainController', []).controller('MainController', function($scop
         }
     ];
     
+    // handle resume pdf conversion
     $scope.downloadResume = function() {
         ga('send', 'event', 'button', 'click', 'download-resume');
 
@@ -102,7 +111,6 @@ angular.module('mainController', []).controller('MainController', function($scop
         
         var fontSize = 12;
         var leftOffset = 15;
-        var rightOffset = 150;
         var lineHeight = 6;
         var maxLineWidth = 180;
         var cursor = 10;
@@ -121,7 +129,7 @@ angular.module('mainController', []).controller('MainController', function($scop
         
         doc.text('// OBJECTIVE', leftOffset, cursor+=lineHeight);
         var lines = doc.splitTextToSize($('#objective').text().trim(), maxLineWidth);
-        lines.forEach(function(line, i) {
+        lines.forEach(function(line) {
             doc.text(line, leftOffset, cursor+=lineHeight);
         });
         doc.text('', leftOffset, cursor+=lineHeight);

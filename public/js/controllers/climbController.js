@@ -1,4 +1,5 @@
-angular.module('climbController', []).controller('ClimbController', function($scope, $rootScope, Climbs, Places) {
+angular.module('climbController', [])
+    .controller('ClimbController', function($scope, $rootScope, Climbs, Places) {
     'use strict';
 
     var boulderGrades = ['V0','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12','V13','V14','V15'];
@@ -121,7 +122,7 @@ angular.module('climbController', []).controller('ClimbController', function($sc
         session.climbs.forEach(function(c) {
             c.mappedSends = [];
             c.sends.forEach(function(s) {
-                var res = $.grep(c.mappedSends, function(e){ return e.grade == s; });
+                var res = $.grep(c.mappedSends, function(e){ return e.grade === s; });
                 var gradeClass;
                 switch(c.type) {
                 case 'Boulder':

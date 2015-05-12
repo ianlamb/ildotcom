@@ -1,4 +1,6 @@
-angular.module('starcraftController', []).controller('StarcraftController', function($scope, StarcraftProfile) {
+angular.module('starcraftController', [])
+    .controller('StarcraftController', function($scope, StarcraftProfile, Utilities) {
+    'use strict';
 
     StarcraftProfile.get()
         .success(function(data) {
@@ -9,17 +11,6 @@ angular.module('starcraftController', []).controller('StarcraftController', func
         return parseInt(partial / total * 100);
     };
 
-    $scope.formatSlug = function(slug) {
-        var formatted;
-        var parts = slug.split('-');
-        for(var i = 0; i < parts.length; i++) {
-            capitaliseFirstLetter(parts[i]);
-        }
-        return parts.join(' ');
-    };
-
-    function capitaliseFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+    $scope.formatSlug = Utilities.formatSlug;
 
 });

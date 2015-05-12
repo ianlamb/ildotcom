@@ -1,5 +1,6 @@
 angular.module('adventureService', [])
     .factory('Trips', ['$http', function($http) {
+        'use strict';
 
         return {
             get: function() {
@@ -10,6 +11,7 @@ angular.module('adventureService', [])
     }])
 
     .factory('Climbs', ['$http', function($http) {
+        'use strict';
 
         return {
             get: function() {
@@ -23,6 +25,7 @@ angular.module('adventureService', [])
     }])
 
     .factory('Places', ['$http', function($http) {
+        'use strict';
 
         return {
             get: function() {
@@ -33,6 +36,7 @@ angular.module('adventureService', [])
     }])
 
     .factory('BucketList', ['$http', function($http) {
+        'use strict';
 
         return {
             get: function() {

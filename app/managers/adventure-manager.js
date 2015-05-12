@@ -1,7 +1,7 @@
 var mongoose        = require('mongoose');
 var request         = require('request');
 var Promise         = require('promise');
-var config             = require('../../config/app');
+var config          = require('../../config/app');
 var db              = require('../../config/db');
 var Trip            = require('../models/trip');
 var Place           = require('../models/place');
@@ -9,6 +9,8 @@ var ClimbSession    = require('../models/climb-session');
 
 module.exports = {
     saveTrip: function(data) {
+        'use strict';
+
         function retrievePhotoset(photosetId) {
             return new Promise(function(resolve, reject) {
                 console.log('querying flickr api...');
@@ -79,12 +81,12 @@ module.exports = {
                             }
                             if (!place) {
                                 place = new Place(location);
-                                place.save(function(err, newSession) {
+                                place.save(function(err, newPlace) {
                                     if (err) {
                                         res.send(err);
                                     }
-                                    trip.places.push(place._id);
-                                    console.log('place created '  + place.city + ', ' + place.country);
+                                    trip.places.push(newPlace._id);
+                                    console.log('place created '  + newPlace.city + ', ' + newPlace.country);
                                     resolve();
                                 });
                             } else {
@@ -99,7 +101,7 @@ module.exports = {
                 });
             }
 
-            Promise.all(promises).then(function(data) {
+            Promise.all(promises).then(function() {
                 console.log('promises resolved, saving trip...');
                 trip.created_at = new Date();
                 trip.save(function(err, savedTrip) {
@@ -118,6 +120,8 @@ module.exports = {
     },
 
     saveClimbSession: function(session) {
+        'use strict';
+
         return new Promise(function(resolve) {
             ClimbSession.findOne({ _id: session._id }, function(err, dbSession) {
                 if (err) {
@@ -151,6 +155,8 @@ module.exports = {
     },
 
     geocodeLocation: function(locationSearch) {
+        'use strict';
+
         return new Promise(function(resolve) {
             console.log('geocoding...');
             var options = {

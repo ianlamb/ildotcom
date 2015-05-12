@@ -3,7 +3,7 @@ angular.module('blogController', []).controller('BlogController',
     'use strict';
 
     $scope.state = $state.current;
-    $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+    $rootScope.$on('$stateChangeStart', function(e, toState/*, toParams, fromState, fromParams*/) {
         $scope.state = toState;
     });
 
@@ -56,6 +56,7 @@ angular.module('blogController', []).controller('BlogController',
         $scope.saving = true;
         Post.put(newPost)
             .then(function success(data) {
+                console.log(data);
                 $scope.newPost = { title: '', body: '', tags: '' };
                 $scope.posts.unshift(newPost);
             })
@@ -98,7 +99,7 @@ angular.module('blogController', []).controller('BlogController',
         Post.delete(post)
             .success(function() {
                 for (var i = 0; i < $scope.posts.length; i++) {
-                    if ($scope.posts[i]._id == post._id) {
+                    if ($scope.posts[i]._id === post._id) {
                         $scope.posts.splice(i, 1);
                     }
                 }
@@ -112,7 +113,7 @@ angular.module('blogController', []).controller('BlogController',
     $scope.shortPost = function (postBody) {
         var POST_LENGTH = 140;
         var parsed = Utilities.stripHtmlTags(markdown.toHTML(postBody)).substr(0, POST_LENGTH);
-        while (parsed[parsed.length-1] != ' ') {
+        while (parsed[parsed.length-1] !== ' ') {
             if (parsed.length === 0) {
                 break;
             }
