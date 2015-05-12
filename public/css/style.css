@@ -856,7 +856,7 @@ textarea {
 }
 #home section#header .scroll-down {
     position: fixed;
-    margin: 540px auto 0;
+    margin: 460px auto 0;
     font-size: 3em;
     -webkit-animation: bounce 3s infinite;
     animation: bounce 3s infinite;
@@ -2448,7 +2448,7 @@ label[for='toggle-all'] {
         width: 100%;
     }
     #home section#header .scroll-down {
-        margin-top: 580px;
+        margin-top: 440px;
     }
     #travel #map {
         height: 400px;
