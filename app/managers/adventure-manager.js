@@ -72,18 +72,26 @@ module.exports = {
             if(data.locations) {
                 data.locations.forEach(function(location) {
                     var promise = new Promise(function(resolve, reject) {
-                        Place.create(location, function(err, place) {
+                        Place.find({ city: location.city, country: location.country }, function(err, place) {
                             if (err) {
                                 console.error(err);
                                 reject(err);
                             }
                             if (!place) {
-                                console.warn('failed to create Place');
-                                reject();
+                                place = new Place(location);
+                                place.save(function(err, newSession) {
+                                    if (err) {
+                                        res.send(err);
+                                    }
+                                    trip.places.push(place._id);
+                                    console.log('place created '  + place.city + ', ' + place.country);
+                                    resolve();
+                                });
+                            } else {
+                                trip.places.push(place._id);
+                                console.log('place found '  + place.city + ', ' + place.country);
+                                resolve();
                             }
-                            trip.places.push(place._id);
-                            console.log('place created '  + place.city + ', ' + place.country);
-                            resolve();
                         });
                         resolve();
                     });
