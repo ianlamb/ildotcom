@@ -75,7 +75,7 @@
                     {{ wowProfile.achievements['Feats of Strength'].foSTotal }}
                 </progressbar>
             </div>
-            <span class="timestamp">Last Updated {{ wowProfile.main.lastModified }}</span>
+            <span class="timestamp">Last Played {{ moment(wowProfile.main.lastModified).fromNow() }}</span>
         </div>
 
         <div class="col-sm-9">

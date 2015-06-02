@@ -13,12 +13,18 @@
                 </dl>
 
                 <h4>Time Played by Class</h4>
-                <div ng-repeat="(class, time) in diabloProfile.timePlayed">
-                    <label>{{ formatSlug(class) }}</label>
-                    <progressbar value="percent(time)">
-                        {{ percent(time) }}%
-                    </progressbar>
-                </div>
+                <label>Barbarian</label>
+                <progressbar value="percent(diabloProfile.timePlayed['barbarian'])"></progressbar>
+                <label>Crusader</label>
+                <progressbar value="percent(diabloProfile.timePlayed['crusader'])"></progressbar>
+                <label>Demon Hunter</label>
+                <progressbar value="percent(diabloProfile.timePlayed['demon-hunter'])"></progressbar>
+                <label>Monk</label>
+                <progressbar value="percent(diabloProfile.timePlayed['monk'])"></progressbar>
+                <label>Witch Doctor</label>
+                <progressbar value="percent(diabloProfile.timePlayed['witch-doctor'])"></progressbar>
+                <label>Wizard</label>
+                <progressbar value="percent(diabloProfile.timePlayed['wizard'])"></progressbar>
             </div>
         </div>
         <div class="col-md-9">
@@ -68,6 +74,7 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="timestamp">Last Played {{ moment.unix(hero['last-updated']).fromNow() }}</div>
                     </div>
                 </div>
             </div>

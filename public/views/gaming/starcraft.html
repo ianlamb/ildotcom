@@ -9,6 +9,8 @@
                 <dd>{{ starcraftProfile.career.highest1v1Rank }}</dd>
                 <dt>Highest Team Rank</dt>
                 <dd>{{ starcraftProfile.career.highestTeamRank }}</dd>
+                <dt>Primary Race</dt>
+                <dd>{{ starcraftProfile.career.primaryRace }}</dd>
             </dl>
         </div>
         <div class="col-md-9">
@@ -21,6 +23,28 @@
                     </div>
                 </a>
                 <div class="extended">
+                    <h3 title="Season {{ starcraftProfile.season.seasonId }}">Season {{ starcraftProfile.season.seasonNumber }} of {{ starcraftProfile.season.seasonYear }}</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl>
+                                <dt>Total Games</dt>
+                                <dd>{{ starcraftProfile.career.seasonTotalGames }}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl>
+                                <dt>Wins</dt>
+                                <dd>{{ starcraftProfile.career.protossWins + starcraftProfile.career.terranWins + starcraftProfile.career.zergWins }}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl>
+                                <dt>Losses</dt>
+                                <dd>{{ starcraftProfile.career.seasonTotalGames - (starcraftProfile.career.protossWins + starcraftProfile.career.terranWins + starcraftProfile.career.zergWins) }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <hr>
                     <h3>Campaign</h3>
                     <div class="row">
                         <div class="col-md-4">

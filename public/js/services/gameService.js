@@ -147,7 +147,6 @@ angular.module('gameService', [])
                         character.gender = genders[character.gender];
                         character.class = classes[character.class];
                         character.race = races[character.race];
-                        character.lastModified = moment(character.lastModified).fromNow();
 
                         // handle main/alts
                         if(character.showcase) {

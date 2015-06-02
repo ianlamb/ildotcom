@@ -2294,6 +2294,7 @@ label[for='toggle-all'] {
 #gaming .items .rare { color: #1D87FF; }
 #gaming .items .epic { color: #a335ee; }
 #gaming .items .legendary { color: #DB820C; }
+#gaming .items .gray { color: #9d9d9d; }
 #gaming .items .white { color: #ffffff; }
 #gaming .items .blue { color: #1D87FF; }
 #gaming .items .yellow { color: #DAD70E; }
@@ -2371,10 +2372,13 @@ label[for='toggle-all'] {
     padding: 5px;
     color: rgb(171, 9, 9);
 }
-#gaming .character a.main:hover .seasonal {
+#diablo .timestamp {
+    margin-top: 10px;
+}
+#diablo .character a.main:hover .seasonal {
     color: #d6d6d6;
 }
-#gaming .character a.main:hover .hardcore {
+#diablo .character a.main:hover .hardcore {
     color: #d6d6d6;
 }
 
