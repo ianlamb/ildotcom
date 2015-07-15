@@ -25,13 +25,4 @@ angular.module('ildotcomApp', [
     'blogService',
     'adventureService',
     'gameService'
-]).config(['$httpProvider', function($httpProvider) {
-    'use strict';
-
-    var token = window.localStorage.getItem('token');
-    if (token) {
-        $httpProvider.defaults.headers.common = {
-            'x-access-token': token
-        };
-    }
-}]);
+]);

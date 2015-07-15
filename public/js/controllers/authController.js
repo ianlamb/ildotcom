@@ -1,5 +1,5 @@
 angular.module('authController', []).controller('AuthController',
-    function($scope, $rootScope, $location, $state, $timeout, Auth) {
+    function($scope, $rootScope, $location, $state, $timeout, $http, Auth) {
     'use strict';
     
     $scope.login = function() {
@@ -12,6 +12,7 @@ angular.module('authController', []).controller('AuthController',
                 if (diff < 0) {
                     $scope.logout();
                 } else {
+                    $http.defaults.headers.common['x-access-token'] = data.token;
                     $timeout($scope.logout, diff);
                     $rootScope.authorized = true;
                     $scope.message = { type: 'success', body: 'Login success!' };
@@ -23,21 +24,25 @@ angular.module('authController', []).controller('AuthController',
             });
     };
     
+    $scope.spoof = function() {
+        $rootScope.authorized = true;
+        $scope.message = { type: 'success', body: 'You are now spoofing my account. You can see how my management tools work but can\'t make any changes.' };
+    };
+    
     $scope.logout = function() {
         delete window.localStorage.token;
+        $http.defaults.headers.common['x-access-token'] = '';
         $rootScope.authorized = false;
+        $location.path('/login').replace();
         $scope.message = { type: 'info', body: 'Session destroyed!' };
     };
     
     $scope.$on('$viewContentLoaded', function() {
         if ($state.current.name === 'logout') {
-            if (window.localStorage.getItem('token')) {
-                $scope.logout();
-            }
-            $location.path('/login').replace();
+            $scope.logout();
         }
         if ($state.current.name === 'login') {
-            if (window.localStorage.getItem('token')) {
+            if ($rootScope.authorized) {
                 $location.path('/home').replace();
             }
         }

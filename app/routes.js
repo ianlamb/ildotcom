@@ -39,7 +39,7 @@ module.exports = function(app, router) {
             return res.send(401);
         }
 
-        var expires = new Date().getTime() + (7 * 24 * 60 * 60 * 1000); // 7 days
+        var expires = new Date().getTime() + (config.tokenExpiry);
         var token = jwt.encode({
             iss: 'root',
             exp: expires
