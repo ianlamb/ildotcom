@@ -4,10 +4,11 @@ angular.module('mainController', []).controller('MainController',
 
     $rootScope.moment = moment;
     
-    // check for auth token
     $scope.logout = function() {
         $location.path('/logout').replace();
-    }
+    };
+
+    // check for auth token
     var token = window.localStorage.getItem('token');
     if (token) {
         var decoded = jwt_decode(token);
