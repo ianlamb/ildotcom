@@ -9,9 +9,6 @@ module.exports = function(app, router) {
     
     var Project             = require('./models/project');
     var Place               = require('./shared/models/place-model');
-    var WowProfile          = require('./models/wow-profile');
-    var DiabloProfile       = require('./models/diablo-profile');
-    var StarcraftProfile    = require('./models/starcraft-profile');
 
     // server routes ===========================================================
     // middleware to use for all requests
@@ -136,36 +133,6 @@ module.exports = function(app, router) {
                     res.send(err);
                 }
                 res.send(200);
-            });
-    });
-
-    // games
-    // stored profiles are essentially a history, so we only return the latest record to the user
-    router.get('/wow', function(req, res) {
-        WowProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
-            });
-    });
-    router.get('/d3', function(req, res) {
-        DiabloProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
-            });
-    });
-    router.get('/sc2', function(req, res) {
-        StarcraftProfile.findOne({}, {}, { sort: { 'created_at': -1 }})
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
             });
     });
 
