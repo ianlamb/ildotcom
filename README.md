@@ -23,6 +23,7 @@
 * Moment
 * jVectorMap
 * jsPDF
+* markdown-js
 
 ### Tools
 * NPM

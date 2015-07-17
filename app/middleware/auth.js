@@ -9,16 +9,16 @@ module.exports = function(req, res, next) {
         try {
             var decoded = jwt.decode(token, config.jwtTokenSecret);
             if (decoded.exp <= Date.now()) {
-                res.redirect(401, '/login');
+                res.send(401, 'token has expired');
             } else if (decoded.iss !== 'root') {
-                res.redirect(401, '/login');
+                res.send(401, 'token has invalid permissions');
             } else {
                 next();
             }
         } catch (err) {
-            res.send(500, 'Access token is muddy, aborting request');
+            res.send(500, 'token is fucked');
         }
     } else {
-        res.redirect(401, '/login');
+        res.redirect(401, 'token empty');
     }
 };

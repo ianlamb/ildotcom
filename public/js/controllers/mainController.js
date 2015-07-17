@@ -1,13 +1,26 @@
 angular.module('mainController', []).controller('MainController',
-    function($scope, $rootScope, $window, $location, $state, Posts) {
+    function($scope, $rootScope, $window, $location, $state, $http, $timeout, Posts) {
     'use strict';
 
     $rootScope.moment = moment;
     
+    $scope.logout = function() {
+        $location.path('/logout').replace();
+    };
+
     // check for auth token
     var token = window.localStorage.getItem('token');
     if (token) {
-        $rootScope.authorized = true;
+        var decoded = jwt_decode(token);
+        var now = new Date().getTime();
+        var diff = decoded.exp - now;
+        if (diff < 0) {
+            $scope.logout();
+        } else {
+            $http.defaults.headers.common['x-access-token'] = token;
+            $timeout($scope.logout, diff);
+            $rootScope.authorized = true;
+        }
     }
 
     // direct to default sub modules
