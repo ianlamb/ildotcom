@@ -1,4 +1,3 @@
-var Promise         = require('promise');
 var auth            = require('../../middleware/auth');
 var BlogProvider    = require('./blog-provider');
 

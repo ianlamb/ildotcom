@@ -1,13 +1,13 @@
 var auth            = require('../../middleware/auth');
-var ClimbingProvider    = require('./climbing-provider');
+var TodoProvider    = require('./todo-provider');
 
 module.exports = function(router) {
     'use strict';
     
-    var climbingProvider = new ClimbingProvider();
+    var todoProvider = new TodoProvider();
     
-    router.get('/climbs', function(req, res) {
-        climbingProvider.getSessions()
+    router.get('/bucketlist', function(req, res) {
+        todoProvider.getTodos()
             .then(function(result) {
                 res.json(result);
             })
@@ -16,18 +16,18 @@ module.exports = function(router) {
             });
     });
     
-    router.put('/climb', auth, function(req, res) {
-        climbingProvider.saveSession(req.body)
-            .then(function(data) {
-                res.json(data);
+    router.put('/bucketlist', auth, function(req, res) {
+        todoProvider.saveTodo(req.body)
+            .then(function(result) {
+                res.json(result);
             })
             .catch(function(err) {
                 res.send(err);
             });
     });
     
-    router.delete('/climb/:id', auth, function(req, res) {
-        climbingProvider.deleteSession(req.params.id)
+    router.delete('/bucketlist/:id', auth, function(req, res) {
+        todoProvider.deleteTodo(req.params.id)
             .then(function() {
                 res.send(200);
             })

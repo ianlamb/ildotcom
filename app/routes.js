@@ -9,7 +9,6 @@ module.exports = function(app, router) {
     
     var Project             = require('./models/project');
     var Place               = require('./shared/models/place-model');
-    var BucketListItem      = require('./models/bucket-list-item');
     var WowProfile          = require('./models/wow-profile');
     var DiabloProfile       = require('./models/diablo-profile');
     var StarcraftProfile    = require('./models/starcraft-profile');
@@ -50,6 +49,7 @@ module.exports = function(app, router) {
     require('./modules/blog/blog-controller')(router);
     require('./modules/climbing/climbing-controller')(router);
     require('./modules/travel/travel-controller')(router);
+    require('./modules/todo/todo-controller')(router);
 
     // work
     router.get('/projects', function(req, res) {
@@ -131,45 +131,6 @@ module.exports = function(app, router) {
     });
     router.delete('/place/:id', auth, function(req, res) {
         Place.remove({ _id: req.params.id })
-            .exec(function(err) {
-                if (err) {
-                    res.send(err);
-                }
-                res.send(200);
-            });
-    });
-
-    // bucket list
-    router.get('/bucketlist', function(req, res) {
-        BucketListItem.find({}, {}, { sort: { 'created_at': -1 }})
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
-            });
-    });
-    router.put('/bucketlist', auth, function(req, res) {
-        BucketListItem.findOne({ _id: req.body._id }, function(err, todo) {
-            if (err) {
-                res.send(err);
-            }
-            if (!todo) {
-                todo = new BucketListItem(req.body);
-            } else {
-                todo.title = req.body.title;
-                todo.completed = req.body.completed;
-            }
-            todo.save(function(err, newTodo) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(newTodo);
-            });
-        });
-    });
-    router.delete('/bucketlist/:id', auth, function(req, res) {
-        BucketListItem.remove({ _id: req.params.id })
             .exec(function(err) {
                 if (err) {
                     res.send(err);
