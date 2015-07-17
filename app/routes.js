@@ -1,5 +1,5 @@
 var jwt     = require('jwt-simple');
-var auth    = require('./auth.js');
+var auth    = require('./middleware/auth.js');
 var config  = require('../config/app.js');
 var Environment = require('../config/environment.js');
 var env = new Environment();
@@ -9,7 +9,6 @@ module.exports = function(app, router) {
 
     var AdventureManager    = require('./managers/adventure-manager.js');
     
-    var Post                = require('./models/post');
     var Project             = require('./models/project');
     var Place               = require('./models/place');
     var Trip                = require('./models/trip');
@@ -22,9 +21,6 @@ module.exports = function(app, router) {
     // server routes ===========================================================
     // middleware to use for all requests
     router.use(function(req, res, next) {
-        console.log('--------------');
-        console.log('Request route: ' + req.route);
-        console.log('Request body: ' + req.body);
         next();
     });
 
@@ -54,71 +50,7 @@ module.exports = function(app, router) {
         res.send('You are authenticated!');
     });
 
-    // blog
-    router.get('/posts', function(req, res) {
-        var limit = req.query.limit || 50;
-        Post.find({}, {}, { sort: { 'created_at': -1 }})
-            .limit(limit)
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
-            });
-    });
-    router.get('/post', function(req, res) {
-        Post.findOne({}, {}, { sort: { 'created_at': -1 }})
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
-            });
-    });
-    router.get('/post/:slug', function(req, res) {
-        var searchCriteria = {};
-        if (req.params.slug) {
-            searchCriteria.slug = req.params.slug;
-        }
-        Post.findOne(searchCriteria, {})
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
-            });
-    });
-    router.put('/post', auth, function(req, res) {
-        Post.findOne({ _id: req.body._id }, function(err, post) {
-            if (err) {
-                res.send(err);
-            }
-            if (!post) {
-                post = new Post(req.body);
-            } else {
-                for (var prop in post) {
-                    if (req.body.hasOwnProperty(prop) && req.body[prop]) {
-                        post[prop] = req.body[prop];
-                    }
-                }
-            }
-            post.save(function(err, newPost) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(newPost);
-            });
-        });
-    });
-    router.delete('/post/:id', auth, function(req, res) {
-        Post.remove({ _id: req.params.id })
-            .exec(function(err) {
-                if (err) {
-                    res.send(err);
-                }
-                res.send(200);
-            });
-    });
+    require('./modules/blog/blog-controller')(router);
 
     // work
     router.get('/projects', function(req, res) {
