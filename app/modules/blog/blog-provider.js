@@ -19,8 +19,8 @@ module.exports = function() {
     };
     
     this.getPost = function(searchCriteria) {
-        searchCriteria = searchCriteria || {};
         return new Promise(function(resolve, reject) {
+            searchCriteria = searchCriteria || {};
             Post.findOne(searchCriteria, {}, { sort: { 'created_at': -1 }})
                 .exec(function(err, data) {
                     if (err) {
@@ -31,24 +31,21 @@ module.exports = function() {
         });
     };
     
-    this.upsertPost = function(post) {
+    this.savePost = function(post) {
         return new Promise(function(resolve, reject) {
             Post.findOne({ _id: post._id }, function(err, post) {
                 if (err) {
                     reject(err);
                 }
                 if (!post) {
-                    console.log('new post');
                     post = new Post(post);
                 } else {
-                    console.log('update post');
                     for (var prop in post) {
                         if (post.hasOwnProperty(prop) && post[prop]) {
                             post[prop] = post[prop];
                         }
                     }
                 }
-                console.log(post.title);
                 post.save(function(err, newPost) {
                     if (err) {
                         reject(err);

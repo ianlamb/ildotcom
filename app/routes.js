@@ -12,7 +12,6 @@ module.exports = function(app, router) {
     var Project             = require('./models/project');
     var Place               = require('./models/place');
     var Trip                = require('./models/trip');
-    var ClimbSession        = require('./models/climb-session');
     var BucketListItem      = require('./models/bucket-list-item');
     var WowProfile          = require('./models/wow-profile');
     var DiabloProfile       = require('./models/diablo-profile');
@@ -46,11 +45,13 @@ module.exports = function(app, router) {
             expires: expires
         });
     });
+    
     router.get('/testAuth', auth, function(req, res) {
         res.send('You are authenticated!');
     });
 
     require('./modules/blog/blog-controller')(router);
+    require('./modules/climbing/climbing-controller')(router);
 
     // work
     router.get('/projects', function(req, res) {
@@ -132,34 +133,6 @@ module.exports = function(app, router) {
     });
     router.delete('/place/:id', auth, function(req, res) {
         Place.remove({ _id: req.params.id })
-            .exec(function(err) {
-                if (err) {
-                    res.send(err);
-                }
-                res.send(200);
-            });
-    });
-
-    // climbing
-    router.get('/climbs', function(req, res) {
-        ClimbSession.find()
-            .populate('place')
-            .populate('photos')
-            .sort('-date')
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
-            });
-    });
-    router.put('/climb', [auth], function(req, res) {
-        AdventureManager.saveClimbSession(req.body).then(function(data) {
-            res.json(data);
-        });
-    });
-    router.delete('/climb/:id', auth, function(req, res) {
-        ClimbSession.remove({ _id: req.params.id })
             .exec(function(err) {
                 if (err) {
                     res.send(err);

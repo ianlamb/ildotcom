@@ -5,7 +5,6 @@ var config          = require('../../config/app');
 var db              = require('../../config/db');
 var Trip            = require('../models/trip');
 var Place           = require('../models/place');
-var ClimbSession    = require('../models/climb-session');
 
 module.exports = {
     saveTrip: function(data) {
@@ -115,41 +114,6 @@ module.exports = {
             }, function(err) {
                 console.error(err);
                 reject();
-            });
-        });
-    },
-
-    saveClimbSession: function(session) {
-        'use strict';
-
-        return new Promise(function(resolve) {
-            ClimbSession.findOne({ _id: session._id }, function(err, dbSession) {
-                if (err) {
-                    res.send(err);
-                }
-                if (!dbSession) {
-                    dbSession = new ClimbSession(session);
-                } else {
-                    for (var prop in dbSession) {
-                        if (session.hasOwnProperty(prop) && session[prop]) {
-                            dbSession[prop] = session[prop];
-                        }
-                    }
-                }
-                dbSession.save(function(err, newSession) {
-                    if(err) {
-                        res.send(err);
-                    }
-                    ClimbSession.findOne({ _id: newSession._id })
-                        .populate('place')
-                        .populate('photos')
-                        .exec(function(err, data) {
-                            if (err) {
-                                res.send(err);
-                            }
-                            resolve(data);
-                        });
-                });
             });
         });
     },

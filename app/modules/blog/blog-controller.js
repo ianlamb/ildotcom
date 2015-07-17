@@ -42,7 +42,7 @@ module.exports = function(router) {
     });
     
     router.put('/post', auth, function(req, res) {
-        blogProvider.upsertPost(req.body)
+        blogProvider.savePost(req.body)
             .then(function(result) {
                 res.json(result);
             })
