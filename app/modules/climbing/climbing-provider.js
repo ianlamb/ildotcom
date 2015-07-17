@@ -1,9 +1,8 @@
-var mongoose        = require('mongoose');
-var request         = require('request');
 var Promise         = require('promise');
 var ClimbSession    = require('./climb-session-model');
 
 module.exports = function() {
+    'use strict';
     
     this.getSessions = function() {
         return new Promise(function(resolve, reject) {

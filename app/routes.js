@@ -6,12 +6,9 @@ var env = new Environment();
 
 module.exports = function(app, router) {
     'use strict';
-
-    var AdventureManager    = require('./managers/adventure-manager.js');
     
     var Project             = require('./models/project');
-    var Place               = require('./models/place');
-    var Trip                = require('./models/trip');
+    var Place               = require('./shared/models/place-model');
     var BucketListItem      = require('./models/bucket-list-item');
     var WowProfile          = require('./models/wow-profile');
     var DiabloProfile       = require('./models/diablo-profile');
@@ -52,6 +49,7 @@ module.exports = function(app, router) {
 
     require('./modules/blog/blog-controller')(router);
     require('./modules/climbing/climbing-controller')(router);
+    require('./modules/travel/travel-controller')(router);
 
     // work
     router.get('/projects', function(req, res) {
@@ -139,25 +137,6 @@ module.exports = function(app, router) {
                 }
                 res.send(200);
             });
-    });
-
-    // travel
-    router.get('/trips', function(req, res) {
-        Trip.find()
-            .populate('places')
-            .populate('photos')
-            .sort('-date')
-            .exec(function(err, data) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(data);
-            });
-    });
-    router.put('/trip', auth, function(req, res) {
-        AdventureManager.saveTrip(req.body).then(function() {
-            res.send(501);
-        });
     });
 
     // bucket list

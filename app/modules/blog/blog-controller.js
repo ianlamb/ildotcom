@@ -1,10 +1,10 @@
-var mongoose        = require('mongoose');
-var request         = require('request');
 var Promise         = require('promise');
 var auth            = require('../../middleware/auth');
 var BlogProvider    = require('./blog-provider');
 
 module.exports = function(router) {
+    'use strict';
+    
     var blogProvider = new BlogProvider();
     
     router.get('/posts', function(req, res) {

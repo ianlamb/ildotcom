@@ -1,9 +1,9 @@
-var mongoose        = require('mongoose');
-var request         = require('request');
 var Promise         = require('promise');
 var Post            = require('./post-model');
 
 module.exports = function() {
+    'use strict';
+    
     this.getPosts = function(limit) {
         return new Promise(function(resolve, reject) {
             limit = limit || 50;

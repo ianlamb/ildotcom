@@ -1,10 +1,10 @@
-var mongoose        = require('mongoose');
-var request         = require('request');
 var Promise         = require('promise');
 var auth            = require('../../middleware/auth');
 var ClimbingProvider    = require('./climbing-provider');
 
 module.exports = function(router) {
+    'use strict';
+    
     var climbingProvider = new ClimbingProvider();
     
     router.get('/climbs', function(req, res) {
@@ -17,7 +17,7 @@ module.exports = function(router) {
             });
     });
     
-    router.put('/climb', [auth], function(req, res) {
+    router.put('/climb', auth, function(req, res) {
         climbingProvider.saveSession(req.body)
             .then(function(data) {
                 res.json(data);
