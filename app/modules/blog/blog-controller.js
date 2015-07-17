@@ -1,0 +1,63 @@
+var mongoose        = require('mongoose');
+var request         = require('request');
+var Promise         = require('promise');
+var auth            = require('../../middleware/auth');
+var BlogProvider    = require('./blog-provider');
+
+module.exports = function(router) {
+    var blogProvider = new BlogProvider();
+    
+    router.get('/posts', function(req, res) {
+        blogProvider.getPosts(req.query.limit)
+            .then(function(result) {
+                res.json(result);
+            })
+            .catch(function(err) {
+                res.send(err);
+            });
+    });
+    
+    router.get('/post', function(req, res) {
+        blogProvider.getPost()
+            .then(function(result) {
+                res.json(result);
+            })
+            .catch(function(err) {
+                res.send(err);
+            });
+    });
+    
+    router.get('/post/:slug', function(req, res) {
+        var searchCriteria = {};
+        if (req.params.slug) {
+            searchCriteria.slug = req.params.slug;
+        }
+        blogProvider.getPost(searchCriteria)
+            .then(function(result) {
+                res.json(result);
+            })
+            .catch(function(err) {
+                res.send(err);
+            });
+    });
+    
+    router.put('/post', auth, function(req, res) {
+        blogProvider.upsertPost(req.body)
+            .then(function(result) {
+                res.json(result);
+            })
+            .catch(function(err) {
+                res.send(err);
+            });
+    });
+    
+    router.delete('/post/:id', auth, function(req, res) {
+        blogProvider.deletePost(req.params.id)
+            .then(function() {
+                res.send(200);
+            })
+            .catch(function(err) {
+                res.send(err);
+            });
+    });
+};
