@@ -1,34 +1,37 @@
 var Promise         = require('promise');
-var Todo            = require('./todo-model');
+var Project        	= require('./project-model');
 
 module.exports = function() {
     'use strict';
     
-    this.getTodos = function() {
+    this.getProjects = function() {
         return new Promise(function(resolve, reject) {
-            Todo.find({}, {}, { sort: { 'created_at': -1 }})
-                .exec(function(err, data) {
+            Project.find({}, {}, { sort: { 'created_at': -1 }})
+                .exec(function(err, projects) {
                     if (err) {
                         reject(err);
                     }
-                    resolve(data);
+                    resolve(projects);
                 });
         });
     };
     
-    this.saveTodo = function(data) {
+    this.saveProject = function(data) {
         return new Promise(function(resolve, reject) {
-            Todo.findOne({ _id: data._id }, function(err, todo) {
+            Project.findOne({ _id: data._id }, function(err, project) {
                 if (err) {
                     reject(err);
                 }
-                if (!todo) {
-                    todo = new Todo(data);
+                if (!project) {
+                    project = new Project(data);
                 } else {
-                    todo.title = data.title;
-                    todo.completed = data.completed;
+                    for (var prop in project) {
+                        if (data.hasOwnProperty(prop) && data[prop]) {
+                            project[prop] = data[prop];
+                        }
+                    }
                 }
-                todo.save(function(err, res) {
+                project.save(function(err, res) {
                     if (err) {
                         reject(err);
                     }
@@ -38,9 +41,9 @@ module.exports = function() {
         });
     };
     
-    this.deleteTodo = function(id) {
+    this.deleteProject = function(id) {
         return new Promise(function(resolve, reject) {
-            Todo.remove({ _id: id })
+            Project.remove({ _id: id })
                 .exec(function(err) {
                     if (err) {
                         reject(err);

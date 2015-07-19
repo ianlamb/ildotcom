@@ -19,33 +19,33 @@ module.exports = function() {
         });
     };
     
-    this.saveSession = function(session) {
+    this.saveSession = function(data) {
         return new Promise(function(resolve, reject) {
-            ClimbSession.findOne({ _id: session._id }, function(err, dbSession) {
+            ClimbSession.findOne({ _id: data._id }, function(err, session) {
                 if (err) {
                     reject(err);
                 }
-                if (!dbSession) {
-                    dbSession = new ClimbSession(session);
+                if (!session) {
+                    session = new ClimbSession(data);
                 } else {
-                    for (var prop in dbSession) {
-                        if (session.hasOwnProperty(prop) && session[prop]) {
-                            dbSession[prop] = session[prop];
+                    for (var prop in session) {
+                        if (data.hasOwnProperty(prop) && data[prop]) {
+                            session[prop] = data[prop];
                         }
                     }
                 }
-                dbSession.save(function(err, newSession) {
+                session.save(function(err, res) {
                     if(err) {
                         reject(err);
                     }
-                    ClimbSession.findOne({ _id: newSession._id })
+                    ClimbSession.findOne({ _id: res._id })
                         .populate('place')
                         .populate('photos')
-                        .exec(function(err, data) {
+                        .exec(function(err, res) {
                             if (err) {
                                 reject(err);
                             }
-                            resolve(data);
+                            resolve(res);
                         });
                 });
             });

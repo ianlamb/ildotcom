@@ -1,14 +1,13 @@
 var Promise         = require('promise');
-var Post            = require('./post-model');
+var Place        	= require('./place-model');
 
 module.exports = function() {
     'use strict';
     
-    this.getPosts = function(limit) {
+    this.getPlaces = function() {
         return new Promise(function(resolve, reject) {
-            limit = limit || 50;
-            Post.find({}, {}, { sort: { 'created_at': -1 }})
-                .limit(limit)
+            Place.find()
+                .where('name').ne(null)
                 .exec(function(err, data) {
                     if (err) {
                         reject(err);
@@ -18,35 +17,25 @@ module.exports = function() {
         });
     };
     
-    this.getPost = function(searchCriteria) {
+    this.savePlace = function(data) {
         return new Promise(function(resolve, reject) {
-            searchCriteria = searchCriteria || {};
-            Post.findOne(searchCriteria, {}, { sort: { 'created_at': -1 }})
-                .exec(function(err, data) {
-                    if (err) {
-                        reject(err);
-                    }
-                    resolve(data);
-                });
-        });
-    };
-    
-    this.savePost = function(data) {
-        return new Promise(function(resolve, reject) {
-            Post.findOne({ _id: data._id }, function(err, post) {
+            Place.findOne({ _id: data._id }, function(err, place) {
                 if (err) {
                     reject(err);
                 }
-                if (!post) {
-                    post = new Post(data);
+                if (!place) {
+                    if (!data.lat || !data.lon) {
+                        reject('missing lat/long coordinates');
+                    }
+                    place = new Place(data);
                 } else {
-                    for (var prop in post) {
+                    for (var prop in place) {
                         if (data.hasOwnProperty(prop) && data[prop]) {
-                            post[prop] = data[prop];
+                            place[prop] = data[prop];
                         }
                     }
                 }
-                post.save(function(err, res) {
+                place.save(function(err, res) {
                     if (err) {
                         reject(err);
                     }
@@ -56,9 +45,9 @@ module.exports = function() {
         });
     };
     
-    this.deletePost = function(id) {
+    this.deletePlace = function(id) {
         return new Promise(function(resolve, reject) {
-            Post.remove({ _id: id })
+            Place.remove({ _id: id })
                 .exec(function(err) {
                     if (err) {
                         reject(err);

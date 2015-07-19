@@ -1,7 +1,7 @@
 var request         = require('request');
 var Promise         = require('promise');
 var config          = require('../../../config/app');
-var Place        	= require('../../shared/models/place-model');
+var Place        	= require('../places/place-model');
 var Trip        	= require('./trip-model');
 
 module.exports = function() {
