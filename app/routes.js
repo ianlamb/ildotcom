@@ -12,6 +12,7 @@ module.exports = function(app, router) {
     require('./modules/todo/todo-controller')(router);
     require('./modules/places/places-controller')(router);
     require('./modules/portfolio/portfolio-controller')(router);
+    require('./modules/gaming/gaming-controller')(router);
     
     // middleware to use for all requests
     router.use(function(req, res, next) {
