@@ -1,4 +1,6 @@
 var Promise         = require('promise');
+var request         = require('request');
+var config        	= require('../../../config/app');
 var Place        	= require('./place-model');
 
 module.exports = function() {
@@ -56,4 +58,31 @@ module.exports = function() {
                 });
         });
     };
+    
+    this.geocodeLocation = function(locationSearch) {
+        return new Promise(function(resolve, reject) {
+            console.log('geocoding...');
+            var options = {
+                uri: 'http://open.mapquestapi.com/geocoding/v1/address?key=' + config.keys.mapquest + '&location=' + locationSearch,
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            request(options, function(err, res, body) {
+                if(!body) {
+                    reject('request returned empty');
+                }
+                var data = JSON.parse(body);
+                if(data) {
+                    console.log('received geocode data');
+                    resolve(data.results);
+                } else {
+                    reject('unexpected results...');
+                }
+            }).on('error', function(e) {
+                    reject(e.message);
+            });
+        });
+    }
 };
