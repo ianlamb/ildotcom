@@ -26,7 +26,7 @@ module.exports = function() {
                     reject(err);
                 }
                 if (!place) {
-                    if (!data.lat || !data.lon) {
+                    if (!data.lat || !data.lng) {
                         reject('missing lat/long coordinates');
                     }
                     place = new Place(data);
