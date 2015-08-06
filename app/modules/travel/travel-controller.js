@@ -18,8 +18,8 @@ module.exports = function(router) {
     
     router.put('/trip', auth, function(req, res) {
         travelProvider.saveTrip(req.body)
-            .then(function(data) {
-                res.send(501);
+            .then(function(result) {
+                res.json(result);
             })
             .catch(function(err) {
                 res.send(err);
