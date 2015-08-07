@@ -15,6 +15,7 @@ angular.module('ildotcomApp', [
     'travelController',
     'climbController',
     'bucketListController',
+    'placesController',
     'gameController',
     'wowController',
     'diabloController',
