@@ -16,6 +16,16 @@ module.exports = function(router) {
             });
     });
     
+    router.get('/cities', function(req, res) {
+        placesProvider.getCities()
+            .then(function(result) {
+                res.json(result);
+            })
+            .catch(function(err) {
+                res.send(err);
+            });
+    });
+    
     router.put('/place', auth, function(req, res) {
         placesProvider.savePlace(req.body)
             .then(function(result) {

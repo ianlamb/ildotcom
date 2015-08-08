@@ -1,0 +1,71 @@
+<div id="places">
+    <div class="panel">
+    <form ng-submit="savePlace()">
+        <input type="hidden" ng-model="place._id">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" ng-model="place.city" class="form-control" placeholder="City">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" ng-model="place.country" class="form-control" placeholder="Country">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <input type="text" ng-model="place.countryCode" class="form-control" placeholder="Country Code">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" ng-model="place.lat" class="form-control" placeholder="Latitude">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" ng-model="place.lng" class="form-control" placeholder="Longitude">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary" ng-hide="editing" ng-disabled="saving">Create</button>
+                <button type="submit" class="btn btn-success" ng-show="editing" ng-disabled="saving">Save</button>
+                <button type="button" class="btn btn-default" ng-show="editing" ng-click="cancelEdit()">Cancel</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <alert ng-if="message" type="{{ message.type }}">{{ message.body }}</alert>
+            </div>
+        </div>
+    </form>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="places table">
+                <tr>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Lat</th>
+                    <th>Long</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="place in places">
+                    <td>{{ place.city }}</td>
+                    <td>{{ place.country }} ({{ place.countryCode }})</td>
+                    <td>{{ place.lat }}</td>
+                    <td>{{ place.lng }}</td>
+                    <td>
+                        <button type="button" class="btn btn-default" ng-click="editPlace(place)">Edit</button>
+                        <button type="button" class="btn btn-danger" ng-click="removePlace(place)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

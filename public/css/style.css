@@ -99,7 +99,7 @@ dl.table-list dd {
     font-size: 1.2em;
 }
 
-button, .button {
+/*button, .button {
     border-style: solid;
     border-width: 0;
     cursor: pointer;
@@ -125,6 +125,9 @@ button, .button {
 }
 button:hover, .button:hover {
     background: #0091d8;
+}*/
+.btn {
+    border-radius: 0;
 }
 button.form-alignment {
     margin-top: 1.4em;
@@ -1705,6 +1708,10 @@ code {
 #adventure .header-image {
     background-color: #0a0d23;
     background-image: url('../images/header-adventure.jpg');
+}
+
+#places {
+    padding-top: 30px;
 }
 
 /* TRAVEL */

@@ -85,6 +85,11 @@ angular.module('appRoutes', ['ui.router'])
                 templateUrl: 'views/adventure/bucket-list.html',
                 controller: 'BucketListController'
             })
+            .state('adventure.places', {
+                url: '/places',
+                templateUrl: 'views/adventure/places.html',
+                controller: 'PlacesController'
+            })
 
         .state('gaming', {
             url: '/gaming',

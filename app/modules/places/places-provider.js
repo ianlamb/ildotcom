@@ -19,6 +19,19 @@ module.exports = function() {
         });
     };
     
+    this.getCities = function() {
+        return new Promise(function(resolve, reject) {
+            Place.find()
+                .where('city').ne(null)
+                .exec(function(err, data) {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(data);
+                });
+        });
+    };
+    
     this.savePlace = function(data) {
         return new Promise(function(resolve, reject) {
             Place.findOne({ _id: data._id }, function(err, place) {
@@ -26,9 +39,6 @@ module.exports = function() {
                     reject(err);
                 }
                 if (!place) {
-                    if (!data.lat || !data.lng) {
-                        reject('missing lat/long coordinates');
-                    }
                     place = new Place(data);
                 } else {
                     for (var prop in place) {
@@ -41,6 +51,7 @@ module.exports = function() {
                     if (err) {
                         reject(err);
                     }
+                    console.log('Saved ' + res.city);
                     resolve(res);
                 });
             });
