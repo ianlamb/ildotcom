@@ -38,7 +38,7 @@ angular.module('adventureService', [])
                 return $http.put('/api/place', data);
             },
             delete: function(data) {
-                return $http.delete('/api/place', data._id);
+                return $http.delete('/api/place/' + data._id);
             }
         };
 
