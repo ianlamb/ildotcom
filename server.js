@@ -31,8 +31,7 @@ app.use(compression());
 
 // server routes ==================================================
 var router = express.Router();
-var routes = require('./app/routes');
-routes(app, router);
+var routes = require('./app/routes')(app, router);
 
 // start app ===============================================
 app.listen(port);	

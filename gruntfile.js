@@ -12,29 +12,12 @@ module.exports = function(grunt) {
         'app/**/*.js'
       ],
       options: {
-        // enforcing
-        bitwise: true,
-        camelcase: false,
-        curly: true,
-        eqeqeq: true,
-        forin: true,
-        freeze: true,
-        immed: false,
-        indent: 4,
-        newcap: false,
         undef: true,
-        unused: true,
+        // unused: true,
+        curly: true,
         latedef: true,
-        strict: true,
-
-        // environments
         browser: true,
         devel: true,
-        jquery: true,
-        mocha: true,
-        node: true,
-
-        // globals
         globals: {
           $: true,
           jQuery: true,
