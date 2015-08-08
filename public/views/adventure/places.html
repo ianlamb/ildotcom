@@ -49,6 +49,7 @@
         <div class="col-sm-12">
             <table class="places table">
                 <tr>
+                    <th>ID</th>
                     <th>City</th>
                     <th>Country</th>
                     <th>Lat</th>
@@ -56,6 +57,7 @@
                     <th></th>
                 </tr>
                 <tr ng-repeat="place in places">
+                    <td>{{ place._id }}</td>
                     <td>{{ place.city }}</td>
                     <td>{{ place.country }} ({{ place.countryCode }})</td>
                     <td>{{ place.lat }}</td>

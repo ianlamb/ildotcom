@@ -60,7 +60,7 @@ angular.module('placesController', [])
     $scope.cancelEdit = function() {
         $scope.editing = false;
         clearForm();
-    }
+    };
     
     function clearForm() {
         $scope.place.city = '';
