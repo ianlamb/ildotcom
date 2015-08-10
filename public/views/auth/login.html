@@ -4,12 +4,14 @@
             <div class="col-sm-4 col-sm-offset-4">
                 <form id="spoofForm" ng-submit="spoof()">
                     <p>If you are interested in examining my management interfaces you can click the spoof button below to "Login".</p>
-                    <button type="submit" class="btn-success">Spoof</button>
+                    <button type="submit" class="btn btn-block btn-lg btn-success">Spoof</button>
                 </form>
                 <hr>
                 <form id="loginForm" ng-submit="login()">
-                    <input type="password" ng-model="password" class="password-field" maxlength="32" placeholder="Secret" autofocus>
-                    <button type="submit">Authenticate</button>
+                    <p>
+                        <input type="password" ng-model="password" class="password-field" maxlength="32" placeholder="Secret" autofocus>
+                        <button type="submit" class="btn btn-block btn-lg btn-primary">Authenticate</button>
+                    </p>
                     <alert ng-if="message" type="{{ message.type }}">{{ message.body }}</alert>
                 </form>
             </div>
