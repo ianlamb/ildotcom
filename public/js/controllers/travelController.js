@@ -5,7 +5,7 @@ angular.module('travelController', [])
     Trips.get()
         .success(function(data) {
             $scope.trips = data;
-            $scope.continentsVisited = 1; // TODO: un-hardcode
+            $scope.continentsVisited = 2; // TODO: un-hardcode
             $scope.countriesVisited = 0;
             $scope.citiesVisited = 0;
             var countryData = {};
