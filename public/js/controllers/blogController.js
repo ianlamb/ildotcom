@@ -1,6 +1,8 @@
 angular.module('blogController', []).controller('BlogController',
     function($scope, $rootScope, $filter, $state, $stateParams, $location, Posts, Post, Utilities) {
     'use strict';
+    
+    var MAX_POST_COUNT = 5;
 
     $scope.state = $state.current;
     $rootScope.$on('$stateChangeStart', function(e, toState/*, toParams, fromState, fromParams*/) {
@@ -13,7 +15,7 @@ angular.module('blogController', []).controller('BlogController',
             $scope.usedTags = {};
             var posts = data;
             var postCounter;
-            for (postCounter = 0; postCounter < 5 && posts[postCounter]; postCounter++) {
+            for (postCounter = 0; postCounter < MAX_POST_COUNT && posts[postCounter]; postCounter++) {
                 $scope.posts.push(posts[postCounter]);
             }
             $scope.loadMore = function() {
@@ -25,9 +27,10 @@ angular.module('blogController', []).controller('BlogController',
             posts.forEach(function(post) {
                 for (var i = 0; i < post.tags.length; i++) {
                     if($scope.usedTags.hasOwnProperty(post.tags[i])) {
-                       $scope.usedTags[post.tags[i]] += 1;
+                       $scope.usedTags[post.tags[i]]++;
+                    } else {
+                        $scope.usedTags[post.tags[i]] = 1;
                     }
-                    $scope.usedTags[post.tags[i]] = 1;
                 }
             });
         })

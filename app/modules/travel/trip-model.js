@@ -19,6 +19,7 @@ var TripSchema = new Schema({
             "thumb": String
         }
     ],
+    "blogPost": { "type": Schema.Types.ObjectId, "ref": "Post" },
     "created_at": Date,
     "updated_at": Date
 }).pre('save', function(next) {

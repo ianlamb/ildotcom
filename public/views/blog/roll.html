@@ -18,11 +18,12 @@
     <div class="col-sm-9">
         <div ng-if="authorized" class="panel">
             <form id="blogForm" ng-submit="addPost()">
-                <input type="text" id="postTitle" ng-model="newPost.title" ng-disabled="saving" placeholder="Title" autofocus>
-                <textarea id="postBody" ng-model="newPost.body" ng-disabled="saving" ng-tab="insertTab()" placeholder="Message"></textarea>
-                <input type="text" id="postTags" ng-model="newPost.tags" ng-disabled="saving" placeholder="Tags (separate with spaces)">
-                <button type="submit">Create Post</button>
+                <input type="text" id="postTitle" ng-model="newPost.title" ng-disabled="saving" placeholder="Title" class="form-control" autofocus>
+                <textarea id="postBody" ng-model="newPost.body" ng-disabled="saving" ng-tab="insertTab()" placeholder="Message" class="form-control"></textarea>
+                <input type="text" id="postTags" ng-model="newPost.tags" ng-disabled="saving" placeholder="Tags (separate with spaces)" class="form-control">
+                <button type="submit" class="btn btn-primary">Create Post</button>
             </form>
+            <div class="post-body" ng-if="newPost" ng-bind-html="markdown.toHTML(newPost.body)"></div>
         </div>
         <ul id="blogPosts" infinite-scroll="loadMore()">
             <li ng-repeat="post in posts">
