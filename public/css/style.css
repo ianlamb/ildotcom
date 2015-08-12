@@ -1631,13 +1631,12 @@ code {
 #travel {
 }
 #travel .top {
-    position: relative;
-    margin-top: -300px;
-    height: 320px;
+    margin-top: -180px;
 }
 #travel #map {
     position: relative;
-    top: 30px;
+    display: block;
+    margin-top: 20px;
     width: 100%;
     height: 550px;
     z-index: 30;
@@ -2378,12 +2377,11 @@ label[for='toggle-all'] {
         margin-top: 440px;
     }
     #travel #map {
+        display: block;
         height: 400px;
     }
     #travel .top {
-        margin-top: -200px;
-        margin-left: 20px;
-        height: 200px;
+        margin-top: 0;
     }
     #home #about {
         height: auto;
@@ -2454,6 +2452,7 @@ label[for='toggle-all'] {
     #main .title {
         display: block;
         text-align: left;
+        margin-bottom: 5px;
     }
     .social-icons {
         font-size: 1.2em;
@@ -2461,7 +2460,14 @@ label[for='toggle-all'] {
     .social-icons a .fa {
         margin: 0 0.3em 0 0;
     }
+    .social-icons a span {
+        display: inline-block;
+      vertical-align: top;
+      margin-top: 2px;
+        font-size: 1.4em;
+    }
     .social-icons li {
+        display: block;
         margin-left: 2px;
     }
     .social-icons li:first-child {
@@ -2508,9 +2514,6 @@ label[for='toggle-all'] {
         padding: 0.5em 1.0em;
     }
 
-    #projects .project-wrapper.second-row {
-        display: none;
-    }
     #projects .project-wrapper {
         width: 98% !important;
         height: 260px !important;
@@ -2570,12 +2573,17 @@ label[for='toggle-all'] {
         height: 240px;
         margin: 0;
     }
+    
+    #resume .btn.btn-primary {
+        margin-bottom: 10px;
+    }
+    #resume section, #resume h3 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
     #travel #map {
         height: 260px;
-    }
-    #travel .top {
-        margin-top: 20px;
-        height: 140px;
     }
     #climbing .session .notes {
         border: 0;
