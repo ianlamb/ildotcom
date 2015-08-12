@@ -756,7 +756,7 @@ a.res-tooltip .callout {
     z-index: 25;
 }
 #home section#header {
-    height: 900px;
+    height: 700px;
     margin: 0;
     padding: 0;
     color: #efefef;
@@ -778,7 +778,8 @@ a.res-tooltip .callout {
 }
 #home section#header .scroll-down {
     position: fixed;
-    margin: 460px auto 0;
+    margin: 420px auto 0;
+    cursor: pointer;
     font-size: 3em;
     -webkit-animation: bounce 3s infinite;
     animation: bounce 3s infinite;
@@ -2346,7 +2347,6 @@ label[for='toggle-all'] {
     transition: all .5s;
     -webkit-transition: all .5s;
 }
-
 
 
 /* medium */

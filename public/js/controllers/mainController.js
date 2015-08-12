@@ -1,5 +1,5 @@
 angular.module('mainController', []).controller('MainController',
-    function($scope, $rootScope, $window, $location, $state, $http, $timeout, Posts) {
+    function($scope, $rootScope, $window, $location, $state, $http, $timeout, Utilities, Posts) {
     'use strict';
 
     $rootScope.moment = moment;
@@ -51,6 +51,10 @@ angular.module('mainController', []).controller('MainController',
 
     $scope.trackClickEvent = function(label) {
         ga('send', 'event', 'button', 'click', label);
+    };
+    
+    $scope.scrollDown = function() {
+        Utilities.scrollTo(document.body, document.getElementById('main').offsetTop, 800);
     };
 
     // get recent posts to display on home page
