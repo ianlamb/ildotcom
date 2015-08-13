@@ -4,7 +4,6 @@ angular.module('ildotcomApp', [
     'ngAnimate',
     'ngSanitize',
     'infinite-scroll',
-    'appDirectives',
     'appRoutes',
     'mainController',
     'authController',
