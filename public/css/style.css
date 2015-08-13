@@ -445,6 +445,9 @@ a.res-tooltip .callout {
 .social-icons li {
     display: inline-block;
 }
+.social-icons a span {
+    display: none;
+}
 .social-icons a .fa {
     color: #999;
     font-size: 2.4em;
