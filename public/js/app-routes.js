@@ -11,19 +11,17 @@ angular.module('appRoutes', ['ui.router'])
         .state('home', {
             url: '/',
             templateUrl: 'views/home.html',
-            controller: 'MainController'
+            controller: 'HomeController'
         })
 
         .state('about', {
             url: '/about',
-            templateUrl: 'views/about.html',
-            controller: 'MainController'
+            templateUrl: 'views/about.html'
         })
 
         .state('resume', {
             url: '/resume',
-            templateUrl: 'views/resume.html',
-            controller: 'MainController'
+            templateUrl: 'views/resume.html'
         })
 
         .state('login', {

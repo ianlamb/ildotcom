@@ -5,7 +5,7 @@ angular.module('ildotcomApp', [
     'ngSanitize',
     'infinite-scroll',
     'appRoutes',
-    'mainController',
+    'homeController',
     'authController',
     'workController',
     'blogController',
