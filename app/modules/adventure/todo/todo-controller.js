@@ -1,4 +1,4 @@
-var auth            = require('../../middleware/auth');
+var auth            = require('../../../middleware/auth');
 var TodoProvider    = require('./todo-provider');
 
 module.exports = function(router) {

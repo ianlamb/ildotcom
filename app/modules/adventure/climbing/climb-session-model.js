@@ -1,5 +1,6 @@
 var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
+var timestamp   = require("../../../middleware/timestamp.js");
 
 var ClimbSessionSchema = new Schema({
     "date": Date,
@@ -11,15 +12,6 @@ var ClimbSessionSchema = new Schema({
     "place": { "type": Schema.Types.ObjectId, "ref": "Place" },
     "created_at": Date,
     "updated_at": Date
-}).pre('save', function(next) {
-    'use strict';
-
-    var now = new Date();
-    this.updated_at = now;
-    if (!this.created_at) {
-        this.created_at = now;
-    }
-    next();
-});
+}).pre('save', timestamp);
 
 module.exports = mongoose.model('ClimbSession', ClimbSessionSchema);

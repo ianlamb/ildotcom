@@ -1,5 +1,6 @@
 var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
+var timestamp    = require("../../middleware/timestamp.js");
 
 var PostSchema = new Schema({
     "title": String,
@@ -8,15 +9,6 @@ var PostSchema = new Schema({
     "tags": [String],
     "created_at": Date,
     "updated_at": Date
-}).pre('save', function(next) {
-    'use strict';
-
-    var now = new Date();
-    this.updated_at = now;
-    if (!this.created_at) {
-        this.created_at = now;
-    }
-    next();
-});
+}).pre('save', timestamp);
 
 module.exports = mongoose.model('Post', PostSchema);

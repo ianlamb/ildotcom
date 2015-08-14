@@ -9,11 +9,11 @@ module.exports = function(app, router) {
     // TODO: refactor routes to be handled within each module
     require('./modules/authentication/auth-controller')(router);
     require('./modules/blog/blog-controller')(router);
-    require('./modules/climbing/climbing-controller')(router);
-    require('./modules/travel/travel-controller')(router);
-    require('./modules/todo/todo-controller')(router);
-    require('./modules/places/places-controller')(router);
     require('./modules/portfolio/portfolio-controller')(router);
+    require('./modules/adventure/climbing/climbing-controller')(router);
+    require('./modules/adventure/travel/travel-controller')(router);
+    require('./modules/adventure/todo/todo-controller')(router);
+    require('./modules/adventure/places/places-controller')(router);
     require('./modules/gaming/diablo/diablo-controller')(router);
     require('./modules/gaming/starcraft/starcraft-controller')(router);
     require('./modules/gaming/warcraft/warcraft-controller')(router);

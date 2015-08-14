@@ -1,6 +1,6 @@
 var request         = require('request');
 var Promise         = require('promise');
-var config          = require('../../../config/app');
+var config          = require('../../../../config/app');
 var Place        	= require('../places/place-model');
 var Trip        	= require('./trip-model');
 
