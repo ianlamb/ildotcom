@@ -29,7 +29,7 @@ module.exports = function(app, router) {
 
     // frontend routes =========================================================
     app.get('*', function(req, res) {
-        res.sendfile('./' + env.assetsRoot + '/index.html');
+        res.sendFile('./' + env.assetsRoot + '/index.html');
     });
 
 };
