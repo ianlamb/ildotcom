@@ -11,11 +11,11 @@
 
     <title>Ian Lamb</title>
 
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="libs/components-font-awesome/css/font-awesome.min.css">
-    <!-- build:css css/ildotcom.min.css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/libs/components-font-awesome/css/font-awesome.min.css">
+    <!-- build:css assets/css/app.min.css -->
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- /build -->
 </head>
 <body>
@@ -25,51 +25,65 @@
         </div>
     </div>
 
-    <div ng-app="ildotcomApp" ng-controller="MainController">
+    <div ng-app="app" ng-controller="mainController">
         <navbar></navbar>
         <div class="page" ui-view></div>
     </div>
 
-    <script src="libs/jquery/dist/jquery.min.js"></script>
-    <!-- build:js js/ildotcom.min.js -->
-    <script src="libs/angular/angular.min.js"></script>
-    <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="libs/angular-animate/angular-animate.min.js"></script>
-    <script src="libs/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
-    <script src="libs/jspdf/dist/jspdf.min.js"></script>
-    <script src="libs/markdown/lib/markdown.js"></script>
-    <script src="libs/moment/min/moment.min.js"></script>
-    <script src="libs/angular-bootstrap/ui-bootstrap.min.js"></script>
-    <script src="libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="libs/jvectormap/jquery.jvectormap.min.js"></script>
-    <script src="libs/jwt-decode/build/jwt-decode.min.js"></script>
-    <script src="js/controllers/mainController.js"></script>
-    <script src="js/controllers/authController.js"></script>
-    <script src="js/controllers/workController.js"></script>
-    <script src="js/controllers/blogController.js"></script>
-    <script src="js/controllers/postController.js"></script>
-    <script src="js/controllers/adventureController.js"></script>
-    <script src="js/controllers/travelController.js"></script>
-    <script src="js/controllers/climbController.js"></script>
-    <script src="js/controllers/bucketListController.js"></script>
-    <script src="js/controllers/placesController.js"></script>
-    <script src="js/controllers/gameController.js"></script>
-    <script src="js/controllers/wowController.js"></script>
-    <script src="js/controllers/diabloController.js"></script>
-    <script src="js/controllers/starcraftController.js"></script>
-    <script src="js/services/workService.js"></script>
-    <script src="js/services/blogService.js"></script>
-    <script src="js/services/adventureService.js"></script>
-    <script src="js/services/gameService.js"></script>
-    <script src="js/services/authService.js"></script>
-    <script src="js/services/utilityService.js"></script>
-    <script src="js/appRoutes.js"></script>
-    <script src="js/appDirectives.js"></script>
-    <script src="js/app.js"></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/angular/angular.min.js"></script>
+    <!-- build:js assets/js/libs.min.js -->
+    <script src="assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="assets/libs/angular-animate/angular-animate.min.js"></script>
+    <script src="assets/libs/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="assets/libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
+    <script src="assets/libs/jspdf/dist/jspdf.min.js"></script>
+    <script src="assets/libs/markdown/lib/markdown.js"></script>
+    <script src="assets/libs/moment/min/moment.min.js"></script>
+    <script src="assets/libs/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/libs/jvectormap/jquery.jvectormap.min.js"></script>
+    <script src="assets/libs/jwt-decode/build/jwt-decode.min.js"></script>
     <!-- /build -->
-    <script src="data/maps/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- build:js assets/js/app.min.js -->
+    <script src="app/app-module.js"></script>
+    <script src="app/app-controller.js"></script>
+    <script src="app/app-routes.js"></script>
+    <script src="app/app-service.js"></script>
+    <script src="app/shared/navbar/navbar-directive.js"></script>
+    <script src="app/shared/contact-map/contact-map-directive.js"></script>
+    <script src="app/shared/heat-calendar/heat-calendar-directive.js"></script>
+    <script src="app/shared/simple-directives/ng-enter.js"></script>
+    <script src="app/shared/simple-directives/ng-tab.js"></script>
+    <script src="app/components/auth/auth-controller.js"></script>
+    <script src="app/components/auth/auth-service.js"></script>
+    <script src="app/components/home/home-controller.js"></script>
+    <script src="app/components/about/about-controller.js"></script>
+    <script src="app/components/resume/resume-controller.js"></script>
+    <script src="app/components/blog/blog-controller.js"></script>
+    <script src="app/components/blog/post-controller.js"></script>
+    <script src="app/components/blog/blog-service.js"></script>
+    <script src="app/components/portfolio/portfolio-controller.js"></script>
+    <script src="app/components/portfolio/portfolio-service.js"></script>
+    <script src="app/components/adventure/adventure-controller.js"></script>
+    <script src="app/components/adventure/bucket-list/bucket-list-controller.js"></script>
+    <script src="app/components/adventure/bucket-list/bucket-list-service.js"></script>
+    <script src="app/components/adventure/climbs/climbs-controller.js"></script>
+    <script src="app/components/adventure/climbs/climbs-service.js"></script>
+    <script src="app/components/adventure/places/places-controller.js"></script>
+    <script src="app/components/adventure/places/places-service.js"></script>
+    <script src="app/components/adventure/travel/travel-controller.js"></script>
+    <script src="app/components/adventure/travel/travel-service.js"></script>
+    <script src="app/components/games/games-controller.js"></script>
+    <script src="app/components/games/diablo/diablo-controller.js"></script>
+    <script src="app/components/games/diablo/diablo-service.js"></script>
+    <script src="app/components/games/starcraft/starcraft-controller.js"></script>
+    <script src="app/components/games/starcraft/starcraft-service.js"></script>
+    <script src="app/components/games/warcraft/warcraft-controller.js"></script>
+    <script src="app/components/games/warcraft/warcraft-service.js"></script>
+    <!-- /build -->
+    <script src="assets/data/maps/jquery-jvectormap-world-mill-en.js"></script>
     <script src="http://static.wowhead.com/widgets/power.js" async></script>
     <script>var wowhead_tooltips = { "colorlinks": true, "iconizelinks": true, "renamelinks": true }</script>
     <script>
@@ -84,7 +98,7 @@
     <script>
       var cb = function() {
         var css = [
-            'libs/jvectormap/jquery-jvectormap.css'
+            'assets/libs/jvectormap/jquery-jvectormap.css'
         ];
         var h = document.getElementsByTagName('head')[0];
         css.forEach(function(path) {

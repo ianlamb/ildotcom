@@ -1,0 +1,62 @@
+<div id="resume">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 left-column">
+                <h1 ng-bind="resume.name"></h1>
+                <p ng-bind="resume.address"></p>
+                <p ng-bind="resume.phone"></p>
+                <p ng-bind="resume.email"></p>
+                <p ng-bind="resume.website"></p>
+                <button ng-click="downloadResume()" class="btn btn-block btn-lg btn-primary">Download Resume</button>
+            </div>
+            <div class="col-md-9">
+                <h3>Objective</h3>
+                <section ng-bind="resume.objective"></section>
+                
+                <h3>Skills</h3>
+                <div id="skills" class="row">
+                    <div ng-repeat="cat in resume.skillCats" class="col-sm-6">
+                        <section>
+                            <strong ng-bind="cat.title"></strong>
+                            <ul>
+                                <li ng-repeat="skill in cat.skills" ng-bind="skill"></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+                
+                <h3>Experience</h3>
+                <div id="experience">
+                    <section ng-repeat="job in resume.jobs">
+                        <span ng-bind="job.tenure" class="timestamp"></span>
+                        <a class="res-tooltip" href="{{ job.website }}">
+                            <span ng-bind="job.title"></span>
+                            <span ng-if="job.logo" class="res-tooltip-panel">
+                                <img class="callout" src="{{ job.logo }}" />
+                                {{ job.description }}
+                            </span>
+                        </a> - <span ng-bind="job.location"></span><br>
+                        <strong><span ng-bind="job.position"></span></strong>
+                        <ul>
+                            <li ng-repeat="item in job.lineItems" ng-bind="item"></li>
+                        </ul>
+                    </section>
+                </div>
+
+                <h3>Education</h3>
+                <div id="education">
+                    <section ng-repeat="school in resume.schools">
+                        <span ng-bind="school.tenure" class="timestamp"></span>
+                        <a href="{{ school.website }}">
+                            <span ng-bind="school.title"></span>
+                        </a> - <span ng-bind="school.location"></span><br>
+                        <span ng-bind="school.certificate"><strong></strong></span><br>
+                        <i><span ng-bind="school.extra"></span></i>
+                    </section>
+                </div>
+
+                <h3>References Available Upon Request</h3>
+            </div>
+        </div>
+    </div>
+</div>

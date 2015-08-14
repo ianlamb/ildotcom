@@ -9,6 +9,7 @@ lib-cov
 
 pids
 logs
+log
 results
 config
 dist
@@ -16,7 +17,6 @@ dist
 npm-debug.log
 node_modules
 
-public/libs
+public/assets/libs
 
 .settings/
-log/

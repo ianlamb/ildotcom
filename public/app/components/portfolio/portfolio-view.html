@@ -1,0 +1,17 @@
+<div id="work">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <p>Portfolio</p>
+                <ul id="projectList">
+                    <li ng-repeat="project in projects">
+                        <a ui-sref="portfolio.project({ slug: project.slug })">{{ project.name }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-9">
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+</div>

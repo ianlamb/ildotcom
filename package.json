@@ -1,5 +1,5 @@
 {
-  "name": "ildotcom",
+  "name": "app",
   "version": "1.0.0",
   "description": "Ian Lamb's portfolio web app",
   "main": "server.js",
@@ -11,6 +11,7 @@
     "body-parser": "~1.12.3",
     "compression": "^1.4.3",
     "express": "~4.12.3",
+    "grunt-contrib-clean": "^0.6.0",
     "jwt-simple": "^0.3.0",
     "method-override": "~2.3.2",
     "moment": "^2.10.2",
