@@ -201,7 +201,7 @@ angular.module('app.games.warcraft')
                     wowProfile.pets.possible = wowProfile.pets.numCollected + wowProfile.pets.numNotCollected;
 
                     // handle achievements
-                    $http.get('data/achievements.json', { cache: true })
+                    $http.get('assets/data/achievements.json', { cache: true })
                         .then(function(data) {
                             wowProfile.achievements = parseAchievementObject(data.data.supercats, wowProfile.main);
                         });
