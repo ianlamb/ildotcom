@@ -81,6 +81,9 @@ module.exports = function() {
                 }
             };
             request(options, function(err, res, body) {
+                if(err) {
+                    reject(err);
+                }
                 if(!body) {
                     reject('request returned empty');
                 }

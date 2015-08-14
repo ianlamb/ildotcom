@@ -38,7 +38,7 @@ app.wow.characters.forEach(function(character) {
                     profile.achievementPoints = data.achievementPoints;
                     profile.pets = data.pets;
                     profile.mounts = data.mounts;
-                    profile.achievements = parseAchievementObject(achievements.supercats, data)
+                    profile.achievements = parseAchievementObject(achievements.supercats, data);
                     data.showcase = true;
                 }
                 profile.characters.push(data);

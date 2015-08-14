@@ -37,6 +37,9 @@ request(options, function(err, res, body) {
                     }
                 };
                 request(options, function(err, res, body) {
+                    if(err) {
+                        reject(err);
+                    }
                     if(!body) {
                         console.log('request returned empty');
                         mongoose.disconnect();
