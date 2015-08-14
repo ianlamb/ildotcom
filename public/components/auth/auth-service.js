@@ -1,4 +1,4 @@
-angular.module('authService', [])
+angular.module('app.auth')
     .factory('Auth', ['$http', function($http) {
         'use strict';
 

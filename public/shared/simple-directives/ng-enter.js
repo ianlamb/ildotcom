@@ -1,4 +1,4 @@
-angular.module('ildotcomApp')
+angular.module('app')
     .directive('ngEnter', function () {
         'use strict';
 

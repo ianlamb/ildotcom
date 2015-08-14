@@ -1,10 +1,6 @@
-angular.module('homeController', []).controller('HomeController',
+angular.module('app.home', []).controller('HomeController',
     function($scope, $rootScope, $window, $location, $state, $http, $timeout, Utilities, Posts) {
     'use strict';
-
-    $scope.scrollDown = function() {
-        Utilities.scrollTo(document.body, document.getElementById('main').offsetTop, 800);
-    };
 
     // get recent posts to display on home page
     // TODO: change when this fires so it only happens on home page (controller reorg?)
@@ -15,6 +11,10 @@ angular.module('homeController', []).controller('HomeController',
         .error(function(err) {
             console.error(err);
         });
+
+    $scope.scrollDown = function() {
+        Utilities.scrollTo(document.body, document.getElementById('main').offsetTop, 800);
+    };
     
     // some static data for home page
     $scope.email = 'ianlamb32@gmail.com';

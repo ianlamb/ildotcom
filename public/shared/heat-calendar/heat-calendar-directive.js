@@ -1,4 +1,4 @@
-angular.module('ildotcomApp')
+angular.module('app')
     .directive('heatCalendar', function() {
         'use strict';
 

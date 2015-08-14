@@ -1,4 +1,4 @@
-angular.module('appRoutes', ['ui.router'])
+angular.module('app.routes', ['ui.router'])
     .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
     'use strict';
 
@@ -10,29 +10,31 @@ angular.module('appRoutes', ['ui.router'])
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'views/home.html',
+            templateUrl: 'components/home/home-view.html',
             controller: 'HomeController'
         })
 
         .state('about', {
             url: '/about',
-            templateUrl: 'views/about.html'
+            templateUrl: 'components/about/about-view.html',
+            controller: 'AboutController'
         })
 
         .state('resume', {
             url: '/resume',
-            templateUrl: 'views/resume.html'
+            templateUrl: 'components/resume/resume-view.html',
+            controller: 'ResumeController'
         })
 
         .state('login', {
             url: '/login',
-            templateUrl: 'views/auth/login.html',
+            templateUrl: 'components/auth/login-view.html',
             controller: 'AuthController'
         })
 
         .state('logout', {
             url: '/logout',
-            templateUrl: 'views/auth/logout.html',
+            templateUrl: 'components/auth/logout-view.html',
             controller: 'AuthController'
         })
 
