@@ -1,4 +1,4 @@
-angular.module('adventureService', [])
+angular.module('app.adventure')
     .factory('Trips', ['$http', function($http) {
         'use strict';
 

@@ -1,5 +1,5 @@
-angular.module('climbController', [])
-    .controller('ClimbController', function($scope, $rootScope, Climbs, Places) {
+angular.module('app.adventure.climbs', [])
+    .controller('ClimbsController', function($scope, $rootScope, Climbs, Places) {
     'use strict';
 
     var boulderGrades = ['V0','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12','V13','V14','V15'];

@@ -67,27 +67,27 @@ angular.module('app.routes', ['ui.router'])
 
         .state('adventure', {
             url: '/adventure',
-            templateUrl: 'views/adventure.html',
+            templateUrl: 'components/adventure/adventure-view.html',
             controller: 'AdventureController'
         })
             .state('adventure.travel', {
                 url: '/travel',
-                templateUrl: 'views/adventure/travel.html',
+                templateUrl: 'components/adventure/travel/travel-view.html',
                 controller: 'TravelController'
             })
             .state('adventure.climb', {
                 url: '/climb',
-                templateUrl: 'views/adventure/climb.html',
-                controller: 'ClimbController'
+                templateUrl: 'components/adventure/climbs/climbs-view.html',
+                controller: 'ClimbsController'
             })
             .state('adventure.bucket-list', {
                 url: '/bucket-list',
-                templateUrl: 'views/adventure/bucket-list.html',
+                templateUrl: 'components/adventure/bucket-list/bucket-list-view.html',
                 controller: 'BucketListController'
             })
             .state('adventure.places', {
                 url: '/places',
-                templateUrl: 'views/adventure/places.html',
+                templateUrl: 'components/adventure/places/places-view.html',
                 controller: 'PlacesController'
             })
 
