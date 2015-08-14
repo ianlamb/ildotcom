@@ -2,59 +2,24 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 left-column">
-                <h1 id="name">Ian Lamb</h1>
-                <p id="address2">London, ON, Canada</p>
-                <p id="phone">519-902-6533</p>
-                <p id="email">ianlamb32@gmail.com</p>
-                <p id="website">http://ianlamb.com</p>
+                <h1 ng-bind="resume.name"></h1>
+                <p ng-bind="resume.address"></p>
+                <p ng-bind="resume.phone"></p>
+                <p ng-bind="resume.email"></p>
+                <p ng-bind="resume.website"></p>
                 <button ng-click="downloadResume()" class="btn btn-block btn-lg btn-primary">Download Resume</button>
             </div>
             <div class="col-md-9">
                 <h3>Objective</h3>
-                <section id="objective">
-                    I am a driven web developer looking to work with great people to create amazing experiences. I have a strong understanding of key programming concepts, design patterns, performant and organized coding practices, and cross-browser/usability considerations. I'm a dependable worker and passionate about building quality websites. I would love to hear from anyone looking for part-time contracting work, open-source contributions or networking.
-                </section>
+                <section ng-bind="resume.objective"></section>
                 
                 <h3>Skills</h3>
                 <div id="skills" class="row">
-                    <div class="col-md-6">
+                    <div ng-repeat="cat in resume.skillCats" class="col-sm-6">
                         <section>
-                            <strong class="category">Front-End</strong>
+                            <strong ng-bind="cat.title"></strong>
                             <ul>
-                                <li>HTML5/CSS</li>
-                                <li>JavaScript/jQuery</li>
-                                <li>AngularJS</li>
-                                <li>Bower/NPM/Grunt</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <strong class="category">Back-End</strong>
-                            <ul>
-                                <li>NodeJS/Express</li>
-                                <li>ASP.NET MVC</li>
-                                <li>PHP/Laravel</li>
-                                <li>Java/Spring</li>
-                                <li>MySQL/MongoDB</li>
-                            </ul>
-                        </section>
-                    </div>
-                    <div class="col-md-6">
-                        <section>
-                            <strong class="category">Platform</strong>
-                            <ul>
-                                <li>Windows</li>
-                                <li>Linux</li>
-                                <li>Mac OSX</li>
-                                <li>Android</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <strong class="category">Infrastructure</strong>
-                            <ul>
-                                <li>Git/SVN SCM</li>
-                                <li>Jenkins/Hudson CI</li>
-                                <li>Apache/Glassfish/Tomcat</li>
-                                <li>Ansible</li>
+                                <li ng-repeat="skill in cat.skills" ng-bind="skill"></li>
                             </ul>
                         </section>
                     </div>
@@ -62,108 +27,31 @@
                 
                 <h3>Experience</h3>
                 <div id="experience">
-                    <section>
-                        <span class="timestamp">Jun 2014 – Present</span>
-                        <a class="workplace res-tooltip" href="http://www.cineplexdigitalnetworks.com/">
-                            <span class="title">Cineplex Digital Networks</span>
-                            <span class="res-tooltip-panel">
-                                <img class="callout" src="http://www.cineplexdigitalnetworks.com/sites/default/files/logo.png" />
-                                Strategic In-Store Digital for the World's Best Brands
+                    <section ng-repeat="job in resume.jobs">
+                        <span ng-bind="job.tenure" class="timestamp"></span>
+                        <a class="res-tooltip" href="{{ job.website }}">
+                            <span ng-bind="job.title"></span>
+                            <span ng-if="job.logo" class="res-tooltip-panel">
+                                <img class="callout" src="{{ job.logo }}" />
+                                {{ job.description }}
                             </span>
-                        </a> - <span class="location">London, ON, Canada</span><br>
-                        <span class="position"><strong>Web UI Developer</strong></span>
+                        </a> - <span ng-bind="job.location"></span><br>
+                        <strong><span ng-bind="job.position"></span></strong>
                         <ul>
-                            <li>Full-stack java development in a linux environment</li>
-                            <li>Improving performance, code quality and test coverage of existing code bases</li>
-                            <li>Building and maintaining the management systems for large digital interactive signage networks</li>
-                            <li>Rapid development of interactive media content in JavaScript/HTML5 for touch displays and tablets</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <span class="timestamp">Jan 2013 – Jun 2014</span>
-                        <a class="workplace res-tooltip" href="http://goodlifefitness.com">
-                            <span class="title">GoodLife Fitness</span>
-                            <span class="res-tooltip-panel">
-                                <img class="callout" src="http://www.goodlifefitness.com/reference/img/icons/goodlife-logo-trim.png?20140911" />
-                                Canada's Best Fitness Clubs and Gyms
-                            </span>
-                        </a> - <span class="location">London, ON, Canada</span><br>
-                        <span class="position"><strong>Solutions Developer</strong></span>
-                        <ul>
-                            <li>Developed, designed and maintained large ASP and .NET applications used by thousands of users</li>
-                            <li>Collaborated with developers, architects and business analysts to bring features to production</li>
-                            <li>Production/deployment support and build server maintenance</li>
-                            <li>Scrum Master duties such as sprint organization and facilitation of work between team members</li>
-                            <li>Interviewing and on-boarding co-ops and new hires</li>
-                            <li>Earned praise in two “FedEx Day” innovation events</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <span class="timestamp">Sep 2012 – Jan 2013</span>
-                        <a class="workplace">
-                            <span class="title">Igniteck Inc</span>
-                        </a> - <span class="location">London, ON, Canada</span><br>
-                        <span class="position"><strong>Web Developer</strong></span>
-                        <ul>
-                            <li>Creation of a fully responsive administration panel in ASP.NET MVC</li>
-                            <li>Collaborated in a fast-paced development environment on Team Foundation Server</li>
-                        </ul>
-                    </section>    
-                    <section>
-                        <span class="timestamp">May 2012 – Aug 2012</span>
-                        <a class="workplace" href="http://blackberry.com">
-                            <span class="title">Blackberry</span>
-                        </a> - <span class="location">Waterloo, ON, Canada</span><br>
-                        <span class="position"><strong>Software Tester &amp; Developer</strong> (co-op)</span>
-                        <ul>
-                            <li>Collaborated on porting SlipStream's proxy client (C/C++) from Linux to QNX</li>
-                            <li>Created a tablet-optimized web interface for configuration of the proxy client</li>
-                            <li>Refactored internal systems and updated localization scripts</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <span class="timestamp">Sep 2011 – Dec 2011</span>
-                        <a class="workplace" href="http://infotech.com/">
-                            <span class="title">Info-Tech Research Group</span>
-                        </a> - <span class="location">London, ON, Canada</span><br>
-                        <span class="position"><strong>Software Developer</strong> (co-op)</span>
-                        <ul>
-                            <li>Introduced to Agile development practices</li>
-                            <li>Maintained core client-facing website built with Ruby on Rails</li>
-                            <li>Minor feature enhancements to Salesforce system</li>
-                            <li>Lead an innovation day project with other co-op students</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <span class="timestamp">Dec 2010 – Apr 2011</span>
-                        <a class="workplace" href="https://lawsonresearch.com/">
-                            <span class="title">Lawson Research Institute</span>
-                        </a> - <span class="location">London, ON, Canada</span><br>
-                        <span class="position"><strong>Web Developer</strong> (co-op)</span>
-                        <ul>
-                            <li>Performed front and back-end web development using Codeigniter and JavaScript</li>
-                            <li>Rapid prototype development to keep up with frequent client demonstrations and requirements changes</li>
-                            <li>Maintained hospital security and usability standards</li>
+                            <li ng-repeat="item in job.lineItems" ng-bind="item"></li>
                         </ul>
                     </section>
                 </div>
 
                 <h3>Education</h3>
                 <div id="education">
-                    <section>
-                        <span class="timestamp">Sep 2009 – Dec 2012</span>
-                        <a class="workplace" href="http://www.fanshawec.ca/">
-                            <span class="title">Fanshawe College</span>
-                        </a> - <span class="location">London, ON, Canada</span><br>
-                        <span class="certificate"><strong>Computer Programmer Analyst Advanced Diploma</strong></span><br>
-                        <span class="extra"><i>Graduated with honours</i></span>
-                    </section>
-                    <section>
-                        <span class="timestamp">Sep 2005 – Jun 2009</span>
-                        <a class="workplace" href="http://www.tvdsb.ca/Lucas.cfm">
-                            <span class="title">A.B. Lucas Secondary School</span>
-                        </a> - <span class="location">London, ON, Canada</span><br>
-                        <span class="certificate"><strong>Ontario Secondary School Diploma</strong></span>
+                    <section ng-repeat="school in resume.schools">
+                        <span ng-bind="school.tenure" class="timestamp"></span>
+                        <a href="{{ school.website }}">
+                            <span ng-bind="school.title"></span>
+                        </a> - <span ng-bind="school.location"></span><br>
+                        <span ng-bind="school.certificate"><strong></strong></span><br>
+                        <i><span ng-bind="school.extra"></span></i>
                     </section>
                 </div>
 
