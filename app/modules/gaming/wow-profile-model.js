@@ -3,6 +3,66 @@ var Schema       = mongoose.Schema;
 
 var WowProfileSchema = new Schema({
     "achievementPoints": Number,
+    "achievements": {
+        "Collections": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Dungeons & Raids": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Exploration": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Feats of Strength": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Garrisons": {
+            "completed": Number,
+            "possible": Number
+        },
+        "General": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Legacy": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Pet Battles": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Player vs. Player": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Professions": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Quests": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Reputation": {
+            "completed": Number,
+            "possible": Number
+        },
+        "Scenarios": {
+            "completed": Number,
+            "possible": Number
+        },
+        "World Events": {
+            "completed": Number,
+            "possible": Number
+        },
+        "completed": Number,
+        "possible": Number
+    },
     "mounts": { "numCollected": Number, "numNotCollected": Number },
     "pets": { "numCollected": Number, "numNotCollected": Number },
     "characters": [{

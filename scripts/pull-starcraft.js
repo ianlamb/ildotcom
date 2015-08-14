@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var app = require('../config/app');
 var db = require('../config/db');
 var request = require('request');
-var StarcraftProfile = require('../app/models/starcraft-profile');
+var StarcraftProfile = require('../app/modules/gaming//starcraft-profile-model');
 
 console.log('connecting to db...');
 mongoose.connect(db.url);

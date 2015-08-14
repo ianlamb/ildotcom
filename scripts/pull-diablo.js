@@ -3,7 +3,7 @@ var app = require('../config/app');
 var db = require('../config/db');
 var request = require('request');
 var Promise = require('promise');
-var DiabloProfile = require('../app/models/diablo-profile');
+var DiabloProfile = require('../app/modules/gaming/diablo-profile-model');
 
 console.log('connecting to db...');
 mongoose.connect(db.url);

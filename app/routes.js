@@ -1,4 +1,5 @@
 var Environment = require('../config/environment.js');
+var path = require('path');
 var env = new Environment();
 
 module.exports = function(app, router) {
@@ -29,7 +30,7 @@ module.exports = function(app, router) {
 
     // frontend routes =========================================================
     app.get('*', function(req, res) {
-        res.sendFile(__dirname + env.assetsRoot + '/index.html');
+        res.sendFile(path.join(__dirname, '..', env.assetsRoot, 'index.html'));
     });
 
 };
