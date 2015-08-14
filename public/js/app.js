@@ -11,12 +11,7 @@ angular.module('app', [
     'app.resume',
     'app.blog',
     'app.adventure',
+    'app.games',
     'workController',
-    'gameController',
-    'wowController',
-    'diabloController',
-    'starcraftController',
-    'utilityService',
-    'workService',
-    'gameService'
+    'workService'
 ]);

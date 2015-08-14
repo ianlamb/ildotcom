@@ -1,5 +1,5 @@
-angular.module('wowController', [])
-    .controller('WowController', function($scope, WowProfile) {
+angular.module('app.games.warcraft', [])
+    .controller('WarcraftController', function($scope, WowProfile) {
     'use strict';
 
     $scope.wowProfile = {};

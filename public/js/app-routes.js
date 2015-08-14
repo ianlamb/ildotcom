@@ -93,22 +93,22 @@ angular.module('app.routes', ['ui.router'])
 
         .state('gaming', {
             url: '/gaming',
-            templateUrl: 'views/gaming.html',
-            controller: 'GamingController'
+            templateUrl: 'components/games/games-view.html',
+            controller: 'GamesController'
         })
             .state('gaming.wow', {
                 url: '/wow',
-                templateUrl: 'views/gaming/wow.html',
-                controller: 'WowController'
+                templateUrl: 'components/games/warcraft/warcraft-view.html',
+                controller: 'WarcraftController'
             })
             .state('gaming.diablo', {
                 url: '/diablo',
-                templateUrl: 'views/gaming/diablo.html',
+                templateUrl: 'components/games/diablo/diablo-view.html',
                 controller: 'DiabloController'
             })
             .state('gaming.starcraft', {
                 url: '/starcraft',
-                templateUrl: 'views/gaming/starcraft.html',
+                templateUrl: 'components/games/starcraft/starcraft-view.html',
                 controller: 'StarcraftController'
             })
         ;

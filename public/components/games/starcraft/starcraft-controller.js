@@ -1,4 +1,4 @@
-angular.module('starcraftController', [])
+angular.module('app.games.starcraft', [])
     .controller('StarcraftController', function($scope, StarcraftProfile, Utilities) {
     'use strict';
 

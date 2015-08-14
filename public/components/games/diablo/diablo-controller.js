@@ -1,4 +1,4 @@
-angular.module('diabloController', [])
+angular.module('app.games.diablo', [])
     .controller('DiabloController', function($scope, DiabloProfile, Utilities) {
     'use strict';
 

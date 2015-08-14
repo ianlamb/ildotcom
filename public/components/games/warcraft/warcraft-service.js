@@ -1,4 +1,4 @@
-angular.module('gameService', [])
+angular.module('app.games.warcraft')
     .factory('WowProfile', ['$http', function($http) {
         'use strict';
 
@@ -207,38 +207,6 @@ angular.module('gameService', [])
                         });
 
                     return wowProfile;
-                })
-                .error(function(err) {
-                    console.error(err);
-                });
-            }
-        };
-    }])
-
-    .factory('DiabloProfile', ['$http', function($http) {
-        'use strict';
-
-        return {
-            get: function() {
-                return $http.get('/api/d3')
-                .success(function(data) {
-                    return data;
-                })
-                .error(function(err) {
-                    console.error(err);
-                });
-            }
-        };
-    }])
-
-    .factory('StarcraftProfile', ['$http', function($http) {
-        'use strict';
-
-        return {
-            get: function() {
-                return $http.get('/api/sc2')
-                .success(function(data) {
-                    return data;
                 })
                 .error(function(err) {
                     console.error(err);

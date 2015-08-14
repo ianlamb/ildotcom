@@ -1,4 +1,4 @@
-angular.module('utilityService', [])
+angular.module('app')
     .factory('Utilities', function() {
         'use strict';
 
