@@ -36,7 +36,7 @@ var WowProfileSchema = new Schema({
             "completed": Number,
             "possible": Number
         },
-        "Player vs. Player": {
+        "Player vs Player": {
             "completed": Number,
             "possible": Number
         },

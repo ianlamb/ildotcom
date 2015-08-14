@@ -89,6 +89,11 @@ function parseAchievementObject(supercats, character) {
     supercats.forEach(function(supercat) {
         var possibleCount = 0;
         var completedCount = 0;
+        
+        // remove the "." to fix parsing errors
+        if (supercat.name === "Player vs. Player") {
+            supercat.name = "Player vs Player";
+        }
 
         // Add the supercategory to the object, so we can do quick lookups on category
         obj[supercat.name] = {};
