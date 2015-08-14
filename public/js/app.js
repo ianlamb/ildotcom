@@ -9,9 +9,8 @@ angular.module('app', [
     'app.home',
     'app.about',
     'app.resume',
+    'app.blog',
     'workController',
-    'blogController',
-    'postController',
     'adventureController',
     'travelController',
     'climbController',
@@ -23,7 +22,6 @@ angular.module('app', [
     'starcraftController',
     'utilityService',
     'workService',
-    'blogService',
     'adventureService',
     'gameService'
 ]);

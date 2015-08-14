@@ -1,4 +1,4 @@
-angular.module('blogService', [])
+angular.module('app.blog')
     .factory('Posts', ['$http', function($http) {
         'use strict';
 

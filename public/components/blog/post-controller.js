@@ -1,5 +1,5 @@
-angular.module('postController', [])
-    .controller('PostController', function($scope, $filter, $state, $stateParams, Post, Utilities) {
+angular.module('app.blog')
+    .controller('PostController', function($scope, $filter, $state, $stateParams, $location, Post, Utilities) {
     'use strict';
     
     $scope.markdown = markdown;
@@ -9,6 +9,9 @@ angular.module('postController', [])
     var slug = $stateParams.slug;
     Post.get(slug)
         .success(function(post) {
+            if (!post) {
+                $location.path('/blog').replace();
+            }
             post.tags = post.tags instanceof Array ? post.tags.join(' ') : post.tags;
             $scope.post = post;
         })

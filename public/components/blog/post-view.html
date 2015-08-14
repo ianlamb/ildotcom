@@ -21,8 +21,10 @@
                 </div>
             </div>
         </div>
+        <p>
         <button type="button" ng-click="editPost(post)" ng-if="authorized" ng-hide="editing" class="btn btn-success">Edit</button>
-        <alert type="{{ alert.type }}" ng-if="alert" close="closeAlert($index)">{{ alert.message }}</alert> 
+        </p>
+        <alert type="{{ alert.type }}" ng-if="alert" close="closeAlert($index)">{{ alert.message }}</alert>
         <form ng-submit="saveEdits()" ng-show="editing">
             <input type="text" id="postTitle" ng-model="post.title" ng-disabled="saving" placeholder="Title" class="form-control" autofocus>
             <textarea id="postBody" ng-model="post.body" ng-disabled="saving" ng-tab="insertTab()" placeholder="Message" class="form-control"></textarea>

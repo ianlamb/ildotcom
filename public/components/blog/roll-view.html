@@ -13,7 +13,7 @@
                 <span class="occurrences">[{{ occurrences }}]</span>
             </li>
         </ul>
-        <hr class="visible-sm-*">
+        <hr class="visible-sm">
     </div>
     <div class="col-sm-9">
         <div ng-if="authorized" class="panel">
@@ -30,7 +30,7 @@
                 <div class="post-wrapper panel">
                     <div class="view">
                         <h3><a ui-sref="blog.post({ slug: post.slug })">{{ post.title }}</a></h3>
-                        <div class="post-body" ng-if="post">{{ shortPost(post.body) }}</div>
+                        <div class="post-body truncate" ng-if="post" ng-bind-html="shortPost(post.body)"></div>
                         <a ui-sref="blog.post({ slug: post.slug })" class="button">Read More</a>
                         <div class="post-footer">
                             <ul class="tags inline-bullets">

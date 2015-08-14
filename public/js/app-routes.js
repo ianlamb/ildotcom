@@ -51,17 +51,17 @@ angular.module('app.routes', ['ui.router'])
 
         .state('blog', {
             url: '/blog?tags',
-            templateUrl: 'views/blog.html',
+            templateUrl: 'components/blog/blog-view.html',
             controller: 'BlogController'
         })
             .state('blog.roll', {
                 url: '/roll',
-                templateUrl: 'views/blog/roll.html',
+                templateUrl: 'components/blog/roll-view.html',
                 controller: 'BlogController'
             })
             .state('blog.post', {
                 url: '/post/:slug',
-                templateUrl: 'views/blog/post.html',
+                templateUrl: 'components/blog/post-view.html',
                 controller: 'PostController'
             })
 
