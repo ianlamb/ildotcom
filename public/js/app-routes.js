@@ -38,15 +38,14 @@ angular.module('app.routes', ['ui.router'])
             controller: 'AuthController'
         })
 
-        .state('work', {
-            url: '/work',
-            templateUrl: 'views/work.html',
-            controller: 'WorkController'
+        .state('portfolio', {
+            url: '/portfolio',
+            templateUrl: 'components/portfolio/portfolio-view.html',
+            controller: 'PortfolioController'
         })
-            .state('work.project', {
-                url: '/work/:slug',
-                templateUrl: 'views/project.html',
-                controller: 'WorkController'
+            .state('portfolio.project', {
+                url: '/portfolio/:slug',
+                templateUrl: 'components/portfolio/projects-view.html'
             })
 
         .state('blog', {

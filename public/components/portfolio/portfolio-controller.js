@@ -1,5 +1,5 @@
-angular.module('workController', [])
-    .controller('WorkController', function($scope, $stateParams, $location, Projects) {
+angular.module('app.portfolio', [])
+    .controller('PortfolioController', function($scope, $stateParams, $location, Projects) {
     'use strict';
     
     Projects.get()

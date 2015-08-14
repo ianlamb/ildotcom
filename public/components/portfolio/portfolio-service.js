@@ -1,4 +1,4 @@
-angular.module('workService', [])
+angular.module('app.portfolio')
     .factory('Projects', ['$http', function($http) {
         'use strict';
 
