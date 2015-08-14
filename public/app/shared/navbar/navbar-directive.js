@@ -5,7 +5,7 @@ angular.module('app')
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: 'shared/navbar/navbar-view.html',
+            templateUrl: 'app/shared/navbar/navbar-view.html',
             controller: function($scope, $location) {
                 $scope.navLinks = [
                     { slug: 'home', text: 'Home', sortRank: 0 },
@@ -32,4 +32,4 @@ angular.module('app')
                 };
             }
         };
-    })
+    });

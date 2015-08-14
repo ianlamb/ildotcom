@@ -18,9 +18,14 @@ angular.module('app.home', [])
         };
         
         // some static data for home page
-        $scope.email = 'ianlamb32@gmail.com';
-        $scope.phone = '+1 (519) 902 6533';
-        $scope.location = { name: 'London, ON', latLng: [42.9837, -81.2497] };
+        $scope.contact = {
+            "email": "ianlamb32@gmail.com",
+            "phone": "+1 519-902-6533",
+            "location": {
+                "name": "London, ON",
+                "latLng": [42.9837, -81.2497]
+            }
+        };
         $scope.projects = [
             {
                 name: 'GoodLife Fitness Sales',

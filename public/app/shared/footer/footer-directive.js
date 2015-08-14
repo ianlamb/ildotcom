@@ -5,9 +5,9 @@ angular.module('app')
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: 'shared/footer/footer-view.html',
+            templateUrl: 'app/shared/footer/footer-view.html',
             controller: function($scope) {
                 $scope.year = moment().year();
             }
         };
-    })
+    });

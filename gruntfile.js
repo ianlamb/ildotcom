@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         'package.json',
         'bower.json',
         'server.js',
-        'public/js/**/*.js',
+        'public/app/**/*.js',
         'app/**/*.js'
       ],
       options: {
@@ -36,22 +36,22 @@ module.exports = function(grunt) {
         }
       }
     },
+    clean: ['dist/'],
     copy: {
       dist: {
         expand: true,
         cwd: 'public/',
         src: [
-          'favicon.png',
-          'data/*.json',
-          'data/**/*.js',
-          'libs/**/*.js',
-          'libs/**/*.css',
-          'libs/**/*.map',
-          'libs/**/*.svg',
-          'libs/**/*.woff',
-          'libs/**/*.eot',
-          'libs/**/*.ttf',
-          'views/**/*.html'
+          'assets/data/**/*.json',
+          'assets/data/**/*.js',
+          'assets/libs/**/*.js',
+          'assets/libs/**/*.css',
+          'assets/libs/**/*.map',
+          'assets/libs/**/*.svg',
+          'assets/libs/**/*.woff',
+          'assets/libs/**/*.eot',
+          'assets/libs/**/*.ttf',
+          'app/**/*.html'
         ],
         dest: 'dist/'
       },
@@ -60,42 +60,47 @@ module.exports = function(grunt) {
         flatten: true,
         cwd: 'public/',
         src: [
-          'libs/**/*.svg',
-          'libs/**/*.woff',
-          'libs/**/*.eot',
-          'libs/**/*.ttf',
+          'assets/libs/**/*.svg',
+          'assets/libs/**/*.woff',
+          'assets/libs/**/*.eot',
+          'assets/libs/**/*.ttf',
         ],
-        dest: 'dist/fonts/'
+        dest: 'dist/assets/fonts/'
       }
     },
     concat: {
       options: {
         separator: ';'
       },
-      js: {
+      app: {
         src: [
-          'public/libs/angular/angular.min.js',
-          'public/libs/angular-ui-router/release/angular-ui-router.min.js',
-          'public/libs/angular-animate/angular-animate.min.js',
-          'public/libs/angular-sanitize/angular-sanitize.min.js',
-          'public/libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js',
-          'public/libs/jspdf/dist/jspdf.min.js',
-          'public/libs/markdown/lib/markdown.js',
-          'public/libs/moment/min/moment.min.js',
-          'public/libs/angular-bootstrap/ui-bootstrap.min.js',
-          'public/libs/angular-bootstrap/ui-bootstrap-tpls.min.js',
-          'public/libs/bootstrap/dist/js/bootstrap.min.js',
-          'public/libs/jvectormap/jquery.jvectormap.min.js',
-          'public/libs/jwt-decode/build/jwt-decode.min.js',
-          'public/js/**/*.js'
+          'public/app/app-module.js',
+          'public/app/**/*.js'
         ],
-        dest: 'dist/js/<%= pkg.name %>.js'
+        dest: 'dist/assets/js/<%= pkg.name %>.js'
+      },
+      libs: {
+        src: [
+          'public/assets/libs/angular-ui-router/release/angular-ui-router.min.js',
+          'public/assets/libs/angular-animate/angular-animate.min.js',
+          'public/assets/libs/angular-sanitize/angular-sanitize.min.js',
+          'public/assets/libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js',
+          'public/assets/libs/jspdf/dist/jspdf.min.js',
+          'public/assets/libs/markdown/lib/markdown.js',
+          'public/assets/libs/moment/min/moment.min.js',
+          'public/assets/libs/angular-bootstrap/ui-bootstrap.min.js',
+          'public/assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js',
+          'public/assets/libs/bootstrap/dist/js/bootstrap.min.js',
+          'public/assets/libs/jvectormap/jquery.jvectormap.min.js',
+          'public/assets/libs/jwt-decode/build/jwt-decode.min.js'
+        ],
+        dest: 'dist/assets/js/libs.js'
       },
       css: {
         src: [
-          'public/css/**/*.css'
+          'public/assets/css/**/*.css'
         ],
-        dest: 'dist/css/<%= pkg.name %>.css'
+        dest: 'dist/assets/css/<%= pkg.name %>.css'
       }
     },
     uglify: {
@@ -105,7 +110,8 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/js/<%= pkg.name %>.min.js': ['<%= concat.js.dest %>']
+          'dist/assets/js/<%= pkg.name %>.min.js': ['<%= concat.app.dest %>'],
+          'dist/assets/js/libs.min.js': ['<%= concat.libs.dest %>']
         }
       }
     },
@@ -118,17 +124,20 @@ module.exports = function(grunt) {
           ignore: []
         },
         files: {
-          'dist/css/<%= pkg.name %>.min.css': ['<%= concat.css.dest %>']
+          'dist/assets/css/<%= pkg.name %>.min.css': ['<%= concat.css.dest %>']
         }
       }
     },
     imagemin: {
       dynamic: {
+        options: {
+          optimizationLevel: 4,
+        },
         files: [{
           expand: true,
-          cwd: 'public/images/',
+          cwd: 'public/assets/images/',
           src: ['**/*.{png,jpg,gif}'],
-          dest: 'dist/images/'
+          dest: 'dist/assets/images/'
         }]
       }
     },
@@ -163,6 +172,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -173,6 +183,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', ['jshint', 'pagespeed']);
   grunt.registerTask('default', ['jshint', 'copy', 'concat', 'uglify', 'cssmin', 'processhtml']);
-  grunt.registerTask('full', ['jshint', 'copy', 'concat', 'uglify', 'cssmin', 'imagemin', 'processhtml']);
+  grunt.registerTask('full', ['jshint', 'clean', 'copy', 'concat', 'uglify', 'cssmin', 'imagemin', 'processhtml']);
 
 };

@@ -119,7 +119,7 @@
             <h1>Work</h1>
             <div ng-repeat="project in projects track by $index" class="project-wrapper 
                 {{ $index > 2 ? 'second-row' : 'first-row' }}">
-                <a href="{{ project.url }}" class="project" style="background-image: url('images/{{ project.image }}')">
+                <a href="{{ project.url }}" class="project" style="background-image: url('assets/images/{{ project.image }}')">
                     <div class="overlay">
                         <div class="title">{{ project.name }}</div>
                     </div>
@@ -133,20 +133,12 @@
                 <div class="col-sm-4">
                     <h1>Contact</h1>
                     <div class="contact-info">
-                        <div class="phone">
-                            <span>519</span>
-                            <span>902</span>
-                            <span>6533</span>
-                        </div>
+                        <div ng-bind="contact.phone"></div>
                         <label>Mobile Phone</label>
-                        <div class="location">
-                            {{ location.name }}
-                        </div>
+                        <div ng-bind="contact.location.name"></div>
                         <label>Location</label>
-                        <div class="email">
-                            <a href="mailto:{{ email }}" class="social-anchor">
-                                {{ email }}
-                            </a>
+                        <div>
+                            <a href="mailto:{{ contact.email }}" class="social-anchor" ng-bind="contact.email"></a>
                         </div>
                         <label>Email</label>
                     </div>

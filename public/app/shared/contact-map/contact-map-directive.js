@@ -38,9 +38,9 @@ angular.module('app')
                                 'stroke-opacity': 0.5,
                             }
                         },
-                        markers: [$scope.location]
+                        markers: [$scope.contact.location]
                     });
-                }, 300);
+                }, 500);
             }
         };
-    })
+    });
