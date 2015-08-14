@@ -1,4 +1,3 @@
-var Promise             = require('promise');
 var WowProfile          = require('./wow-profile-model');
 
 module.exports = function() {

@@ -1,9 +1,9 @@
-var app = require('../config/app');
-var db              = require('../config/db');
-var mongoose        = require('mongoose');
-var request = require('request');
-var StarcraftProvider = require('../app/modules/gaming/starcraft/starcraft-provider');
-var starcraftProvider = new StarcraftProvider();
+var app                 = require('../config/app');
+var db                  = require('../config/db');
+var mongoose            = require('mongoose');
+var request             = require('request');
+var StarcraftProvider   = require('../app/modules/gaming/starcraft/starcraft-provider');
+var starcraftProvider   = new StarcraftProvider();
 
 console.log('connecting to database...');
 mongoose.connect(db.url);

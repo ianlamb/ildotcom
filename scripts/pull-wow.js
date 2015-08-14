@@ -2,7 +2,6 @@ var app                 = require('../config/app');
 var db                  = require('../config/db');
 var mongoose            = require('mongoose');
 var request             = require('request');
-var Promise             = require('promise');
 var achievements        = require('./achievements.json');
 var WarcraftProvider    = require('../app/modules/gaming/warcraft/warcraft-provider');
 var warcraftProvider    = new WarcraftProvider();

@@ -1,4 +1,3 @@
-var Promise             = require('promise');
 var StarcraftProfile    = require('./starcraft-profile-model');
 
 module.exports = function() {
