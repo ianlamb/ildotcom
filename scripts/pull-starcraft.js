@@ -18,11 +18,17 @@ var options = {
 
 console.log('requesting sc2 profile...');
 request(options, function(err, res, body) {
-    if(!body) {
-        console.log('request returned empty');
+    if(err) {
+        console.err(err);
         mongoose.disconnect();
         return;
     }
+    if(!body) {
+        console.err('request returned empty');
+        mongoose.disconnect();
+        return;
+    }
+    
     var data = JSON.parse(body);
     starcraftProvider.saveProfile(data)
         .then(function(res) {

@@ -30,11 +30,17 @@ app.wow.characters.forEach(function(character) {
         
         console.log('requesting character data for %s...', character.name);
         request(options, function(err, res, body) {
-            if(!body) {
-                console.log('request returned empty');
+            if(err) {
+                console.err(err);
                 mongoose.disconnect();
                 return;
             }
+            if(!body) {
+                console.err('request returned empty');
+                mongoose.disconnect();
+                return;
+            }
+            
             var data = JSON.parse(body);
             if(data) {
                 console.log('received info for character: ' + data.name);
