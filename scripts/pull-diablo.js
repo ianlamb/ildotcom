@@ -20,6 +20,7 @@ console.log('requesting d3 profile...');
 request(options, function(err, res, body) {
     if(!body) {
         console.log('request returned empty');
+        mongoose.disconnect();
         return;
     }
     var data = JSON.parse(body);

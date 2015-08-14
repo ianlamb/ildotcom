@@ -1,19 +1,21 @@
-var mongoose = require('mongoose');
-var app = require('../config/app');
-var db = require('../config/db');
-var request = require('request');
-var Promise = require('promise');
-var achievements = require('./achievements.json');
-var WowProfile = require('../app/modules/gaming/wow-profile-model');
+var app                 = require('../config/app');
+var db                  = require('../config/db');
+var mongoose            = require('mongoose');
+var request             = require('request');
+var Promise             = require('promise');
+var achievements        = require('./achievements.json');
+var WarcraftProvider    = require('../app/modules/gaming/warcraft/warcraft-provider');
+var warcraftProvider    = new WarcraftProvider();
 
 console.log('connecting to db...');
 mongoose.connect(db.url);
 
-var profile = new WowProfile();
+var profile = {
+    "characters": []
+};
 var promises = [];
 app.wow.characters.forEach(function(character) {
     var promise = new Promise(function(resolve) {
-        console.log('making wow api call...');
         var options = {
             uri: 'http://us.battle.net/api/wow/character/' + character.realm + '/' + character.name,
             method: 'GET',
@@ -25,6 +27,8 @@ app.wow.characters.forEach(function(character) {
             // just ensure we only pull these once, all characters return account-wide pets and mounts
             options.uri +=  '?fields=feed,items,stats,pvp,progression,pets,mounts,achievements';
         }
+        
+        console.log('requesting character data for %s...', character.name);
         request(options, function(err, res, body) {
             if(!body) {
                 console.log('request returned empty');
@@ -56,16 +60,17 @@ app.wow.characters.forEach(function(character) {
 });
 
 Promise.all(promises).then(function() {
-    console.log('all requests complete, saving profile..');
-    profile.created_at = new Date();
-    profile.save(function(err) {
-        if(err) {
-            console.error(err);
-        }
-        console.log('wow profile created');
-        mongoose.disconnect();
-        console.log('done');
-    });
+    console.log('saving profile...');
+    warcraftProvider.saveProfile(profile)
+        .then(function(res) {
+            console.log('profile saved');
+            mongoose.disconnect();
+        })
+        .catch(function(err) {
+            console.err(err);
+            mongoose.disconnect();
+        });
+    
 });
 
 function parseAchievementObject(supercats, character) {
