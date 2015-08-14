@@ -101,7 +101,7 @@ module.exports = function() {
                     });
                 }, function(err) {
                     console.error(err);
-                    reject();
+                    reject(err);
                 });
             });
         });
@@ -109,7 +109,6 @@ module.exports = function() {
     
     function retrievePhotoset(photosetId) {
         return new Promise(function(resolve, reject) {
-            console.log('querying flickr api...');
             var options = {
                 uri: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=' + config.keys.flickr + '&photoset_id=' + photosetId + '&format=json&nojsoncallback=1',
                 method: 'GET',
@@ -117,21 +116,22 @@ module.exports = function() {
                     'Content-Type': 'application/json'
                 }
             };
+            
+            console.log('querying flickr api...');
             request(options, function(err, rez, body) {
+                if(err) {
+                    reject(err);
+                }
                 if(!body) {
-                    console.log('request returned empty');
-                    reject();
+                    reject('request returned empty');
                 }
                 var data = JSON.parse(body);
-                if(data && data.photoset) {
-                    console.log('received photo data');
-                    resolve(data);
-                } else {
-                    console.log('unexpected results...', data);
-                    reject();
+                if(!data || !data.photoset) {
+                    reject('unexpected results...', data);
                 }
+                console.log('received photo data');
+                resolve(data);
             }).on('error', function(e) {
-                console.error(e.message);
                 reject(e.message);
             });
         });
