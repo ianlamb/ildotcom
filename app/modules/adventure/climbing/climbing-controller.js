@@ -1,4 +1,4 @@
-var auth            = require('../../middleware/auth');
+var auth            = require('../../../middleware/auth');
 var ClimbingProvider    = require('./climbing-provider');
 
 module.exports = function(router) {

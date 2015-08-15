@@ -1,4 +1,4 @@
-var auth            = require('../../middleware/auth');
+var auth            = require('../../../middleware/auth');
 var PlacesProvider  = require('./places-provider');
 
 module.exports = function(router) {
