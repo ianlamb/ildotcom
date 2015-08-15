@@ -12,6 +12,7 @@ module.exports = function(router) {
                 res.send(token);
             })
             .catch(function(err) {
+                console.err(err);
                 res.send(401);
             });
     });

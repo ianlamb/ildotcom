@@ -6,7 +6,6 @@ module.exports = function(app, router) {
     'use strict';
     
     // register all modules
-    // TODO: refactor routes to be handled within each module
     require('./modules/authentication/auth-controller')(router);
     require('./modules/blog/blog-controller')(router);
     require('./modules/portfolio/portfolio-controller')(router);
