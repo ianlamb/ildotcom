@@ -23,7 +23,12 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-repeat="nav in navLinks | orderBy:nav.sortRank" class="{{ isActive(nav.slug) }}"><a ui-sref="{{ nav.slug }}">{{ nav.text }}</a></li>
+                <li class="{{ isActive('home') }}"><a ui-sref="home">Home</a></li>
+                <li class="{{ isActive('blog') }}"><a ui-sref="blog">Journal</a></li>
+                <li class="{{ isActive('resume') }}"><a ui-sref="resume">Résumé</a></li>
+                <li class="{{ isActive('adventure') }}"><a ui-sref="adventure">Adventure</a></li>
+                <li class="{{ isActive('gaming') }}"><a ui-sref="gaming">Gaming</a></li>
+                <li class="{{ isActive('about') }}"><a ui-sref="about">About</a></li>
                 <li ng-show="!authorized" ng-cloak><a ui-sref="login">Login</a></li>
                 <li ng-show="authorized" ng-cloak><a ui-sref="logout">Logout</a></li>
             </ul>

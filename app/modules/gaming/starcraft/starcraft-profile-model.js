@@ -1,5 +1,6 @@
 var mongoose     = require("mongoose");
 var Schema       = mongoose.Schema;
+var timestamp   = require("../../../middleware/timestamp.js");
 
 var StarcraftProfileSchema = new Schema({
     "id": Number,
@@ -79,15 +80,6 @@ var StarcraftProfileSchema = new Schema({
     },
     "created_at": Date,
     "updated_at": Date
-}).pre('save', function(next) {
-    'use strict';
-
-    var now = new Date();
-    this.updated_at = now;
-    if (!this.created_at) {
-        this.created_at = now;
-    }
-    next();
-});
+}).pre('save', timestamp);
 
 module.exports = mongoose.model('StarcraftProfile', StarcraftProfileSchema);

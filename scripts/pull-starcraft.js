@@ -1,10 +1,11 @@
-var mongoose = require('mongoose');
-var app = require('../config/app');
-var db = require('../config/db');
-var request = require('request');
-var StarcraftProfile = require('../app/modules/gaming//starcraft-profile-model');
+var app                 = require('../config/app');
+var db                  = require('../config/db');
+var mongoose            = require('mongoose');
+var request             = require('request');
+var StarcraftProvider   = require('../app/modules/gaming/starcraft/starcraft-provider');
+var starcraftProvider   = new StarcraftProvider();
 
-console.log('connecting to db...');
+console.log('connecting to database...');
 mongoose.connect(db.url);
 
 var options = {
@@ -14,33 +15,31 @@ var options = {
         'Content-Type': 'application/json'
     }
 };
-console.log('making sc2 api call...');
+
+console.log('requesting sc2 profile...');
 request(options, function(err, res, body) {
-    if(!body) {
-        console.log('request returned empty');
+    if(err) {
+        console.err(err);
         mongoose.disconnect();
         return;
     }
-    var data = JSON.parse(body);
-    if(data) {
-        console.log('received info for: ' + data.displayName);
-        var profile = new StarcraftProfile(data);
-        console.log('saving profile...');
-        profile.save(function(err) {
-            if(err) {
-                console.error(err);
-            }
-            console.log('sc2 profile created');
-            mongoose.disconnect();
-            console.log('done');
-        });
-    } else {
-        console.log('unexpected results...');
+    if(!body) {
+        console.err('request returned empty');
         mongoose.disconnect();
+        return;
     }
+    
+    var data = JSON.parse(body);
+    starcraftProvider.saveProfile(data)
+        .then(function(res) {
+            console.log('profile saved');
+            mongoose.disconnect();
+        })
+        .catch(function(err) {
+            console.err(err);
+            mongoose.disconnect();
+        });
 }).on('error', function(e) {
     console.error(e.message);
     mongoose.disconnect();
 });
-
-

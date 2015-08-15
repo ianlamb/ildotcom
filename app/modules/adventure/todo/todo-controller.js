@@ -1,13 +1,13 @@
-var auth            = require('../../middleware/auth');
-var GamingProvider    = require('./gaming-provider');
+var auth            = require('../../../middleware/auth');
+var TodoProvider    = require('./todo-provider');
 
 module.exports = function(router) {
     'use strict';
     
-    var gamingProvider = new GamingProvider();
+    var todoProvider = new TodoProvider();
     
-    router.get('/wow', function(req, res) {
-        gamingProvider.getWowProfile()
+    router.get('/bucketlist', function(req, res) {
+        todoProvider.getTodos()
             .then(function(result) {
                 res.json(result);
             })
@@ -16,8 +16,8 @@ module.exports = function(router) {
             });
     });
     
-    router.get('/d3', function(req, res) {
-        gamingProvider.getDiabloProfile()
+    router.put('/bucketlist', auth, function(req, res) {
+        todoProvider.saveTodo(req.body)
             .then(function(result) {
                 res.json(result);
             })
@@ -26,10 +26,10 @@ module.exports = function(router) {
             });
     });
     
-    router.get('/sc2', function(req, res) {
-        gamingProvider.getStarcraftProfile()
-            .then(function(result) {
-                res.json(result);
+    router.delete('/bucketlist/:id', auth, function(req, res) {
+        todoProvider.deleteTodo(req.params.id)
+            .then(function() {
+                res.send(200);
             })
             .catch(function(err) {
                 res.send(err);
