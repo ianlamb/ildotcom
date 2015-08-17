@@ -1,5 +1,4 @@
 var jwt         = require('jwt-simple');
-var Promise     = require('promise');
 var config      = require('../../../config/app');
 
 module.exports = function() {

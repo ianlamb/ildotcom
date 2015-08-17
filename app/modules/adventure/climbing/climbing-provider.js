@@ -1,4 +1,3 @@
-var Promise         = require('promise');
 var ClimbSession    = require('./climb-session-model');
 
 module.exports = function() {

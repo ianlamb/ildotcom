@@ -1,4 +1,3 @@
-var auth            = require('../../../middleware/auth');
 var StarcraftProvider    = require('./starcraft-provider');
 
 module.exports = function(router) {

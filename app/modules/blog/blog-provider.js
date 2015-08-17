@@ -1,4 +1,3 @@
-var Promise         = require('promise');
 var Post            = require('./post-model');
 
 module.exports = function() {

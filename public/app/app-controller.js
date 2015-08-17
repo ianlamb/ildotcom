@@ -1,6 +1,6 @@
 angular.module('app')
     .controller('mainController',
-        function($scope, $rootScope, $window, $location, $state, $http, $timeout, Utilities, Posts) {
+        function($scope, $rootScope, $window, $location, $state, $http, $timeout) {
         'use strict';
     
         $rootScope.moment = moment;

@@ -1,4 +1,3 @@
-var Promise         = require('promise');
 var Todo            = require('./todo-model');
 
 module.exports = function() {

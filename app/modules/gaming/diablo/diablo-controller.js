@@ -1,4 +1,3 @@
-var auth            = require('../../../middleware/auth');
 var DiabloProvider    = require('./diablo-provider');
 
 module.exports = function(router) {

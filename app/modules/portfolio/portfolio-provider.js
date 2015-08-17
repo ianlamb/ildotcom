@@ -1,4 +1,3 @@
-var Promise         = require('promise');
 var Project        	= require('./project-model');
 
 module.exports = function() {

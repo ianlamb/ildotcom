@@ -1,4 +1,3 @@
-var auth            = require('../../../middleware/auth');
 var WarcraftProvider    = require('./warcraft-provider');
 
 module.exports = function(router) {
