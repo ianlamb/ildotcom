@@ -4,15 +4,15 @@
         <div class="container">
             <ul>
                 <li class="{{ state.name == 'adventure.travel' ? 'selected' : '' }}">
-                    <a ui-sref=".travel">Travel</a>
+                    <a ui-sref=".travel" i18n="common.travel"></a>
                     <div class="underline"></div>
                 </li>
                 <li class="{{ state.name == 'adventure.climb' ? 'selected' : '' }}">
-                    <a ui-sref=".climb">Climbing</a>
+                    <a ui-sref=".climb" i18n="common.climbing"></a>
                     <div class="underline"></div>
                 </li>
                 <li class="{{ state.name == 'adventure.bucket-list' ? 'selected' : '' }}">
-                    <a ui-sref=".bucket-list">Bucket List</a>
+                    <a ui-sref=".bucket-list" i18n="common.bucketList"></a>
                     <div class="underline"></div>
                 </li>
             </ul>

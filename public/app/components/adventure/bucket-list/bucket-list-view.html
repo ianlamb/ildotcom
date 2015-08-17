@@ -1,8 +1,8 @@
 <div id="bucketList">
     <div class="row">
         <div class="col-sm-3">
-            <p>This is my personal bucket list, containing all of the arbitrary, silly and often impractical things I would like to do before I die. The only rule is I can't take an item off the list.</p>
-            <progressbar value="percent(completedCount, bucketList.length)">{{ completedCount }} / {{ bucketList.length }} Complete</progressbar>
+            <p i18n="bucketlist.description"></p>
+            <progressbar value="percent(completedCount, bucketList.length)">{{ completedCount }} / {{ bucketList.length }} {{ 'common.complete' | i18n }}</progressbar>
         </div>
         <div class="col-sm-9">
             <div ng-if="authorized" class="panel">

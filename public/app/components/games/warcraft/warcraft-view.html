@@ -2,75 +2,75 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="collections">
-                <h3>Collections</h3>
-                <label>Mounts Collected</label>
+                <h3 i18n="warcraft.collectionsTitle"></h3>
+                <label i18n="warcraft.mountsLabel"></label>
                 <progressbar value="percent(wowProfile.mounts.numCollected, wowProfile.mounts.possible)">
                     {{ formatProgress(wowProfile.mounts.numCollected, wowProfile.mounts.possible) }}
                 </progressbar>
-                <label>Pets Collected</label>
+                <label i18n="warcraft.petsLabel"></label>
                 <progressbar value="percent(wowProfile.pets.numCollected, wowProfile.pets.possible)">
                     {{ formatProgress(wowProfile.pets.numCollected, wowProfile.pets.possible) }}
                 </progressbar>
             </div>
             <div class="achievements">
-                <h3>Achievements</h3>
-                <label>Total Complete</label>
+                <h3 i18n="warcraft.achievementsTitle"></h3>
+                <label i18n="warcraft.totalLabel"></label>
                 <progressbar value="percent(wowProfile.achievements.completed, wowProfile.achievements.possible)">
                     {{ formatProgress(wowProfile.achievements.completed, wowProfile.achievements.possible) }}
                 </progressbar>
-                <label>General</label>
+                <label i18n="warcraft.generalLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['General'].completed, wowProfile.achievements['General'].possible)">
                     {{ formatProgress(wowProfile.achievements['General'].completed, wowProfile.achievements['General'].possible) }}
                 </progressbar>
-                <label>Collections</label>
+                <label i18n="warcraft.collectionsLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['Collections'].completed, wowProfile.achievements['Collections'].possible)">
                     {{ formatProgress(wowProfile.achievements['Collections'].completed, wowProfile.achievements['Collections'].possible) }}
                 </progressbar>
-                <label>Quests</label>
+                <label i18n="warcraft.questsLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['Quests'].completed, wowProfile.achievements['Quests'].possible)">
                     {{ formatProgress(wowProfile.achievements['Quests'].completed, wowProfile.achievements['Quests'].possible) }}
                 </progressbar>
-                <label>Dungeons & Raids</label>
+                <label i18n="warcraft.dungeonsLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['Dungeons & Raids'].completed, wowProfile.achievements['Dungeons & Raids'].possible)">
                     {{ formatProgress(wowProfile.achievements['Dungeons & Raids'].completed, wowProfile.achievements['Dungeons & Raids'].possible) }}
                 </progressbar>
-                <label>Player vs Player</label>
+                <label i18n="warcraft.pvpLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['Player vs Player'].completed, wowProfile.achievements['Player vs Player'].possible)">
                     {{ formatProgress(wowProfile.achievements['Player vs Player'].completed, wowProfile.achievements['Player vs Player'].possible) }}
                 </progressbar>
-                <label>Exploration</label>
+                <label i18n="warcraft.explorationLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['Exploration'].completed, wowProfile.achievements['Exploration'].possible)">
                     {{ formatProgress(wowProfile.achievements['Exploration'].completed, wowProfile.achievements['Exploration'].possible) }}
                 </progressbar>
-                <label>Professions</label>
+                <label i18n="warcraft.professionsLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['Professions'].completed, wowProfile.achievements['Professions'].possible)">
                     {{ formatProgress(wowProfile.achievements['Professions'].completed, wowProfile.achievements['Professions'].possible) }}
                 </progressbar>
-                <label>Reputation</label>
+                <label i18n="warcraft.reputationLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['Reputation'].completed, wowProfile.achievements['Reputation'].possible)">
                     {{ formatProgress(wowProfile.achievements['Reputation'].completed, wowProfile.achievements['Reputation'].possible) }}
                 </progressbar>
-                <label>Scenarios</label>
+                <label i18n="warcraft.schenariosLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['Scenarios'].completed, wowProfile.achievements['Scenarios'].possible)">
                     {{ formatProgress(wowProfile.achievements['Scenarios'].completed, wowProfile.achievements['Scenarios'].possible) }}
                 </progressbar>
-                <label>Garrisons</label>
+                <label i18n="warcraft.garrisonsLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['Garrisons'].completed, wowProfile.achievements['Garrisons'].possible)">
                     {{ formatProgress(wowProfile.achievements['Garrisons'].completed, wowProfile.achievements['Garrisons'].possible) }}
                 </progressbar>
-                <label>Pet Battles</label>
+                <label i18n="warcraft.petBattlesLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['Pet Battles'].completed, wowProfile.achievements['Pet Battles'].possible)">
                     {{ formatProgress(wowProfile.achievements['Pet Battles'].completed, wowProfile.achievements['Pet Battles'].possible) }}
                 </progressbar>
-                <label>World Events</label>
+                <label i18n="warcraft.worldEventsLabel"></label>
                 <progressbar value="percent(wowProfile.achievements['World Events'].completed, wowProfile.achievements['World Events'].possible)">
                     {{ formatProgress(wowProfile.achievements['World Events'].completed, wowProfile.achievements['World Events'].possible) }}
                 </progressbar>
-                <label>Legacy</label>
+                <label i18n="warcraft.legacyLabel"></label>
                 <progressbar value="1">
                     {{ wowProfile.achievements['Legacy'].legacyTotal }}
                 </progressbar>
-                <label>Feats of Strength</label>
+                <label i18n="warcraft.fosLabel"></label>
                 <progressbar value="1">
                     {{ wowProfile.achievements['Feats of Strength'].foSTotal }}
                 </progressbar>

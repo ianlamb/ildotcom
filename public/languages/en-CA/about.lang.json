@@ -1,0 +1,12 @@
+{
+	"title": "About ianlamb.com",
+	"p1Title": "Inception",
+	"p1Body": "This began as a revamp of my old portfolio / personal website and a way to play with some new technologies. After some time working with angular and node I wanted to continue building stuff, so I started designing out the rest of the site. Most of it was to track and display my personal accomplishments but it was also a big learning experience for me.",
+	"p2Title": "Future",
+	"p2Body": "I will continue to update and improve this website and essentially use it as a sandbox for trying new technologies. This is my showcase to anyone that looks me up on the internet, so I'll be trying my best to keep it tip-top.",
+	"techTitle": "Technology Stack",
+	"libsTitle": "Libraries",
+	"servicesTitle": "Services & APIs",
+	"frameworksTitle": "Frameworks",
+	"toolsTitle": "Tools"
+}

@@ -1,0 +1,14 @@
+{
+	"careerTitle": "Carrière",
+	"battleTagLabel": "BattleTag",
+	"lifetimeKillsLabel": "Tués au Total",
+	"eliteKillsLabel": "Tue Elite",
+	"paragonLevelLabel": "Niveau Parangon",
+	"classTimeTitle": "Temps Joué par Classe",
+	"barbarian": "Barbare",
+	"crusader": "Croisé",
+	"demonHunter": "Chasseur de Démon",
+	"monk": "Moine",
+	"witchDoctor": "Féticheur",
+	"wizard": "Sorcier"
+}

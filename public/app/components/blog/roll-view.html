@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-sm-3">
-        <p>Welcome to my humble blog. Posts may range from detailed technical articles to travel stories to life updates, whatever I think might be worth sharing :)</p>
+        <p i18n="blog.description"></p>
         <dl>
-            <dt>Last Post</dt>
+            <dt i18n="blog.lastPostLabel"></dt>
             <dd class="smaller">{{ posts[0] ? moment(posts[0].created_at).fromNow() : 'n/a' }}</dd>
         </dl>
         <hr>
-        <label>Tags</label>
+        <label i18n="blog.tagsLabel"></label>
         <ul class="tags inline-bullets">
             <li ng-repeat="(tag, occurrences) in usedTags | orderBy:'occurrences'">
                 <a>{{ tag }}</a>

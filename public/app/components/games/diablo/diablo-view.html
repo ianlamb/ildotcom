@@ -1,35 +1,35 @@
 <div id="diablo">
     <div class="row">
         <div class="col-md-3">
-            <h3>Career</h3>
+            <h3 i18n="diablo.careerTitle"></h3>
             <div class="career">
                 <dl>
-                    <dt>BattleTag</dt>
+                    <dt i18n="diablo.battleTagLabel"></dt>
                     <dd>
                         <a href="http://us.battle.net/d3/en/profile/{{ diabloProfile.battleTag.split('#').join('-') }}/career" target="_blank" title="View Profile">
                             {{ diabloProfile.battleTag }}
                         </a>
                     </dd>
-                    <dt>Lifetime Kills</dt>
+                    <dt i18n="diablo.lifetimeKillsLabel"></dt>
                     <dd>{{ diabloProfile.kills.monsters }}</dd>
-                    <dt>Elite Kills</dt>
+                    <dt i18n="diablo.eliteKillsLabel"></dt>
                     <dd>{{ diabloProfile.kills.elites }}</dd>
-                    <dt>Paragon Level</dt>
+                    <dt i18n="diablo.paragonLevelLabel"></dt>
                     <dd>{{ diabloProfile.paragonLevel }}</dd>
                 </dl>
 
-                <h4>Time Played by Class</h4>
-                <label>Barbarian</label>
+                <h4 i18n="diablo.classTimeTitle"></h4>
+                <label i18n="diablo.barbarian"></label>
                 <progressbar value="percent(diabloProfile.timePlayed['barbarian'])"></progressbar>
-                <label>Crusader</label>
+                <label i18n="diablo.crusader"></label>
                 <progressbar value="percent(diabloProfile.timePlayed['crusader'])"></progressbar>
-                <label>Demon Hunter</label>
+                <label i18n="diablo.demonHunter"></label>
                 <progressbar value="percent(diabloProfile.timePlayed['demon-hunter'])"></progressbar>
-                <label>Monk</label>
+                <label i18n="diablo.monk"></label>
                 <progressbar value="percent(diabloProfile.timePlayed['monk'])"></progressbar>
-                <label>Witch Doctor</label>
+                <label i18n="diablo.witchDoctor"></label>
                 <progressbar value="percent(diabloProfile.timePlayed['witch-doctor'])"></progressbar>
-                <label>Wizard</label>
+                <label i18n="diablo.wizard"></label>
                 <progressbar value="percent(diabloProfile.timePlayed['wizard'])"></progressbar>
             </div>
         </div>

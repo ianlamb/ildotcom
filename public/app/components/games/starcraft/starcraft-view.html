@@ -1,21 +1,21 @@
 <div id="starcraft">
     <div class="row">
         <div class="col-md-3">
-            <h3>Career</h3>
+            <h3 i18n="starcraft.careerTitle"></h3>
             <dl>
-                <dt>BattleTag</dt>
+                <dt i18n="starcraft.battleTagLabel"></dt>
                 <dd>
                     <a href="http://us.battle.net/sc2/en{{ starcraftProfile.profilePath }}" target="_blank" title="View Profile">
                         {{ starcraftProfile.displayName }}
                     </a>
                 </dd>
-                <dt>Total Career Games</dt>
+                <dt i18n="starcraft.careerGamesLabel"></dt>
                 <dd>{{ starcraftProfile.career.careerTotalGames }}</dd>
-                <dt>Highest 1v1 Rank</dt>
+                <dt i18n="starcraft.topSoloRankLabel"></dt>
                 <dd>{{ starcraftProfile.career.highest1v1Rank }}</dd>
-                <dt>Highest Team Rank</dt>
+                <dt i18n="starcraft.topTeamRankLabel"></dt>
                 <dd>{{ starcraftProfile.career.highestTeamRank }}</dd>
-                <dt>Primary Race</dt>
+                <dt i18n="starcraft.primaryRaceLabel"></dt>
                 <dd>{{ starcraftProfile.career.primaryRace }}</dd>
             </dl>
         </div>

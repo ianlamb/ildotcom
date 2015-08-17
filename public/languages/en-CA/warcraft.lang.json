@@ -1,0 +1,21 @@
+{
+	"collectionsTitle": "Collections",
+	"mountsLabel": "Mounts Collected",
+	"petsLabel": "Pets Collected",
+	"achievementsTitle": "Achievements",
+	"totalLabel": "Total Complete",
+	"generalLabel": "General",
+	"collectionsLabel": "Collections",
+	"questsLabel": "Quests",
+	"dungeonsLabel": "Dungeons & Raids",
+	"pvpLabel": "Player vs Player",
+	"explorationLabel": "Exploration",
+	"professionsLabel": "Professions",
+	"reputationLabel": "Reputation",
+	"schenariosLabel": "Scenarios",
+	"garrisonsLabel": "Garrisons",
+	"petBattlesLabel": "Pet Battles",
+	"worldEventsLabel": "World Events",
+	"legacyLabel": "Legacy",
+	"fosLabel": "Feats of Strength"
+}

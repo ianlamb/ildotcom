@@ -1,0 +1,14 @@
+{
+	"careerTitle": "Career",
+	"battleTagLabel": "BattleTag",
+	"lifetimeKillsLabel": "Lifetime Kills",
+	"eliteKillsLabel": "Elite Kills",
+	"paragonLevelLabel": "Paragon Level",
+	"classTimeTitle": "Time Played by Class",
+	"barbarian": "Barbarian",
+	"crusader": "Crusader",
+	"demonHunter": "Demon Hunter",
+	"monk": "Monk",
+	"witchDoctor": "Witch Doctor",
+	"wizard": "Wizard"
+}
