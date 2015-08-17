@@ -1,12 +1,10 @@
 angular.module('app', [
     'ui.bootstrap',
     'ui.router',
-    'ngCookies',
     'ngAnimate',
     'ngSanitize',
-    'ngLocalize',
-    'ngLocalize.InstalledLanguages',
     'infinite-scroll',
+    'app.i18n',
     'app.routes',
     'app.auth',
     'app.home',
@@ -16,17 +14,4 @@ angular.module('app', [
     'app.portfolio',
     'app.adventure',
     'app.games'
-])
-.value('localeSupported', [
-    'en-CA',
-    'fr-FR',
-])
-.value('localeFallbacks', {
-    'en': 'en-CA',
-    'fr': 'fr-FR',
-    'fr-CA': 'fr-FR',
-    'fr-BE': 'fr-FR',
-    'fr-LU': 'fr-FR',
-    'fr-MC': 'fr-FR',
-    'fr-CH': 'fr-FR'
-});
+]);

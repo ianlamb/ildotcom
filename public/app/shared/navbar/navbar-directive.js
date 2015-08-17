@@ -1,5 +1,5 @@
 angular.module('app')
-    .directive('navbar', function() {
+    .directive('navbar', function(locale) {
         'use strict';
 
         return {
@@ -19,6 +19,21 @@ angular.module('app')
                         return 'active';
                     }
                     return '';
+                };
+                
+                $scope.availableLocales = {
+                    "en-CA": "English",
+                    "fr-FR": "Français"
+                };
+                $scope.currentLocale = locale.getLocale();
+    
+                $scope.changeLanguage = function(selectedLocale) {
+                    $scope.currentLocale = selectedLocale;
+                    locale.setLocale(selectedLocale);
+                };
+                
+                $scope.getCountryCode = function(selectedLocale) {
+                    return selectedLocale.split('-')[1];
                 };
             }
         };
