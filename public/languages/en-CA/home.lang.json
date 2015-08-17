@@ -1,0 +1,20 @@
+{
+	"intro": "Hi! My name is Ian and I craft websites.",
+	"description": "I am a full-stack developer that specializes in simple and functional web interfaces. I am pursuing a nomadic life-style to align my drive to create awesome websites with my passion for travel and cultural enrichment.",
+	"connectTitle": "Connect With Me",
+	"journalTitle": "Recent Journal Entries",
+	"careerTitle": "Career",
+	"careerDescription": "I am currently employed as a Web UI Developer at Cineplex Digital Networks where we provide Canada's leading digital in-store platforms to enterprise clients. You can see our products at any Tim Horton's location.",
+	"careerAction": "View Résumé",
+	"adventureTitle": "Adventure",
+	"adventureDescription": "My outdoor passions are traveling, rock climbing and motorcycles. I am on a mission to visit 100 countries. We have such an amazing opportunity these days to explore the world that it would be a shame to squander it.",
+	"adventureAction": "View Adventures",
+	"gamingTitle": "Gaming",
+	"gamingDescription": "Everyone has something that pulls them away from the noise of life, for me it's video games. I have a particular fondness of completing goals and tracking my progress in games, which lead to some fun stat aggregation.",
+	"gamingAction": "View Game Stats",
+	"workTitle": "Work",
+	"contactTitle": "Contact",
+	"contactPhoneLabel": "Mobile Phone",
+	"contactLocationLabel": "Location",
+	"contactEmailLabel": "Email"
+}

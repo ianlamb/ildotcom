@@ -1,0 +1,16 @@
+{
+	"home": "Accueil",
+	"blog": "Journal",
+	"resume": "Résumé",
+	"adventure": "Aventure",
+	"travel": "Voyage",
+	"climbing": "Escalade",
+	"bucketlist": "Liste de Bucket",
+	"gaming": "Jeux",
+	"wow": "World of Warcraft",
+	"d3": "Diablo 3",
+	"sc2": "Starcraft 2",
+	"about": "Sur",
+	"logout": "Se Déconnecter",
+	"login": "S'identifier"
+}

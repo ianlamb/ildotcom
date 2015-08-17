@@ -23,15 +23,20 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="{{ isActive('home') }}"><a ui-sref="home">Home</a></li>
-                <li class="{{ isActive('blog') }}"><a ui-sref="blog">Journal</a></li>
-                <li class="{{ isActive('resume') }}"><a ui-sref="resume">Résumé</a></li>
-                <li class="{{ isActive('adventure') }}"><a ui-sref="adventure">Adventure</a></li>
-                <li class="{{ isActive('gaming') }}"><a ui-sref="gaming">Gaming</a></li>
-                <li class="{{ isActive('about') }}"><a ui-sref="about">About</a></li>
-                <li ng-show="!authorized" ng-cloak><a ui-sref="login">Login</a></li>
-                <li ng-show="authorized" ng-cloak><a ui-sref="logout">Logout</a></li>
+                <li class="{{ isActive('home') }}"><a ui-sref="home" i18n="common.home"></a></li>
+                <li class="{{ isActive('blog') }}"><a ui-sref="blog" i18n="common.blog"></a></li>
+                <li class="{{ isActive('resume') }}"><a ui-sref="resume" i18n="common.resume"></a></li>
+                <li class="{{ isActive('adventure') }}"><a ui-sref="adventure" i18n="common.adventure"></a></li>
+                <li class="{{ isActive('gaming') }}"><a ui-sref="gaming" i18n="common.gaming"></a></li>
+                <li class="{{ isActive('about') }}"><a ui-sref="about" i18n="common.about"></a></li>
+                <li ng-show="!authorized" ng-cloak><a ui-sref="login" i18n="common.login"></a></li>
+                <li ng-show="authorized" ng-cloak><a ui-sref="logout" i18n="common.logout"></a></li>
             </ul>
+            <form class="navbar-form navbar-left">
+            	<div class="form-group">
+                    <div ng-language-select><div>
+                </div>
+            </form>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

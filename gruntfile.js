@@ -9,6 +9,7 @@ module.exports = function(grunt) {
         'bower.json',
         'server.js',
         'public/app/**/*.js',
+        'public/languages/**/*.json',
         'app/**/*.js'
       ],
       options: {
@@ -32,7 +33,8 @@ module.exports = function(grunt) {
           process: true,
           __dirname: true,
           exports: true,
-          res: true
+          res: true,
+          Promise: true
         }
       }
     },
@@ -181,7 +183,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-pagespeed');
 
-  grunt.registerTask('test', ['jshint', 'pagespeed']);
+  grunt.registerTask('test', ['jshint']);
   grunt.registerTask('default', ['jshint', 'copy', 'concat', 'uglify', 'cssmin', 'processhtml']);
   grunt.registerTask('full', ['jshint', 'clean', 'copy', 'concat', 'uglify', 'cssmin', 'imagemin', 'processhtml']);
 

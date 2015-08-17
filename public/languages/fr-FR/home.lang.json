@@ -1,0 +1,20 @@
+{
+	"intro": "Salut! Mon nom est Ian sites et je artisanat.",
+	"description": "Je suis un développeur full-stack qui se spécialise dans les interfaces Web simples et fonctionnelles. Je poursuis un style de vie nomade pour aligner mon lecteur à créer des sites Web impressionnants avec ma passion pour le Voyage et l'enrichissement culturel.",
+	"connectTitle": "Connecter avec moi",
+	"journalTitle": "Écritures récents",
+	"careerTitle": "Carrière",
+	"careerDescription": "Je travaille actuellement en tant que développeur de l'interface utilisateur Web à Cineplex Réseaux numériques où nous fournissons de premier plan numérique du Canada en magasin plates-formes pour les clients de l'entreprise.",
+	"careerAction": "Voir Résumé",
+	"adventureTitle": "Aventure",
+	"adventureDescription": "Mes passions en plein air se déplacent, l'escalade et motos. Je suis sur une mission de visiter 100 pays. Nous avons une telle opportunité incroyable ces jours à explorer le monde qu'il serait dommage de gaspiller.",
+	"adventureAction": "Voir Adventures",
+	"gamingTitle": "Jeu",
+	"gamingDescription": "Tout le monde a quelque chose qui les tire loin du bruit de la vie, pour moi il est des jeux vidéo. Je dois une tendresse particulière d'achever les objectifs et le suivi de mes progrès dans les jeux, qui conduisent à un certain regroupement amusant de stat.",
+	"gamingAction": "Voir Stats",
+	"workTitle": "Portefeuille",
+	"contactTitle": "Contact",
+	"contactPhoneLabel": "Téléphone",
+	"contactLocationLabel": "Emplacement",
+	"contactEmailLabel": "Email"
+}

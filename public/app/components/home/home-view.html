@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-sm-12 text-center">
                         <div id="intro">
-                            <h1 class="animated fadeIn delay-short">Hi! My name is Ian and I craft websites.</h1>
+                            <h1 i18n="home.intro" class="animated fadeIn delay-short"></h1>
                         </div>
                         <i ng-click="scrollDown()" class="fa fa-arrow-circle-o-down scroll-down"></i>
                     </div>
@@ -15,10 +15,10 @@
     </section>
     <section id="main">
         <div class="container">
-            <h3>I am a full-stack developer that specializes in simple and functional web interfaces. I am pursuing a nomadic life-style to align my drive to create awesome websites with my passion for travel and cultural enrichment.</h3>
+            <h3 i18n="home.description"></h3>
             <div class="row">
                 <div class="col-sm-5">
-                    <span class="title">Connect with me</span>
+                    <span i18n="home.connectTitle" class="title"></span>
                 </div>
                 <div class="col-sm-7">
                     <ul class="social-icons">
@@ -69,7 +69,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-5">
-                    <span class="title">Recent Journal Entries</span>
+                    <span i18n="home.journalTitle" class="title"></span>
                 </div>
                 <div class="col-sm-7">
                     <ul class="posts">
@@ -87,17 +87,17 @@
                 <div class="col-md-4">
                     <a href="/resume" class="major-link">
                         <div class="link-desc">
-                            <h2>Career</h2>
-                            <p>I am currently employed as a Web UI Developer at Cineplex Digital Networks where we provide Canada's leading digital in-store platforms to enterprise clients. You can see our products at any Tim Horton's location.</p>
-                            <div class="link-action">View Résumé <i class="fa fa-play"></i></div>
+                            <h2 i18n="home.careerTitle"></h2>
+                            <p i18n="home.careerDescription"></p>
+                            <div class="link-action">{{ 'home.careerAction' | i18n }} <i class="fa fa-play"></i></div>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-4">
                     <a href="/adventure" class="major-link">
                         <div class="link-desc">
-                            <h2>Adventure</h2>
-                            <p>My outdoor passions are traveling, rock climbing and motorcycles. I am on a mission to visit 100 countries. We have such an amazing opportunity these days to explore the world that it would be a shame to squander it.</p>
+                            <h2 i18n="home.adventureTitle"></h2>
+                            <p i18n="home.adventureDescription"></p>
                             <div class="link-action">View Adventures <i class="fa fa-play"></i></div>
                         </div>
                     </a>
@@ -105,8 +105,8 @@
                 <div class="col-md-4">
                     <a href="/gaming" class="major-link">
                         <div class="link-desc">
-                            <h2>Gaming</h2>
-                            <p>Everyone has something that pulls them away from the noise of life, for me it's video games. I have a particular fondness of completing goals and tracking my progress in games, which lead to some fun stat aggregation.</p>
+                            <h2 i18n="home.gamingTitle"></h2>
+                            <p i18n="home.gamingDescription"></p>
                             <div class="link-action">View Game Stats <i class="fa fa-play"></i></div>
                         </div>
                     </a>
@@ -116,7 +116,7 @@
     </section>
     <section id="projects">
         <div class="container">
-            <h1>Work</h1>
+            <h1 i18n="home.workTitle"></h1>
             <div ng-repeat="project in projects track by $index" class="project-wrapper 
                 {{ $index > 2 ? 'second-row' : 'first-row' }}">
                 <a href="{{ project.url }}" class="project" style="background-image: url('assets/images/{{ project.image }}')">
@@ -131,16 +131,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <h1>Contact</h1>
+                    <h1 i18n="home.contactTitle"></h1>
                     <div class="contact-info">
                         <div ng-bind="contact.phone"></div>
-                        <label>Mobile Phone</label>
+                        <label i18n="home.contactPhoneLabel"></label>
                         <div ng-bind="contact.location.name"></div>
-                        <label>Location</label>
+                        <label i18n="home.contactLocationLabel"></label>
                         <div>
                             <a href="mailto:{{ contact.email }}" class="social-anchor" ng-bind="contact.email"></a>
                         </div>
-                        <label>Email</label>
+                        <label i18n="home.contactEmailLabel"></label>
                     </div>
                 </div>
                 <div class="col-sm-8">
