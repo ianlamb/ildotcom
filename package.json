@@ -7,7 +7,6 @@
     "test": "mocha tests"
   },
   "dependencies": {
-    "angular-cookies": "^1.4.4",
     "body-parser": "~1.13.2",
     "compression": "^1.4.3",
     "express": "~4.13.3",
