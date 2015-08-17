@@ -4,7 +4,6 @@ angular.module('app.home', [])
         'use strict';
     
         // get recent posts to display on home page
-        // TODO: change when this fires so it only happens on home page (controller reorg?)
         Posts.getRecent()
             .success(function(data) {
                 $scope.posts = data;
