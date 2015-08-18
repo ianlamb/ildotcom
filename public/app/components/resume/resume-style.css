@@ -1,0 +1,28 @@
+#resume {
+    padding: 10px 0 20px;
+}
+#resume h1 {
+    padding: 10px 0;
+    margin: 0;
+}
+#resume h3 {
+    padding: 10px 10px 0;
+    margin: 0;
+}
+#resume ul {
+    list-style-type: square;
+    padding: 0;
+    margin: 0;
+}
+#resume ul li {   
+    margin-left: 17px;
+}
+#resume section {
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: background .4s;
+}
+#resume section:hover {
+    background: #292d33;
+    transition: background .2s;
+}

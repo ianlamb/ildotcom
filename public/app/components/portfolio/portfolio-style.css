@@ -1,0 +1,55 @@
+#work {
+    padding-top: 30px;
+}
+
+#work #projectList {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#work #projectList li {
+	position: relative;
+    margin-bottom: 10px;
+}
+
+#work #projectMain {
+    position: relative;
+    -webkit-animation: slideInRight 1s;
+    animation: slideInRight 1s;
+}
+#work #projectMain .carousel-container {
+    display: inline-block;
+    vertical-align: top;
+    width: 66%;
+}
+#work #projectMain .details {
+    vertical-align: top;
+    display: inline-block;
+    width: 33%;
+    padding: 0.5em;
+}
+#work #projectMain .name {
+    margin-top: 0;
+}
+#work #projectMain .url {
+    display: block;
+    margin-bottom: 1em;
+}
+#work #projectMain .technologies {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#work #projectMain .technologies li {
+    display: inline-block;
+    margin-right: 5px;
+    padding-right: 5px;
+    border-right: 3px solid rgba(255,255,255,.3);
+    line-height: 3px;
+}
+#work #projectMain .technologies li:last-child {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+

@@ -100,7 +100,8 @@ module.exports = function(grunt) {
       },
       css: {
         src: [
-          'public/assets/css/**/*.css'
+          'public/app/app-style.css',
+          'public/app/**/*.css'
         ],
         dest: 'dist/assets/css/<%= pkg.name %>.css'
       }

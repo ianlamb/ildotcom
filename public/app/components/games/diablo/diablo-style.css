@@ -1,0 +1,73 @@
+#diablo .portrait {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 0 0;
+    height: 66px;
+    width: 83px;
+    background: url('/assets/images/hero-nav-portraits.jpg');
+}
+#diablo .portrait.barbarian-male {
+    background-position: 0 0;
+}
+#diablo .portrait.barbarian-female {
+    background-position: -83px 0;
+}
+#diablo .portrait.demon-hunter-male {
+    background-position: 0 -66px;
+}
+#diablo .portrait.demon-hunter-female {
+    background-position: -83px -66px;
+}
+#diablo .portrait.monk-male {
+    background-position: 0 -132px;
+}
+#diablo .portrait.monk-female {
+    background-position: -83px -132px;
+}
+#diablo .portrait.witch-doctor-male {
+    background-position: 0 -198px;
+}
+#diablo .portrait.witch-doctor-female {
+    background-position: -83px -198px;
+}
+#diablo .portrait.wizard-male {
+    background-position: 0 -264px;
+}
+#diablo .portrait.wizard-female {
+    background-position: -83px -264px;
+}
+#diablo .portrait.crusader-male {
+    background-position: 0 -330px;
+}
+#diablo .portrait.crusader-female {
+    background-position: -83px -330px;
+}
+#diablo .stats table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border-style: none;
+}
+#diablo .stats table td {
+    padding: 10px 20px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+#diablo .seasonal {
+    float: right;
+    padding: 5px;
+    color: rgb(0, 147, 0);
+}
+#diablo .hardcore {
+    float: right;
+    padding: 5px;
+    color: rgb(171, 9, 9);
+}
+#diablo .timestamp {
+    margin-top: 10px;
+}
+#diablo .character a.main:hover .seasonal {
+    color: #d6d6d6;
+}
+#diablo .character a.main:hover .hardcore {
+    color: #d6d6d6;
+}

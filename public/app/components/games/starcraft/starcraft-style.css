@@ -1,0 +1,7 @@
+#starcraft .portrait {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 0 0;
+    width: 90px;
+    height: 90px;
+}

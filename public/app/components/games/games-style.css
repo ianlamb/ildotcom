@@ -1,0 +1,90 @@
+#gaming {
+    padding-bottom: 20px;
+}
+#gaming .header-image {
+    background-color: #0a0d23;
+    background-image: url('/assets/images/header-gaming.jpg');
+}
+#gaming .character {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    background: #454545;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 0;
+    margin-top: 20px;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+#gaming .character .extended {
+    padding: 16px 16px 16px 16px;
+}
+#gaming .character:hover {
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+#gaming .character a.main {
+    display: block;
+    color: #d6d6d6;
+    border-bottom: 4px solid #00abff;
+}
+#gaming .character a.main h3 {
+    color: #d6d6d6;
+}
+#gaming .character a.main:hover {
+    background: #00abff;
+    color: #fff;
+    border-bottom-color: #0091d8;
+}
+#gaming .character img {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+}
+#gaming .character .details {
+    display: inline-block;
+    vertical-align: top;
+}
+#gaming .character h3 {
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px 0 5px 0;
+}
+#gaming .character p {
+    margin: 0;
+}
+#gaming .items {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+#gaming .items td, #gaming .items th {
+    padding: 2px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+#gaming .items td:first-child {
+    white-space: nowrap;
+}
+#gaming .items a:hover {
+    
+}
+#gaming .items .trash { color: #9d9d9d; }
+#gaming .items .common { color: #ffffff; }
+#gaming .items .uncommon { color: #1eff00; }
+#gaming .items .rare { color: #1D87FF; }
+#gaming .items .epic { color: #a335ee; }
+#gaming .items .legendary { color: #DB820C; }
+#gaming .items .gray { color: #9d9d9d; }
+#gaming .items .white { color: #ffffff; }
+#gaming .items .blue { color: #1D87FF; }
+#gaming .items .yellow { color: #DAD70E; }
+#gaming .items .green { color: #00ff00; }
+#gaming .items .orange { color: #DB820C; }
+#gaming .feed {
+    list-style: none;
+    padding: 0;
+}
+#gaming .feed li {
+    clear: both;
+}

@@ -1,0 +1,166 @@
+#travel {
+}
+#travel .top {
+    margin-top: -180px;
+}
+#travel #map {
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    height: 550px;
+    z-index: 30;
+}
+#travel .trips {
+}
+#travel .trip {
+    display: inline-block;
+    width: 100%;
+    background: #454545;
+    box-shadow: 0 0 0 3px #ccc;
+    box-shadow: 5px 5px 16px rgba(0,0,0,0.1);
+    padding: 0;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+    vertical-align: top;
+}
+#travel .trip:nth-child(3) {
+    margin-right: 0;
+}
+#travel .trip .title {
+    padding: 15px;
+}
+#travel .trip .title h3 {
+    font-size: 1.1em;
+    color: #999;
+    margin: 0;
+}
+#travel .trip .title .date {
+    font-size: 0.8em;
+    color: #777;
+}
+#travel .trip .photos {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+}
+#travel .trip .photos .photo-container {
+    position: relative;
+    display: inline-block;
+    width: 33.3%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+/*
+#travel .trip .photos .photo-container:nth-child(1) {
+    left: 100%;
+}
+#travel .trip .photos .photo-container:nth-child(2) {
+    left: 100%;  
+    -webkit-animation: photoTransition2 9s infinite;
+    animation: photoTransition2 9s infinite;
+}
+#travel .trip .photos .photo-container:nth-child(3) {
+    left: 0;
+    -webkit-animation: photoTransition3 9s infinite;
+    animation: photoTransition3 9s infinite;
+}
+*/
+@-webkit-keyframes photoTransition1 {
+    0% {
+        left: 100%;
+    }
+    10% {
+        left: 0;
+    }
+    40% {
+        left: 0;
+    }
+    50% {
+        left: -100%;
+    }
+    100% {
+        left: -100%;
+    }
+}
+@-webkit-keyframes photoTransition2 {
+    0% {
+        left: 100%;
+    }
+    40% {
+        left: 100%;
+    }
+    50% {
+        left: 0;
+    }
+    70% {
+        left: 0;
+    }
+    80% {
+        left: -100%;
+    }
+    100% {
+        left: -100%;
+    }
+}
+@-webkit-keyframes photoTransition3 {
+    0% {
+        left: 0;   
+    }
+    10% {
+        left: -100%;
+    }
+    69.9% {
+        left: -100%;
+    }
+    70% {
+        left: 100%;
+    }
+    80% {
+        left: 0;
+    }
+    100% {
+        left: 0;
+    }
+}
+#travel .trip .photos .photo {
+    display: block;
+    min-width: 100%;
+    max-height: 240%;
+    max-width: 240%;
+    margin: 0 auto;
+    padding: 0;
+}
+#travel .trip .no-photo .fa {
+    display: block;
+    font-size: 2em;
+}
+#travel .trip .desc {
+    clear: both;
+    width: 100%;
+    padding: 15px;
+    font-size: 0.8em;
+    color: #aaa;
+}
+#travel .trip .desc ul {
+    list-style: none;
+    padding: 0;
+    height: 50px;
+}
+#travel .trip .desc li {
+    display: inline-block;
+    margin-right: 5px;
+    padding-right: 5px;
+    border-right: 3px solid rgba(255,255,255,.3);
+    line-height: 3px;
+}
+#travel .trip .desc li:last-child {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
