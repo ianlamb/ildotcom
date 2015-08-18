@@ -46,12 +46,14 @@ module.exports = function(grunt) {
         src: [
           'assets/data/**/*.json',
           'assets/data/**/*.js',
+          'assets/languages/**/*.json',
           'assets/libs/**/*.js',
           'assets/libs/**/*.css',
           'assets/libs/**/*.map',
           'assets/libs/**/*.svg',
           'assets/libs/**/*.woff',
           'assets/libs/**/*.eot',
+          'assets/libs/**/*.ttf',
           'assets/libs/**/*.ttf',
           'app/**/*.html'
         ],

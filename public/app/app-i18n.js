@@ -5,7 +5,7 @@ angular.module('app.i18n', [
     'ngLocalize.InstalledLanguages'
 ])
 .value('localeConf', {
-    basePath: 'languages',
+    basePath: 'assets/languages',
     defaultLocale: 'en-CA',
     sharedDictionary: 'common',
     fileExtension: '.lang.json',
