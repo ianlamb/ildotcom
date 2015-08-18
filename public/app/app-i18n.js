@@ -17,13 +17,10 @@ angular.module('app.i18n', [
 .value('localeSupported', [
     'en-CA',
     'fr-FR',
+    'es-ES'
 ])
 .value('localeFallbacks', {
     'en': 'en-CA',
     'fr': 'fr-FR',
-    'fr-CA': 'fr-FR',
-    'fr-BE': 'fr-FR',
-    'fr-LU': 'fr-FR',
-    'fr-MC': 'fr-FR',
-    'fr-CH': 'fr-FR'
+    'es': 'es-ES'
 });

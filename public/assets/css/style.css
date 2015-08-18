@@ -393,7 +393,7 @@ a.res-tooltip .callout {
     height: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 0 0 20px 0;
+    padding: 0;
 }
 
 #footer {
@@ -779,6 +779,7 @@ a.res-tooltip .callout {
     -o-background-size: cover;
     background-size: cover;
     text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    z-index: 5;
 }
 #home section#header .video-splash {
     position: fixed;

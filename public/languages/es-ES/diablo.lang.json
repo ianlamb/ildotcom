@@ -1,0 +1,14 @@
+{
+	"careerTitle": "Carrera",
+	"battleTagLabel": "BattleTag",
+	"lifetimeKillsLabel": "Muertes totales",
+	"eliteKillsLabel": "Muertes de élite",
+	"paragonLevelLabel": "Nivel parangón",
+	"classTimeTitle": "Tiempo jugado por clase",
+	"barbarian": "Bárbaro",
+	"crusader": "Guerrero divino",
+	"demonHunter": "Cazador de demonios",
+	"monk": "Monje",
+	"witchDoctor": "Santero",
+	"wizard": "Arcanista"
+}

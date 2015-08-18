@@ -23,7 +23,8 @@ angular.module('app')
                 
                 $scope.availableLocales = {
                     "en-CA": "English",
-                    "fr-FR": "Français"
+                    "fr-FR": "Français",
+                    "es-ES": "Español"
                 };
                 $scope.currentLocale = locale.getLocale();
     
