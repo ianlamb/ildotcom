@@ -88,6 +88,8 @@ module.exports = function(grunt) {
           'public/assets/libs/angular-ui-router/release/angular-ui-router.min.js',
           'public/assets/libs/angular-animate/angular-animate.min.js',
           'public/assets/libs/angular-sanitize/angular-sanitize.min.js',
+          'public/assets/libs/angular-cookies/angular-cookies.min.js',
+          'public/assets/libs/angular-localization/angular-localization.min.js',
           'public/assets/libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js',
           'public/assets/libs/jspdf/dist/jspdf.min.js',
           'public/assets/libs/markdown/lib/markdown.js',
