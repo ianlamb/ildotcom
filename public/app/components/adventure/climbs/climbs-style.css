@@ -53,15 +53,11 @@
     display: inline-block;
     margin-right: 20px;
 }
-#climbing .session .count span {
-}
 #climbing .session .total-points {
     display: inline-block;
     margin-right: 20px;
     padding-left: 20px;
     border-left: 1px solid rgba(255,255,255,0.4);
-}
-#climbing .session .total-points span {
 }
 #climbing .session .notes {
     display: block;
@@ -178,4 +174,27 @@
 }
 .heatCalendar table tr td.nextMonth {
     background: #3f3f3f;
+}
+
+
+/*
+ * MEDIA QUERIES
+ */
+ 
+/* desktop */
+@media only screen and (max-width: 1200px) {
+	
+}
+
+/* tablet */
+@media only screen and (max-width: 991px) {
+	
+}
+
+/* mobile */
+@media only screen and (max-width: 767px) {
+    #climbing .session .notes {
+        border: 0;
+        padding: 0;
+    }
 }

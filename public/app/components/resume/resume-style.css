@@ -26,3 +26,58 @@
     background: #292d33;
     transition: background .2s;
 }
+
+#resume a.res-tooltip { outline: none; }
+#resume a.res-tooltip strong { line-height: 30px; }
+#resume a.res-tooltip:hover { text-decoration: none; } 
+#resume a.res-tooltip .res-tooltip-panel {
+    position: absolute;
+    z-index: 10;
+    padding: 14px 20px;
+    margin-top: 0;
+    left: -280px;
+    width: 280px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.5);
+    opacity: 0;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+#resume a.res-tooltip:hover .res-tooltip-panel {
+    background: #444;
+    color: #ccc;
+    opacity: 1;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+#resume a.res-tooltip .callout {
+    z-index: 20;
+    display: block;
+    margin: 0 auto 20px;
+    border: 0;
+}
+
+
+/*
+ * MEDIA QUERIES
+ */
+ 
+/* desktop */
+@media only screen and (max-width: 1200px) {
+	
+}
+
+/* tablet */
+@media only screen and (max-width: 991px) {
+	
+}
+
+/* mobile */
+@media only screen and (max-width: 767px) {
+    #resume .btn.btn-primary {
+        margin-bottom: 10px;
+    }
+    #resume section, #resume h3 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

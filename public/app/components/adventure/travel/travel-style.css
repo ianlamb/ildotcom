@@ -1,5 +1,3 @@
-#travel {
-}
 #travel .top {
     margin-top: -180px;
 }
@@ -10,8 +8,6 @@
     width: 100%;
     height: 550px;
     z-index: 30;
-}
-#travel .trips {
 }
 #travel .trip {
     display: inline-block;
@@ -55,79 +51,122 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
 }
-/*
 #travel .trip .photos .photo-container:nth-child(1) {
-    left: 100%;
+    -webkit-animation-name: photoTransition1;
+    animation-name: photoTransition1;
 }
 #travel .trip .photos .photo-container:nth-child(2) {
-    left: 100%;  
-    -webkit-animation: photoTransition2 9s infinite;
-    animation: photoTransition2 9s infinite;
+    -webkit-animation-name: photoTransition2;
+    animation-name: photoTransition2;
 }
 #travel .trip .photos .photo-container:nth-child(3) {
-    left: 0;
-    -webkit-animation: photoTransition3 9s infinite;
-    animation: photoTransition3 9s infinite;
+    -webkit-animation-name: photoTransition3;
+    animation-name: photoTransition3;
 }
-*/
 @-webkit-keyframes photoTransition1 {
     0% {
-        left: 100%;
+        bottom: 100%;
+        opacity: 0;
     }
-    10% {
-        left: 0;
+    30% {
+        bottom: 100%;
+        opacity: 0;
     }
-    40% {
-        left: 0;
-    }
-    50% {
-        left: -100%;
+    60% {
+        bottom: 0;
+        opacity: 1;
     }
     100% {
-        left: -100%;
+        bottom: 0;
+        opacity: 1;
+    }
+}
+@keyframes photoTransition1 {
+    0% {
+        bottom: 100%;
+        opacity: 0;
+    }
+    30% {
+        bottom: 100%;
+        opacity: 0;
+    }
+    60% {
+        bottom: 0;
+        opacity: 1;
+    }
+    100% {
+        bottom: 0;
+        opacity: 1;
     }
 }
 @-webkit-keyframes photoTransition2 {
     0% {
-        left: 100%;
-    }
-    40% {
-        left: 100%;
+        bottom: 100%;
+        opacity: 0;
     }
     50% {
-        left: 0;
-    }
-    70% {
-        left: 0;
+        bottom: 100%;
+        opacity: 0;
     }
     80% {
-        left: -100%;
+        bottom: 0;
+        opacity: 1;
     }
     100% {
-        left: -100%;
+        bottom: 0;
+        opacity: 1;
+    }
+}
+@keyframes photoTransition2 {
+    0% {
+        bottom: 100%;
+        opacity: 0;
+    }
+    50% {
+        bottom: 100%;
+        opacity: 0;
+    }
+    80% {
+        bottom: 0;
+        opacity: 1;
+    }
+    100% {
+        bottom: 0;
+        opacity: 1;
     }
 }
 @-webkit-keyframes photoTransition3 {
     0% {
-        left: 0;   
-    }
-    10% {
-        left: -100%;
-    }
-    69.9% {
-        left: -100%;
+        bottom: 100%;
+        opacity: 0;
     }
     70% {
-        left: 100%;
-    }
-    80% {
-        left: 0;
+        bottom: 100%;
+        opacity: 0;
     }
     100% {
-        left: 0;
+        bottom: 0;
+        opacity: 1;
     }
 }
+@keyframes photoTransition3 {
+    0% {
+        bottom: 100%;
+    }
+    70% {
+        bottom: 100%;
+    }
+    100% {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
 #travel .trip .photos .photo {
     display: block;
     min-width: 100%;
@@ -163,4 +202,41 @@
     margin: 0;
     padding: 0;
     border: 0;
+}
+
+.photos .photo {
+    opacity: 0.7;
+}
+.photos .photo:hover {
+    opacity: 1.0;
+}
+
+
+/*
+ * MEDIA QUERIES
+ */
+ 
+/* desktop */
+@media only screen and (max-width: 1200px) {
+    #travel .trip .photos {
+        height: 100px;
+    }
+}
+
+/* tablet */
+@media only screen and (max-width: 991px) {
+    #travel #map {
+        display: block;
+        height: 400px;
+    }
+    #travel .top {
+        margin-top: 0;
+    }
+}
+
+/* mobile */
+@media only screen and (max-width: 767px) {
+    #travel #map {
+        height: 260px;
+    }
 }
