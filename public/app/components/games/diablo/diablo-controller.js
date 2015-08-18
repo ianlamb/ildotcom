@@ -10,10 +10,6 @@ angular.module('app.games.diablo', [])
     $scope.getClassSlug = function(hero) {
         return hero.class + '-' + (hero.gender ? 'female' : 'male');
     };
-
-    $scope.percent = function(value) {
-        return parseInt(value * 100);
-    };
     
     $scope.sluggify = Utilities.sluggify;
     $scope.formatSlug = Utilities.formatSlug;

@@ -53,5 +53,12 @@ angular.module('app')
         $scope.trackClickEvent = function(label) {
             ga('send', 'event', 'button', 'click', label);
         };
+        
+        $scope.percent = function(partial, total) {
+            if (!partial) {
+                return 0;
+            }
+            return parseInt(partial / total * 100);
+        };
     
     });

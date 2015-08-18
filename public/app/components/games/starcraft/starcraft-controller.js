@@ -7,10 +7,6 @@ angular.module('app.games.starcraft', [])
             $scope.starcraftProfile = data;
         });
 
-    $scope.percent = function(partial, total) {
-        return parseInt(partial / total * 100);
-    };
-
     $scope.formatSlug = Utilities.formatSlug;
 
 });

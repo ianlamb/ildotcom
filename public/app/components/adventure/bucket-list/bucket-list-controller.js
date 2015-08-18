@@ -104,8 +104,4 @@ angular.module('app.adventure.bucket-list', [])
                 });
         };
     
-        $scope.percent = function(partial, total) {
-            return parseInt(partial / total * 100);
-        };
-    
     });
