@@ -175,7 +175,23 @@ module.exports = function(grunt) {
           threshold: 60
         }
       }
-    }
+    },
+    watch: {
+      all: {
+        files: [
+          'public/app/**/*.html',
+          'public/app/**/*.js',
+          'public/app/**/*.css',
+          'public/assets/languages/**/*.json',
+          'public/assets/images/**/*.jpg',
+          'public/assets/images/**/*.png',
+          'public/assets/images/**/*.gif'
+        ],
+        options: {
+          livereload: true,
+        },
+      },
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -187,6 +203,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-pagespeed');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('test', ['jshint']);
   grunt.registerTask('default', ['jshint', 'copy', 'concat', 'uglify', 'cssmin', 'processhtml']);
