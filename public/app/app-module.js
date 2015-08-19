@@ -1,11 +1,11 @@
 angular.module('app', [
     'ui.bootstrap',
-    'ui.router',
     'ngAnimate',
     'ngSanitize',
     'infinite-scroll',
-    'app.i18n',
     'app.routes',
+    'app.i18n',
+    'app.utilities',
     'app.auth',
     'app.home',
     'app.about',

@@ -73,18 +73,13 @@ module.exports = function(grunt) {
       }
     },
     concat: {
-      options: {
-        separator: ' '
-      },
-      app: {
+      js: {
+        options: {
+          separator: ';'
+        },
         src: [
-          'public/app/app-module.js',
-          'public/app/**/*.js'
-        ],
-        dest: 'dist/assets/js/<%= pkg.name %>.js'
-      },
-      libs: {
-        src: [
+          'public/assets/libs/jquery/dist/jquery.js',
+          'public/assets/libs/angular/angular.min.js',
           'public/assets/libs/angular-ui-router/release/angular-ui-router.min.js',
           'public/assets/libs/angular-animate/angular-animate.min.js',
           'public/assets/libs/angular-sanitize/angular-sanitize.min.js',
@@ -98,12 +93,20 @@ module.exports = function(grunt) {
           'public/assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js',
           'public/assets/libs/bootstrap/dist/js/bootstrap.min.js',
           'public/assets/libs/jvectormap/jquery.jvectormap.min.js',
-          'public/assets/libs/jwt-decode/build/jwt-decode.min.js'
+          'public/assets/libs/jwt-decode/build/jwt-decode.min.js',
+          'public/app/app-module.js',
+          'public/app/*.js',
+          'public/app/**/*.js'
         ],
-        dest: 'dist/assets/js/libs.js'
+        dest: 'dist/assets/js/<%= pkg.name %>.js'
       },
       css: {
+        options: {
+          separator: ' '
+        },
         src: [
+          'public/assets/libs/bootstrap/dist/css/bootstrap.min.css',
+          'public/assets/libs/components-font-awesome/css/font-awesome.min.css',
           'public/app/app-style.css',
           'public/app/**/*.css'
         ],
@@ -117,8 +120,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/assets/js/<%= pkg.name %>.min.js': ['<%= concat.app.dest %>'],
-          'dist/assets/js/libs.min.js': ['<%= concat.libs.dest %>']
+          'dist/assets/js/<%= pkg.name %>.min.js': ['<%= concat.js.dest %>']
         }
       }
     },

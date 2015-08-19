@@ -12,9 +12,9 @@
     <title>Ian Lamb</title>
 
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <!-- build:css assets/css/app.min.css -->
     <link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/libs/components-font-awesome/css/font-awesome.min.css">
-    <!-- build:css assets/css/app.min.css -->
     <link rel="stylesheet" href="app/app-style.css">
     <link rel="stylesheet" href="app/components/auth/auth-style.css">
     <link rel="stylesheet" href="app/components/home/home-style.css">
@@ -45,9 +45,9 @@
         <div class="page" ui-view></div>
     </div>
 
+    <!-- build:js assets/js/app.min.js -->
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="assets/libs/angular/angular.min.js"></script>
-    <!-- build:js assets/js/libs.min.js -->
     <script src="assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="assets/libs/angular-animate/angular-animate.min.js"></script>
     <script src="assets/libs/angular-sanitize/angular-sanitize.min.js"></script>
@@ -62,12 +62,10 @@
     <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/libs/jvectormap/jquery.jvectormap.min.js"></script>
     <script src="assets/libs/jwt-decode/build/jwt-decode.min.js"></script>
-    <!-- /build -->
-    <!-- build:js assets/js/app.min.js -->
     <script src="app/app-module.js"></script>
     <script src="app/app-controller.js"></script>
     <script src="app/app-routes.js"></script>
-    <script src="app/app-service.js"></script>
+    <script src="app/app-utilities.js"></script>
     <script src="app/app-i18n.js"></script>
     <script src="app/shared/navbar/navbar-directive.js"></script>
     <script src="app/shared/contact-map/contact-map-directive.js"></script>
