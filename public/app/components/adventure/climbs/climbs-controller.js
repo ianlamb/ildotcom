@@ -17,13 +17,13 @@ angular.module('app.adventure.climbs', [])
                         '5.12-','5.12','5.12+']
     };
     $scope.newSession = {
-        date: moment().format(),
+        timestamp: moment().format(),
         climbs: []
     };
     
     $scope.addSend = function() {
-        var type = $('#type').val();
-        var grade = $('#grade option:selected').html();
+        var type = $scope.newSession.type;
+        var grade = $scope.newSession.grade;
         if(!grade) {
             alert('Type and grade required');
             return;
@@ -42,8 +42,6 @@ angular.module('app.adventure.climbs', [])
     };
 
     $scope.saveSession = function() {
-        $scope.newSession.place = $('#place').val();
-        $scope.newSession.date = $('#timestamp').val();
         if(!$scope.newSession.place) {
             alert('Place required');
             return;
@@ -65,7 +63,7 @@ angular.module('app.adventure.climbs', [])
             
                 $scope.messages.push({ type: 'success', body: 'Climbing session saved!' });
                 $scope.newSession = {
-                    date: moment().format(),
+                    timestamp: moment().format(),
                     climbs: []
                 };
                 $scope.climbSessions.unshift(latestClimb);
@@ -79,16 +77,20 @@ angular.module('app.adventure.climbs', [])
                 daysClimbed: 0,
                 routesClimbed: 0,
                 problemsClimbed: 0,
-                bestBoulder: boulderGrades[0],
-                bestLead: climbGrades[0],
-                bestTopRope: climbGrades[0]
+                bestBoulder: 'n/a',
+                bestLead: 'n/a',
+                bestTopRope: 'n/a'
             };
             var climbSessions = data;
+            if (climbSessions.length === 0) {
+                return;
+            }
 
             $scope.heatCalendarData = {};
             climbSessions.forEach(parseClimb);
 
             $scope.stats.lastClimb = moment(climbSessions[0].date).fromNow();
+            
 
             $scope.climbSessions = [];
             var climbCounter;

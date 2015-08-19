@@ -45,7 +45,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="place">Place</label>
-                                <select name="place" id="place" ng-model="place" class="form-control">
+                                <select name="place" id="place" ng-model="newSession.place" class="form-control">
                                     <option ng-repeat="place in places" value="{{ place._id }}">{{ place.name }}</option>
                                 </select>
                             </div>
@@ -53,7 +53,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="timestamp">Timestamp</label>
-                                <input type="text" name="timestamp" id="timestamp" value="{{ newSession.date }}" class="form-control">
+                                <input type="text" name="timestamp" id="timestamp" ng-model="newSession.timestamp" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                         <div class="col-sm-8">
                             <div class="form-group">
                                 <label for="notes">Notes</label>
-                                <textarea id="notes" ng-model="notes" class="form-control"></textarea>
+                                <textarea id="notes" ng-model="newSession.notes" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>
@@ -69,13 +69,13 @@
                         <div class="col-sm-4 col-xs-5">
                             <div class="form-group">
                                 <label for="type">Type</label>
-                                <select name="type" id="type" ng-model="type" ng-options="type for (type, grades) in climbTypes" class="form-control"></select>
+                                <select name="type" id="type" ng-model="newSession.type" ng-options="type as type for (type, grades) in climbTypes" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-xs-4">
                             <div class="form-group">
                                 <label for="grade">Grade</label>
-                                <select name="grade" id="grade" ng-model="grade" ng-disabled="!type" ng-options="grade for grade in type" class="form-control"></select>
+                                <select name="grade" id="grade" ng-model="newSession.grade" ng-disabled="!newSession.type" ng-options="grade for grade in climbTypes[newSession.type]" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-sm-4 col-xs-3">
