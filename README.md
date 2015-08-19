@@ -14,6 +14,7 @@ Make appropriate config files, then run:
     bower install
     
 For development with LiveReload run:
+
     grunt watch
     node server.js
     
