@@ -4,6 +4,25 @@
 
 [![bitHound Score](https://www.bithound.io/github/ianlamb/ildotcom/badges/score.svg)](https://www.bithound.io/github/ianlamb/ildotcom/master)
 
+### Setup
+
+Make sure Node, NPM, Bower and MongoDB are all installed globally.
+
+Make appropriate config files, then run:
+
+    npm install
+    bower install
+    
+For development with LiveReload run:
+    grunt watch
+    node server.js
+    
+For production build run:
+
+    grunt full
+    NODE_ENV=prod node server.js
+
+
 ### Technology Stack
 * HTML5
 * CSS
@@ -28,4 +47,5 @@
 ### Tools
 * NPM
 * Bower
+* Grunt
 * Forever
