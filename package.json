@@ -14,10 +14,9 @@
     "method-override": "~2.3.2",
     "mongoose": "~4.1.2",
     "promise": "~7.0.1",
-    "request": "~2.60.0"
+    "request": "~2.61.0"
   },
   "devDependencies": {
-    "chai": "^3.2.0",
     "grunt": "~0.4.5",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "~0.5.1",
@@ -31,6 +30,7 @@
     "grunt-pagespeed": "^1.0.0",
     "grunt-processhtml": "^0.3.7",
     "grunt-uncss": "^0.4.1",
+    "chai": "^3.2.0",
     "mocha": "^2.2.4",
     "proxyquire": "^1.4.0",
     "sinon": "^1.14.1"
