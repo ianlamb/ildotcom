@@ -52,7 +52,8 @@ angular.module('app')
                 
                 // click handler to scroll to a reference ID
                 $scope.scrollTo = function(id) {
-                    Utilities.scrollTo(document.body, document.getElementById(id).offsetTop + 240, 800);
+                    var toElement = document.getElementById(id);
+                    Utilities.scrollTo(document.body, toElement.offsetTop + toElement.offsetParent.offsetTop - 10, 800);
                 };
                 
                 function parseStyle(value) {
