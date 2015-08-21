@@ -11,7 +11,6 @@ angular.module('app')
             controller: function($scope, $element, $timeout) {
                 var DATE_FORMAT_STRING = 'YYYY-MM-DD';
                 
-                $scope.data;
                 $scope.now = moment();
                 $scope.today = $scope.now.format(DATE_FORMAT_STRING);
                 $scope.title = $scope.now.format('MMMM');
@@ -19,7 +18,7 @@ angular.module('app')
                 
                 var year = $scope.now.year();
                 var month = $scope.now.month();
-                var days = daysInMonth(month, year);
+                var days = Utilities.daysInMonth(month, year);
                 var firstDay = new Date(year, month, 1).getDay() + 1;
                 var currentDate = moment(new Date(year, month, 1)).subtract((firstDay), 'days');
                 var dayOfMonth = 1;
@@ -63,11 +62,6 @@ angular.module('app')
                     var blue = Math.ceil((value * 255) / 2 + 130);
                     var alpha = 0.8;
                     return 'background: rgba('+red+','+green+','+blue+','+alpha+')';
-                }
-
-                // month is 1 based
-                function daysInMonth(month,year) {
-                    return new Date(year, month, 0).getDate();
                 }
             }
         };

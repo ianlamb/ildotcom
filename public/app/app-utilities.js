@@ -33,6 +33,10 @@ angular.module('app.utilities', [])
             return parts.join(' ');
         };
         
+        utilities.daysInMonth = function(month,year) {
+            return new Date(year, month, 0).getDate();
+        };
+        
         utilities.scrollTo = function(element, to, duration) {
             var start = element.scrollTop,
                 change = to - start,
