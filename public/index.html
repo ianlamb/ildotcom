@@ -108,23 +108,5 @@
       ga('create', 'UA-36320356-1', 'auto');
       ga('send', 'pageview');
     </script>
-
-    <script>
-      var cb = function() {
-        var css = [
-            'assets/libs/jvectormap/jquery-jvectormap.css'
-        ];
-        var h = document.getElementsByTagName('head')[0];
-        css.forEach(function(path) {
-            var l = document.createElement('link'); l.rel = 'stylesheet';
-            l.href = path;
-            h.parentNode.insertBefore(l, h);
-        });
-      };
-      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-          webkitRequestAnimationFrame || msRequestAnimationFrame;
-      if (raf) raf(cb);
-      else window.addEventListener('load', cb);
-    </script>
 </body>
 </html>
