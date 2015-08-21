@@ -22,9 +22,11 @@ angular.module('app.home', [])
             "phone": "+1 519-902-6533",
             "location": {
                 "name": "London, ON",
-                "latLng": [42.9837, -81.2497]
+                "latitude": 42.9837,
+                "longitude": -81.2497
             }
         };
+
         $scope.projects = [
             {
                 name: 'GoodLife Fitness Sales',

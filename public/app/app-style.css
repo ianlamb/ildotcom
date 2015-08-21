@@ -270,6 +270,9 @@ code {
     text-transform: uppercase;
     text-decoration: none;
 }
+.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+    max-height: 360px;
+}
 .dropdown-menu {
     width: 180px;
 }

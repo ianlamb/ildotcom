@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid" ng-blur="closeDropdown('navbar')">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" ng-class="{ 'collapsed': dropdowns.navbar }" ng-click="toggleDropdown('navbar')">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -21,18 +21,18 @@
             </a>
         </div><!-- /.navbar-header -->
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" ng-class="{ 'in': dropdowns.navbar }">
             <ul class="nav navbar-nav navbar-left">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        {{ availableLocales[currentLocale] }}
-                        <span class="caret"></span>
-                    </a>
+                <li class="dropdown" ng-class="{ 'open': dropdowns.language }">
+                    <a href="#" class="dropdown-toggle"
+                        ng-click="toggleDropdown('language')"
+                        ng-blur="closeDropdown('language')">{{ availableLocales[currentLocale] }}
+                        <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><p class="navbar-text">Change Language</p></li>
                         <li role="separator" class="divider"></li>
                         <li ng-repeat="(locale, name) in availableLocales">
-                            <a href="#" ng-click="changeLanguage(locale)">{{ name }}</a>
+                            <a href="#" ng-mousedown="changeLanguage(locale)">{{ name }}</a>
                         </li>
                     </ul>
                 </li>

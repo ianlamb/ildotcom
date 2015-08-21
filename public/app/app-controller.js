@@ -40,14 +40,8 @@ angular.module('app')
             }
         });
     
-        // scroll to the top of the window to make page changes feel natural
-        $rootScope.$on('$stateChangeSuccess', function() {
-            $window.scrollTo(0,0);
-        });
-    
         $scope.$on('$viewContentLoaded', function() {
             $window.ga('send', 'pageview', { page: $location.url() });
-            $(".navbar-collapse.collapse.in").collapse('hide');
         });
     
         $scope.trackClickEvent = function(label) {

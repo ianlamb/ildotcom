@@ -47,7 +47,6 @@
     </div>
 
     <!-- build:js assets/js/app.min.js -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="assets/libs/angular/angular.min.js"></script>
     <script src="assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="assets/libs/angular-animate/angular-animate.min.js"></script>
@@ -60,8 +59,7 @@
     <script src="assets/libs/moment/min/moment.min.js"></script>
     <script src="assets/libs/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script src="assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="assets/libs/jvectormap/jquery.jvectormap.min.js"></script>
+    <script src="assets/libs/raphael/raphael-min.js"></script>
     <script src="assets/libs/jwt-decode/build/jwt-decode.min.js"></script>
     <script src="app/app-module.js"></script>
     <script src="app/app-controller.js"></script>
@@ -69,7 +67,7 @@
     <script src="app/app-utilities.js"></script>
     <script src="app/app-i18n.js"></script>
     <script src="app/shared/navbar/navbar-directive.js"></script>
-    <script src="app/shared/contact-map/contact-map-directive.js"></script>
+    <script src="app/shared/world-map/world-map-directive.js"></script>
     <script src="app/shared/heat-calendar/heat-calendar-directive.js"></script>
     <script src="app/shared/simple-directives/ng-enter.js"></script>
     <script src="app/shared/simple-directives/ng-tab.js"></script>
@@ -100,7 +98,7 @@
     <script src="app/components/games/warcraft/warcraft-controller.js"></script>
     <script src="app/components/games/warcraft/warcraft-service.js"></script>
     <!-- /build -->
-    <script src="assets/data/maps/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/maps/world.js"></script>
     <script src="http://static.wowhead.com/widgets/power.js" async></script>
     <script>var wowhead_tooltips = { "colorlinks": true, "iconizelinks": true, "renamelinks": true }</script>
     <script>
@@ -110,24 +108,6 @@
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-36320356-1', 'auto');
       ga('send', 'pageview');
-    </script>
-
-    <script>
-      var cb = function() {
-        var css = [
-            'assets/libs/jvectormap/jquery-jvectormap.css'
-        ];
-        var h = document.getElementsByTagName('head')[0];
-        css.forEach(function(path) {
-            var l = document.createElement('link'); l.rel = 'stylesheet';
-            l.href = path;
-            h.parentNode.insertBefore(l, h);
-        });
-      };
-      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-          webkitRequestAnimationFrame || msRequestAnimationFrame;
-      if (raf) raf(cb);
-      else window.addEventListener('load', cb);
     </script>
 </body>
 </html>

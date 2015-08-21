@@ -20,8 +20,6 @@ module.exports = function(grunt) {
         browser: true,
         devel: true,
         globals: {
-          $: true,
-          jQuery: true,
           module: true,
           angular: true,
           moment: true,
@@ -34,7 +32,8 @@ module.exports = function(grunt) {
           __dirname: true,
           exports: true,
           res: true,
-          Promise: true
+          Promise: true,
+          Raphael: true
         }
       }
     },
@@ -44,8 +43,8 @@ module.exports = function(grunt) {
         expand: true,
         cwd: 'public/',
         src: [
-          'assets/data/**/*.json',
-          'assets/data/**/*.js',
+          'assets/maps/**/*.json',
+          'assets/maps/**/*.js',
           'assets/languages/**/*.json',
           'assets/libs/**/*.js',
           'assets/libs/**/*.css',
@@ -78,7 +77,6 @@ module.exports = function(grunt) {
           separator: ';'
         },
         src: [
-          'public/assets/libs/jquery/dist/jquery.js',
           'public/assets/libs/angular/angular.min.js',
           'public/assets/libs/angular-ui-router/release/angular-ui-router.min.js',
           'public/assets/libs/angular-animate/angular-animate.min.js',
@@ -91,8 +89,7 @@ module.exports = function(grunt) {
           'public/assets/libs/moment/min/moment.min.js',
           'public/assets/libs/angular-bootstrap/ui-bootstrap.min.js',
           'public/assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js',
-          'public/assets/libs/bootstrap/dist/js/bootstrap.min.js',
-          'public/assets/libs/jvectormap/jquery.jvectormap.min.js',
+          'public/assets/libs/raphael/raphael-min.js',
           'public/assets/libs/jwt-decode/build/jwt-decode.min.js',
           'public/app/app-module.js',
           'public/app/*.js',
