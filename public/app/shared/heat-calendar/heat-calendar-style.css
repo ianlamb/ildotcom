@@ -1,0 +1,46 @@
+.heat-calendar {
+    width: 100%;
+}
+.heat-calendar .title {
+    margin: 0;
+    text-align: center;
+    font-weight: normal;
+}
+.heat-calendar table {
+    width: 100%;
+    margin-bottom: 1em;
+    border-spacing: 2px;
+    border-collapse: separate;
+}
+.heat-calendar table tr td,
+.heat-calendar table tr th {
+    width: 10%;
+    height: 30px;
+    text-align: center;
+    font-weight: normal;
+}
+.heat-calendar table tr td {
+    background: #454545;
+    border: 2px solid transparent;
+    color: rgba(0,0,0,.4);
+    cursor: default;
+    -webkit-transition: color .5s ease-in;
+    transition: color .5s ease-in;
+}
+.heat-calendar table tr td:hover {
+    color: #999;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+}
+.heat-calendar table tr td.active:hover {
+    color: #efefef;
+}
+.heat-calendar table tr td.active {
+    cursor: pointer;
+}
+.heat-calendar table tr td.today {
+    border-color: #efefef;
+}
+.heat-calendar table tr td.other-month {
+    background: #2f2f2f;
+}

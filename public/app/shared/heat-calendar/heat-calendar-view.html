@@ -1,0 +1,24 @@
+<div class="heat-calendar" ng-show="data">
+    <h4 class="title">{{ title }}</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>S</th>
+                <th>M</th>
+                <th>T</th>
+                <th>W</th>
+                <th>T</th>
+                <th>F</th>
+                <th>S</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="week in weeks">
+                <td ng-repeat="(date, day) in week"
+                    ng-class="{ 'other-month': !day.number, 'active': day.style, 'today': date === today }"
+                    ng-click="scrollTo(day.refId)"
+                    style="{{ day.style }}">{{ day.number }}</td>
+            </tr>
+    </tbody>
+    </table>
+</div>

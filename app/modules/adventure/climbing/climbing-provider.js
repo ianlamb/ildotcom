@@ -24,7 +24,7 @@ module.exports = function() {
                 if (err) {
                     reject(err);
                 }
-                if (!session) {
+                if (!session || !data._id) {
                     session = new ClimbSession(data);
                 } else {
                     for (var prop in session) {

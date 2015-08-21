@@ -17,7 +17,7 @@ angular.module('app.adventure.climbs', [])
                         '5.12-','5.12','5.12+']
     };
     $scope.newSession = {
-        timestamp: moment().format(),
+        date: moment().format(),
         climbs: []
     };
     
@@ -63,10 +63,10 @@ angular.module('app.adventure.climbs', [])
             
                 $scope.messages.push({ type: 'success', body: 'Climbing session saved!' });
                 $scope.newSession = {
-                    timestamp: moment().format(),
+                    date: moment().format(),
                     climbs: []
                 };
-                $scope.climbSessions.unshift(latestClimb);
+                $scope.climbSessions.push(latestClimb);
                 $scope.stats.lastClimb = moment(latestClimb.date).fromNow();
             });
     };
@@ -157,10 +157,10 @@ angular.module('app.adventure.climbs', [])
             });
         });
         
-        var now = new Date(),
-            year = now.getFullYear(),
-            month = now.getMonth(),
-            sessionDate = moment(session.date).toDate();
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth();
+        var sessionDate = moment(session.date).toDate();
         if (sessionDate.getFullYear() === year && sessionDate.getMonth() === month) {
             var weightFactor = 5;
             var climbValue = ((session.routeCount*2) + session.problemCount) * weightFactor;
@@ -168,7 +168,13 @@ angular.module('app.adventure.climbs', [])
             if (heatValue > 1) {
                 heatValue = 1;
             }
-            $scope.heatCalendarData[moment(session.date).format('YYYY-MM-DD')] = heatValue;
+            $scope.heatCalendarData[moment(session.date).format('YYYY-MM-DD')] = {
+                value: heatValue,
+                refId: session._id,
+            };
+            if(!$scope.$$phase) {
+                $scope.$apply();
+            }
         }
         
         $scope.stats.routesClimbed += session.routeCount;

@@ -133,50 +133,6 @@
 .grade.V8 .bubble, .grade.five13 .bubble { background: black; }
 
 
-.heatCalendar {
-    width: 100%;
-}
-.heatCalendar .title {
-    margin: 0;
-    text-align: center;
-    font-weight: normal;
-}
-.heatCalendar table {
-    width: 100%;
-    margin-bottom: 1em;
-    border-spacing: 2px;
-    border-collapse: separate;
-}
-.heatCalendar table tr td, .heatCalendar table tr th {
-    width: 10%;
-    height: 30px;
-    text-align: center;
-    font-weight: normal;
-}
-.heatCalendar table tr td {
-    background: #454545;
-    border: 2px solid transparent;
-    color: transparent;
-    cursor: default;
-    -webkit-transition: color .5s ease-in;
-    transition: color .5s ease-in;
-}
-.heatCalendar table tr td:hover {
-    color: #efefef;
-    -webkit-transition: color .2s;
-    transition: color .2s;
-}
-.heatCalendar table tr td.today {
-    border-color: #efefef;
-}
-.heatCalendar table tr td.lastMonth {
-    background: #3f3f3f;
-}
-.heatCalendar table tr td.nextMonth {
-    background: #3f3f3f;
-}
-
-
 /*
  * MEDIA QUERIES
  */
