@@ -38,6 +38,12 @@ angular.module('app.utilities', [])
         };
         
         utilities.scrollTo = function(element, to, duration) {
+            if (!element || !to) {
+                console.warn('tried to scroll, but the source or target element was invalid');
+                return;
+            }
+            duration = duration || 500;
+            
             var start = element.scrollTop,
                 change = to - start,
                 currentTime = 0,
