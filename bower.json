@@ -14,10 +14,10 @@
     "ngInfiniteScroll": "~1.2.0",
     "components-font-awesome": "~4.4.0",
     "moment": "~2.10.6",
-    "jvectormap": "~2.0.0",
     "jspdf": "~1.0.272",
     "markdown": "~0.5.0",
-    "jwt-decode": "~1.4.0"
+    "jwt-decode": "~1.4.0",
+    "raphael": "~2.1.4"
   },
   "resolutions": {
     "angular": "1.4.4"
