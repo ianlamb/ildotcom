@@ -20,8 +20,6 @@ module.exports = function(grunt) {
         browser: true,
         devel: true,
         globals: {
-          $: true,
-          jQuery: true,
           module: true,
           angular: true,
           moment: true,
@@ -34,7 +32,8 @@ module.exports = function(grunt) {
           __dirname: true,
           exports: true,
           res: true,
-          Promise: true
+          Promise: true,
+          Raphael: true
         }
       }
     },

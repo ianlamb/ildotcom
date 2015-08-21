@@ -1,3 +1,4 @@
+/* global angular, Raphael, worldmap */
 angular.module('app')
     .directive('worldMap', function() {
         'use strict';
@@ -14,7 +15,7 @@ angular.module('app')
                     if (!$scope.markers) {
                         return;
                     }
-                    Raphael(0, 20, 1000, 400, function () {
+                    new Raphael(0, 20, 1000, 400, function () {
                         var r = this;
                         r.canvas.style.position = 'relative';
                         r.rect(0, 0, 1000, 400, 10).attr({
