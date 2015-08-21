@@ -77,7 +77,6 @@ module.exports = function(grunt) {
           separator: ';'
         },
         src: [
-          'public/assets/libs/jquery/dist/jquery.js',
           'public/assets/libs/angular/angular.min.js',
           'public/assets/libs/angular-ui-router/release/angular-ui-router.min.js',
           'public/assets/libs/angular-animate/angular-animate.min.js',
@@ -90,8 +89,7 @@ module.exports = function(grunt) {
           'public/assets/libs/moment/min/moment.min.js',
           'public/assets/libs/angular-bootstrap/ui-bootstrap.min.js',
           'public/assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js',
-          'public/assets/libs/bootstrap/dist/js/bootstrap.min.js',
-          'public/assets/libs/jvectormap/jquery.jvectormap.min.js',
+          'public/assets/libs/raphael/raphael-min.js',
           'public/assets/libs/jwt-decode/build/jwt-decode.min.js',
           'public/app/app-module.js',
           'public/app/*.js',
