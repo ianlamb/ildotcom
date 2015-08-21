@@ -38,10 +38,9 @@ For production build run:
 * Mongoose ODM
 
 ### Libraries
-* jQuery
 * Font Awesome
 * Moment
-* jVectorMap
+* Raphael
 * jsPDF
 * markdown-js
 
