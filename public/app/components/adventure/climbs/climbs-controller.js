@@ -124,7 +124,7 @@ angular.module('app.adventure.climbs', [])
         session.climbs.forEach(function(c) {
             c.mappedSends = [];
             c.sends.forEach(function(s) {
-                var res = $.grep(c.mappedSends, function(e){ return e.grade === s; });
+                var res = c.mappedSends.filter(function(e){ return e.grade === s; });
                 var gradeClass;
                 switch(c.type) {
                 case 'Boulder':
