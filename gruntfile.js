@@ -44,8 +44,8 @@ module.exports = function(grunt) {
         expand: true,
         cwd: 'public/',
         src: [
-          'assets/data/**/*.json',
-          'assets/data/**/*.js',
+          'assets/maps/**/*.json',
+          'assets/maps/**/*.js',
           'assets/languages/**/*.json',
           'assets/libs/**/*.js',
           'assets/libs/**/*.css',
