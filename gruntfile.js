@@ -49,11 +49,6 @@ module.exports = function(grunt) {
           'assets/libs/**/*.js',
           'assets/libs/**/*.css',
           'assets/libs/**/*.map',
-          'assets/libs/**/*.svg',
-          'assets/libs/**/*.woff',
-          'assets/libs/**/*.eot',
-          'assets/libs/**/*.ttf',
-          'assets/libs/**/*.ttf',
           'app/**/*.html'
         ],
         dest: 'dist/'
@@ -65,6 +60,7 @@ module.exports = function(grunt) {
         src: [
           'assets/libs/**/*.svg',
           'assets/libs/**/*.woff',
+          'assets/libs/**/*.woff2',
           'assets/libs/**/*.eot',
           'assets/libs/**/*.ttf',
         ],
@@ -108,6 +104,16 @@ module.exports = function(grunt) {
           'public/app/**/*.css'
         ],
         dest: 'dist/assets/css/<%= pkg.name %>.css'
+      },
+      cssImport: {
+        options: {
+          process: function(src, filepath) {
+            return "@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500,700);"+src.replace('@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500,700);', '');
+          }
+        },
+        files: {
+          '<%= concat.css.dest %>': ['<%= concat.css.dest %>']
+        }
       }
     },
     uglify: {
@@ -126,9 +132,6 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
       dist: {
-        options: {
-          ignore: []
-        },
         files: {
           'dist/assets/css/<%= pkg.name %>.min.css': ['<%= concat.css.dest %>']
         }
