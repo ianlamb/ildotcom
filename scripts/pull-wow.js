@@ -80,6 +80,13 @@ Promise.all(promises).then(function() {
 });
 
 function parseAchievementObject(supercats, character) {
+    var FAKE_COMPLETION_TIME = new Date('2015-01-01').getTime();
+    var IGNORE_ACHIEVEMENTS = 
+    {
+        10050: true, // learn a primary prof
+        10051: true  // learn two primary prof
+    };
+    
     var obj = {};
     var completed = {};
     var totalPossible = 0;
@@ -93,6 +100,12 @@ function parseAchievementObject(supercats, character) {
     character.achievements.achievementsCompleted.forEach(function(ach, index) {
         // hash the achievement and its timestamp
         completed[ach] = character.achievements.achievementsCompletedTimestamp[index];
+        
+        // FoS will no longer have timestamps, so we need to fake their timestamp
+        if (!character.achievements.achievementsCompletedTimestamp[index])
+        {
+            completed[ach] = FAKE_COMPLETION_TIME;
+        }
         found[ach] = false;
     });
 
@@ -125,6 +138,11 @@ function parseAchievementObject(supercats, character) {
                     myAchievement.completed = completed[ach.id];
                     if (myAchievement.completed) {
                         myAchievement.rel = 'who=' + character.name + '&when=' + myAchievement.completed;
+                    }                
+
+                    // Hack: until blizz fixes api, don't stamp with date
+                    if (myAchievement.completed && myAchievement.completed !== FAKE_COMPLETION_TIME) {
+                        myAchievement.rel = 'who=' + character.name + '&when=' + myAchievement.completed;
                     }
 
                     // Always add it if we've completed it, it should show up regardless if its avaiable
@@ -150,14 +168,14 @@ function parseAchievementObject(supercats, character) {
                         if (completed[ach.id]) {
                             completedCount++;
                             totalCompleted++;
-                        }            
+                        }
 
                         // if we haven't already added it, then this is one that should show up in the page of achievements
                         // so add it
                         if (!added) {
                             myZone.achievements.push(myAchievement);
                         }
-                    }                
+                    }
                 });
 
                 if (myZone.achievements.length > 0) {
@@ -174,14 +192,14 @@ function parseAchievementObject(supercats, character) {
 
         // Add the FoS count if this is the FoS
         if (supercat.name === 'Feats of Strength') {
-            obj[supercat.name].foSTotal = totalFoS;
+            obj[supercat.name].fosTotal = totalFoS;
         } else if (supercat.name === 'Legacy') {
             obj[supercat.name].legacyTotal = totalLegacy;
         }
     }); 
 
     for (var achId in found) {
-        if (found.hasOwnProperty(achId) && !found[achId]) {
+        if (found.hasOwnProperty(achId) && !found[achId] && !IGNORE_ACHIEVEMENTS[achId]) {
             console.log('WARN: Found achievement "' + achId + '" from character but not in db.');
         }
     }

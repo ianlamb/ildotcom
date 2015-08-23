@@ -17,19 +17,11 @@ var WowProfileSchema = new Schema({
             "completed": Number,
             "possible": Number
         },
-        "Feats of Strength": {
-            "completed": Number,
-            "possible": Number
-        },
         "Garrisons": {
             "completed": Number,
             "possible": Number
         },
         "General": {
-            "completed": Number,
-            "possible": Number
-        },
-        "Legacy": {
             "completed": Number,
             "possible": Number
         },
@@ -60,6 +52,12 @@ var WowProfileSchema = new Schema({
         "World Events": {
             "completed": Number,
             "possible": Number
+        },
+        "Feats of Strength": {
+            "fosTotal": Number
+        },
+        "Legacy": {
+            "legacyTotal": Number
         },
         "completed": Number,
         "possible": Number
