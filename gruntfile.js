@@ -37,6 +37,16 @@ module.exports = function(grunt) {
         }
       }
     },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      },
+      build: {
+        configFile: 'karma.conf.js',
+        singleRun: true,
+        browsers: ['PhantomJS']
+      },
+    },
     clean: ['dist/'],
     copy: {
       dist: {
@@ -206,9 +216,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-pagespeed');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('test', ['jshint']);
-  grunt.registerTask('default', ['jshint', 'copy', 'concat', 'uglify', 'cssmin', 'processhtml']);
-  grunt.registerTask('full', ['jshint', 'clean', 'copy', 'concat', 'uglify', 'cssmin', 'imagemin', 'processhtml']);
+  grunt.registerTask('default', ['jshint', 'karma:build']);
+  grunt.registerTask('install', ['jshint', 'karma:build', 'copy', 'concat', 'uglify', 'cssmin', 'processhtml']);
+  grunt.registerTask('clean-install', ['jshint', 'karma:build', 'clean', 'copy', 'concat', 'uglify', 'cssmin', 'imagemin', 'processhtml']);
 
 };

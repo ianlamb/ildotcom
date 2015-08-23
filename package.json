@@ -17,6 +17,7 @@
     "request": "~2.61.0"
   },
   "devDependencies": {
+    "chai": "^3.2.0",
     "grunt": "~0.4.5",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "~0.5.1",
@@ -26,12 +27,17 @@
     "grunt-contrib-jshint": "~0.11.1",
     "grunt-contrib-uglify": "~0.9.1",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.12.0",
     "grunt-mocha-test": "^0.12.7",
     "grunt-pagespeed": "^1.0.0",
     "grunt-processhtml": "^0.3.7",
     "grunt-uncss": "^0.4.1",
-    "chai": "^3.2.0",
+    "karma": "^0.13.9",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.1",
     "mocha": "^2.2.4",
+    "phantomjs": "^1.9.18",
     "proxyquire": "^1.4.0",
     "sinon": "^1.14.1"
   }

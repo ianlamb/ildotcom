@@ -1,3 +1,4 @@
+/* global __dirname */
 var Environment = require('../config/environment.js');
 var path = require('path');
 var env = new Environment();

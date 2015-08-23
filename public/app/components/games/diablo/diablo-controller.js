@@ -11,7 +11,6 @@ angular.module('app.games.diablo', [])
         return hero.class + '-' + (hero.gender ? 'female' : 'male');
     };
     
-    $scope.sluggify = Utilities.sluggify;
     $scope.formatSlug = Utilities.formatSlug;
 
 });

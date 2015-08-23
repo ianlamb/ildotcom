@@ -21,10 +21,6 @@ angular.module('app.utilities', [])
             return string.charAt(0).toUpperCase() + string.slice(1);
         };
 
-        utilities.sluggify = function(text) {
-            return text.toLowerCase().split('\'').join('').split(' ').join('-');
-        };
-
         utilities.formatSlug = function(slug) {
             var parts = slug.split('-');
             for (var i = 0; i < parts.length; i++) {
@@ -33,7 +29,8 @@ angular.module('app.utilities', [])
             return parts.join(' ');
         };
         
-        utilities.daysInMonth = function(month,year) {
+        // month is 1 based
+        utilities.daysInMonth = function(month, year) {
             return new Date(year, month, 0).getDate();
         };
         
