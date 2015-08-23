@@ -1,6 +1,6 @@
 angular.module('app.blog', [])
     .controller('BlogController',
-        function($scope, $rootScope, $filter, $state, $stateParams, $location, Posts, Post, Utilities) {
+        function($scope, $rootScope, $state, $location, Posts, Post, Utilities) {
         'use strict';
         
         var MAX_POST_COUNT = 5;

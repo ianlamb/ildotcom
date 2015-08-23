@@ -1,6 +1,6 @@
 angular.module('app.home', [])
     .controller('HomeController',
-        function($scope, $rootScope, $window, $location, $state, $http, $timeout, Utilities, Posts) {
+        function($scope, Utilities, Posts) {
         'use strict';
     
         // get recent posts to display on home page
