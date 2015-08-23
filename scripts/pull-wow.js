@@ -50,9 +50,15 @@ app.wow.characters.forEach(function(character) {
                     profile.mounts = data.mounts;
                     profile.achievements = parseAchievementObject(achievements.supercats, data);
                     data.showcase = true;
+                    parseFeed(data.feed).then(function(feed) {
+                        data.feed = feed;
+                        profile.characters.push(data);
+                        resolve(data);
+                    });
+                } else {
+                    profile.characters.push(data);
+                    resolve(data);
                 }
-                profile.characters.push(data);
-                resolve(data);
             } else {
                 console.log('unexpected results...');
                 mongoose.disconnect();
@@ -76,8 +82,79 @@ Promise.all(promises).then(function() {
             console.err(err);
             mongoose.disconnect();
         });
-    
 });
+
+function parseFeed(feed) {
+    return new Promise(function(resolve, reject){
+        var promises = [];
+        feed.forEach(function(feedItem) {
+            if (feedItem.type === "LOOT") {
+                var promise = new Promise(function(resolve, reject) {
+                    getItemData(feedItem.itemId).then(function(itemData) {
+                        feedItem.item = itemData;
+                        resolve();
+                    });
+                });
+                promises.push(promise);
+            }
+        });
+        
+        Promise.all(promises).then(function() {
+            console.log('finished parsing activity feed...')
+            resolve(feed);
+        });
+    })
+}
+
+function getItemData(itemId, context) {
+    return new Promise(function(resolve, reject) {
+        var options = {
+            uri: 'http://us.battle.net/api/wow/item/' + itemId,
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        if (context) {
+            options.uri += '/' + context;
+        }
+        
+        console.log('requesting item data for %s...', itemId);
+        request(options, function(err, res, body) {
+            if(err) {
+                console.err(err);
+                mongoose.disconnect();
+                return;
+            }
+            if(!body) {
+                console.err('request returned empty');
+                mongoose.disconnect();
+                return;
+            }
+            
+            var data = JSON.parse(body);
+            if(data) {
+                if (!data.name) {
+                    if (data.availableContexts) {
+                        console.log('require a context for item %s...', data.id);
+                        getItemData(itemId, data.availableContexts[0]).then(function(itemData) {
+                            resolve(itemData);
+                        });
+                    } else {
+                        console.warn('couldn\'t retrieve data for item %s...', itemId);
+                        reject();
+                    }
+                } else {
+                    console.log('received info for item %s...', data.name);
+                    resolve(data);
+                }
+            } else {
+                console.log('unexpected results...');
+                mongoose.disconnect();
+            }
+        });
+    })
+}
 
 function parseAchievementObject(supercats, character) {
     var FAKE_COMPLETION_TIME = new Date('2015-01-01').getTime();

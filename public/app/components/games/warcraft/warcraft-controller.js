@@ -44,7 +44,7 @@ angular.module('app.games.warcraft', [])
             case "BOSSKILL":
                 return feedItem.achievement.title;
             case "LOOT":
-                return 'Looted Item ' + feedItem.itemId;
+                return 'Looted Item ' + feedItem.item.name;
         }
     };
 

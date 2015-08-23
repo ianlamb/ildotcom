@@ -82,7 +82,12 @@ var WowProfileSchema = new Schema({
             "timestamp": Number,
             "name": String,
             "quantity": Number,
-            "itemId": Number,
+            "item": {
+                "id": Number,
+                "name": String,
+                "quality": Number,
+                "itemLevel": Number
+            },
             "achievement": {
                 "id": Number,
                 "title": String,
