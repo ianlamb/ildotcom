@@ -2,8 +2,8 @@ angular.module('app.games.warcraft')
     .factory('WowProfile', ['$http', function($http) {
         'use strict';
 
-        var races = ['0', '1', 'Orc', '3', '4', 'Undead', '6', '7', '8', '9', 'Blood Elf'];
-        var classes = ['0', 'Warrior', 'Paladin', 'Hunter', 'Rogue', 'Priest', 'Death Knight', '7', '8', 'Warlock'];
+        var races = ['0', '1', 'Orc', '3', '4', 'Undead', 'Tauren', 'Gnome', '8', '9', 'Blood Elf'];
+        var classes = ['None', 'Warrior', 'Paladin', 'Hunter', 'Rogue', 'Priest', 'Death Knight', 'Shaman', 'Mage', 'Warlock', 'Monk', 'Druid'];
         var genders = ['Male', 'Female'];
         var itemSlots = {
             'head': 'Head',
