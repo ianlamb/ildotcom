@@ -54,15 +54,6 @@
 #gaming .character p {
     margin: 0;
 }
-#gaming .items {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-}
-#gaming .items td, #gaming .items th {
-    padding: 2px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-}
 #gaming .items td:first-child {
     white-space: nowrap;
 }
