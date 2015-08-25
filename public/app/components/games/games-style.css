@@ -27,7 +27,7 @@
 #gaming .character .main {
     display: block;
     overflow: hidden;
-    background: url(http://subtlepatterns.com/patterns/footer_lodyas.png);
+    background: url(/assets/images/footer_lodyas.png);
     border-bottom: 4px solid #00abff;
     -webkit-transition: all .4s;
     transition: all .4s;
@@ -43,6 +43,20 @@
     animation: character-hover-glow 1.5s ease-in-out infinite alternate; 
 }
 @-webkit-keyframes character-hover-glow {
+  from {
+    box-shadow: 0 0 5px #00abff,
+                0 0 10px  #00abff,
+                0 0 20px  #00abff,
+                0 0 30px  #00abff;
+  }
+  to {
+    box-shadow: 0 0 10px #00abff,
+                0 0 20px  #00abff,
+                0 0 30px  #00abff,
+                0 0 40px  #00abff;
+  }
+}
+@keyframes character-hover-glow {
   from {
     box-shadow: 0 0 5px #00abff,
                 0 0 10px  #00abff,
