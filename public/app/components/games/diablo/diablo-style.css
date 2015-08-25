@@ -1,6 +1,15 @@
+#diablo .character .main {
+    height: 64px;
+}
+#diablo .character .main .call-to-action h1 {
+    line-height: 70px;
+}
+#diablo .character .main .call-to-action .fa {
+    margin-top: 34px;
+}
 #diablo .portrait {
-    display: inline-block;
-    vertical-align: top;
+    display: block;
+    float: left;
     margin: 0 10px 0 0;
     height: 66px;
     width: 83px;

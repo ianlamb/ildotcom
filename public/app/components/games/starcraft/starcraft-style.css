@@ -1,7 +1,12 @@
 #starcraft .portrait {
-    display: inline-block;
-    vertical-align: top;
+    float: left;
     margin: 0 10px 0 0;
     width: 90px;
     height: 90px;
+}
+#starcraft .character .main {
+    height: 90px;
+}
+#starcraft .character .main .call-to-action {
+    padding-top: 20px;
 }
