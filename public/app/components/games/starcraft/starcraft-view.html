@@ -21,13 +21,19 @@
         </div>
         <div class="col-md-9">
             <div class="character">
-                <a href="http://us.battle.net/sc2/en{{ starcraftProfile.profilePath }}" target="_blank" title="View Profile" class="main">
-                    <div class="portrait" style="background: url('{{ starcraftProfile.portrait.url }}') no-repeat {{ starcraftProfile.portrait.x }}px {{ starcraftProfile.portrait.y }}px;"></div>
-                    <div class="details">
-                        <h3>{{ starcraftProfile.displayName }}</h3>
-                        <div>{{ starcraftProfile.achievements.points.totalPoints }}</div>
-                    </div>
-                </a>
+                <div class="main">
+                    <a href="http://us.battle.net/sc2/en{{ starcraftProfile.profilePath }}" target="_blank">
+                        <div class="portrait" style="background: url('{{ starcraftProfile.portrait.url }}') no-repeat {{ starcraftProfile.portrait.x }}px {{ starcraftProfile.portrait.y }}px;"></div>
+                        <div class="details scroll-up">
+                            <h3>{{ starcraftProfile.displayName }}</h3>
+                            <div>{{ starcraftProfile.achievements.points.totalPoints }}</div>
+                        </div>
+                        <div class="call-to-action scroll-up">
+                            <h1>View Profile</h1>
+                            <i class="fa fa-angle-double-right"></i>
+                        </div>
+                    </a>
+                </div>
                 <div class="extended">
                     <h3 title="Season {{ starcraftProfile.season.seasonId }}">Season {{ starcraftProfile.season.seasonNumber }} of {{ starcraftProfile.season.seasonYear }}</h3>
                     <div class="row">

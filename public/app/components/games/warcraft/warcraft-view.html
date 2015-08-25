@@ -80,14 +80,20 @@
 
         <div class="col-sm-9">
             <div class="character showcase">
-                <a href="http://us.battle.net/wow/en/character/{{ wowProfile.main.realm }}/{{ wowProfile.main.name }}/simple" target="_blank" title="View Armory" class="main">
-                    <img ng-src="http://us.battle.net/static-render/us/{{ wowProfile.main.thumbnail }}" />
-                    <div class="details">
-                        <h3>{{ wowProfile.main.name }}</h3>
-                        <p>{{ wowProfile.main.level }} {{ wowProfile.main.gender }} {{ wowProfile.main.race }} {{ wowProfile.main.class }}</p>
-                        <p>{{ wowProfile.main.realm }}</p>
-                    </div>
-                </a>
+                <div class="main">
+                    <a href="http://us.battle.net/wow/en/character/{{ wowProfile.main.realm }}/{{ wowProfile.main.name }}/simple" target="_blank">
+                        <img ng-src="http://us.battle.net/static-render/us/{{ wowProfile.main.thumbnail }}" />
+                        <div class="details scroll-up">
+                            <h3>{{ wowProfile.main.name }}</h3>
+                            <p>{{ wowProfile.main.level }} {{ wowProfile.main.gender }} {{ wowProfile.main.race }} {{ wowProfile.main.class }}</p>
+                            <p>{{ wowProfile.main.realm }}</p>
+                        </div>
+                        <div class="call-to-action scroll-up">
+                            <h1>View Armory</h1>
+                            <i class="fa fa-angle-double-right"></i>
+                        </div>
+                    </a>
+                </div>
                 <div class="extended">
                     <div class="row">
                         <div class="col-md-6">
@@ -166,14 +172,20 @@
                 <div class="row">
                     <div ng-repeat="character in wowProfile.alts | orderBy:'level':true" ng-if="character.name" class="col-lg-6 col-md-6">
                         <div class="character">
-                            <a href="http://us.battle.net/wow/en/character/{{ character.realm }}/{{ character.name }}/simple" target="_blank" title="View Armory" class="main">
-                                <img ng-src="http://us.battle.net/static-render/us/{{ character.thumbnail }}" />
-                                <div class="details">
-                                    <h3>{{ character.name }}</h3>
-                                    <p>{{ character.level }} {{ character.gender }} {{ character.race }} {{ character.class }}</p>
-                                    <p>{{ character.realm }}</p>
-                                </div>
-                            </a>
+                            <div class="main">
+                                <a href="http://us.battle.net/wow/en/character/{{ character.realm }}/{{ character.name }}/simple" target="_blank">
+                                    <img ng-src="http://us.battle.net/static-render/us/{{ character.thumbnail }}" />
+                                    <div class="details scroll-up">
+                                        <h3>{{ character.name }}</h3>
+                                        <p>{{ character.level }} {{ character.gender }} {{ character.race }} {{ character.class }}</p>
+                                        <p>{{ character.realm }}</p>
+                                    </div>
+                                    <div class="call-to-action scroll-up">
+                                        <h1>View Armory</h1>
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
