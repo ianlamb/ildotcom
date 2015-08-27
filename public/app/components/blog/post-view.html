@@ -1,17 +1,57 @@
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="post-wrapper">
-            <div class="view">
-                <h2>{{ post.title }}</h2>
-                <div class="post-body" ng-if="post" ng-bind-html="markdown.toHTML(post.body)"></div>
-                <div class="post-footer">
-                    <ul class="tags inline-bullets">
-                        <li ng-repeat="tag in post.tags.split(' ') track by $index">
-                            <a>{{ tag }}</a>
-                        </li>
-                    </ul>
-                    <div>{{ moment(post.created_at).format('MMMM Do, YYYY') }}</div>
-                    <a ui-sref="blog.roll">More Entries...</a>
+<div class="post-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="post-metadata">
+                    <h2>{{ post.title }}</h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                        <div class="post-date">{{ moment(post.created_at).format('MMMM Do, YYYY') }}</div>
+                            <ul class="tags inline-bullets">
+                                <li ng-repeat="tag in post.tags.split(' ') track by $index">
+                                    <a>{{ tag }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <div class="btn-group">
+                                <a ui-sref="blog.roll" class="btn btn-default">
+                                    <i class="fa fa-arrow-left"></i>
+                                    Back to Journal
+                                </a>
+                                <button type="button" ng-click="editPost(post)" ng-if="authorized" class="btn btn-success edit-post">
+                                    Edit Post
+                                </button>
+                                <button type="button" ng-click="publish(post)" ng-if="authorized && !post.published" class="btn btn-primary">
+                                    Publish
+                                </button>
+                                <button type="button" ng-click="unpublish(post)" ng-if="authorized && post.published" class="btn btn-warn">
+                                    Withdraw Publication
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <alert type="{{ alert.type }}" ng-if="alert" close="closeAlert($index)">{{ alert.message }}</alert>
+            <form ng-submit="saveEdits()" ng-show="editing">
+                <input type="text" id="postTitle" ng-model="post.title" ng-disabled="saving" placeholder="Title" class="form-control" autofocus>
+                <textarea id="postBody" ng-model="post.body" ng-disabled="saving" ng-tab="insertTab()" placeholder="Message" class="form-control"></textarea>
+                <input type="text" id="postTags" ng-model="post.tags" ng-disabled="saving" placeholder="Tags (separate with spaces)" class="form-control">
+                <p>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-default" ng-click="cancelEdits()">Cancel</button>
+                </p>
+            </form>
+            <div class="post-wrapper">
+                <div class="view">
+                    <div class="post-body" ng-if="post" ng-bind-html="markdown.toHTML(post.body)"></div>
                     <hr>
                     <ul class="comments">
                         <li>
@@ -21,16 +61,5 @@
                 </div>
             </div>
         </div>
-        <p>
-        <button type="button" ng-click="editPost(post)" ng-if="authorized" ng-hide="editing" class="btn btn-success">Edit</button>
-        </p>
-        <alert type="{{ alert.type }}" ng-if="alert" close="closeAlert($index)">{{ alert.message }}</alert>
-        <form ng-submit="saveEdits()" ng-show="editing">
-            <input type="text" id="postTitle" ng-model="post.title" ng-disabled="saving" placeholder="Title" class="form-control" autofocus>
-            <textarea id="postBody" ng-model="post.body" ng-disabled="saving" ng-tab="insertTab()" placeholder="Message" class="form-control"></textarea>
-            <input type="text" id="postTags" ng-model="post.tags" ng-disabled="saving" placeholder="Tags (separate with spaces)" class="form-control">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="button" class="btn btn-default" ng-click="cancelEdits()">Cancel</button>
-        </form>
     </div>
 </div>

@@ -7,6 +7,7 @@ var PostSchema = new Schema({
     "body": String,
     "slug": String,
     "tags": [String],
+    "published": { type: Boolean, default: false },
     "created_at": Date,
     "updated_at": Date
 }).pre('save', timestamp);
