@@ -56,16 +56,16 @@ p { margin: 0 0 1.0em 0; }
 
 hr { border-width: 1px; border-color: rgba(255,255,255,0.2); }
 
-a, a:link, a:visited {
+a:not(.btn), a:not(.btn):link, a:not(.btn):visited {
     text-decoration: none;
     color: #00abff;
     transition: all .2s;
 }
-a:hover {
-    color: #0091d8;
+a:not(.btn):hover {
+    color: #0061b8;
     transition: all .4s;
 }
-a:active { color: #00abff; }
+a:not(.btn):active { color: #00abff; }
 
 label { 
     display: block;
@@ -605,6 +605,12 @@ ul.inline-bullets > li:last-child {
 .table>thead>tr>td,
 .table>thead>tr>th {
     border-color: rgba(255,255,255,0.2);
+}
+
+.three-d-text {
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 0 #ccc, 0 0 0 #c9c9c9, 0 1px 0 #bbb, 0 1px 0 #b9b9b9, 0 2px 0 #aaa, 0 3px 1px rgba(0,0,0,.1), 0 0 2px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.3), 0 1px 3px rgba(0,0,0,.2), 0 3px 5px rgba(0,0,0,.25), 0 5px 5px rgba(0,0,0,.2), 0 10px 10px rgba(0,0,0,.15);
 }
 
 
