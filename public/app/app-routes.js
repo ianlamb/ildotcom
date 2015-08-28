@@ -55,13 +55,13 @@ angular.module('app.routes', ['ui.router'])
         })
             .state('blog.roll', {
                 url: '/roll',
-                templateUrl: 'app/components/blog/roll-view.html',
-                controller: 'BlogController'
+                templateUrl: 'app/components/blog/roll/roll-view.html',
+                controller: 'BlogRollController'
             })
             .state('blog.post', {
                 url: '/post/:slug',
-                templateUrl: 'app/components/blog/post-view.html',
-                controller: 'PostController'
+                templateUrl: 'app/components/blog/post/post-view.html',
+                controller: 'BlogPostController'
             })
 
         .state('adventure', {

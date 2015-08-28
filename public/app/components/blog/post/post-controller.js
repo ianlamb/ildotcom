@@ -1,29 +1,36 @@
-angular.module('app.blog')
-    .controller('PostController', function($scope, $filter, $state, $stateParams, $location, Post, Utilities) {
+angular.module('app.blog.post', [])
+    .controller('BlogPostController', function($scope, $rootScope, $filter, $state, $stateParams, $location, Post, Utilities) {
     'use strict';
     
     $scope.markdown = markdown;
     $scope.editing = false;
     $scope.saving = false;
 
-    var slug = $stateParams.slug;
-    Post.get(slug)
-        .success(function(post) {
-            if (!post) {
-                $location.path('/blog').replace();
-            }
-            post.tags = post.tags instanceof Array ? post.tags.join(' ') : post.tags;
-            $scope.post = post;
-        })
-        .error(function(err) {
-            console.error(err);
-        });
-
     $scope.editPost = function (post) {
         post.tags = post.tags instanceof Array ? post.tags.join(' ') : post.tags;
         $scope.originalPost = post;
         $scope.editing = true;
     };
+
+    var slug = $stateParams.slug;
+    if (slug) {
+        Post.get(slug)
+            .success(function(post) {
+                if (!post) {
+                    $location.path('/blog').replace();
+                }
+                post.tags = post.tags instanceof Array ? post.tags.join(' ') : post.tags;
+                $scope.post = post;
+            })
+            .error(function(err) {
+                console.error(err);
+            });
+    } else if ($rootScope.authorized) {
+        $scope.post = { title: '', body: '', tags: '' };
+        $scope.editPost($scope.post);
+    } else {
+        $location.path('/blog').replace();
+    }
 
     $scope.saveEdits = function () {
         $scope.saving = true;
