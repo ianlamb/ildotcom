@@ -1,3 +1,5 @@
+/* global Promise */
+
 var ClimbSession    = require('./climb-session-model');
 
 module.exports = function() {

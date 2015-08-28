@@ -1,3 +1,5 @@
+/* global Promise */
+
 var request         = require('request');
 var config          = require('../../../../config/app');
 var Place        	= require('../places/place-model');
@@ -29,7 +31,7 @@ module.exports = function() {
                 if (err) {
                     reject(err);
                 }
-                if (!trip) {
+                if (!trip || !data._id) {
                     trip = new Trip(data);
                 } else {
                     for (var prop in trip) {

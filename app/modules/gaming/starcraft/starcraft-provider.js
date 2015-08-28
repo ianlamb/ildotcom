@@ -1,3 +1,5 @@
+/* global Promise */
+
 var StarcraftProfile    = require('./starcraft-profile-model');
 
 module.exports = function() {

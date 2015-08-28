@@ -1,3 +1,5 @@
+/* global Promise */
+
 var request         = require('request');
 var config        	= require('../../../../config/app');
 var Place        	= require('./place-model');
@@ -37,7 +39,7 @@ module.exports = function() {
                 if (err) {
                     reject(err);
                 }
-                if (!place) {
+                if (!place || !data._id) {
                     place = new Place(data);
                 } else {
                     for (var prop in place) {

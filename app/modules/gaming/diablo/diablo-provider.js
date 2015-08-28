@@ -1,3 +1,5 @@
+/* global Promise */
+
 var request             = require('request');
 var app                 = require('../../../../config/app.js');
 var DiabloProfile       = require('./diablo-profile-model');

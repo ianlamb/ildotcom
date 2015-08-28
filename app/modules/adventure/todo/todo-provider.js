@@ -1,4 +1,6 @@
-var Todo            = require('./todo-model');
+/* global Promise */
+
+var Todo = require('./todo-model');
 
 module.exports = function() {
     'use strict';
@@ -21,7 +23,7 @@ module.exports = function() {
                 if (err) {
                     reject(err);
                 }
-                if (!todo) {
+                if (!todo || !data._id) {
                     todo = new Todo(data);
                 } else {
                     todo.title = data.title;

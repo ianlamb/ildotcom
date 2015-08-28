@@ -1,3 +1,5 @@
+/* global Promise */
+
 var Post            = require('./post-model');
 
 module.exports = function() {
@@ -36,7 +38,7 @@ module.exports = function() {
                 if (err) {
                     reject(err);
                 }
-                if (!post) {
+                if (!post || !data._id) {
                     post = new Post(data);
                 } else {
                     for (var prop in post) {

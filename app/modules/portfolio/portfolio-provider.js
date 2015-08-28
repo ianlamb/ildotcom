@@ -1,3 +1,5 @@
+/* global Promise */
+
 var Project        	= require('./project-model');
 
 module.exports = function() {
@@ -21,7 +23,7 @@ module.exports = function() {
                 if (err) {
                     reject(err);
                 }
-                if (!project) {
+                if (!project || !data._id) {
                     project = new Project(data);
                 } else {
                     for (var prop in project) {

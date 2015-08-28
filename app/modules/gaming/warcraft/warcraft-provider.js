@@ -1,3 +1,5 @@
+/* global Promise */
+
 var WowProfile          = require('./wow-profile-model');
 
 module.exports = function() {
