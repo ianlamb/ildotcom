@@ -36,28 +36,30 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <alert type="{{ alert.type }}" ng-if="alert" close="closeAlert($index)">{{ alert.message }}</alert>
-            <form ng-submit="saveEdits()" ng-show="editing">
-                <input type="text" id="postTitle" ng-model="post.title" ng-disabled="saving" placeholder="Title" class="form-control" autofocus>
-                <textarea id="postBody" ng-model="post.body" ng-disabled="saving" ng-tab="insertTab()" placeholder="Message" class="form-control"></textarea>
-                <input type="text" id="postTags" ng-model="post.tags" ng-disabled="saving" placeholder="Tags (separate with spaces)" class="form-control">
-                <p>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <button type="button" class="btn btn-default" ng-click="cancelEdits()">Cancel</button>
-                </p>
-            </form>
-            <div class="post-wrapper">
-                <div class="view">
-                    <div class="post-body" ng-if="post" ng-bind-html="markdown.toHTML(post.body)"></div>
-                    <hr>
-                    <ul class="comments">
-                        <li>
-                            
-                        </li>
-                    </ul>
+<div class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <alert type="{{ alert.type }}" ng-if="alert" close="closeAlert($index)">{{ alert.message }}</alert>
+                <form ng-submit="saveEdits()" ng-show="editing">
+                    <input type="text" id="postTitle" ng-model="post.title" ng-disabled="saving" placeholder="Title" class="form-control" autofocus>
+                    <textarea id="postBody" ng-model="post.body" ng-disabled="saving" ng-tab="insertTab()" placeholder="Message" class="form-control"></textarea>
+                    <input type="text" id="postTags" ng-model="post.tags" ng-disabled="saving" placeholder="Tags (separate with spaces)" class="form-control">
+                    <p>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-default" ng-click="cancelEdits()">Cancel</button>
+                    </p>
+                </form>
+                <div class="post-wrapper">
+                    <div class="view">
+                        <div class="post-body" ng-if="post" ng-bind-html="markdown.toHTML(post.body)"></div>
+                        <hr>
+                        <ul class="comments">
+                            <li>
+                                
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
