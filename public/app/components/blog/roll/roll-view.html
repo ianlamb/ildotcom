@@ -20,6 +20,10 @@
             <hr class="visible-sm">
         </div>
         <div class="col-sm-9">
+            <alert type="info" ng-if="search.tags" close="closeAlert($index)">
+                <p>Showing entries tagged with <strong>{{ search.tags }}</strong>.</p>
+                <a ui-sref="blog.roll({tags:''})" class="btn btn-default">Clear Filter</a>
+            </alert>
             <ul id="blogPosts" infinite-scroll="loadMore()">
                 <li ng-repeat="post in posts | filter:search:true">
                     <div class="post-wrapper panel">

@@ -7,6 +7,9 @@ angular.module('app.blog.roll', [])
     
         $scope.markdown = markdown;
         $scope.search = $location.search();
+        $rootScope.$on('$locationChangeSuccess', function() {
+            $scope.search = $location.search();
+        });
     
         Posts.get()
             .success(function(data) {

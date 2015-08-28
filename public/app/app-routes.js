@@ -49,12 +49,13 @@ angular.module('app.routes', ['ui.router'])
             })
 
         .state('blog', {
-            url: '/blog?tags',
+            url: '/blog',
             templateUrl: 'app/components/blog/blog-view.html',
             controller: 'BlogController'
         })
             .state('blog.roll', {
-                url: '/roll',
+                url: '/roll?tags',
+                reloadOnSearch : false,
                 templateUrl: 'app/components/blog/roll/roll-view.html',
                 controller: 'BlogRollController'
             })

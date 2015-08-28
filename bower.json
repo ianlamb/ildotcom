@@ -6,7 +6,7 @@
     "angular": "1.4.4",
     "angular-animate": "~1.4.4",
     "angular-bootstrap": "~0.13.3",
-    "angular-ui-router": "~0.2.13",
+    "angular-ui-router": "~0.2.15",
     "angular-sanitize": "~1.4.4",
     "angular-localization": "~1.2.1",
     "angular-cookies": "~1.4.4",
