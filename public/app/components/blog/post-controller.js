@@ -36,7 +36,7 @@ angular.module('app.blog')
             })
             .error(function() {
                 $scope.post = $scope.originalPost;
-                $scope.alert = { type: 'alert', message: 'Error while saving post' };
+                $scope.alert = { type: 'danger', message: 'Error while saving post' };
             })
             .finally(function () {
                 $scope.post.tags = $scope.post.tags instanceof Array ? $scope.post.tags.join(' ') : $scope.post.tags;
