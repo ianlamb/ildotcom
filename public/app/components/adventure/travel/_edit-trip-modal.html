@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h3 class="modal-title">Edit Trip</h3>
+</div>
+<div class="modal-body">
+    <form action="">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input ng-model="trip.name" id="name" class="form-control"></input>
+        </div>
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input ng-model="trip.startDate" id="startDate" class="form-control"></input>
+        </div>
+        <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input ng-model="trip.endDate" id="endDate" class="form-control"></input>
+        </div>
+        <div class="form-group">
+            <label for="photosetId">Flickr Photoset ID</label>
+            <input ng-model="trip.photosetId" id="photosetId" class="form-control"></input>
+        </div>
+        <div class="form-group">
+            <label>Points of Interest</label>
+            <div ng-repeat="poi in trip.pointsOfInterest" class="form-group">
+                <input ng-model="poi.name" class="form-control"></input>
+                <input ng-model="poi.url" class="form-control"></input>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

@@ -5,6 +5,12 @@ angular.module('app.adventure.travel')
         return {
             get: function() {
                 return $http.get('/api/trips');
+            },
+            put: function(data) {
+                return $http.put('/api/trip', data);
+            },
+            delete: function(id) {
+                return $http.delete('/api/trip/' + id);
             }
         };
 

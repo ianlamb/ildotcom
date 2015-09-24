@@ -10,8 +10,11 @@
     </div>
 
     <div class="row trips">
+        <div class="col-md-12">
+            <alert ng-if="message" type="{{ message.type }}">{{ message.body }}</alert>
+        </div>
         <div ng-repeat="trip in trips | orderBy:'startDate':true track by $index" class="col-sm-4">
-            <div class="trip">
+            <div class="trip {{ authorized ? 'trip--editable' : '' }}" ng-click="editTrip(trip)">
                 <div class="title">
                     <h3>{{ trip.name }}</h3>
                     <div class="date">{{ formatStartEndDates(trip.startDate, trip.endDate) }}</div>

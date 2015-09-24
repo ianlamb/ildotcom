@@ -1,5 +1,5 @@
 angular.module('app.adventure.travel', [])
-    .controller('TravelController', function($scope, Trips) {
+    .controller('TravelController', function($scope, $modal, Trips) {
         'use strict';
     
         Trips.get()
@@ -31,5 +31,44 @@ angular.module('app.adventure.travel', [])
         $scope.formatStartEndDates = function(startDate, endDate) {
             return moment(startDate).format("MMM Do YY") + ' - ' + moment(endDate).format("MMM Do YY");
         };
+        
+        $scope.editTrip = function(trip) {
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'app/components/adventure/travel/_edit-trip-modal.html',
+                controller: 'ModalInstanceCtrl',
+                resolve: {
+                    trip: function () {
+                        return trip;
+                    }
+                }
+            });
+            
+            modalInstance.result.then(function (res) {
+                if (!res.hasOwnProperty('_id')) {
+                    $scope.message = { type: 'danger', body: 'Error: ' + res };
+                } else {
+                    $scope.message = { type: 'success', body: 'Trip saved: ' + res.name };
+                }
+            });
+
+        };
+    })
     
+    .controller('ModalInstanceCtrl', function ($scope, $modalInstance, Trips, trip) {
+        $scope.trip = trip;
+        
+        $scope.save = function () {
+            Trips.put($scope.trip)
+                .then(function success(res) {
+                    var trip = res.data;
+                    $modalInstance.close(trip);
+                }, function error(err) {
+                    $modalInstance.close(err);
+                });
+        };
+        
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
     });
