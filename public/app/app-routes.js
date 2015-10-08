@@ -111,6 +111,11 @@ angular.module('app.routes', ['ui.router'])
                 templateUrl: 'app/components/games/starcraft/starcraft-view.html',
                 controller: 'StarcraftController'
             })
+            .state('gaming.hots', {
+                url: '/hots',
+                templateUrl: 'app/components/games/hots/hots-view.html',
+                controller: 'HotsController'
+            })
         ;
 
     $locationProvider.html5Mode(true);

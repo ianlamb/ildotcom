@@ -17,6 +17,7 @@ module.exports = function(app, router) {
     require('./modules/gaming/diablo/diablo-controller')(router);
     require('./modules/gaming/starcraft/starcraft-controller')(router);
     require('./modules/gaming/warcraft/warcraft-controller')(router);
+    require('./modules/gaming/hots/hots-controller')(router);
     
     // middleware to use for all requests
     router.use(function(req, res, next) {
