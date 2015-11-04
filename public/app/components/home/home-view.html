@@ -114,29 +114,16 @@
             </div>
         </div>
     </section>
-    <section id="projects">
-        <div class="container">
-            <h1 i18n="home.portfolioTitle"></h1>
-            <div ng-repeat="project in projects track by $index" class="project-wrapper 
-                {{ $index > 2 ? 'second-row' : 'first-row' }}">
-                <a href="{{ project.url }}" class="project" style="background-image: url('assets/images/{{ project.image }}')">
-                    <div class="overlay">
-                        <div class="title">{{ project.name }}</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
     <section id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
                     <h1 i18n="home.contactTitle"></h1>
                     <div class="contact-info">
-                        <div ng-bind="contact.phone"></div>
-                        <label i18n="home.contactPhoneLabel"></label>
                         <div ng-bind="contact.location.name"></div>
                         <label i18n="home.contactLocationLabel"></label>
+                        <div ng-bind="contact.phone"></div>
+                        <label i18n="home.contactPhoneLabel"></label>
                         <div>
                             <a href="mailto:{{ contact.email }}" class="social-anchor" ng-bind="contact.email"></a>
                         </div>
