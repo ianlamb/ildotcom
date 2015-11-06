@@ -39,6 +39,9 @@
     font-size: 1.1em;
     color: #999;
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 #travel .trip .title .date {
     font-size: 0.8em;
