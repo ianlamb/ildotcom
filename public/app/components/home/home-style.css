@@ -39,7 +39,7 @@
     margin: 0;
     padding: 0;
     color: #efefef;
-    background: #454545 url(/assets/images/backdrop.jpg) no-repeat center center fixed;
+    background: #454545 url(/assets/images/backdrop.jpg) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
