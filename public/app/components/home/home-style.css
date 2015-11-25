@@ -58,7 +58,7 @@
 }
 #home section#header .scroll-down {
     position: absolute;
-    margin: 420px auto 0;
+    margin: 380px auto 0;
     cursor: pointer;
     font-size: 3em;
     -webkit-animation: bounce 3s infinite;
@@ -508,13 +508,10 @@
     font-size: 0.6em;
     color: #888;
 }
-#contactMap {
+#contact .map {
     width: 100%;
-    height: 380px;
 }
-#contactMap .jvectormap-tip {
-    display: none;
-}
+
 .home-icon {
     position: absolute;
     color: orangered;
@@ -589,7 +586,7 @@
 /* tablet */
 @media only screen and (max-width: 991px) {
     #home section#header .scroll-down {
-        margin-top: 440px;
+        margin-top: 360px;
     }
     #home #about {
         height: auto;

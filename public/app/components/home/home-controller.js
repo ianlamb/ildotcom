@@ -21,9 +21,9 @@ angular.module('app.home', [])
             "email": "ianlamb32@gmail.com",
             "phone": "+1 519-902-6533",
             "location": {
-                "name": "London, ON",
-                "latitude": 42.9837,
-                "longitude": -81.2497
+                "name": "Irvine, California",
+                "latitude": 33.6869211,
+                "longitude": -117.9143369
             }
         };
 
