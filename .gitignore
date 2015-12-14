@@ -20,4 +20,5 @@ node_modules
 public/assets/libs
 
 .settings/
-.DS_Store
+.DS_Store/
+.vscode/
