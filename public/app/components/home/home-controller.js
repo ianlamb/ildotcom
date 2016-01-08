@@ -19,7 +19,7 @@ angular.module('app.home', [])
         // some static data for home page
         $scope.contact = {
             "email": "ianlamb32@gmail.com",
-            "phone": "+1 519-902-6533",
+            "phone": "+1 949.299.9654",
             "location": {
                 "name": "Irvine, California",
                 "latitude": 33.6869211,
