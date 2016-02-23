@@ -17,6 +17,8 @@
     display: block;
     position: absolute;
     background: #00abff;
+    border-style: solid;
+    border-color: #0083C3;
 }
 .dom-logo > span {
     animation-duration: 1.5s;
@@ -26,27 +28,52 @@
     left: 0;
     right: 75%;
     bottom: 0;
+    border-width: 1px;
     animation-name: slideInLeftAbsolute;
+    background: #2bbbff; /* Old browsers */
+    background: -moz-linear-gradient(45deg,  #2bbbff 0%, #00abff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg,  #2bbbff 0%,#00abff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg,  #2bbbff 0%,#00abff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2bbbff', endColorstr='#00abff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 .dom-logo > span:nth-child(2) {
     top: 0;
     left: 35%;
     right: 35%;
     bottom: 0;
+    border-width: 1px;
     animation-name: slideInDownAbsolute;
 }
 .dom-logo > span:nth-child(2):after {
     content: '';
-    width: 218%;
+    width: 130%;
     height: 25%;
-    bottom: 0;
+    left: 100%;
+    bottom: -1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 0;
+    background: #00abff; /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  #00abff 1%, #00abff 39%, #1cb7ff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  #00abff 1%,#00abff 39%,#1cb7ff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg,  #00abff 1%,#00abff 39%,#1cb7ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00abff', endColorstr='#1cb7ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .dom-logo > span:nth-child(3) {
     top: 0;
     left: 75%;
     right: 0;
     bottom: 35%;
+    border-width: 1px;
     animation-name: slideInRightAbsolute;
+    background: #00abff; /* Old browsers */
+    background: -moz-linear-gradient(45deg,  #00abff 1%, #2bbbff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg,  #00abff 1%,#2bbbff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg,  #00abff 1%,#2bbbff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00abff', endColorstr='#2bbbff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 @keyframes slideInRightAbsolute {
   0% {
