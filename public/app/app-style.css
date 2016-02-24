@@ -138,7 +138,8 @@ code {
     height: 24px;
     width: 24px;
 }
-.navbar-default .navbar-brand span {
+.navbar-default a:not(.btn).navbar-brand span {
+    color: #777;
     -webkit-animation-name: shine;
     animation-name: shine;
     -webkit-animation-duration: 5s;
@@ -148,31 +149,31 @@ code {
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
 }
-.navbar-default .navbar-brand span.letter-1 {
+.navbar-default a:not(.btn).navbar-brand span:nth-child(2) {
     -webkit-animation-delay: 0ms;
     animation-delay: 0ms;
 }
-.navbar-default .navbar-brand span.letter-2 {
+.navbar-default a:not(.btn).navbar-brand span:nth-child(3) {
     -webkit-animation-delay: 100ms;
     animation-delay: 100ms;
 }
-.navbar-default .navbar-brand span.letter-3 {
+.navbar-default a:not(.btn).navbar-brand span:nth-child(4) {
     -webkit-animation-delay: 200ms;
     animation-delay: 200ms;
 }
-.navbar-default .navbar-brand span.letter-4 {
+.navbar-default a:not(.btn).navbar-brand span:nth-child(5) {
     -webkit-animation-delay: 300ms;
     animation-delay: 300ms;
 }
-.navbar-default .navbar-brand span.letter-5 {
+.navbar-default a:not(.btn).navbar-brand span:nth-child(6) {
     -webkit-animation-delay: 400ms;
     animation-delay: 400ms;
 }
-.navbar-default .navbar-brand span.letter-6 {
+.navbar-default a:not(.btn).navbar-brand span:nth-child(7) {
     -webkit-animation-delay: 500ms;
     animation-delay: 500ms;
 }
-.navbar-default .navbar-brand span.letter-7 {
+.navbar-default a:not(.btn).navbar-brand span:nth-child(8) {
     -webkit-animation-delay: 600ms;
     animation-delay: 600ms;
 }
@@ -840,24 +841,24 @@ ul.inline-bullets > li:last-child {
 /* shine */
 @-webkit-keyframes shine {
   0% {
-    color: #777;
+    color: #777 !important;
   }
   10% {
-    color: #ccc;
+    color: #ccc !important;
   }
   100% {
-    color: #777;
+    color: #777 !important;
   }
 }
 @keyframes shine {
   0% {
-    color: #777;
+    color: #777 !important;
   }
   10% {
-    color: #ccc;
+    color: #ccc !important;
   }
   100% {
-    color: #777;
+    color: #777 !important;
   }
 }
 
