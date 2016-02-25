@@ -163,8 +163,7 @@
 }
 #home section#header .intro-text {
     position: absolute;
-    margin-top: 120px;
-    white-space: nowrap;
+    left: calc(50% - 50px);
     text-align: left;
 }
 #home section#header .intro-text p {
@@ -727,8 +726,10 @@
     #home section#header h1 {
         margin-top: 30px;
     }
-    #home .profile-photo {
-        margin: 50px auto;
+    #home section#header .intro-text {
+        left: 0;
+        right: 0;
+        text-align: center;
     }
     #main .title {
         display: block;

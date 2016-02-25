@@ -139,7 +139,7 @@ code {
     width: 24px;
 }
 .navbar-default a:not(.btn).navbar-brand span {
-    color: #777;
+    color: #999;
     -webkit-animation-name: shine;
     animation-name: shine;
     -webkit-animation-duration: 5s;
@@ -741,8 +741,8 @@ ul.inline-bullets > li:last-child {
 }
 
 .animated {
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
 }
@@ -758,16 +758,20 @@ ul.inline-bullets > li:last-child {
 }
 
 .animated.delay-short {
-  -webkit-animation-delay: 0.15s;
-          animation-delay: 0.15s;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
 }
 .animated.delay-medium {
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
 }
 .animated.delay-long {
-  -webkit-animation-delay: 0.45s;
-          animation-delay: 0.45s;
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+.animated.delay-x-long {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 
 @-webkit-keyframes fadeIn {
@@ -857,24 +861,24 @@ ul.inline-bullets > li:last-child {
 /* shine */
 @-webkit-keyframes shine {
   0% {
-    color: #777 !important;
+      opacity: 1;
   }
-  10% {
-    color: #ccc !important;
+  90% {
+      opacity: .3;
   }
   100% {
-    color: #777 !important;
+      opacity: 1;
   }
 }
 @keyframes shine {
   0% {
-    color: #777 !important;
+      opacity: 1;
   }
-  10% {
-    color: #ccc !important;
+  90% {
+      opacity: .3;
   }
   100% {
-    color: #777 !important;
+      opacity: 1;
   }
 }
 
