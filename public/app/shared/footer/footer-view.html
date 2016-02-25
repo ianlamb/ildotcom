@@ -1,13 +1,17 @@
-<div id="footer">
+<div id="footer" ng-cloak>
     <div class="container">
         <div class="row">
             <div class="col-sm-6 left">
-                <ul class="footer-links">
-                    <li><a href="https://github.com/ianlamb/ildotcom" title="View source on GitHub" target="_blank">// source</a></li>
-                </ul>
+                <p>&copy; {{ year }} Ian Lamb</p>
             </div>
             <div class="col-sm-6 right">
-                <p>&copy; {{ year }} Ian Lamb</p>
+                <ul class="footer-links">
+                    <li><a ui-sref="resume" i18n="common.resume"></a></li>
+                    <li><a ui-sref="about" i18n="common.about"></a></li>
+                    <li><a href="https://github.com/ianlamb/ildotcom" target="_blank" i18n="common.source"></a></li>
+                    <li ng-show="!authorized" ng-cloak><a ui-sref="login" i18n="common.login"></a></li>
+                    <li ng-show="authorized" ng-cloak><a ui-sref="logout" i18n="common.logout"></a></li>
+                </ul>
             </div>
         </div>
     </div>

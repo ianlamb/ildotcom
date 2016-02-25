@@ -6,7 +6,7 @@ angular.module('app')
             restrict: 'E',
             replace: true,
             templateUrl: 'app/shared/footer/footer-view.html',
-            controller: function($scope) {
+            controller: function($scope, $rootScope) {
                 $scope.year = moment().year();
             }
         };
