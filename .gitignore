@@ -11,8 +11,10 @@ pids
 logs
 log
 results
-config
 dist
+
+config/app.js
+config/db.js
 
 npm-debug.log
 node_modules
