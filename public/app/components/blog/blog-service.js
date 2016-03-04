@@ -2,17 +2,24 @@ angular.module('app.blog')
     .factory('Posts', ['$http', function($http) {
         'use strict';
 
+        var RECENT_POST_COUNT = 3;
+
+        var postsDataCache;
+
+        function getPosts() {
+            postsDataCache = postsDataCache || $http.get('/api/posts');
+            return postsDataCache;
+        }
+
+        function getRecentPosts() {
+            return getPosts().then(function(posts) {
+                return posts.data.slice(0, RECENT_POST_COUNT);
+            });
+        }
+
         return {
-            get: function() {
-                return $http.get('/api/posts');
-            },
-            getRecent: function() {
-                return $http.get('/api/posts', {
-                    params: {
-                        limit: 3
-                    }
-                });
-            }
+            get: getPosts,
+            getRecent: getRecentPosts
         };
 
     }])

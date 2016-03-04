@@ -2,12 +2,16 @@ angular.module('app.adventure.places')
     .factory('Places', ['$http', function($http) {
         'use strict';
 
+        var placesDataCache, citiesDataCache;
+
         return {
             get: function() {
-                return $http.get('/api/places');
+                placesDataCache = placesDataCache || $http.get('/api/places');
+                return placesDataCache;
             },
             getCities: function() {
-                return $http.get('/api/cities');
+                citiesDataCache = citiesDataCache || $http.get('/api/cities');
+                return citiesDataCache;
             },
             put: function(data) {
                 return $http.put('/api/place', data);
