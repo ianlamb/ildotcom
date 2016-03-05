@@ -5,16 +5,14 @@ var environment;
 switch(process.env.NODE_ENV){
     case 'prod':
         environment = {
+            'name': 'prod',
             'port': 8080,
             'assetsRoot': '/dist'
         };
     case 'dev':
-        environment = {
-            'port': 8181,
-            'assetsRoot': '/public'
-        };
     default:
         environment = {
+            'name': 'dev',
             'port': 8080,
             'assetsRoot': '/public'
         };

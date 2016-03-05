@@ -10,10 +10,11 @@ module.exports = function(router) {
     router.get('/posts', function(req, res) {
         blogProvider.getPosts(req.query.limit)
             .then(function(result) {
-                logger.info('get blog posts');
+                logger.debug('get blog posts');
                 res.json(result);
             })
             .catch(function(err) {
+                logger.error('get blog posts');
                 res.send(err);
             });
     });

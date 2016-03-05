@@ -4,7 +4,8 @@
   "description": "Ian Lamb's portfolio web app",
   "main": "server.js",
   "scripts": {
-    "test": "mocha tests"
+    "test": "mocha tests",
+    "start": "node server.js"
   },
   "dependencies": {
     "app-module-path": "^1.0.5",

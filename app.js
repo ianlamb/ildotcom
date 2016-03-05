@@ -8,10 +8,13 @@ var compression    = require('compression');
 // expose the app path to require
 require('app-module-path').addPath(__dirname + '/app');
 
+var logger = require('logger');
+
 // load configs
 var db = require('config/db');
 var config = require('config/app.js');
 var env = require('config/environment.js');
+logger.info('Environment: ', env);
 
 process.env.PORT = process.env.PORT || env.port || 8080;
 
