@@ -1,8 +1,7 @@
-/* global Promise */
-
-var request         = require('request');
-var config        	= require('../../../../config/app');
-var Place        	= require('./place-model');
+var logger = require('logger');
+var request = require('request');
+var config = require('config/app');
+var Place = require('./place-model');
 
 module.exports = function() {
     'use strict';

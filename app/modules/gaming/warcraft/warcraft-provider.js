@@ -1,6 +1,5 @@
-/* global Promise */
-
-var WowProfile          = require('./wow-profile-model');
+var logger = require('logger');
+var WowProfile = require('./wow-profile-model');
 
 module.exports = function() {
     'use strict';

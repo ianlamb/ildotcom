@@ -1,7 +1,6 @@
 /* global __dirname */
-var Environment = require('../config/environment.js');
+var env = require('config/environment.js');
 var path = require('path');
-var env = new Environment();
 
 module.exports = function(app, router) {
     'use strict';

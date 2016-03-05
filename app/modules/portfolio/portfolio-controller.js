@@ -1,5 +1,6 @@
-var auth               = require('../../middleware/auth');
-var PortfolioProvider  = require('./portfolio-provider');
+var logger = require('logger');
+var auth = require('middleware/auth');
+var PortfolioProvider = require('./portfolio-provider');
 
 module.exports = function(router) {
     'use strict';

@@ -1,6 +1,5 @@
-/* global Promise */
-
-var HotsProfile    = require('./hots-profile-model');
+var logger = require('logger');
+var HotsProfile = require('./hots-profile-model');
 
 module.exports = function() {
     'use strict';

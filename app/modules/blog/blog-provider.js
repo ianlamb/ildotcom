@@ -1,6 +1,5 @@
-/* global Promise */
-
-var Post            = require('./post-model');
+var logger = require('logger');
+var Post = require('./post-model');
 
 module.exports = function() {
     'use strict';

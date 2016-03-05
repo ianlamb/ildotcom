@@ -1,5 +1,6 @@
-var auth            = require('../../../middleware/auth');
-var TravelProvider  = require('./travel-provider');
+var logger = require('logger');
+var auth = require('middleware/auth');
+var TravelProvider = require('./travel-provider');
 
 module.exports = function(router) {
     'use strict';

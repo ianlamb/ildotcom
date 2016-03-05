@@ -1,6 +1,5 @@
-/* global Promise */
-
-var StarcraftProfile    = require('./starcraft-profile-model');
+var logger = require('logger');
+var StarcraftProfile = require('./starcraft-profile-model');
 
 module.exports = function() {
     'use strict';

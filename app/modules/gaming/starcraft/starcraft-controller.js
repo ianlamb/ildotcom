@@ -1,4 +1,5 @@
-var StarcraftProvider    = require('./starcraft-provider');
+var logger = require('logger');
+var StarcraftProvider = require('./starcraft-provider');
 
 module.exports = function(router) {
     'use strict';

@@ -1,4 +1,5 @@
-var WarcraftProvider    = require('./warcraft-provider');
+var logger = require('logger');
+var WarcraftProvider = require('./warcraft-provider');
 
 module.exports = function(router) {
     'use strict';

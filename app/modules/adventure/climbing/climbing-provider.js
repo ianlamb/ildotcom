@@ -1,6 +1,5 @@
-/* global Promise */
-
-var ClimbSession    = require('./climb-session-model');
+var logger = require('logger');
+var ClimbSession = require('./climb-session-model');
 
 module.exports = function() {
     'use strict';

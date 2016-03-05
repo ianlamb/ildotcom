@@ -1,5 +1,6 @@
-var jwt         = require('jwt-simple');
-var config      = require('../../../config/app');
+var logger = require('logger');
+var jwt = require('jwt-simple');
+var config = require('config/app');
 
 module.exports = function() {
     'use strict';

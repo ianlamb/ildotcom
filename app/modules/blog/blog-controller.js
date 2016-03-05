@@ -1,5 +1,6 @@
-var auth            = require('../../middleware/auth');
-var BlogProvider    = require('./blog-provider');
+var logger = require('logger');
+var auth = require('middleware/auth');
+var BlogProvider = require('./blog-provider');
 
 module.exports = function(router) {
     'use strict';
@@ -9,6 +10,7 @@ module.exports = function(router) {
     router.get('/posts', function(req, res) {
         blogProvider.getPosts(req.query.limit)
             .then(function(result) {
+                logger.info('get blog posts');
                 res.json(result);
             })
             .catch(function(err) {

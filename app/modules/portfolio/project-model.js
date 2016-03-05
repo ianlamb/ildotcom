@@ -1,6 +1,6 @@
-var mongoose     = require('mongoose');
-var Schema       = mongoose.Schema;
-var timestamp    = require("../../middleware/timestamp.js");
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var timestamp = require("middleware/timestamp.js");
 
 var ProjectSchema = new Schema({
     "name": String,
