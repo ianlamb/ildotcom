@@ -6,7 +6,7 @@ angular.module('app.adventure.climbs')
 
         return {
             get: function() {
-                climbDataCache = climbDataCache || $http.get('/api/climbs')
+                climbDataCache = climbDataCache || $http.get('/api/climbs');
                 return climbDataCache;
             },
             put: function(data) {

@@ -6,7 +6,7 @@ angular.module('app.adventure.bucket-list')
 
         return {
             get: function() {
-                todoDataCache = todoDataCache || $http.get('/api/bucketlist')
+                todoDataCache = todoDataCache || $http.get('/api/bucketlist');
                 return todoDataCache;
             },
             put: function(data) {
