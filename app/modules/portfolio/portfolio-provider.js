@@ -1,6 +1,5 @@
-/* global Promise */
-
-var Project        	= require('./project-model');
+var logger = require('logger');
+var Project = require('./project-model');
 
 module.exports = function() {
     'use strict';

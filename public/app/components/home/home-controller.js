@@ -5,10 +5,10 @@ angular.module('app.home', [])
     
         // get recent posts to display on home page
         Posts.getRecent()
-            .success(function(data) {
+            .then(function(data) {
                 $scope.posts = data;
             })
-            .error(function(err) {
+            .catch(function(err) {
                 console.error(err);
             });
     

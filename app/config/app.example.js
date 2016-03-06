@@ -25,4 +25,4 @@ module.exports = {
         'realm': 1,
         'name': 'BattleTag'
     }
-}
+};

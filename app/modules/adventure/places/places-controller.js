@@ -1,5 +1,6 @@
-var auth            = require('../../../middleware/auth');
-var PlacesProvider  = require('./places-provider');
+var logger = require('logger');
+var auth = require('middleware/auth');
+var PlacesProvider = require('./places-provider');
 
 module.exports = function(router) {
     'use strict';

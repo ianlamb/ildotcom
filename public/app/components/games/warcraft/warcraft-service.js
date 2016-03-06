@@ -2,6 +2,7 @@ angular.module('app.games.warcraft')
     .factory('WowProfile', ['$http', function($http) {
         'use strict';
 
+        var wowDataCache;
         var races = ['0', 'Human', 'Orc', '3', '4', 'Undead', 'Tauren', 'Gnome', '8', '9', 'Blood Elf'];
         var classes = ['None', 'Warrior', 'Paladin', 'Hunter', 'Rogue', 'Priest', 'Death Knight', 'Shaman', 'Mage', 'Warlock', 'Monk', 'Druid'];
         var genders = ['Male', 'Female'];
@@ -26,52 +27,54 @@ angular.module('app.games.warcraft')
 
         return {
             get: function() {
-                return $http.get('/api/wow')
-                .success(function(wowProfile) {
-                    wowProfile.alts = [];
-                    wowProfile.characters.sort(function(a, b) {
-                        return parseInt(a.level) < parseInt(b.level);
-                    }).forEach(function(character) {
-                        // format some properties
-                        character.gender = genders[character.gender];
-                        character.class = classes[character.class];
-                        character.race = races[character.race];
-
-                        // handle main/alts
-                        if(character.showcase) {
-                            if(wowProfile.main) {
-                                console.error('multiple characters marked as showcase');
-                            } else {
-                                wowProfile.main = character;
-
-                                // declare the slot names for each item
-                                for (var item in wowProfile.main.items) {
-                                    // linter is finnicky about this enforcement, so it has to be its own if block
-                                    if (!item.hasOwnProperty) {
-                                        continue;
+                wowDataCache = wowDataCache || $http.get('/api/wow')
+                    .success(function(wowProfile) {
+                        wowProfile.alts = [];
+                        wowProfile.characters.sort(function(a, b) {
+                            return parseInt(a.level) < parseInt(b.level);
+                        }).forEach(function(character) {
+                            // format some properties
+                            character.gender = genders[character.gender];
+                            character.class = classes[character.class];
+                            character.race = races[character.race];
+    
+                            // handle main/alts
+                            if(character.showcase) {
+                                if(wowProfile.main) {
+                                    console.error('multiple characters marked as showcase');
+                                } else {
+                                    wowProfile.main = character;
+    
+                                    // declare the slot names for each item
+                                    for (var item in wowProfile.main.items) {
+                                        // linter is finnicky about this enforcement, so it has to be its own if block
+                                        if (!item.hasOwnProperty) {
+                                            continue;
+                                        }
+                                        if (!itemSlots[item]) {
+                                            continue;
+                                        }
+                                        wowProfile.main.items[item].slot = itemSlots[item];
                                     }
-                                    if (!itemSlots[item]) {
-                                        continue;
-                                    }
-                                    wowProfile.main.items[item].slot = itemSlots[item];
+    
+                                    // TODO: parse feed items
                                 }
-
-                                // TODO: parse feed items
+                            } else {
+                                wowProfile.alts.push(character);
                             }
-                        } else {
-                            wowProfile.alts.push(character);
-                        }
+                        });
+    
+                        // needed to calculate percentages
+                        wowProfile.mounts.possible = wowProfile.mounts.numCollected + wowProfile.mounts.numNotCollected;
+                        wowProfile.pets.possible = wowProfile.pets.numCollected + wowProfile.pets.numNotCollected;
+    
+                        return wowProfile;
+                    })
+                    .error(function(err) {
+                        console.error(err);
                     });
 
-                    // needed to calculate percentages
-                    wowProfile.mounts.possible = wowProfile.mounts.numCollected + wowProfile.mounts.numNotCollected;
-                    wowProfile.pets.possible = wowProfile.pets.numCollected + wowProfile.pets.numNotCollected;
-
-                    return wowProfile;
-                })
-                .error(function(err) {
-                    console.error(err);
-                });
+                return wowDataCache;
             }
         };
     }]);

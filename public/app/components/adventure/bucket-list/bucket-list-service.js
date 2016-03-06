@@ -2,9 +2,12 @@ angular.module('app.adventure.bucket-list')
     .factory('BucketList', ['$http', function($http) {
         'use strict';
 
+        var todoDataCache;
+
         return {
             get: function() {
-                return $http.get('/api/bucketlist');
+                todoDataCache = todoDataCache || $http.get('/api/bucketlist');
+                return todoDataCache;
             },
             put: function(data) {
                 return $http.put('/api/bucketlist', data);

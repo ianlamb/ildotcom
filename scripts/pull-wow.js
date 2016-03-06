@@ -100,10 +100,10 @@ function parseFeed(feed) {
         });
         
         Promise.all(promises).then(function() {
-            console.log('finished parsing activity feed...')
+            console.log('finished parsing activity feed...');
             resolve(feed);
         });
-    })
+    });
 }
 
 function getItemData(itemId, context) {
@@ -153,7 +153,7 @@ function getItemData(itemId, context) {
                 mongoose.disconnect();
             }
         });
-    })
+    });
 }
 
 function parseAchievementObject(supercats, character) {

@@ -1,5 +1,4 @@
-/* global Promise */
-
+var logger = require('logger');
 var Todo = require('./todo-model');
 
 module.exports = function() {

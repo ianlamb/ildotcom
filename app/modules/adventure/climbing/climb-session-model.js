@@ -1,6 +1,6 @@
-var mongoose     = require('mongoose');
-var Schema       = mongoose.Schema;
-var timestamp   = require("../../../middleware/timestamp.js");
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var timestamp = require("middleware/timestamp.js");
 
 var ClimbSessionSchema = new Schema({
     "date": Date,

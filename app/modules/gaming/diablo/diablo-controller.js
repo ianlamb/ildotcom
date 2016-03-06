@@ -1,4 +1,5 @@
-var DiabloProvider    = require('./diablo-provider');
+var logger = require('logger');
+var DiabloProvider = require('./diablo-provider');
 
 module.exports = function(router) {
     'use strict';

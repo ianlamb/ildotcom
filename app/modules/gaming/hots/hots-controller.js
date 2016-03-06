@@ -1,4 +1,5 @@
-var HotsProvider    = require('./hots-provider');
+var logger = require('logger');
+var HotsProvider = require('./hots-provider');
 
 module.exports = function(router) {
     'use strict';
