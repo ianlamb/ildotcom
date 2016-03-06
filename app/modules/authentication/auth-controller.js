@@ -10,7 +10,6 @@ module.exports = function(router) {
     router.post('/auth', function(req, res) {
         authProvider.login(req.body.password)
             .then(function(token) {
-                throw new Error('test error');
                 logger.debug('auth controller - login success', req.body.password);
                 res.send(token);
             })
