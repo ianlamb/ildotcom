@@ -10,15 +10,18 @@ module.exports = function(router) {
     router.post('/auth', function(req, res) {
         authProvider.login(req.body.password)
             .then(function(token) {
+                throw new Error('test error');
+                logger.debug('auth controller - login success', req.body.password);
                 res.send(token);
             })
             .catch(function(err) {
-                console.err(err);
-                res.send(401);
+                logger.warn('auth controller - login failure', req.body.password, err);
+                res.sendStatus(401);
             });
     });
     
     router.get('/testAuth', auth, function(req, res) {
+        logger.debug('auth controller - authentication test worked, congrats');
         res.send('You are authenticated!');
     });
 };
