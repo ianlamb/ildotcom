@@ -13,8 +13,8 @@ log
 results
 dist
 
-config/app.js
-config/db.js
+app/config/app.js
+app/config/db.js
 
 npm-debug.log
 node_modules
