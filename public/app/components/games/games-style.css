@@ -1,7 +1,7 @@
 #gaming {
     padding-bottom: 20px;
 }
-#gaming .header-image {
+#gaming .sticky-hero {
     background-color: #0a0d23;
     background-image: url('/assets/images/header-gaming.jpg');
 }

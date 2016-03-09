@@ -145,13 +145,23 @@
     margin: 0;
     padding: 0;
     color: #efefef;
-    background: #454545 url(/assets/images/backdrop.jpg) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     text-shadow: 0 1px 1px rgba(0,0,0,.5);
-    z-index: 5;
+    z-index: 35;
+}
+#home section#header .container {
+    position: relative;
+    z-index: 40;
+}
+#home .sticky-hero {
+    height: 100vh;
+    background: #454545 url(/assets/images/backdrop.jpg) no-repeat center center;
+}
+#home .sticky-hero-shim {
+    height: 0;
 }
 #home section#header .video-splash {
     position: fixed;

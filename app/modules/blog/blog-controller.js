@@ -50,11 +50,11 @@ module.exports = function(router) {
     router.put('/post', auth, function(req, res) {
         blogProvider.savePost(req.body)
             .then(function(result) {
-                logger.debug('blog controller - save post', req.body._id);
+                logger.debug('blog controller - save post', req.body.slug);
                 res.json(result);
             })
             .catch(function(err) {
-                logger.error('blog controller - can\'t save blog posts', req.body._id, err);
+                logger.error('blog controller - can\'t save blog posts', req.body.slug, err);
                 res.send(err);
             });
     });
