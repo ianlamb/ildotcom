@@ -108,13 +108,22 @@ dl.table-list dd {
 }
 
 code {
-    display: block;
-    padding: 0.4em 0.8em;
+    padding: 0 0.2em;
     margin: 0;
     border-radius: 0;
     font-family: monospace;
     color: #E2DCCC;
     background: #555;
+}
+
+pre {
+    padding: 0.2 0.4em;
+    margin: 0;
+    border-radius: 0;
+    font-family: monospace;
+    color: #E2DCCC;
+    background: #555;
+    border-color: #999;
 }
 
 
@@ -492,7 +501,7 @@ code {
     margin: 0;
     padding-right: 0.3em;
     padding-left: 0.6em;
-    border-left: 3px solid rgba(0,0,0,0.4);
+    border-left: 3px solid rgba(255,255,255,0.2);
 }
 #footer .footer-links li:first-child {
     padding-left: 0;
