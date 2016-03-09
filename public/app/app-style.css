@@ -40,16 +40,12 @@ html {
 }
 
 body {
-    padding-top: 50px;
     letter-spacing: 0.1em;
     background: transparent;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
 	-ms-font-smoothing: antialiased;
 	font-smoothing: antialiased;
-}
-
-h1, h2, h3, h4, h5 {
 }
 
 p { margin: 0 0 1.0em 0; }
@@ -148,7 +144,7 @@ pre {
     width: 24px;
 }
 .navbar-default a:not(.btn).navbar-brand span {
-    color: #999;
+    color: #ccc;
     -webkit-animation-name: shine;
     animation-name: shine;
     -webkit-animation-duration: 5s;
@@ -188,15 +184,11 @@ pre {
 }
 
 .navbar-default {
-    background-color: #333;
-    border-color: #454545;
+    background-color: rgba(0,0,0,.6);
     border: none;
 }
-.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: #454545;
-}
 .navbar-default .navbar-nav > li > a {
-    color: #999;
+    color: #ccc;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -305,11 +297,11 @@ pre {
  * SUBHEADER
  */
 
-.header-image {
-    position: relative;
+.sticky-hero {
+    position: fixed;
     z-index: 20;
     width: 100%;
-    height: 180px;
+    height: 250px;
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: center center;
@@ -319,6 +311,16 @@ pre {
     background-size: cover;
     border-top: 1px solid #222;
     border-bottom: 1px solid #222;
+}
+.sticky-hero-overlay {
+    position: relative;
+    z-index: 30;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.3)
+}
+.sticky-hero-shim {
+    height: 200px;
 }
 
 #subNav {
@@ -386,7 +388,7 @@ pre {
     height: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding-top: 50px;
     overflow: hidden;
 }
 
