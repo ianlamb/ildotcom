@@ -268,10 +268,12 @@
 }
 #home .posts li {
     margin-bottom: 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 #home .posts li a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 1.1em;
 }
 #home .posts li:last-child {
