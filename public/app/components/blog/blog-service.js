@@ -2,7 +2,7 @@ angular.module('app.blog')
     .factory('Posts', ['$http', function($http) {
         'use strict';
 
-        var RECENT_POST_COUNT = 3;
+        var RECENT_POST_COUNT = 5;
 
         var postsDataCache;
 
