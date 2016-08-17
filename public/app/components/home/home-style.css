@@ -158,7 +158,11 @@
 }
 #home .sticky-hero {
     height: 100vh;
-    background: #454545 url(/assets/images/backdrop.jpg) no-repeat center center;
+    background: #454545 url(/assets/images/17386721395_85c11d7117_k.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 #home .sticky-hero-shim {
     height: 0;
@@ -422,6 +426,18 @@
 #home #about {
     height: 400px;
     overflow: hidden;
+    background: url("/assets/images/AchU3Y7.jpg") no-repeat bottom;
+    background-size: cover;
+}
+#home #about:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.75);
 }
 #home #about p {
     font-size: 1.2em;
@@ -455,7 +471,7 @@
 }
 #home #about a.major-link:hover {
     border-top-width: 5px;
-    background: #55585C;
+    background: rgba(0,0,0,.5);
 }
 #home #about a.major-link .link-desc {
     text-align: center;
@@ -623,7 +639,18 @@
 #contact {
     font-size: 1.6em;
     text-transform: uppercase;
-    background: #22262b;
+    background: none;
+    background-size: cover;
+}
+#contact:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
 }
 #contact h3 {
     font-size: 2em;
