@@ -538,7 +538,6 @@
     background: #999 no-repeat top center;
     background-size: 100%;
     box-shadow: -10px 10px 60px rgba(0,0,0,.7);
-    -webkit-transform-style: preserve-3d;
     -webkit-transform-origin: center;
     transform-origin: center;
     -webkit-transform: rotateX(60deg) rotateZ(-35deg) translateZ(-20px);

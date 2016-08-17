@@ -42,10 +42,6 @@ html {
 body {
     letter-spacing: 0.1em;
     background: transparent;
-	-webkit-font-smoothing: antialiased;
-	-moz-font-smoothing: antialiased;
-	-ms-font-smoothing: antialiased;
-	font-smoothing: antialiased;
 }
 
 p { margin: 0 0 1.0em 0; }
@@ -72,7 +68,6 @@ label {
 
 dl {
     display: block;
-    vertical-align: top;
     margin-bottom: 0;
 }
 dt {
@@ -667,9 +662,6 @@ ul.inline-bullets > li:last-child {
 @media only screen and (max-width: 767px) {
     html, body {
         font-size: 11pt;
-    }
-    dl {
-        
     }
     dl dd {
         margin-bottom: 0.5em;
