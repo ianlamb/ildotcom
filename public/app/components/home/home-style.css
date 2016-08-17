@@ -241,8 +241,10 @@
 #home #main {
     background: #efefef;
 }
-#home #main h3 {
+#home #main .blurb {
+    font-size: 22px;
     margin-bottom: 40px;
+    text-align: center;
 }
 #home #about {
     padding: 0;
