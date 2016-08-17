@@ -268,6 +268,11 @@
 }
 #home .posts li {
     margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#home .posts li a {
+    font-size: 1.1em;
 }
 #home .posts li:last-child {
     margin-bottom: 0;
@@ -286,26 +291,24 @@
     display: inline-block;
     list-style: none;
     padding: 0;
+    margin-top: -5px;
     margin-bottom: 20px;
 }
 .social-icons li {
-    display: inline-block;
+    display: block;
 }
 .social-icons a {
-    margin-right: 20px;
+    display: block;
+    padding: 5px 0;
 }
 .social-icons a span {
-    position: absolute;
-    font-size: 0.8em;
-    margin-top: -65px;
-}
-.social-icons li:nth-child(even) a span {
-    margin-top: -5px;
+    font-size: 1.2em;
 }
 .social-icons a .fa {
+    position: relative;
+    top: 3px;
     color: #999;
-    font-size: 2.4em;
-    margin: -0.1em 0.5em 0 0;
+    font-size: 1.2em;
 }
 .social-icons a:hover .fa {
     color: #00abff;
@@ -773,26 +776,6 @@
         display: block;
         text-align: left;
         margin-bottom: 5px;
-    }
-    .social-icons {
-        font-size: 1.2em;
-    }
-    .social-icons a .fa {
-        margin: 0 0.3em 0 0;
-    }
-    .social-icons a span {
-        position: relative;
-        display: inline-block;
-        vertical-align: top;
-        margin-top: 5px !important;
-        font-size: 1.4em;
-    }
-    .social-icons li {
-        display: block;
-        margin-left: 2px;
-    }
-    .social-icons li:first-child {
-        margin-left: 0;
     }
     #home #about {
         padding: 0;
