@@ -1,9 +1,11 @@
-var app                 = require('../config/app');
-var db                  = require('../config/db');
+require('app-module-path').addPath(__dirname + '/../app');
+
+var app                 = require('config/app');
+var db                  = require('config/db');
 var mongoose            = require('mongoose');
 var request             = require('request');
 var achievements        = require('./sc2-achievements.json');
-var StarcraftProvider   = require('../app/modules/gaming/starcraft/starcraft-provider');
+var StarcraftProvider   = require('modules/gaming/starcraft/starcraft-provider');
 var starcraftProvider   = new StarcraftProvider();
 
 console.log('connecting to database...');

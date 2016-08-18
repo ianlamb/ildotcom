@@ -1,8 +1,10 @@
-var app             = require('../config/app');
-var db              = require('../config/db');
+require('app-module-path').addPath(__dirname + '/../app');
+
+var app             = require('config/app');
+var db              = require('config/db');
 var mongoose        = require('mongoose');
 var request         = require('request');
-var DiabloProvider  = require('../app/modules/gaming/diablo/diablo-provider');
+var DiabloProvider  = require('modules/gaming/diablo/diablo-provider');
 var diabloProvider  = new DiabloProvider();
 
 console.log('connecting to database...');

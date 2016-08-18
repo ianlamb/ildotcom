@@ -1,10 +1,12 @@
-var app                 = require('../config/app');
-var db                  = require('../config/db');
+require('app-module-path').addPath(__dirname + '/../app');
+
+var app                 = require('config/app');
+var db                  = require('config/db');
 var mongoose            = require('mongoose');
 var request             = require('request');
 var Promise             = require('promise');
 var achievements        = require('./wow-achievements.json');
-var WarcraftProvider    = require('../app/modules/gaming/warcraft/warcraft-provider');
+var WarcraftProvider    = require('modules/gaming/warcraft/warcraft-provider');
 var warcraftProvider    = new WarcraftProvider();
 
 console.log('connecting to db...');
