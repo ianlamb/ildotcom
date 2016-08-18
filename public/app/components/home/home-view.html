@@ -23,12 +23,23 @@
     </section>
     <section id="main">
         <div class="container">
-            <h3 i18n="home.description"></h3>
+            <h3 i18n="home.description" class="blurb"></h3>
+            <hr class="home-divider" />
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-3">
+                    <span i18n="home.blogTitle" class="title"></span>
+                </div>
+                <div class="col-sm-3">
+                    <ul class="posts">
+                        <li ng-repeat="post in posts">
+                            <a ui-sref="blog.post({ slug: post.slug })" class="link">{{ post.title }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
                     <span i18n="home.socialTitle" class="title"></span>
                 </div>
-                <div class="col-sm-7">
+                <div class="col-sm-3">
                     <ul class="social-icons">
                         <li>
                             <a href="https://www.flickr.com/photos/128441783@N07/" ng-click="trackClickEvent('flickr')" title="{{ 'home.flickrDescription' | i18n }}" target="_blank">
@@ -71,18 +82,6 @@
                                 <i class="fa fa-github-square"></i>
                                 <span>Github</span>
                             </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-5">
-                    <span i18n="home.blogTitle" class="title"></span>
-                </div>
-                <div class="col-sm-7">
-                    <ul class="posts">
-                        <li ng-repeat="post in posts">
-                            <a ui-sref="blog.post({ slug: post.slug })" class="link">{{ post.title }}</a>
                         </li>
                     </ul>
                 </div>

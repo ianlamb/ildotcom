@@ -115,6 +115,13 @@
     border-bottom: 4px solid #00abff;
 }
 
+#blogPosts > li .post-wrapper .post-title a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 #blogPosts > li h2 {
     margin: 0;
 }
