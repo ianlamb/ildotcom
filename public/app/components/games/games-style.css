@@ -27,48 +27,15 @@
 #gaming .character .main {
     display: block;
     overflow: hidden;
-    background: url(/assets/images/footer_lodyas.png);
-    border-bottom: 4px solid #00abff;
+    background: url('/assets/images/footer_lodyas.png');
+    border: 1px solid #222;
     -webkit-transition: all .4s;
     transition: all .4s;
 }
 #gaming .character .main:hover {
-    box-shadow: 0 0 5px #00abff,
-                0 0 10px  #00abff,
-                0 0 20px  #00abff,
-                0 0 30px  #00abff;
-    -webkit-transition: all .2s;
-    transition: all .2s;
-    -webkit-animation: character-hover-glow 1.5s ease-in-out infinite alternate;
-    animation: character-hover-glow 1.5s ease-in-out infinite alternate; 
-}
-@-webkit-keyframes character-hover-glow {
-  from {
-    box-shadow: 0 0 5px #00abff,
-                0 0 10px  #00abff,
-                0 0 20px  #00abff,
-                0 0 30px  #00abff;
-  }
-  to {
-    box-shadow: 0 0 10px #00abff,
-                0 0 20px  #00abff,
-                0 0 30px  #00abff,
-                0 0 40px  #00abff;
-  }
-}
-@keyframes character-hover-glow {
-  from {
-    box-shadow: 0 0 5px #00abff,
-                0 0 10px  #00abff,
-                0 0 20px  #00abff,
-                0 0 30px  #00abff;
-  }
-  to {
-    box-shadow: 0 0 10px #00abff,
-                0 0 20px  #00abff,
-                0 0 30px  #00abff,
-                0 0 40px  #00abff;
-  }
+    border-color: #00abff;
+    -webkit-transition: all .4s;
+    transition: all .4s;
 }
 #gaming .character .main a {
     display: block;
