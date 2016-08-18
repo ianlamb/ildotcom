@@ -3,10 +3,11 @@
         <div class="row">
             <div class="col-md-3 left-column">
                 <h1 ng-bind="resume.name"></h1>
-                <p ng-bind="resume.address"></p>
-                <p ng-bind="resume.phone"></p>
-                <p ng-bind="resume.email"></p>
-                <p ng-bind="resume.website"></p>
+                <ul class="summary-list">
+                    <li ng-bind="resume.address"></li>
+                    <li ng-bind="resume.email"></li>
+                    <li ng-bind="resume.website"></li>
+                </ul>
                 <button i18n="resume.downloadButton" ng-click="downloadResume()" class="btn btn-block btn-lg btn-primary"></button>
             </div>
             <div class="col-md-9">
