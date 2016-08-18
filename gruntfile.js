@@ -14,9 +14,9 @@ module.exports = function(grunt) {
       ],
       options: {
         undef: true,
-        // unused: true,
         curly: true,
         latedef: true,
+        loopfunc: true,
         browser: true,
         devel: true,
         globals: {
