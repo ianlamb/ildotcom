@@ -10,7 +10,7 @@
     position: relative;
     width: 100px;
     height: 100px;
-    margin: 20px auto;
+    margin: 20px 0;
 }
 .dom-logo > span,
 .dom-logo > span:after {
@@ -176,8 +176,7 @@
     margin-top: 80px;
 }
 #home section#header .intro-text {
-    position: absolute;
-    left: calc(50% - 50px);
+    margin-top: 40px;
     text-align: left;
 }
 #home section#header .intro-text p {
