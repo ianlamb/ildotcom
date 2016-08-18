@@ -47,7 +47,8 @@ var StarcraftProfileSchema = new Schema({
     },
     "campaign": {
         "wol": String,
-        "hots": String
+        "hots": String,
+        "lotv": String
     },
     "season": {
         "seasonId": Number,

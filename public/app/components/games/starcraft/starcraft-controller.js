@@ -5,6 +5,7 @@ angular.module('app.games.starcraft', [])
     StarcraftProfile.get()
         .success(function(data) {
             $scope.starcraftProfile = data;
+            $scope.starcraftProfile.battleTag = 'Sorry#127'
         });
 
     $scope.formatSlug = Utilities.formatSlug;

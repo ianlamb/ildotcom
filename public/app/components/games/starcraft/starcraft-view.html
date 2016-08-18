@@ -6,7 +6,7 @@
                 <dt i18n="starcraft.battleTagLabel"></dt>
                 <dd>
                     <a href="http://us.battle.net/sc2/en{{ starcraftProfile.profilePath }}" target="_blank" title="View Profile">
-                        {{ starcraftProfile.displayName }}
+                        {{ starcraftProfile.battleTag }}
                     </a>
                 </dd>
                 <dt i18n="starcraft.careerGamesLabel"></dt>
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-4">
                             <h4>Legacy of the Void</h4>
-                            <span>Coming Soon...</span>
+                            <span>{{ starcraftProfile.campaign.lotv || 'Incomplete' }}</span>
                         </div>
                     </div>
                     <hr>
