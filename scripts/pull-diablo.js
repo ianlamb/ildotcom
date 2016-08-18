@@ -11,14 +11,14 @@ console.log('connecting to database...');
 mongoose.connect(db.url);
 
 var options = {
-    uri: 'http://us.battle.net/api/d3/profile/' + app.d3.battleTag + '/',
+    uri: app.battlenet.baseUrl + '/d3/profile/' + app.d3.battleTag + '/?locale=en_US&apikey=' + app.keys.battlenet,
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
     }
 };
 
-console.log('requesting d3 profile...');
+console.log('requesting d3 profile...', options.uri);
 request(options, function(err, res, body) {
     if(err) {
         console.err(err);
