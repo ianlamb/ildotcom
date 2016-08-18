@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Ian Lamb's portfolio web app",
   "main": "server.js",
   "scripts": {
