@@ -3,8 +3,8 @@ angular.module('app.games.warcraft')
         'use strict';
 
         var wowDataCache;
-        var races = ['0', 'Human', 'Orc', '3', '4', 'Undead', 'Tauren', 'Gnome', '8', '9', 'Blood Elf'];
-        var classes = ['None', 'Warrior', 'Paladin', 'Hunter', 'Rogue', 'Priest', 'Death Knight', 'Shaman', 'Mage', 'Warlock', 'Monk', 'Druid'];
+        var races = ['0', 'Human', 'Orc', '3', 'Night Elf', 'Undead', 'Tauren', 'Gnome', '8', '9', 'Blood Elf'];
+        var classes = ['None', 'Warrior', 'Paladin', 'Hunter', 'Rogue', 'Priest', 'Death Knight', 'Shaman', 'Mage', 'Warlock', 'Monk', 'Druid', 'Demon Hunter'];
         var genders = ['Male', 'Female'];
         var itemSlots = {
             'head': 'Head',
