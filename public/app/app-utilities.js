@@ -40,13 +40,13 @@ angular.module('app.utilities', [])
                 return;
             }
             duration = duration || 500;
-            
-            var start = element.scrollTop,
-                change = to - start,
-                currentTime = 0,
-                increment = 20;
-        
-            var animateScroll = function(){
+
+            var start = element.scrollTop;
+            var navHeight = 50;
+            var change = to - navHeight - start;
+            var currentTime = 0;
+            var increment = 20;
+            var animateScroll = function() {
                 currentTime += increment;
                 var val = Math.easeInOutQuad(currentTime, start, change, duration);
                 element.scrollTop = val; 
