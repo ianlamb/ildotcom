@@ -787,7 +787,7 @@ hr.home-divider {
         padding: 0;
     }
     #home #about a.major-link {
-        padding: 10px;
+        padding: 40px;
         transition: none;
     }
     #home #about a.major-link:hover {
@@ -814,6 +814,10 @@ hr.home-divider {
     }
     #home #about .row > div {
         display: block;
+    }
+
+    #home .posts {
+        margin-bottom: 40px;
     }
 
     #home #projects h1 {
@@ -877,8 +881,16 @@ hr.home-divider {
     #contact .contact-info > label {
         margin-top: -1.6em;
     }
-    #contactMap {
-        height: 240px;
-        margin: 0;
+    #contact .mapWrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+    #contact .map {
+        width: 200%;
+        margin: 20px 0 20px -30px;
+    }
+    .dom-logo {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
