@@ -26,6 +26,12 @@ angular.module('app.routes', ['ui.router'])
             controller: 'ResumeController'
         })
 
+        .state('timeline', {
+            url: '/timeline',
+            templateUrl: 'app/components/timeline/timeline-view.html',
+            controller: 'TimelineController'
+        })
+
         .state('login', {
             url: '/login',
             templateUrl: 'app/components/auth/login-view.html',

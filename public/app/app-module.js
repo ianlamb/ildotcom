@@ -10,6 +10,7 @@ angular.module('app', [
     'app.home',
     'app.about',
     'app.resume',
+    'app.timeline',
     'app.blog',
     'app.portfolio',
     'app.adventure',
