@@ -519,6 +519,14 @@ pre {
  * COMMON CLASSES
  */
 
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    content: '';
+    clear: both;
+    height: 0;
+}
+
 .panel {
     padding: 1.0em 2.0em;
     background: #454545;

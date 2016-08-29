@@ -1,7 +1,17 @@
 <div id="timeline">
     <div class="container">
         <div class="row">
-            
+            <h1 class="text-center">Timeline of Live Events</h1>
+            <div class="timeline" style="height:{{ getContainerHeight() }}px">
+                <div class="line"></div>
+                <div ng-repeat="event in events" class="event-wrapper" style="top:{{ event.offset }}px">
+                    <div class="event">
+                        <div class="date">{{ event.date | date : 'MMM d, y' : '' }}</div>
+                        <div class="name">{{ event.name }}</div>
+                        <img ng-if="event.image" src="{{ getImageUrl(event.image) }}" class="image" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
