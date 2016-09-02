@@ -1,11 +1,11 @@
 #diablo .character .main {
-    height: 60px;
+    height: 68px;
 }
 #diablo .character .main .call-to-action h1 {
     line-height: 70px;
 }
 #diablo .character .main .call-to-action .fa {
-    margin-top: 34px;
+    margin-top: 42px;
 }
 #diablo .portrait {
     display: block;
@@ -13,7 +13,7 @@
     margin: 0 10px 0 0;
     height: 66px;
     width: 83px;
-    background: url('/assets/images/hero-nav-portraits.jpg');
+    background: rgba(0, 0, 0, 0.5) url('/assets/images/hero-nav-portraits.jpg');
 }
 #diablo .portrait.barbarian-male {
     background-position: 0 0;

@@ -51,6 +51,7 @@
     float: left;
     margin-right: 5px;
     margin-bottom: 100px;
+    background: rgba(0, 0, 0, 0.5);
 }
 .gaming .character .main .scroll-up {
     display: block;
@@ -75,6 +76,7 @@
 }
 .gaming .character .main .call-to-action h1 {
     display: inline-block;
+    clear: both;
     color: inherit;
     font-size: 30px;
     margin-left: 20px;

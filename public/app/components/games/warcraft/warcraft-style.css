@@ -1,3 +1,8 @@
 #wow .character .main {
-    height: 85px;
+    height: 86px;
+}
+
+#wow .character .main img {
+    height: 84px;
+    width: 84px;
 }
