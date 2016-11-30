@@ -5,7 +5,8 @@ module.exports = {
     'keys': { // api keys provided by 3rd parties
         'flickr': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
         'mapquest': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-        'steam': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+        'steam': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        'dropbox': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
     },
     'wow': {
         'battleTag': '',

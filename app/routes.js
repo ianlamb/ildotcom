@@ -9,6 +9,7 @@ module.exports = function(app, router) {
     require('./modules/authentication/auth-controller')(router);
     require('./modules/blog/blog-controller')(router);
     require('./modules/portfolio/portfolio-controller')(router);
+    require('./modules/photos/photo-controller')(router);
     require('./modules/adventure/climbing/climbing-controller')(router);
     require('./modules/adventure/travel/travel-controller')(router);
     require('./modules/adventure/todo/todo-controller')(router);
