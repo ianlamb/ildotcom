@@ -5,7 +5,8 @@ module.exports = {
     'keys': { // api keys provided by 3rd parties
         'flickr': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
         'mapquest': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-        'steam': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+        'steam': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        'battlenet': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
     },
     'wow': {
         'battleTag': '',
@@ -21,8 +22,11 @@ module.exports = {
     },
     'sc2': {
         'battleTag': 'BattleTag-xxxx',
-        'id': 278997,
+        'id': 999999,
         'realm': 1,
         'name': 'BattleTag'
+    },
+    'hots': {
+        'playerId': 9999999
     }
 };
