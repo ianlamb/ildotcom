@@ -1,9 +1,11 @@
-var app            = require('../config/app');
-var db             = require('../config/db');
+require('app-module-path').addPath(__dirname + '/../app');
+
+var app            = require('config/app');
+var db             = require('config/db');
 var mongoose       = require('mongoose');
 var request        = require('request');
 var cheerio        = require('cheerio');
-var HotsProvider   = require('../app/modules/gaming/hots/hots-provider');
+var HotsProvider   = require('modules/gaming/hots/hots-provider');
 var hotsProvider   = new HotsProvider();
 
 console.log('connecting to database...');

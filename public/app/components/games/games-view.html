@@ -1,5 +1,5 @@
-<div id="gaming">
-    <div class="header-image"></div>
+<div id="gaming" class="gaming">
+    <sticky-hero></sticky-hero>
     <div id="subNav">
         <div class="container">
             <ul>
@@ -13,10 +13,6 @@
                 </li>
                 <li class="{{ state.name == 'gaming.starcraft' ? 'selected' : '' }}">
                     <a ui-sref="gaming.starcraft">Starcraft 2</a>
-                    <div class="underline"></div>
-                </li>
-                <li class="{{ state.name == 'gaming.hots' ? 'selected' : '' }}">
-                    <a ui-sref="gaming.hots">Heroes of the Storm</a>
                     <div class="underline"></div>
                 </li>
             </ul>

@@ -38,6 +38,12 @@ angular.module('app.routes', ['ui.router'])
             controller: 'AuthController'
         })
 
+        .state('photos', {
+            url: '/photos',
+            templateUrl: 'app/components/photos/photos-view.html',
+            controller: 'PhotosController'
+        })
+
         .state('portfolio', {
             url: '/portfolio',
             templateUrl: 'app/components/portfolio/portfolio-view.html',

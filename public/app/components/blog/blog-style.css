@@ -1,4 +1,4 @@
-#blog .header-image {
+#blog .sticky-hero {
     background: url('/assets/images/header-blog.jpg');
     background-position: center -60px;
     background-size: 110%;
@@ -113,6 +113,13 @@
 #blogPosts > li .post-wrapper {
     border: 0;
     border-bottom: 4px solid #00abff;
+}
+
+#blogPosts > li .post-wrapper .post-title a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #blogPosts > li h2 {

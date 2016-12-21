@@ -6,7 +6,8 @@ module.exports = {
         'flickr': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
         'mapquest': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
         'steam': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-        'battlenet': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+        'battlenet': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        'dropbox': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
     },
     'wow': {
         'battleTag': '',

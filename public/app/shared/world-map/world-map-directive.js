@@ -23,16 +23,22 @@ angular.module('app')
                             fill: "transparent"
                         });
                         r.setStart();
-                        
+
                         // move svg element to this directive
                         $element[0].appendChild(r.canvas);
                         
                         // colour the countries
                         for (var country in worldmap.shapes) {
-                            r.path(worldmap.shapes[country]).attr({strike: 'transparent', fill: '#57646B', "stroke-opacity": 0.25});
+                            var fillColor = '#57646B';
+                            $scope.markers.forEach(function(marker) {
+                                if (marker.country === country) {
+                                    fillColor = '#00abff';
+                                }
+                            });
+                            r.path(worldmap.shapes[country]).attr({strike: 'transparent', fill: fillColor, "stroke-opacity": 0.25});
                         }
                         var world = r.setFinish();
-                        
+
                         // set the hover effects
                         var over = function () {
                                 this.c = this.c || this.attr("fill");
@@ -42,7 +48,7 @@ angular.module('app')
                                 this.stop().animate({fill: this.c}, 500);
                             };
                         world.hover(over, out);
-                        
+
                         // lat/long helper functions
                         world.getXY = function (lat, lon) {
                             return {
@@ -56,7 +62,7 @@ angular.module('app')
                                 lon: (x - 465.4) / 2.6938
                             };
                         };
-        
+
                         // place markers
                         $scope.markers.forEach(function(marker) {
                             r.circle()

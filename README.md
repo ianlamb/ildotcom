@@ -8,7 +8,7 @@
 
 Make sure Node, NPM, Bower and MongoDB are all installed globally.
 
-Make appropriate config files, then run:
+Copy the example config files in the `config` directory and adjust them to your own specs, then run:
 
     npm install
     bower install
@@ -23,6 +23,7 @@ For production build run:
     grunt full
     NODE_ENV=prod node server.js
 
+The nice thing about this workflow is you only really need grunt for watch during development. No build steps are actually happening, so it's basically a static site until you move to production (where you get all the concatenation/uglification/minification/etc).
 
 ### Technology Stack
 * HTML5

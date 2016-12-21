@@ -44,7 +44,7 @@ module.exports = function() {
     function getHeroData(hero) {
         return new Promise(function(resolve, reject) {
             var options = {
-                uri: 'http://us.battle.net/api/d3/profile/' + app.d3.battleTag + '/hero/' + hero.id,
+                uri: app.battlenet.baseUrl + '/d3/profile/' + app.d3.battleTag + '/hero/' + hero.id + '?locale=en_US&apikey=' + app.keys.battlenet,
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

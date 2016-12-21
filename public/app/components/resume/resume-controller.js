@@ -5,19 +5,18 @@ angular.module('app.resume', [])
         
         $scope.resume = {
             "name": "Ian Lamb",
-            "address": "London, ON, Canada",
-            "phone": "+1-519-902-6533",
+            "address": "Irvine, CA, United States",
             "email": "ianlamb32@gmail.com",
             "website": "http://ianlamb.com",
-            "objective": "I am a driven web developer looking to work with great people to create amazing experiences. I have a strong understanding of key programming concepts, design patterns, performant and organized coding practices, and cross-browser/usability considerations. I'm a dependable worker and passionate about building quality websites. I would love to hear from anyone looking for part-time contracting work, open-source contributions or networking.",
+            "objective": "I am not currently seeking new opportunities.",
             "skillCats": [
                 {
                     "title": "Front-End",
                     "skills": [
-                        "HTML5/CSS",
-                        "JavaScript/jQuery",
-                        "AngularJS",
-                        "Bootstrap/Foundation"
+                        "HTML5 / CSS / SASS",
+                        "JavaScript / jQuery",
+                        "AngularJS / VueJS",
+                        "Bootstrap / Foundation"
                     ]
                 },
                 {
@@ -32,27 +31,42 @@ angular.module('app.resume', [])
                 {
                     "title": "Back-End",
                     "skills": [
-                        "NodeJS/Express",
+                        "Node / Express",
+                        "Java / Spring",
                         "ASP.NET MVC",
-                        "PHP/Laravel",
-                        "Java/Spring",
-                        "MySQL/MongoDB"
+                        "PHP / Laravel",
+                        "MySQL / MongoDB"
                     ]
                 },
                 {
                     "title": "Tooling",
                     "skills": [
-                        "Git/SVN SCM",
-                        "Jenkins/Hudson CI",
-                        "Apache/Glassfish/Tomcat",
-                        "Bower/NPM/Grunt"
+                        "Git / GitHub",
+                        "NPM / Gulp / Grunt",
+                        "Jenkins / Hudson CI",
+                        "Nginx / Apache / Glassfish / Tomcat",
+                        "AWS / Digital Ocean VPC"
                     ]
                 }
             ],
             "jobs": [
                 {
+                    "title": "Blizzard Entertainment",
+                    "tenure": "Jan 2016 – Present",
+                    "website": "http://www.blizzard.com/",
+                    "logo": "http://us.blizzard.com/static/_images/layout/logo-blizzard.gif",
+                    "description": "Premier game developer and publisher known for epic, well-designed games",
+                    "location": "Irvine, CA, United States",
+                    "position": "Software Engineer",
+                    "lineItems": [
+                        "Research, test and integrate new technologies with existing applications",
+                        "Test load capacity, page speed and other performance metrics for high traffic websites",
+                        "Setup and maintain AWS environments for new sites and applications"
+                    ]
+                },
+                {
                     "title": "Cineplex Digital Networks",
-                    "tenure": "Jun 2014 – Present",
+                    "tenure": "Jun 2014 – Dec 2015",
                     "website": "http://www.cineplexdigitalnetworks.com/",
                     "logo": "http://www.cineplexdigitalnetworks.com/sites/default/files/logo.png",
                     "description": "Strategic In-Store Digital for the World's Best Brands",
@@ -99,8 +113,8 @@ angular.module('app.resume', [])
                     "title": "Blackberry",
                     "tenure": "May 2012 – Aug 2012",
                     "website": "http://blackberry.com",
-                    "logo": "",
-                    "description": "",
+                    "logo": "http://us.blackberry.com/etc/designs/blackberry-com/images/logo.svg",
+                    "description": "Formerly Research In Motion (RIM), the makers of the BlackBerry smartphone",
                     "location": "Waterloo, ON, Canada",
                     "position": "Software Tester & Developer (co-op)",
                     "lineItems": [
@@ -146,7 +160,7 @@ angular.module('app.resume', [])
                     "website": "http://www.fanshawec.ca/",
                     "location": "London, ON, Canada",
                     "certificate": "Computer Programmer Analyst Advanced Diploma",
-                    "extra": "Graduated with honours"
+                    "extra": "Graduated with Honours"
                 },
                 {
                     "title": "A.B. Lucas Secondary School",
@@ -178,7 +192,6 @@ angular.module('app.resume', [])
             
             doc.text($scope.resume.name, leftOffset, cursor+=lineHeight);
             doc.text($scope.resume.address, leftOffset, cursor+=lineHeight);
-            doc.text($scope.resume.phone, leftOffset, cursor+=lineHeight);
             doc.text($scope.resume.email, leftOffset, cursor+=lineHeight);
             doc.text($scope.resume.website, leftOffset, cursor+=lineHeight);
             doc.text('', leftOffset, cursor+=lineHeight);
@@ -213,7 +226,7 @@ angular.module('app.resume', [])
                     });
                 });
                 doc.text('', leftOffset, cursor+=lineHeight);
-                if (index === 1) {
+                if (index === 2) {
                     doc.addPage();
                     cursor = 10;
                 }

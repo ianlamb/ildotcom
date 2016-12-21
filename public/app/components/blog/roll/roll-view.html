@@ -28,7 +28,9 @@
                 <li ng-repeat="post in posts | filter:search:true">
                     <div class="post-wrapper panel">
                         <div class="view">
-                            <h3><a ui-sref="blog.post({ slug: post.slug })">{{ post.title }}</a></h3>
+                            <h3 class="post-title">
+                                <a ui-sref="blog.post({ slug: post.slug })">{{ post.title }}</a>
+                            </h3>
                             <div class="post-body truncate" ng-if="post" ng-bind-html="shortPost(post.body)"></div>
                             <a ui-sref="blog.post({ slug: post.slug })" class="button">Read More</a>
                             <div class="post-footer">

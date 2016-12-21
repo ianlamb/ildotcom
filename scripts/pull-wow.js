@@ -1,10 +1,12 @@
-var app                 = require('../config/app');
-var db                  = require('../config/db');
+require('app-module-path').addPath(__dirname + '/../app');
+
+var app                 = require('config/app');
+var db                  = require('config/db');
 var mongoose            = require('mongoose');
 var request             = require('request');
 var Promise             = require('promise');
 var achievements        = require('./wow-achievements.json');
-var WarcraftProvider    = require('../app/modules/gaming/warcraft/warcraft-provider');
+var WarcraftProvider    = require('modules/gaming/warcraft/warcraft-provider');
 var warcraftProvider    = new WarcraftProvider();
 
 console.log('connecting to db...');
@@ -17,7 +19,7 @@ var promises = [];
 app.wow.characters.forEach(function(character) {
     var promise = new Promise(function(resolve) {
         var options = {
-            uri: 'http://us.battle.net/api/wow/character/' + character.realm + '/' + character.name,
+            uri: app.battlenet.baseUrl + '/wow/character/' + character.realm + '/' + character.name + '?locale=en_US&apikey=' + app.keys.battlenet,
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -25,9 +27,9 @@ app.wow.characters.forEach(function(character) {
         };
         if(character.showcase) {
             // just ensure we only pull these once, all characters return account-wide pets and mounts
-            options.uri +=  '?fields=feed,items,stats,pvp,progression,pets,mounts,achievements';
+            options.uri += '&fields=feed,items,stats,pvp,progression,pets,mounts,achievements';
         }
-        
+
         console.log('requesting character data for %s...', character.name);
         request(options, function(err, res, body) {
             if(err) {
@@ -40,7 +42,7 @@ app.wow.characters.forEach(function(character) {
                 mongoose.disconnect();
                 return;
             }
-            
+
             var data = JSON.parse(body);
             if(data) {
                 console.log('received info for character: ' + data.name);
@@ -109,7 +111,7 @@ function parseFeed(feed) {
 function getItemData(itemId, context) {
     return new Promise(function(resolve, reject) {
         var options = {
-            uri: 'http://us.battle.net/api/wow/item/' + itemId,
+            uri: app.battlenet.baseUrl + '/wow/item/' + itemId + '?locale=en_US&apikey=' + app.keys.battlenet,
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -142,7 +144,7 @@ function getItemData(itemId, context) {
                         });
                     } else {
                         console.warn('couldn\'t retrieve data for item %s...', itemId);
-                        reject();
+                        resolve();
                     }
                 } else {
                     console.log('received info for item %s...', data.name);

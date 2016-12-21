@@ -40,16 +40,8 @@ html {
 }
 
 body {
-    padding-top: 50px;
     letter-spacing: 0.1em;
     background: transparent;
-	-webkit-font-smoothing: antialiased;
-	-moz-font-smoothing: antialiased;
-	-ms-font-smoothing: antialiased;
-	font-smoothing: antialiased;
-}
-
-h1, h2, h3, h4, h5 {
 }
 
 p { margin: 0 0 1.0em 0; }
@@ -76,7 +68,6 @@ label {
 
 dl {
     display: block;
-    vertical-align: top;
     margin-bottom: 0;
 }
 dt {
@@ -108,13 +99,22 @@ dl.table-list dd {
 }
 
 code {
-    display: block;
-    padding: 0.4em 0.8em;
+    padding: 0 0.2em;
     margin: 0;
     border-radius: 0;
     font-family: monospace;
     color: #E2DCCC;
     background: #555;
+}
+
+pre {
+    padding: 0.2 0.4em;
+    margin: 0;
+    border-radius: 0;
+    font-family: monospace;
+    color: #E2DCCC;
+    background: #555;
+    border-color: #999;
 }
 
 
@@ -139,7 +139,7 @@ code {
     width: 24px;
 }
 .navbar-default a:not(.btn).navbar-brand span {
-    color: #999;
+    color: #ccc;
     -webkit-animation-name: shine;
     animation-name: shine;
     -webkit-animation-duration: 5s;
@@ -179,15 +179,11 @@ code {
 }
 
 .navbar-default {
-    background-color: #333;
-    border-color: #454545;
+    background-color: rgba(0,0,0,.6);
     border: none;
 }
-.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: #454545;
-}
 .navbar-default .navbar-nav > li > a {
-    color: #999;
+    color: #ccc;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -296,11 +292,11 @@ code {
  * SUBHEADER
  */
 
-.header-image {
-    position: relative;
+.sticky-hero {
+    position: fixed;
     z-index: 20;
     width: 100%;
-    height: 180px;
+    height: 250px;
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: center center;
@@ -310,6 +306,16 @@ code {
     background-size: cover;
     border-top: 1px solid #222;
     border-bottom: 1px solid #222;
+}
+.sticky-hero-overlay {
+    position: relative;
+    z-index: 30;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.3)
+}
+.sticky-hero-shim {
+    height: 200px;
 }
 
 #subNav {
@@ -377,7 +383,7 @@ code {
     height: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding-top: 50px;
     overflow: hidden;
 }
 
@@ -464,7 +470,7 @@ code {
 #footer {
     width: 100%;
     height: 50px;
-    padding-top: 20px;
+    padding-top: 15px;
     text-shadow: 0 1px 0 rgba(255,255,255,.1);
     font-size: 0.9em;
     z-index: 99;
@@ -492,7 +498,7 @@ code {
     margin: 0;
     padding-right: 0.3em;
     padding-left: 0.6em;
-    border-left: 3px solid rgba(0,0,0,0.4);
+    border-left: 3px solid rgba(255,255,255,0.2);
 }
 #footer .footer-links li:first-child {
     padding-left: 0;
@@ -656,9 +662,6 @@ ul.inline-bullets > li:last-child {
 @media only screen and (max-width: 767px) {
     html, body {
         font-size: 11pt;
-    }
-    dl {
-        
     }
     dl dd {
         margin-bottom: 0.5em;

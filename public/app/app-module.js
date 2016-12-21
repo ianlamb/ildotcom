@@ -11,6 +11,7 @@ angular.module('app', [
     'app.about',
     'app.resume',
     'app.blog',
+    'app.photos',
     'app.portfolio',
     'app.adventure',
     'app.games'

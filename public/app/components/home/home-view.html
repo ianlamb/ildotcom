@@ -1,35 +1,45 @@
 <div id="home">
     <section id="header">
-        <div class="overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 text-center">
-                        <div class="intro">
-                            <div class="dom-logo">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <h3 class="intro-text">
-                                <p class="animated fadeIn delay-short" i18n="home.intro1"></p>
-                                <p class="animated fadeIn delay-medium" i18n="home.intro2"></p>
-                                <p class="animated fadeIn delay-long" i18n="home.intro3"></p>
-                            </h3>
+        <sticky-hero></sticky-hero>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div class="intro">
+                        <div class="dom-logo">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
-                        <i ng-click="scrollDown()" class="fa fa-arrow-circle-o-down scroll-down"></i>
+                        <h3 class="intro-text">
+                            <p class="animated fadeIn delay-short" i18n="home.intro1"></p>
+                            <p class="animated fadeIn delay-medium" i18n="home.intro2"></p>
+                            <p class="animated fadeIn delay-long" i18n="home.intro3"></p>
+                        </h3>
                     </div>
+                    <i ng-click="scrollDown()" class="fa fa-arrow-circle-o-down scroll-down"></i>
                 </div>
             </div>
         </div>
     </section>
     <section id="main">
         <div class="container">
-            <h3 i18n="home.description"></h3>
+            <h3 i18n="home.description" class="blurb"></h3>
+            <hr class="home-divider" />
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-3">
+                    <span i18n="home.blogTitle" class="title"></span>
+                </div>
+                <div class="col-sm-3">
+                    <ul class="posts">
+                        <li ng-repeat="post in posts">
+                            <a ui-sref="blog.post({ slug: post.slug })" class="link">{{ post.title }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
                     <span i18n="home.socialTitle" class="title"></span>
                 </div>
-                <div class="col-sm-7">
+                <div class="col-sm-3">
                     <ul class="social-icons">
                         <li>
                             <a href="https://www.flickr.com/photos/128441783@N07/" ng-click="trackClickEvent('flickr')" title="{{ 'home.flickrDescription' | i18n }}" target="_blank">
@@ -72,18 +82,6 @@
                                 <i class="fa fa-github-square"></i>
                                 <span>Github</span>
                             </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-5">
-                    <span i18n="home.blogTitle" class="title"></span>
-                </div>
-                <div class="col-sm-7">
-                    <ul class="posts">
-                        <li ng-repeat="post in posts">
-                            <a ui-sref="blog.post({ slug: post.slug })" class="link">{{ post.title }}</a>
                         </li>
                     </ul>
                 </div>
@@ -140,7 +138,9 @@
                     </div>
                 </div>
                 <div class="col-sm-8">
-                    <img src="/assets/images/pixelMap.svg" class="map" alt="world map showing location" />
+                    <div class="mapWrapper">
+                        <img src="/assets/images/pixelMap.svg" class="map" alt="world map showing location" />
+                    </div>
                 </div>
             </div>
         </div>

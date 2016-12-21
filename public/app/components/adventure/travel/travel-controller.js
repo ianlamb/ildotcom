@@ -1,7 +1,7 @@
 angular.module('app.adventure.travel', [])
     .controller('TravelController', function($scope, $modal, Trips) {
         'use strict';
-    
+
         Trips.get()
             .success(function(data) {
                 $scope.trips = data;
@@ -10,13 +10,14 @@ angular.module('app.adventure.travel', [])
                 $scope.citiesVisited = 0;
                 $scope.geoData = [];
                 var countryData = {};
-            
+
                 $scope.trips.forEach(function(trip) {
                     trip.places.forEach(function(place) {
                         var geoObject = {
                             latitude: place.lat,
                             longitude: place.lng,
-                            name: place.city + ', ' + place.countryCode
+                            name: place.city + ', ' + place.countryCode,
+                            country: place.countryCode
                         };
                         $scope.geoData.push(geoObject);
                         if(!countryData[place.countryCode]) {

@@ -27,6 +27,9 @@ angular.module('app.blog.roll', [])
                 };
     
                 posts.forEach(function(post) {
+                    if (!post.tags) {
+                        return;
+                    }
                     for (var i = 0; i < post.tags.length; i++) {
                         if($scope.usedTags.hasOwnProperty(post.tags[i])) {
                            $scope.usedTags[post.tags[i]]++;
