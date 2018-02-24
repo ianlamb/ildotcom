@@ -19,7 +19,7 @@ module.exports = function(router) {
             });
     });
     
-    router.get('/testAuth', auth, function(req, res) {
+    router.get('/testAuth', auth.required, function(req, res) {
         logger.debug('auth controller - authentication test worked, congrats');
         res.send('You are authenticated!');
     });

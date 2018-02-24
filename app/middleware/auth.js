@@ -5,6 +5,25 @@ var jwt = require('jwt-simple');
 module.exports = function(req, res, next) {
     'use strict';
 
+    req.loggedIn = false;
+
+    var token = (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'];
+    if (token) {
+        try {
+            var decoded = jwt.decode(token, config.jwtTokenSecret);
+            if (decoded.exp > Date.now() && decoded.iss === 'root') {
+                req.loggedIn = true;
+            }
+        } catch (err) {
+            logger.warn('auth - token is fucked');
+        }
+    }
+    next();
+};
+
+module.exports.required = function(req, res, next) {
+    'use strict';
+
     var token = (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'];
     if (token) {
         try {

@@ -17,7 +17,7 @@ module.exports = function(router) {
             });
     });
     
-    router.put('/climb', auth, function(req, res) {
+    router.put('/climb', auth.required, function(req, res) {
         climbingProvider.saveSession(req.body)
             .then(function(data) {
                 res.json(data);
@@ -27,7 +27,7 @@ module.exports = function(router) {
             });
     });
     
-    router.delete('/climb/:id', auth, function(req, res) {
+    router.delete('/climb/:id', auth.required, function(req, res) {
         climbingProvider.deleteSession(req.params.id)
             .then(function() {
                 res.send(200);

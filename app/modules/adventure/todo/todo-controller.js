@@ -17,7 +17,7 @@ module.exports = function(router) {
             });
     });
     
-    router.put('/bucketlist', auth, function(req, res) {
+    router.put('/bucketlist', auth.required, function(req, res) {
         todoProvider.saveTodo(req.body)
             .then(function(result) {
                 res.json(result);
@@ -27,7 +27,7 @@ module.exports = function(router) {
             });
     });
     
-    router.delete('/bucketlist/:id', auth, function(req, res) {
+    router.delete('/bucketlist/:id', auth.required, function(req, res) {
         todoProvider.deleteTodo(req.params.id)
             .then(function() {
                 res.send(200);

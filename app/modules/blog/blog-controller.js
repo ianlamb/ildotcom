@@ -8,7 +8,12 @@ module.exports = function(router) {
     var blogProvider = new BlogProvider();
     
     router.get('/posts', function(req, res) {
-        blogProvider.getPosts(req.query.limit)
+        var searchCriteria = {};
+        var limit = req.query.limit;
+        if (!req.loggedIn) {
+            searchCriteria.published = true;
+        }
+        blogProvider.getPosts(searchCriteria, limit)
             .then(function(result) {
                 logger.debug('blog controller - get posts');
                 res.json(result);
@@ -20,7 +25,11 @@ module.exports = function(router) {
     });
     
     router.get('/post', function(req, res) {
-        blogProvider.getPost()
+        var searchCriteria = {};
+        if (!req.loggedIn) {
+            searchCriteria.published = true;
+        }
+        blogProvider.getPost(searchCriteria)
             .then(function(result) {
                 logger.debug('blog controller - get post');
                 res.json(result);
@@ -36,6 +45,9 @@ module.exports = function(router) {
         if (req.params.slug) {
             searchCriteria.slug = req.params.slug;
         }
+        if (!req.loggedIn) {
+            searchCriteria.published = true;
+        }
         blogProvider.getPost(searchCriteria)
             .then(function(result) {
                 logger.debug('blog controller - get post', req.params.slug);
@@ -47,7 +59,7 @@ module.exports = function(router) {
             });
     });
     
-    router.put('/post', auth, function(req, res) {
+    router.put('/post', auth.required, function(req, res) {
         blogProvider.savePost(req.body)
             .then(function(result) {
                 logger.debug('blog controller - save post', req.body.slug);
@@ -59,7 +71,7 @@ module.exports = function(router) {
             });
     });
     
-    router.delete('/post/:id', auth, function(req, res) {
+    router.delete('/post/:id', auth.required, function(req, res) {
         blogProvider.deletePost(req.params.id)
             .then(function() {
                 logger.debug('blog controller - delete post', req.params.id);

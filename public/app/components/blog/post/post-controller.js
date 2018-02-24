@@ -52,6 +52,32 @@ angular.module('app.blog.post', [])
             });
     };
 
+    $scope.publish = function () {
+        $scope.setPublishStatus(true);
+    };
+
+    $scope.unpublish = function () {
+        $scope.setPublishStatus(false);
+    };
+
+    $scope.setPublishStatus = function (published) {
+        $scope.saving = true;
+        $scope.post.published = published;
+
+        Post.put($scope.post)
+            .success(function() {
+                $scope.alert = { type: 'success', message: 'Post published' };
+            })
+            .error(function() {
+                $scope.post = $scope.originalPost;
+                $scope.alert = { type: 'danger', message: 'Error publishing post' };
+            })
+            .finally(function () {
+                $scope.editing = false;
+                $scope.saving = false;
+            });
+    };
+
     $scope.cancelEdits = function () {
         $scope.post = $scope.originalPost;
         $scope.editing = false;

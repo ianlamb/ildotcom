@@ -1,10 +1,14 @@
 /* global __dirname */
 var env = require('config/environment.js');
 var path = require('path');
+var auth = require('./middleware/auth')
 
 module.exports = function(app, router) {
     'use strict';
-    
+
+    // middleware to use for all requests
+    router.use(auth);
+
     // register all modules
     require('./modules/authentication/auth-controller')(router);
     require('./modules/blog/blog-controller')(router);
@@ -18,11 +22,6 @@ module.exports = function(app, router) {
     require('./modules/gaming/starcraft/starcraft-controller')(router);
     require('./modules/gaming/warcraft/warcraft-controller')(router);
     require('./modules/gaming/hots/hots-controller')(router);
-    
-    // middleware to use for all requests
-    router.use(function(req, res, next) {
-        next();
-    });
 
     // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
     router.get('/', function(req, res) {

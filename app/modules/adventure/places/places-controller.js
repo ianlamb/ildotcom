@@ -27,7 +27,7 @@ module.exports = function(router) {
             });
     });
     
-    router.put('/place', auth, function(req, res) {
+    router.put('/place', auth.required, function(req, res) {
         placesProvider.savePlace(req.body)
             .then(function(result) {
                 res.json(result);
@@ -37,7 +37,7 @@ module.exports = function(router) {
             });
     });
     
-    router.delete('/place/:id', auth, function(req, res) {
+    router.delete('/place/:id', auth.required, function(req, res) {
         placesProvider.deletePlace(req.params.id)
             .then(function() {
                 res.send(200);

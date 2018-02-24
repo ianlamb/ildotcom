@@ -17,7 +17,7 @@ module.exports = function(router) {
             });
     });
     
-    router.put('/trip', auth, function(req, res) {
+    router.put('/trip', auth.required, function(req, res) {
         travelProvider.saveTrip(req.body)
             .then(function(result) {
                 res.json(result);

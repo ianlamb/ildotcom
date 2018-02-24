@@ -17,7 +17,7 @@ module.exports = function(router) {
             });
     });
     
-    router.put('/project', auth, function(req, res) {
+    router.put('/project', auth.required, function(req, res) {
         portfolioProvider.saveProject(req.body)
             .then(function(result) {
                 res.json(result);
@@ -27,7 +27,7 @@ module.exports = function(router) {
             });
     });
     
-    router.delete('/project/:id', auth, function(req, res) {
+    router.delete('/project/:id', auth.required, function(req, res) {
         portfolioProvider.deleteProject(req.params.id)
             .then(function() {
                 res.send(200);

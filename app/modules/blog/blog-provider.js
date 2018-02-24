@@ -4,10 +4,11 @@ var Post = require('./post-model');
 module.exports = function() {
     'use strict';
     
-    this.getPosts = function(limit) {
+    this.getPosts = function(searchCriteria, limit) {
         return new Promise(function(resolve, reject) {
+            searchCriteria = searchCriteria || {};
             limit = limit || 50;
-            Post.find({}, {}, { sort: { 'created_at': -1 }})
+            Post.find(searchCriteria, {}, { sort: { 'created_at': -1 }})
                 .limit(limit)
                 .exec(function(err, data) {
                     if (err) {
