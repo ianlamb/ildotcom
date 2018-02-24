@@ -48,7 +48,7 @@ angular.module('app.adventure.bucket-list', [])
         };
     
         $scope.editTodo = function (todo) {
-            $scope.editedTodo = todo;
+            $scope.originalTodo = Object.assign({}, todo);
         };
     
         $scope.saveEdits = function (todo, event) {
@@ -63,17 +63,12 @@ angular.module('app.adventure.bucket-list', [])
     
             todo.title = todo.title.trim();
     
-            if (todo.title === $scope.originalTodo.title) {
-                $scope.editedTodo = null;
-                return;
-            }
-    
-            BucketList[todo.title ? 'put' : 'delete'](todo)
+            BucketList.put(todo)
                 .then(function success() {}, function error() {
-                    todo.title = $scope.originalTodo.title;
+                    todo = Object.assign({}, $scope.originalTodo);
                 })
                 .finally(function () {
-                    $scope.editedTodo = null;
+                    $scope.originalTodo = null;
                 });
         };
     

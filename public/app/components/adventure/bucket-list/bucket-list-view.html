@@ -11,14 +11,14 @@
                 </form>
             </div>
             <ul id="todoList">
-                <li ng-repeat="todo in bucketList | orderBy:['created_at']:true track by $index" class="{{ todo.completed ? 'completed' : '' }}">
+                <li ng-repeat="todo in bucketList | orderBy:['created_at']:true track by $index" class="{{ todo.completed ? 'completed' : '' }} {{ authorized ? 'editable' : '' }} {{ todo == editedTodo ? 'editing' : '' }}">
                     <div class="view">
                         <input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)" ng-disabled="!authorized">
-                        <label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
+                        <label ng-click="editTodo(todo)">{{todo.title}}</label>
                         <button ng-if="authorized" class="destroy" ng-click="removeTodo(todo)"></button>
                     </div>
                     <form ng-submit="saveEdits(todo, 'submit')">
-                        <input class="edit" ng-trim="false" ng-model="todo.title" todo-escape="revertEdits(todo)" ng-blur="saveEdits(todo, 'blur')" todo-focus="todo == editedTodo">
+                        <input type="text" class="edit" ng-trim="false" ng-model="editedTodo.title" todo-escape="revertEdits(todo)" ng-blur="saveEdits(editedTodo, 'blur')" todo-focus="todo == editedTodo">
                     </form>
                 </li>
             </ul>
