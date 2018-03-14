@@ -1,7 +1,7 @@
 /* global __dirname */
 var env = require('config/environment.js');
 var path = require('path');
-var auth = require('./middleware/auth')
+var auth = require('./middleware/auth');
 
 module.exports = function(app, router) {
     'use strict';
